@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Đền thờ Vũ Hồn",
+    "lat": 20.9427,
+    "lng": 106.3648,
+    "description": "Di tích thờ Thành hoàng làng và Thủy tổ họ Vũ - Võ Việt Nam.",
+    "image": "images/places/vuhon.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Văn Miếu Mộ Trạch",
+    "lat": 20.9432,
+    "lng": 106.3655,
+    "description": "Biểu tượng truyền thống hiếu học của làng Tiến sĩ.",
+    "image": "images/places/vanmieu.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Nhà thờ họ Vũ",
+    "lat": 20.9439,
+    "lng": 106.3661,
+    "description": "Nơi lưu giữ nhiều tư liệu lịch sử quý giá.",
+    "image": "images/places/nhatho.jpg"
+  }
+]

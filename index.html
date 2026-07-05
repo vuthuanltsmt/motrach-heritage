@@ -1,57 +1,215 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mộ Trạch Heritage</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Mộ Trạch Heritage - Làng Tiến sĩ Việt Nam</title>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header>
-    <div class="container">
-        <h1>MỘ TRẠCH HERITAGE</h1>
-        <p>Làng Tiến sĩ Việt Nam</p>
+    <!-- ================= HEADER ================= -->
+    <header>
 
-        <nav>
-            <a href="#">Trang chủ</a>
-            <a href="#">Giới thiệu</a>
-            <a href="#">Bản đồ</a>
-            <a href="#">Di tích</a>
-            <a href="#">Thư viện</a>
-            <a href="#">Liên hệ</a>
-        </nav>
-    </div>
-</header>
+        <div class="container">
 
-<section class="hero">
-    <h2>Khám phá Làng Tiến sĩ Mộ Trạch</h2>
+            <div class="logo">
+                <h1>MỘ TRẠCH HERITAGE</h1>
+                <p>Làng Tiến sĩ Việt Nam</p>
+            </div>
 
-    <p>
-        Di sản văn hóa - lịch sử - truyền thống hiếu học nổi tiếng của Việt Nam.
-    </p>
+            <nav>
+                <a href="index.html">Trang chủ</a>
+                <a href="#gioithieu">Giới thiệu</a>
+                <a href="#ditich">Di tích</a>
+                <a href="pages/map.html">🗺️ Bản đồ</a>
+                <a href="#thuvien">Thư viện</a>
+                <a href="#lienhe">Liên hệ</a>
+            </nav>
 
-    <button>Khám phá ngay</button>
-</section>
+        </div>
 
-<section class="about">
-    <h2>Giới thiệu</h2>
+    </header>
 
-    <p>
-        Mộ Trạch là ngôi làng nổi tiếng với truyền thống khoa bảng,
-        được mệnh danh là "Làng Tiến sĩ".
-    </p>
-</section>
+    <!-- ================= HERO ================= -->
 
-<footer>
-    © 2026 Mộ Trạch Heritage
-</footer>
+    <section class="hero">
 
-<script src="js/script.js"></script>
+        <div class="container">
+
+            <h2>Khám phá Làng Tiến sĩ Mộ Trạch</h2>
+
+            <p>
+                Di sản văn hóa – lịch sử – truyền thống hiếu học nổi tiếng của Việt Nam.
+            </p>
+
+            <div class="buttons">
+
+                <button onclick="location.href='pages/map.html'">
+                    🗺️ Xem bản đồ
+                </button>
+
+                <button onclick="location.href='#gioithieu'">
+                    📖 Tìm hiểu
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= GIỚI THIỆU ================= -->
+
+    <section class="about" id="gioithieu">
+
+        <div class="container">
+
+            <h2>Giới thiệu</h2>
+
+            <p>
+
+                Mộ Trạch thuộc xã Đường An, thành phố Hải Phòng,
+                được mệnh danh là <strong>"Làng Tiến sĩ"</strong>.
+
+                Đây là quê hương của nhiều bậc hiền tài,
+                nơi lưu giữ truyền thống khoa bảng, hiếu học
+                và nhiều giá trị văn hóa đặc sắc.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= DI TÍCH ================= -->
+
+    <section class="places" id="ditich">
+
+        <div class="container">
+
+            <h2>Di tích tiêu biểu</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>🏛 Đền thờ Vũ Hồn</h3>
+
+                    <p>
+
+                        Di tích lịch sử cấp quốc gia,
+                        nơi thờ Thành hoàng làng và Thủy tổ họ Vũ - Võ Việt Nam.
+
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>📚 Văn Miếu Mộ Trạch</h3>
+
+                    <p>
+
+                        Biểu tượng truyền thống hiếu học,
+                        nơi tôn vinh các bậc khoa bảng của làng.
+
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🏡 Nhà thờ họ Vũ</h3>
+
+                    <p>
+
+                        Nơi lưu giữ nhiều sắc phong,
+                        gia phả và hiện vật quý giá.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= THƯ VIỆN ================= -->
+
+    <section class="about" id="thuvien">
+
+        <div class="container">
+
+            <h2>Thư viện số</h2>
+
+            <p>
+
+                Trong các bài tiếp theo, nơi đây sẽ hiển thị:
+
+            </p>
+
+            <br>
+
+            <ul>
+
+                <li>📸 Ảnh tư liệu</li>
+
+                <li>🎥 Video giới thiệu</li>
+
+                <li>📜 Tư liệu lịch sử</li>
+
+                <li>🎧 Thuyết minh tự động</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    <!-- ================= LIÊN HỆ ================= -->
+
+    <section class="about" id="lienhe">
+
+        <div class="container">
+
+            <h2>Liên hệ</h2>
+
+            <p>
+
+                Dự án Mộ Trạch Heritage đang được xây dựng
+                nhằm phục vụ công tác số hóa di tích lịch sử,
+                quảng bá văn hóa và phát triển du lịch địa phương.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p><strong>Mộ Trạch Heritage</strong></p>
+
+        <p>
+            Dự án số hóa di tích lịch sử - văn hóa Mộ Trạch
+        </p>
+
+        <p>
+            © 2026 - Phát triển bởi Vũ Trọng Thuấn
+        </p>
+
+    </footer>
+
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

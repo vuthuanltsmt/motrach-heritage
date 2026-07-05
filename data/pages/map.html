@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bản đồ di tích Mộ Trạch</title>
+
+    <!-- CSS của Leaflet -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        body{
+            margin:0;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        header{
+
+            background:#8B0000;
+            color:white;
+            padding:20px;
+            text-align:center;
+
+        }
+
+        #map{
+
+            height:85vh;
+            width:100%;
+
+        }
+
+        .back{
+
+            display:inline-block;
+            margin-top:15px;
+            padding:10px 20px;
+            background:white;
+            color:#8B0000;
+            text-decoration:none;
+            border-radius:8px;
+            font-weight:bold;
+
+        }
+
+        .back:hover{
+
+            background:#FFD700;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🗺️ Bản đồ số Mộ Trạch Heritage</h1>
+
+    <p>Khám phá các di tích lịch sử của làng Tiến sĩ</p>
+
+    <a class="back" href="../index.html">← Quay về Trang chủ</a>
+
+</header>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+const map = L.map('map').setView([20.9430,106.3650],17);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+
+    attribution:'© OpenStreetMap'
+
+}).addTo(map);
+
+
+// ====== Đền Vũ Hồn ======
+
+L.marker([20.9428,106.3647]).addTo(map)
+
+.bindPopup(`
+<h3>🏛 Đền thờ Vũ Hồn</h3>
+
+<p>Thờ Thành hoàng làng và Thủy tổ họ Vũ.</p>
+
+`);
+
+
+// ====== Văn Miếu ======
+
+L.marker([20.9433,106.3653]).addTo(map)
+
+.bindPopup(`
+<h3>📚 Văn Miếu Mộ Trạch</h3>
+
+<p>Biểu tượng truyền thống hiếu học.</p>
+
+`);
+
+
+// ====== Nhà thờ họ Vũ ======
+
+L.marker([20.9439,106.3660]).addTo(map)
+
+.bindPopup(`
+<h3>🏡 Nhà thờ họ Vũ</h3>
+
+<p>Nơi lưu giữ nhiều tư liệu lịch sử quý.</p>
+
+`);
+
+</script>
+
+</body>
+
+</html>
