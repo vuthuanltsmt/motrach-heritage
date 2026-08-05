@@ -2,32 +2,46 @@
 <html lang="vi">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mộ Trạch Heritage - Làng Tiến sĩ Việt Nam</title>
+
+    <title>Mộ Trạch Heritage | Làng Tiến sĩ Việt Nam</title>
 
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
     <!-- ================= HEADER ================= -->
+
     <header>
 
         <div class="container">
 
             <div class="logo">
+
                 <h1>MỘ TRẠCH HERITAGE</h1>
+
                 <p>Làng Tiến sĩ Việt Nam</p>
+
             </div>
 
             <nav>
+
                 <a href="index.html">Trang chủ</a>
+
                 <a href="#gioithieu">Giới thiệu</a>
+
                 <a href="#ditich">Di tích</a>
-                <a href="pages/map.html">🗺️ Bản đồ</a>
-                <a href="#thuvien">Thư viện</a>
+
+                <a href="pages/map.html">Bản đồ</a>
+
+                <a href="pages/heritage.html">Danh mục</a>
+
                 <a href="#lienhe">Liên hệ</a>
+
             </nav>
 
         </div>
@@ -43,18 +57,32 @@
             <h2>Khám phá Làng Tiến sĩ Mộ Trạch</h2>
 
             <p>
-                Di sản văn hóa – lịch sử – truyền thống hiếu học nổi tiếng của Việt Nam.
+
+                Di sản văn hóa - lịch sử - truyền thống hiếu học nổi tiếng của Việt Nam.
+
             </p>
 
             <div class="buttons">
 
-                <button onclick="location.href='pages/map.html'">
-                    🗺️ Xem bản đồ
-                </button>
+                <a href="pages/heritage.html">
 
-                <button onclick="location.href='#gioithieu'">
-                    📖 Tìm hiểu
-                </button>
+                    <button class="discover-btn">
+
+                        📖 Khám phá
+
+                    </button>
+
+                </a>
+
+                <a href="pages/map.html">
+
+                    <button class="map-btn">
+
+                        🗺️ Xem bản đồ
+
+                    </button>
+
+                </a>
 
             </div>
 
@@ -68,16 +96,27 @@
 
         <div class="container">
 
-            <h2>Giới thiệu</h2>
+            <h2>Giới thiệu Mộ Trạch</h2>
 
             <p>
 
-                Mộ Trạch thuộc xã Đường An, thành phố Hải Phòng,
-                được mệnh danh là <strong>"Làng Tiến sĩ"</strong>.
+                Mộ Trạch thuộc xã Đường An, thành phố Hải Phòng.
 
                 Đây là quê hương của nhiều bậc hiền tài,
-                nơi lưu giữ truyền thống khoa bảng, hiếu học
-                và nhiều giá trị văn hóa đặc sắc.
+
+                được mệnh danh là <strong>"Làng Tiến sĩ"</strong> của Việt Nam.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                Website Mộ Trạch Heritage được xây dựng nhằm số hóa,
+
+                bảo tồn và quảng bá các giá trị văn hóa,
+
+                lịch sử và truyền thống hiếu học của quê hương.
 
             </p>
 
@@ -85,52 +124,43 @@
 
     </section>
 
-    <!-- ================= DI TÍCH ================= -->
+    <!-- ================= THỐNG KÊ ================= -->
 
-    <section class="places" id="ditich">
+    <section class="places">
 
         <div class="container">
 
-            <h2>Di tích tiêu biểu</h2>
+            <h2>Mộ Trạch qua những con số</h2>
 
             <div class="cards">
 
                 <div class="card">
 
-                    <h3>🏛 Đền thờ Vũ Hồn</h3>
+                    <h3>🎓</h3>
 
-                    <p>
+                    <h2>36</h2>
 
-                        Di tích lịch sử cấp quốc gia,
-                        nơi thờ Thành hoàng làng và Thủy tổ họ Vũ - Võ Việt Nam.
-
-                    </p>
+                    <p>Tiến sĩ</p>
 
                 </div>
 
                 <div class="card">
 
-                    <h3>📚 Văn Miếu Mộ Trạch</h3>
+                    <h3>🏛️</h3>
 
-                    <p>
+                    <h2>12+</h2>
 
-                        Biểu tượng truyền thống hiếu học,
-                        nơi tôn vinh các bậc khoa bảng của làng.
-
-                    </p>
+                    <p>Di tích</p>
 
                 </div>
 
                 <div class="card">
 
-                    <h3>🏡 Nhà thờ họ Vũ</h3>
+                    <h3>📜</h3>
 
-                    <p>
+                    <h2>800+</h2>
 
-                        Nơi lưu giữ nhiều sắc phong,
-                        gia phả và hiện vật quý giá.
-
-                    </p>
+                    <p>Năm lịch sử</p>
 
                 </div>
 
@@ -140,33 +170,75 @@
 
     </section>
 
+    <!-- ================= DI TÍCH ================= -->
+
+    <section class="about" id="ditich">
+
+        <div class="container">
+
+            <h2>Di tích tiêu biểu</h2>
+
+            <p style="text-align:center;margin-bottom:40px;">
+
+                Các di tích dưới đây được lấy tự động từ cơ sở dữ liệu.
+
+            </p>
+
+            <div id="featured-heritage" class="cards">
+
+            </div>
+
+            <br>
+
+            <p style="text-align:center;">
+
+                <a href="pages/heritage.html">
+
+                    <button>Xem tất cả di tích</button>
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
     <!-- ================= THƯ VIỆN ================= -->
 
-    <section class="about" id="thuvien">
+    <section class="places">
 
         <div class="container">
 
             <h2>Thư viện số</h2>
 
-            <p>
+            <div class="cards">
 
-                Trong các bài tiếp theo, nơi đây sẽ hiển thị:
+                <div class="card">
 
-            </p>
+                    <h3>📷 Hình ảnh</h3>
 
-            <br>
+                    <p>Bộ sưu tập ảnh các di tích.</p>
 
-            <ul>
+                </div>
 
-                <li>📸 Ảnh tư liệu</li>
+                <div class="card">
 
-                <li>🎥 Video giới thiệu</li>
+                    <h3>🎥 Video</h3>
 
-                <li>📜 Tư liệu lịch sử</li>
+                    <p>Video giới thiệu Mộ Trạch.</p>
 
-                <li>🎧 Thuyết minh tự động</li>
+                </div>
 
-            </ul>
+                <div class="card">
+
+                    <h3>🎧 Thuyết minh AI</h3>
+
+                    <p>Nghe giới thiệu từng di tích.</p>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -182,9 +254,17 @@
 
             <p>
 
-                Dự án Mộ Trạch Heritage đang được xây dựng
-                nhằm phục vụ công tác số hóa di tích lịch sử,
-                quảng bá văn hóa và phát triển du lịch địa phương.
+                Dự án Mộ Trạch Heritage được xây dựng nhằm góp phần bảo tồn
+
+                và phát huy giá trị di sản văn hóa của Làng Tiến sĩ Mộ Trạch.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                © 2026 - Phát triển bởi Vũ Trọng Thuấn
 
             </p>
 
@@ -196,14 +276,22 @@
 
     <footer>
 
-        <p><strong>Mộ Trạch Heritage</strong></p>
+        <h3>MỘ TRẠCH HERITAGE</h3>
+
+        <br>
 
         <p>
-            Dự án số hóa di tích lịch sử - văn hóa Mộ Trạch
+
+            Dự án số hóa di sản văn hóa Làng Tiến sĩ Mộ Trạch
+
         </p>
 
+        <br>
+
         <p>
-            © 2026 - Phát triển bởi Vũ Trọng Thuấn
+
+            © 2026 | All Rights Reserved
+
         </p>
 
     </footer>
