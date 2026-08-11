@@ -1,1404 +1,352 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Bản đồ tham quan Mộ Trạch</title>
-
-<!-- Leaflet CSS -->
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet/dist/leaflet.css"
-/>
-
-
-<style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-    box-sizing:border-box;
-}
-
-html,
-body{
-    margin:0;
-    padding:0;
-    width:100%;
-    min-height:100%;
-}
-
-body{
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    background:#f5f1e8;
-
-    color:#333;
-
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-header{
-
-    background:#7b0000;
-
-    color:white;
-
-    padding:16px 20px;
-
-    box-shadow:
-        0 3px 10px
-        rgba(0,0,0,.18);
-
-}
-
-
-.header-inner{
-
-    max-width:1200px;
-
-    margin:auto;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:15px;
-
-}
-
-
-.logo{
-
-    font-size:26px;
-
-    font-weight:bold;
-
-    letter-spacing:.5px;
-
-}
-
-
-.home-btn{
-
-    display:inline-block;
-
-    background:white;
-
-    color:#7b0000;
-
-    text-decoration:none;
-
-    padding:10px 18px;
-
-    border-radius:25px;
-
-    font-weight:bold;
-
-    white-space:nowrap;
-
-}
-
-
-.home-btn:hover{
-
-    background:#f5f5f5;
-
-}
-
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.container{
-
-    max-width:1200px;
-
-    margin:auto;
-
-    padding:
-        25px
-        15px
-        50px;
-
-}
-
-
-.page-title{
-
-    text-align:center;
-
-    color:#7b0000;
-
-    font-size:38px;
-
-    margin:
-        5px 0
-        8px;
-
-}
-
-
-.subtitle{
-
-    text-align:center;
-
-    color:#666;
-
-    font-size:18px;
-
-    margin-bottom:25px;
-
-    line-height:1.5;
-
-}
-
-
-/* =====================================================
-   MAP
-===================================================== */
-
-.map-box{
-
-    position:relative;
-
-    background:white;
-
-    padding:10px;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.15);
-
-}
-
-
-#map{
-
-    width:100%;
-
-    height:620px;
-
-    border-radius:12px;
-
-}
-
-
-/* =====================================================
-   BUTTON ĐỊNH VỊ
-===================================================== */
-
-.location-btn{
-
-    position:absolute;
-
-    z-index:1000;
-
-    right:22px;
-
-    bottom:22px;
-
-    width:48px;
-
-    height:48px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:white;
-
-    color:#7b0000;
-
-    font-size:23px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 3px 10px
-        rgba(0,0,0,.3);
-
-}
-
-
-.location-btn:hover{
-
-    transform:scale(1.05);
-
-}
-
-
-/* =====================================================
-   TUYẾN THAM QUAN
-===================================================== */
-
-.route{
-
-    margin-top:25px;
-
-    background:white;
-
-    border-radius:15px;
-
-    padding:22px;
-
-    box-shadow:
-        0 5px 15px
-        rgba(0,0,0,.1);
-
-}
-
-
-.route h2{
-
-    margin:
-        0 0 15px;
-
-    color:#7b0000;
-
-    font-size:25px;
-
-}
-
-
-.route-intro{
-
-    color:#666;
-
-    margin-bottom:18px;
-
-    line-height:1.6;
-
-}
-
-
-.route-item{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    padding:14px 5px;
-
-    border-bottom:
-        1px solid #eee;
-
-}
-
-
-.route-item:last-child{
-
-    border-bottom:none;
-
-}
-
-
-.route-number{
-
-    flex-shrink:0;
-
-    width:40px;
-
-    height:40px;
-
-    background:#7b0000;
-
-    color:white;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-}
-
-
-.route-name{
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    color:#333;
-
-}
-
-
-.route-desc{
-
-    color:#777;
-
-    font-size:14px;
-
-    margin-top:4px;
-
-}
-
-
-/* =====================================================
-   POPUP
-===================================================== */
-
-.popup-content{
-
-    width:245px;
-
-}
-
-
-.popup-img{
-
-    display:block;
-
-    width:100%;
-
-    height:135px;
-
-    object-fit:cover;
-
-    border-radius:8px;
-
-    margin-bottom:10px;
-
-}
-
-
-.popup-title{
-
-    color:#7b0000;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    line-height:1.3;
-
-    margin-bottom:6px;
-
-}
-
-
-.popup-type{
-
-    font-size:14px;
-
-    color:#666;
-
-    margin-bottom:8px;
-
-}
-
-
-.popup-description{
-
-    font-size:14px;
-
-    line-height:1.5;
-
-    margin-bottom:10px;
-
-}
-
-
-.popup-actions{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-
-}
-
-
-.popup-btn{
-
-    display:inline-block;
-
-    padding:8px 10px;
-
-    border-radius:6px;
-
-    background:#7b0000;
-
-    color:white;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:bold;
-
-}
-
-
-.popup-btn:hover{
-
-    opacity:.9;
-
-}
-
-
-.popup-btn.direction{
-
-    background:#1769aa;
-
-}
-
-
-/* =====================================================
-   CHÚ THÍCH
-===================================================== */
-
-.note{
-
-    margin-top:20px;
-
-    padding:18px;
-
-    background:#fff8ed;
-
-    border-left:
-        5px solid #7b0000;
-
-    border-radius:10px;
-
-    line-height:1.7;
-
-}
-
-
-.note strong{
-
-    color:#7b0000;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.footer{
-
-    margin-top:30px;
-
-    text-align:center;
-
-    color:#777;
-
-    font-size:14px;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:700px){
-
-    .header-inner{
-
-        flex-direction:column;
-
-    }
-
-
-    .logo{
-
-        font-size:21px;
-
-        text-align:center;
-
-    }
-
-
-    .page-title{
-
-        font-size:29px;
-
-    }
-
-
-    .subtitle{
-
-        font-size:16px;
-
-    }
-
-
-    #map{
-
-        height:500px;
-
-    }
-
-
-    .route{
-
-        padding:17px;
-
-    }
-
-
-    .popup-content{
-
-        width:220px;
-
-    }
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bản đồ di sản Mộ Trạch</title>
+
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f4ee;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #7d0000, #a90000);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* MENU */
+        .menu {
+            background: white;
+            padding: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #7d0000;
+            font-weight: bold;
+            padding: 10px 18px;
+            border-radius: 25px;
+            background: #f7eeee;
+        }
+
+        .menu a:hover {
+            background: #7d0000;
+            color: white;
+        }
+
+        /* CONTENT */
+        .container {
+            width: 94%;
+            max-width: 1400px;
+            margin: 25px auto;
+        }
+
+        .title {
+            color: #8b0000;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .intro {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* MAP */
+        #map {
+            width: 100%;
+            height: 600px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 3px solid #d2b26b;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        /* BUTTONS */
+        .tools {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 18px 0;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            background: #8b0000;
+            color: white;
+        }
+
+        .btn:hover {
+            background: #5e0000;
+        }
+
+        .btn.location {
+            background: #176b3a;
+        }
+
+        /* LIST */
+        .places-title {
+            margin-top: 35px;
+            color: #8b0000;
+            font-size: 26px;
+        }
+
+        #places {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .place-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+            transition: 0.2s;
+        }
+
+        .place-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .place-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .place-content {
+            padding: 18px;
+        }
+
+        .place-content h3 {
+            color: #8b0000;
+            margin: 0 0 8px;
+            font-size: 21px;
+        }
+
+        .place-type {
+            color: #777;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .place-address {
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .card-buttons a {
+            text-decoration: none;
+            padding: 9px 12px;
+            border-radius: 20px;
+            background: #f3e8e8;
+            color: #8b0000;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .card-buttons a:hover {
+            background: #8b0000;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 40px;
+            background: #5e0000;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            line-height: 1.7;
+        }
+
+        /* POPUP */
+        .popup-title {
+            color: #8b0000;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .popup-image {
+            width: 220px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .popup-btn {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #8b0000;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 18px;
+            font-weight: bold;
+        }
+
+        .popup-direction {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background: #176b3a;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 18px;
+            font-weight: bold;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+
+            #places {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            #map {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                width: 96%;
+            }
+
+            #map {
+                height: 430px;
+                border-radius: 10px;
+            }
+
+            #places {
+                grid-template-columns: 1fr;
+            }
+
+            .place-card img {
+                height: 210px;
+            }
+
+            .title {
+                font-size: 25px;
+            }
+        }
+    </style>
 </head>
-
 
 <body>
 
-
-<!-- ==================================================
-     HEADER
-================================================== -->
-
 <header>
-
-    <div class="header-inner">
-
-
-        <div class="logo">
-
-            🏛️ MỘ TRẠCH HERITAGE
-
-        </div>
-
-
-        <a
-            href="../index.html"
-            class="home-btn">
-
-            🏠 Trang chủ
-
-        </a>
-
-
-    </div>
-
+    <h1>🏛️ MỘ TRẠCH HERITAGE</h1>
+    <p>Không gian di sản số – Làng Tiến sĩ Mộ Trạch</p>
 </header>
 
-
-<!-- ==================================================
-     MAIN
-================================================== -->
+<nav class="menu">
+    <a href="../index.html">🏠 Trang chủ</a>
+    <a href="heritage.html">🏛️ Di tích</a>
+    <a href="map.html">🗺️ Bản đồ</a>
+</nav>
 
 <main class="container">
 
+    <h2 class="title">📍 Bản đồ di sản Mộ Trạch</h2>
 
-    <h1 class="page-title">
+    <p class="intro">
+        Khám phá các di tích tiêu biểu của Mộ Trạch trên bản đồ.
+        Bạn có thể chọn từng địa điểm để xem thông tin, hình ảnh,
+        nghe thuyết minh, xem video hoặc tìm đường đến di tích.
+    </p>
 
-        🗺️ Bản đồ tham quan Mộ Trạch
+    <div class="tools">
 
-    </h1>
-
-
-    <div class="subtitle">
-
-        Khám phá các di tích tiêu biểu
-        trên một tuyến tham quan
-
-    </div>
-
-
-    <!-- =================================================
-         MAP
-    ================================================= -->
-
-    <div class="map-box">
-
-
-        <div id="map"></div>
-
-
-        <button
-            id="locationBtn"
-            class="location-btn"
-            title="Vị trí của tôi">
-
-            📍
-
+        <button class="btn location" onclick="findMyLocation()">
+            📍 Vị trí của tôi
         </button>
 
+        <button class="btn" onclick="showAllPlaces()">
+            🗺️ Xem toàn bộ di tích
+        </button>
 
     </div>
 
+    <div id="map"></div>
 
-    <!-- =================================================
-         ROUTE
-    ================================================= -->
+    <h2 class="places-title">
+        🏛️ Các điểm di sản
+    </h2>
 
-    <section class="route">
-
-
-        <h2>
-
-            🧭 Tuyến tham quan đề xuất
-
-        </h2>
-
-
-        <div class="route-intro">
-
-            Bạn có thể tham quan lần lượt
-            các điểm theo thứ tự dưới đây:
-
-        </div>
-
-
-        <div class="route-item">
-
-
-            <div class="route-number">
-
-                1
-
-            </div>
-
-
-            <div>
-
-                <div class="route-name">
-
-                    🏛️ Lăng Thần
-
-                </div>
-
-                <div class="route-desc">
-
-                    Mộ cụ Vũ Hồn – Đức Thủy tổ họ Vũ
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="route-item">
-
-
-            <div class="route-number">
-
-                2
-
-            </div>
-
-
-            <div>
-
-                <div class="route-name">
-
-                    📜 Văn Miếu Mộ Trạch
-
-                </div>
-
-                <div class="route-desc">
-
-                    Biểu tượng truyền thống hiếu học
-                    và khoa bảng
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="route-item">
-
-
-            <div class="route-number">
-
-                3
-
-            </div>
-
-
-            <div>
-
-                <div class="route-name">
-
-                    🏯 Đình làng Mộ Trạch
-
-                </div>
-
-                <div class="route-desc">
-
-                    Không gian văn hóa
-                    và sinh hoạt cộng đồng
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
-
-
-    <!-- =================================================
-         NOTE
-    ================================================= -->
-
-    <div class="note">
-
-        <strong>📌 Hướng dẫn sử dụng:</strong>
-
-        <br>
-
-        Nhấn vào biểu tượng số trên bản đồ
-        để xem thông tin di tích.
-
-        <br>
-
-        Chọn
-        <strong>📖 Xem chi tiết</strong>
-        để đọc đầy đủ nội dung,
-        nghe thuyết minh và xem video.
-
-        <br>
-
-        Chọn
-        <strong>🧭 Chỉ đường</strong>
-        để mở Google Maps và tìm đường
-        đến di tích.
-
+    <div id="places">
+        <p>Đang tải dữ liệu di tích...</p>
     </div>
-
-
-    <div class="footer">
-
-        Mộ Trạch Heritage – Số hóa và lan tỏa giá trị di sản
-
-    </div>
-
 
 </main>
 
+<footer>
+    <strong>MỘ TRẠCH HERITAGE</strong><br>
+    Số hóa ký ức – Kết nối di sản – Lan tỏa truyền thống
+</footer>
 
-<!-- ==================================================
-     LEAFLET JS
-================================================== -->
-
+<!-- Leaflet JS -->
 <script
-src="https://unpkg.com/leaflet/dist/leaflet.js">
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
-
-<script>
-
-/* =====================================================
-   KHỞI TẠO MAP
-===================================================== */
-
-const map = L.map("map");
-
-
-/* =====================================================
-   OPEN STREET MAP
-===================================================== */
-
-L.tileLayer(
-
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-
-    {
-
-        attribution:
-        "&copy; OpenStreetMap contributors"
-
-    }
-
-).addTo(map);
-
-
-/* =====================================================
-   ICON ĐÁNH SỐ
-===================================================== */
-
-function createNumberIcon(number){
-
-    return L.divIcon({
-
-        className:"custom-number-icon",
-
-        html:`
-
-            <div style="
-                width:34px;
-                height:34px;
-                border-radius:50%;
-                background:#7b0000;
-                color:white;
-                border:3px solid white;
-                box-shadow:0 2px 7px rgba(0,0,0,.45);
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                font-size:16px;
-                font-weight:bold;
-            ">
-
-                ${number}
-
-            </div>
-
-        `,
-
-        iconSize:[34,34],
-
-        iconAnchor:[17,17],
-
-        popupAnchor:[0,-18]
-
-    });
-
-}
-
-
-/* =====================================================
-   TẢI HERITAGE.JSON
-===================================================== */
-
-fetch("../data/heritage.json")
-
-
-.then(response => {
-
-
-    if(!response.ok){
-
-        throw new Error(
-            "Không thể tải data/heritage.json"
-        );
-
-    }
-
-
-    return response.json();
-
-})
-
-
-.then(data => {
-
-
-    /* =================================================
-       CHỈ LẤY 3 DI TÍCH
-    ================================================= */
-
-    const ids = [1,2,3];
-
-
-    const places = ids
-
-        .map(id =>
-
-            data.find(place =>
-
-                Number(place.id) === id
-
-            )
-
-        )
-
-        .filter(Boolean);
-
-
-    /* =================================================
-       TỌA ĐỘ TUYẾN
-    ================================================= */
-
-    const routePoints = [];
-
-
-    /* =================================================
-       TẠO MARKER
-    ================================================= */
-
-    places.forEach((place,index) => {
-
-
-        const lat =
-            Number(place.lat);
-
-
-        const lng =
-            Number(place.lng);
-
-
-        if(
-            !Number.isFinite(lat) ||
-            !Number.isFinite(lng)
-        ){
-
-            return;
-
-        }
-
-
-        const position = [
-            lat,
-            lng
-        ];
-
-
-        routePoints.push(position);
-
-
-        /* =============================================
-           ẢNH
-        ============================================= */
-
-        let imageHTML = "";
-
-
-        if(place.image){
-
-            imageHTML = `
-
-                <img
-                    src="../${place.image}"
-                    class="popup-img"
-                    alt="${place.name}"
-                    onerror="
-                        this.style.display='none';
-                    "
-                >
-
-            `;
-
-        }
-
-
-        /* =============================================
-           POPUP
-        ============================================= */
-
-        const popupHTML = `
-
-            <div class="popup-content">
-
-
-                ${imageHTML}
-
-
-                <div class="popup-title">
-
-                    ${place.name}
-
-                </div>
-
-
-                <div class="popup-type">
-
-                    📌 ${place.type || "Di tích"}
-
-                </div>
-
-
-                <div class="popup-description">
-
-                    ${place.description || ""}
-
-                </div>
-
-
-                <div class="popup-actions">
-
-
-                    <a
-                        class="popup-btn"
-                        href="detail.html?id=${place.id}"
-                    >
-
-                        📖 Xem chi tiết
-
-                    </a>
-
-
-                    <a
-                        class="popup-btn direction"
-                        href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}"
-                        target="_blank"
-                        rel="noopener"
-                    >
-
-                        🧭 Chỉ đường
-
-                    </a>
-
-
-                </div>
-
-
-            </div>
-
-        `;
-
-
-        /* =============================================
-           MARKER
-        ============================================= */
-
-        const marker = L.marker(
-
-            position,
-
-            {
-
-                icon:
-                createNumberIcon(index + 1)
-
-            }
-
-        )
-
-
-        .addTo(map)
-
-
-        .bindPopup(
-
-            popupHTML,
-
-            {
-
-                maxWidth:280
-
-            }
-
-        );
-
-
-        /* =============================================
-           TOOLTIP
-        ============================================= */
-
-        marker.bindTooltip(
-
-            `${index + 1}. ${place.name}`,
-
-            {
-
-                direction:"top",
-
-                offset:[0,-18]
-
-            }
-
-        );
-
-
-    });
-
-
-    /* =================================================
-       ĐƯỜNG TUYẾN
-    ================================================= */
-
-    if(routePoints.length >= 2){
-
-
-        L.polyline(
-
-            routePoints,
-
-            {
-
-                color:"#7b0000",
-
-                weight:5,
-
-                opacity:.8,
-
-                dashArray:"10,10"
-
-            }
-
-        ).addTo(map);
-
-
-    }
-
-
-    /* =================================================
-       CĂN BẢN ĐỒ
-    ================================================= */
-
-    if(routePoints.length > 0){
-
-
-        const bounds =
-            L.latLngBounds(routePoints);
-
-
-        map.fitBounds(
-
-            bounds,
-
-            {
-
-                padding:
-                [70,70]
-
-            }
-
-        );
-
-
-    }
-
-    else{
-
-
-        /* Vị trí dự phòng */
-
-        map.setView(
-
-            [
-                20.943000,
-                106.365000
-            ],
-
-            17
-
-        );
-
-    }
-
-
-})
-
-
-.catch(error => {
-
-
-    console.error(error);
-
-
-    map.setView(
-
-        [
-            20.943000,
-            106.365000
-        ],
-
-        17
-
-    );
-
-
-    document.getElementById("map").innerHTML = `
-
-        <div style="
-            padding:40px;
-            text-align:center;
-            color:#7b0000;
-        ">
-
-            <h3>
-
-                ❌ Không tải được dữ liệu
-
-            </h3>
-
-
-            <p>
-
-                ${error.message}
-
-            </p>
-
-
-        </div>
-
-    `;
-
-});
-
-
-/* =====================================================
-   NÚT VỊ TRÍ HIỆN TẠI
-===================================================== */
-
-document
-.getElementById("locationBtn")
-.addEventListener(
-
-    "click",
-
-    function(){
-
-
-        if(!navigator.geolocation){
-
-            alert(
-                "Thiết bị không hỗ trợ xác định vị trí."
-            );
-
-            return;
-
-        }
-
-
-        navigator.geolocation.getCurrentPosition(
-
-            function(position){
-
-
-                const lat =
-                    position.coords.latitude;
-
-
-                const lng =
-                    position.coords.longitude;
-
-
-                /* =====================================
-                   ĐÁNH DẤU VỊ TRÍ
-                ===================================== */
-
-                L.marker(
-
-                    [lat,lng],
-
-                    {
-
-                        title:
-                        "Vị trí hiện tại của bạn"
-
-                    }
-
-                )
-
-                .addTo(map)
-
-                .bindPopup(
-
-                    "📍 Bạn đang ở đây"
-
-                )
-
-                .openPopup();
-
-
-                /* =====================================
-                   DI CHUYỂN BẢN ĐỒ
-                ===================================== */
-
-                map.setView(
-
-                    [lat,lng],
-
-                    18
-
-                );
-
-
-            },
-
-
-            function(error){
-
-
-                let message =
-                    "Không xác định được vị trí.";
-
-
-                if(error.code === 1){
-
-                    message =
-                        "Bạn chưa cho phép website sử dụng vị trí.";
-
-                }
-
-
-                if(error.code === 2){
-
-                    message =
-                        "Không thể xác định vị trí hiện tại.";
-
-                }
-
-
-                if(error.code === 3){
-
-                    message =
-                        "Hết thời gian xác định vị trí.";
-
-                }
-
-
-                alert(message);
-
-
-            },
-
-
-            {
-
-                enableHighAccuracy:true,
-
-                timeout:10000,
-
-                maximumAge:0
-
-            }
-
-        );
-
-
-    }
-
-);
-
-</script>
-
+<!-- File JavaScript của chúng ta -->
+<script src="../js/map.js"></script>
 
 </body>
-
 </html>
