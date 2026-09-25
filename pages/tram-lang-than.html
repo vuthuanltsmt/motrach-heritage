@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lăng Thần - Mộ Trạch Heritage</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f1e5;
+            color: #333;
+        }
+
+        .header {
+            background: #720000;
+            color: white;
+            text-align: center;
+            padding: 22px 15px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+        }
+
+        .header p {
+            margin: 8px 0 0;
+            color: #f3d99b;
+        }
+
+        .container {
+            width: 94%;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .hero {
+            margin-top: 20px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.12);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        h2 {
+            color: #800000;
+            margin-top: 28px;
+            border-left: 5px solid #c69a42;
+            padding-left: 12px;
+        }
+
+        .intro {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .audio-box {
+            background: #fff8e8;
+            border: 2px solid #d4ad57;
+            border-radius: 18px;
+            padding: 22px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .audio-title {
+            color: #800000;
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        .video-box {
+            margin-top: 20px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 15px;
+            background: #000;
+        }
+
+        .buttons {
+            display: grid;
+            gap: 13px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .red {
+            background: #850000;
+        }
+
+        .gold {
+            background: #b28a38;
+        }
+
+        .green {
+            background: #28734a;
+        }
+
+        .footer {
+            margin-top: 35px;
+            background: #570000;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        @media(max-width:600px) {
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .hero img {
+                height: 280px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .intro {
+                font-size: 17px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <h1>🏛️ LĂNG THẦN</h1>
+
+    <p>Mộ cụ Đức Thủy tổ Vũ Hồn</p>
+
+</header>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <img
+            src="../images/lang-than-vu-hon.jpg"
+            alt="Lăng Thần - Mộ cụ Vũ Hồn"
+        >
+
+        <div class="content">
+
+            <h2>📖 Giới thiệu</h2>
+
+            <p class="intro">
+                Lăng Thần là nơi an táng Đức Thủy tổ Vũ Hồn,
+                người khai sáng làng Mộ Trạch.
+            </p>
+
+
+            <h2>📜 Lịch sử</h2>
+
+            <p class="intro">
+                Lăng Thần là một trong những di tích linh thiêng
+                của Mộ Trạch. Hàng năm con cháu họ Vũ và du khách
+                thập phương đến dâng hương tưởng niệm Đức Thủy tổ
+                Vũ Hồn.
+            </p>
+
+
+            <div class="audio-box">
+
+                <div class="audio-title">
+                    🎧 THUYẾT MINH DI TÍCH
+                </div>
+
+                <p>
+                    Bấm nút bên dưới để nghe thuyết minh
+                    về Lăng Thần.
+                </p>
+
+                <audio controls preload="metadata">
+
+                    <source
+                        src="../audio/lang-than.mp3"
+                        type="audio/mpeg"
+                    >
+
+                    Trình duyệt không hỗ trợ phát âm thanh.
+
+                </audio>
+
+            </div>
+
+
+            <div class="video-box">
+
+                <h2>🎬 Video giới thiệu</h2>
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+
+                    <source
+                        src="../videos/lang-than.mp4"
+                        type="video/mp4"
+                    >
+
+                    Trình duyệt không hỗ trợ video.
+
+                </video>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <a
+                    class="btn red"
+                    href="map.html"
+                >
+                    🗺️ XEM VỊ TRÍ LĂNG THẦN
+                </a>
+
+                <a
+                    class="btn gold"
+                    href="detail.html?id=1"
+                >
+                    📖 XEM ĐẦY ĐỦ THÔNG TIN DI TÍCH
+                </a>
+
+                <a
+                    class="btn green"
+                    href="../index.html"
+                >
+                    🏠 VỀ TRANG CHỦ
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>🏛️ MỘ TRẠCH HERITAGE</strong>
+
+    <p>
+        Không gian di sản số Mộ Trạch
+    </p>
+
+</footer>
+
+</body>
+</html>
