@@ -637,7 +637,11 @@ function renderHeritage(
     const mapUrl =
         item.map ||
         createGoogleMapUrl(item);
-
+const stationUrl = {
+    "lang-than": "tram-lang-than.html",
+    "van-mieu-mo-trach": "tram-van-mieu.html",
+    "dinh-lang-mo-trach": "tram-dinh-lang.html"
+}[getHeritageSlug(item)] || "";
 
     /*
        Tạo HTML
@@ -807,7 +811,20 @@ function renderHeritage(
                         :
                         ""
                     }
-
+                    ${
+                        stationUrl
+                        ?
+                        `
+                        <a
+                            href="${safe(stationUrl)}"
+                            class="qr-action qr-action-station"
+                        >
+                            🏛️ TRẠM THAM QUAN
+                        </a>
+                        `
+                        :
+                        ""
+                    }
                 </div>
 
 
