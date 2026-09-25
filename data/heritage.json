@@ -1,110 +1,64 @@
 [
   {
-    "id": 1,
-    "name": "Lăng Thần (Mộ cụ Vũ Hồn)",
+    "id": "lang-than",
+    "name": "Lăng Thần",
+    "subtitle": "Mộ cụ Vũ Hồn",
     "type": "Di tích lịch sử",
-    "image": "images/lang-than-vu-hon.jpg",
+    "location": "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng",
 
-    "audio": "audio/lang_than.mp3",
-    "video": "videos/lang-than.mp4",
+    "lat": 20.865833,
+    "lng": 106.166667,
 
-    "gallery": [
-      {
-        "image": "images/gallery/lang-than1.jpg",
-        "caption": "Toàn cảnh Lăng Thần"
-      },
-      {
-        "image": "images/gallery/lang-than 2.jpg",
-        "caption": "Không gian Lăng Thần"
-      },
-      {
-        "image": "images/gallery/lang-than 4.jpg",
-        "caption": "Khu mộ Đức Thủy tổ Vũ Hồn"
-      },
-      {
-        "image": "images/gallery/cu-vu-hon.jpg",
-        "caption": "Hình ảnh Đức Thủy tổ Vũ Hồn"
-      },
-      {
-        "image": "images/gallery/nha-tho-vu.jpg",
-        "caption": "Nhà thờ họ Vũ"
-      }
-    ],
+    "description": "Quần thể lăng mộ gắn với Đức Thần Tổ Vũ Hồn, nhân vật được cộng đồng Mộ Trạch tôn kính và gắn với nguồn cội lịch sử của làng.",
 
-    "description": "Lăng Thần là nơi an táng Đức Thủy tổ Vũ Hồn, người khai sáng làng Mộ Trạch.",
+    "history": "Khu lăng mộ Thủy tổ Vũ Hồn là một điểm nhấn trong không gian di sản Mộ Trạch. Quần thể hiện nay được xây dựng và tôn tạo theo hướng bảo tồn các giá trị văn hóa, tưởng niệm và truyền thống của cộng đồng.",
 
-    "history": "Lăng Thần là một trong những di tích linh thiêng của Mộ Trạch. Hàng năm con cháu họ Vũ và du khách thập phương đến dâng hương tưởng niệm Đức Thủy tổ Vũ Hồn.",
+    "audio": "audio/lang-than.mp3",
 
-    "address": "Thôn Mộ Trạch, xã Đường An, TP Hải Phòng",
+    "video": "",
 
-    "year": "Thế kỷ IX",
-
-    "rank": "Di tích lịch sử cấp Quốc gia",
-
-    "lat": 20.943000,
-    "lng": 106.365000
+    "image": "images/lang-than.jpg"
   },
 
   {
-    "id": 2,
+    "id": "van-mieu-mo-trach",
     "name": "Văn Miếu Mộ Trạch",
+    "subtitle": "Không gian văn hóa – khoa bảng",
     "type": "Di tích văn hóa",
-    "image": "images/van-mieu.jpg",
+    "location": "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng",
+
+    "lat": 20.867222,
+    "lng": 106.166944,
+
+    "description": "Không gian gắn với truyền thống khoa bảng, hiếu học và những giá trị văn hóa đặc sắc của làng Mộ Trạch.",
+
+    "history": "Mộ Trạch được biết đến là vùng đất khoa bảng nổi tiếng, gắn với truyền thống hiếu học và nhiều thế hệ người đỗ đạt.",
 
     "audio": "audio/van-mieu.mp3",
-    "video": "videos/van-mieu.mp4",
 
-    "gallery": [
-      {
-        "image": "images/gallery/van-mieu 1.jpg",
-        "caption": "Cổng Văn Miếu Mộ Trạch"
-      },
-      {
-        "image": "images/gallery/van-mieu 2.jpg",
-        "caption": "Không gian Văn Miếu"
-      },
-      {
-        "image": "images/gallery/van-mieu 3.jpg",
-        "caption": "Bia Tiến sĩ"
-      }
-    ],
+    "video": "",
 
-    "description": "Văn Miếu Mộ Trạch là biểu tượng cho truyền thống hiếu học của quê hương, gắn với danh tiếng Làng Tiến sĩ.",
-
-    "history": "Văn Miếu Mộ Trạch là nơi tôn vinh các bậc khoa bảng và góp phần gìn giữ truyền thống học tập, khoa cử của quê hương.",
-
-    "address": "Thôn Mộ Trạch, xã Đường An, TP Hải Phòng",
-
-    "year": "Thời Lê",
-
-    "rank": "Di tích lịch sử",
-
-    "lat": 20.943250,
-    "lng": 106.365350
+    "image": "images/van-mieu.jpg"
   },
 
   {
-    "id": 3,
+    "id": "dinh-lang-mo-trach",
     "name": "Đình làng Mộ Trạch",
+    "subtitle": "Không gian sinh hoạt cộng đồng",
     "type": "Di tích kiến trúc",
-    "image": "images/dinh-lang.jpg",
+    "location": "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng",
+
+    "lat": 20.866389,
+    "lng": 106.165278,
+
+    "description": "Đình làng Mộ Trạch là công trình kiến trúc lịch sử tiêu biểu, gắn với đời sống văn hóa và sinh hoạt cộng đồng của người dân địa phương.",
+
+    "history": "Đình Mộ Trạch là một công trình kiến trúc cổ tiêu biểu của làng. Công trình đã trải qua nhiều lần tu bổ nhưng vẫn giữ nhiều giá trị kiến trúc truyền thống.",
 
     "audio": "audio/dinh-lang.mp3",
+
     "video": "videos/dinh-lang.mp4",
 
-    "gallery": [],
-
-    "description": "Đình làng Mộ Trạch là công trình kiến trúc gắn với đời sống văn hóa và sinh hoạt cộng đồng của người dân địa phương.",
-
-    "history": "Đình làng là nơi tổ chức các nghi lễ, lễ hội truyền thống và các hoạt động sinh hoạt cộng đồng của người dân Mộ Trạch.",
-
-    "address": "Thôn Mộ Trạch, xã Đường An, TP Hải Phòng",
-
-    "year": "Thời Nguyễn",
-
-    "rank": "Di tích lịch sử",
-
-    "lat": 20.943500,
-    "lng": 106.365600
+    "image": "images/dinh-lang.jpg"
   }
 ]

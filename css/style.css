@@ -1,1187 +1,2024 @@
-/* ==========================
-   RESET
-========================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
-    color:#333;
-    line-height:1.6;
-}
-
-/* ==========================
-   CONTAINER
-========================== */
-
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-/* ==========================
-   HEADER
-========================== */
-
-header{
-    background:#8B0000;
-    color:white;
-    position:sticky;
-    top:0;
-    z-index:999;
-    box-shadow:0 3px 8px rgba(0,0,0,.2);
-}
-
-header .container{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 0;
-
-}
-
-.logo h1{
-
-    font-size:30px;
-
-}
-
-.logo p{
-
-    font-size:14px;
-    opacity:.9;
-
-}
-
-/* ==========================
-   MENU
-========================== */
-
-nav{
-
-    display:flex;
-    gap:22px;
-
-}
-
-nav a{
-
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
-
-}
-
-nav a:hover{
-
-    color:#FFD700;
-
-}
-
-/* ==========================
-   HERO
-========================== */
-
-.hero{
-
-    background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-    url("../images/banner.jpg");
-
-    background-size:cover;
-    background-position:center;
-
-    color:white;
-
-    text-align:center;
-
-    padding:130px 20px;
-
-}
-
-.hero h2{
-
-    font-size:52px;
-
-    margin-bottom:20px;
-
-}
-
-.hero p{
-
-    font-size:22px;
-
-    max-width:800px;
-
-    margin:auto;
-
-}
-
-.buttons{
-
-    margin-top:40px;
-
-}
-
-.buttons button{
-
-    padding:15px 30px;
-
-    margin:10px;
-
-    font-size:18px;
-
-    border:none;
-
-    border-radius:40px;
-
-    cursor:pointer;
-
-    background:#FFD700;
-
-    transition:.3s;
-
-}
-
-.buttons button:hover{
-
-    transform:translateY(-5px);
-
-    background:white;
-
-}
-
-/* ==========================
-   SECTION
-========================== */
-
-.about{
-
-    padding:80px 0;
-
-    background:white;
-
-}
-
-.about h2{
-
-    text-align:center;
-
-    color:#8B0000;
-
-    margin-bottom:30px;
-
-    font-size:36px;
-
-}
-
-.about p{
-
-    font-size:18px;
-
-    max-width:900px;
-
-    margin:auto;
-
-    text-align:center;
-
-}
-
-/* ==========================
-   CARDS
-========================== */
-
-.places{
-
-    padding:80px 0;
-
-}
-
-.places h2{
-
-    text-align:center;
-
-    color:#8B0000;
-
-    margin-bottom:40px;
-
-    font-size:36px;
-
-}
-
-.cards{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:30px;
-
-}
-
-.card{
-
-    width:330px;
-
-    background:white;
-
-    border-radius:15px;
-
-    overflow:hidden;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-
-    transition:.3s;
-
-}
-
-.card:hover{
-
-    transform:translateY(-8px);
-
-}
-
-.card img{
-
-    width:100%;
-
-    height:220px;
-
-    object-fit:cover;
-
-}
-
-.card h3{
-
-    color:#8B0000;
-
-    padding:20px 20px 10px;
-
-}
-
-.card p{
-
-    padding:0 20px 25px;
-
-}
-
-/* ==========================
-   FOOTER
-========================== */
-
-footer{
-
-    background:#222;
-
-    color:white;
-
-    text-align:center;
-
-    padding:35px;
-
-}
-
-/* ==========================
-   RESPONSIVE
-========================== */
-
-@media(max-width:900px){
-
-header .container{
-
-    flex-direction:column;
-
-}
-
-nav{
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    margin-top:15px;
-
-}
-
-.hero h2{
-
-    font-size:38px;
-
-}
-
-.hero p{
-
-    font-size:18px;
-
-}
-
-.cards{
-
-    flex-direction:column;
-
-    align-items:center;
-
-}
-
-}
-/* ==========================
-   CARD DI TÍCH
-========================== */
-
-.cards{
-    display:flex;
-    gap:30px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-.card{
-    width:360px;
-    background:#fff;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-
-    display:flex;
-    flex-direction:column;
-}
-
-.card img{
-    width:100%;
-    height:240px;
-    object-fit:cover;
-}
-
-.card-body{
-    padding:25px;
-
-    display:flex;
-    flex-direction:column;
-
-    flex:1;
-}
-
-.card h3{
-    color:#8b0000;
-    font-size:34px;
-    margin-bottom:20px;
-}
-
-.card p{
-    font-size:25px;
-    line-height:1.7;
-    text-align:center;
-
-    flex:1;
-}
-
-.card button{
-
-    margin-top:25px;
-
-    align-self:center;
-
-    background:#8b0000;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 28px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-size:20px;
-
-    transition:.3s;
-}
-
-.card button:hover{
-
-    background:#c40000;
-
-    transform:scale(1.05);
-
-}
-/* =====================================
-   GALLERY
-===================================== */
-
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-    margin-top:30px;
-}
-
-.photo{
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.photo img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    cursor:pointer;
-    transition:.3s;
+html {
+    scroll-behavior: smooth;
 }
-
-.photo img:hover{
-    transform:scale(1.05);
-}
-
-.photo p{
-    padding:12px;
-    text-align:center;
-    font-weight:bold;
-}
-
-/* =====================================
-   LIGHTBOX
-===================================== */
-
-.lightbox{
-    display:none;
-    position:fixed;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.9);
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    z-index:9999;
-}
-
-.lightbox img{
-    max-width:90%;
-    max-height:80%;
-    border-radius:10px;
-}
-
-.lightbox p{
-    color:white;
-    font-size:24px;
-    margin-top:20px;
-}
-
-#close{
-    position:absolute;
-    top:25px;
-    right:40px;
-    color:white;
-    font-size:55px;
-    cursor:pointer;
-}
-/*============================
-GALLERY SLIDER
-=============================*/
-
-.gallery-viewer{
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:20px;
-
-margin-top:20px;
-
-}
-
-.main-photo{
-
-width:900px;
-
-height:520px;
-
-object-fit:cover;
-
-border-radius:15px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.main-photo:hover{
-
-transform:scale(1.01);
-
-}
-
-.nav-btn{
-
-width:60px;
-
-height:60px;
-
-border:none;
-
-border-radius:50%;
-
-background:#8b0000;
-
-color:white;
-
-font-size:28px;
-
-cursor:pointer;
-
-}
-
-.nav-btn:hover{
-
-background:#c40000;
-
-}
-
-.counter{
-
-text-align:center;
-
-font-size:22px;
-
-margin:20px;
-
-font-weight:bold;
-
-}
-
-.thumbs{
-
-display:flex;
-
-justify-content:center;
-
-gap:15px;
-
-flex-wrap:wrap;
-
-}
-
-.thumbs img{
-
-width:130px;
-
-height:90px;
-
-object-fit:cover;
-
-border-radius:10px;
-
-cursor:pointer;
-
-opacity:.65;
-
-transition:.3s;
-
-border:3px solid transparent;
-
-}
-
-.thumbs img:hover{
-
-opacity:1;
-
-}
-
-.thumbs img.active{
-
-opacity:1;
-
-border-color:#8b0000;
-
-}
-/* ===========================
-HERITAGE PAGE
-=========================== */
-
-.page-title{
-
-text-align:center;
-
-font-size:42px;
-
-margin:40px 0;
-
-color:#8b0000;
-
-}
-
-.search-box{
-
-display:block;
-
-width:100%;
-
-max-width:500px;
-
-margin:30px auto;
-
-padding:15px;
-
-font-size:20px;
-
-border-radius:10px;
-
-border:1px solid #ccc;
-
-}
-
-.heritage-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-
-gap:30px;
-
-margin:40px auto;
-
-}
-
-.heritage-card{
-
-background:white;
-
-border-radius:15px;
-
-overflow:hidden;
-
-box-shadow:0 5px 20px rgba(0,0,0,.15);
-
-transition:.3s;
-
-}
-
-.heritage-card:hover{
-
-transform:translateY(-6px);
-
-}
-
-.heritage-card img{
-
-width:100%;
-
-height:250px;
-
-object-fit:cover;
-
-}
-
-.heritage-card .content{
-
-padding:25px;
-
-}
-
-.heritage-card h3{
-
-color:#8b0000;
-
-margin-bottom:15px;
-
-}
-
-.heritage-card p{
-
-margin-bottom:20px;
-
-}
-
-.btn{
-
-display:inline-block;
-
-background:#8b0000;
-
-color:white;
-
-padding:10px 20px;
-
-border-radius:8px;
-
-text-decoration:none;
-
-}
-
-.btn:hover{
-
-background:#b30000;
-
-}
-/* =========================
-   DANH SÁCH DI TÍCH
-========================= */
-
-.page-title{
-    text-align:center;
-    color:#8B0000;
-    font-size:42px;
-    margin:50px 0 30px;
-}
-
-.search-box{
-    display:block;
-    width:650px;
-    max-width:90%;
-    margin:0 auto 50px;
-
-    padding:18px 22px;
-
-    font-size:20px;
-
-    border:2px solid #8B0000;
-    border-radius:12px;
-
-    outline:none;
-}
-
-.search-box:focus{
-    box-shadow:0 0 0 4px rgba(139,0,0,.12);
-}
-
-.heritage-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(320px,1fr));
-
-    gap:30px;
-
-    padding-bottom:70px;
-}
-
-.heritage-card{
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.12);
-
-    transition:.3s;
-
-    display:flex;
-    flex-direction:column;
-}
-
-.heritage-card:hover{
-    transform:translateY(-8px);
-
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.2);
-}
-
-.heritage-image{
-    width:100%;
-    height:240px;
-    overflow:hidden;
-}
-
-.heritage-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-
-    transition:.5s;
-}
-
-.heritage-card:hover
-.heritage-image img{
-    transform:scale(1.06);
-}
-
-.heritage-content{
-    padding:25px;
-
-    display:flex;
-    flex-direction:column;
-
-    flex:1;
-}
-
-.heritage-content h3{
-    color:#8B0000;
-    font-size:27px;
-    margin-bottom:10px;
-}
-
-.heritage-type{
-    color:#777;
-    font-weight:bold;
-    margin-bottom:12px;
-}
-
-.media-icons{
-    display:flex;
-    gap:15px;
-    flex-wrap:wrap;
-
-    margin:15px 0;
-
-    font-size:15px;
-}
-
-.media-icons span{
-    background:#f5eeee;
-    color:#8B0000;
-
-    padding:7px 12px;
-
-    border-radius:20px;
-}
-
-.detail-btn{
-    display:block;
-
-    margin-top:auto;
-
-    text-align:center;
-
-    background:#8B0000;
-    color:white;
-
-    text-decoration:none;
-
-    padding:13px;
-
-    border-radius:30px;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.detail-btn:hover{
-    background:#b00000;
-    transform:scale(1.02);
-}
-
-@media(max-width:700px){
-
-    .page-title{
-        font-size:32px;
-    }
-
-    .heritage-grid{
-        grid-template-columns:1fr;
-    }
-
-    .search-box{
-        width:90%;
-    }
-
-}/* ==========================================
-   TRANG DANH SÁCH DI TÍCH
-========================================== */
 
-.page-title {
-    text-align: center;
-    color: #8B0000;
-    font-size: 42px;
-    margin: 50px 0 30px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f2e9;
+    color: #333;
+    line-height: 1.7;
 }
 
-.search-box {
+img {
+    max-width: 100%;
     display: block;
+}
 
-    width: 650px;
-    max-width: 90%;
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    margin: 0 auto 50px;
 
-    padding: 16px 20px;
+/* ================= HEADER ================= */
 
-    font-size: 20px;
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+}
 
-    border: 2px solid #8B0000;
+.header-inner {
+    max-width: 1400px;
+    margin: auto;
+    min-height: 76px;
+    padding: 0 30px;
 
-    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    outline: none;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
+    font-size: 24px;
+    font-weight: 800;
+    color: #8d0000;
+}
+
+.logo-icon {
+    font-size: 30px;
+}
+
+#mainMenu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+#mainMenu a {
+    font-size: 17px;
+    font-weight: 700;
+    color: #620000;
+
+    transition: 0.25s;
+}
+
+#mainMenu a:hover {
+    color: #c28b27;
+}
+
+.menu-button {
+    display: none;
+
+    border: none;
+    background: #8d0000;
+    color: white;
+
+    font-size: 25px;
+    padding: 7px 12px;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 560px;
+
+    background:
+        linear-gradient(
+            rgba(95, 0, 0, 0.68),
+            rgba(95, 0, 0, 0.68)
+        ),
+        url("images/van-mieu.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.hero-overlay {
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 1000px;
+    margin: auto;
+    padding: 70px 25px;
+    color: white;
+}
+
+.badge {
+    display: inline-block;
+
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 30px;
+
+    padding: 8px 25px;
+
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    margin-top: 25px;
+
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.hero h2 {
+    margin-top: 20px;
+
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 500;
+}
+
+.hero p {
+    max-width: 850px;
+    margin: 25px auto;
+
+    font-size: 19px;
+}
+
+.hero-buttons {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ================= BUTTON ================= */
+
+.btn {
+    display: inline-block;
+
+    padding: 13px 28px;
+
+    border-radius: 35px;
+
+    font-weight: 700;
+    font-size: 17px;
+
+    transition: 0.25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-light {
     background: white;
+    color: #8d0000;
 }
 
-.search-box:focus {
-    border-color: #c40000;
+.btn-red {
+    background: #a90000;
+    color: white;
+}
 
-    box-shadow:
-        0 0 0 4px
-        rgba(139, 0, 0, 0.12);
+.btn-red:hover {
+    background: #760000;
 }
 
 
-/* Lưới */
+/* ================= SECTION ================= */
+
+.section {
+    max-width: 1400px;
+    margin: auto;
+    padding: 85px 40px;
+}
+
+.section-title {
+    max-width: 900px;
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.section-title h2 {
+    color: #970000;
+    font-size: clamp(35px, 4vw, 52px);
+    line-height: 1.2;
+}
+
+.section-title p {
+    margin-top: 25px;
+
+    font-size: 19px;
+    color: #555;
+}
+
+.title-line {
+    width: 85px;
+    height: 5px;
+
+    background: #c99a38;
+
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+
+/* ================= INTRO ================= */
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 450px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.intro-content h2 {
+    color: #970000;
+
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+
+/* ================= HERITAGE ================= */
+
+.heritage {
+    background: #f7f2e9;
+}
 
 .heritage-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+}
+
+.heritage-card {
+    background: white;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.10);
+
+    transition: 0.3s;
+}
+
+.heritage-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.18);
+}
+
+.heritage-card > img {
+    width: 100%;
+    height: 285px;
+
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 28px;
+}
+
+.card-content h3 {
+    color: #970000;
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+.card-content strong {
+    color: #777;
+
+    font-size: 17px;
+}
+
+.card-content p {
+    margin: 18px 0;
+
+    font-size: 17px;
+}
+
+
+/* ================= EXPLORE ================= */
+
+.explore {
+    padding: 90px 40px;
+
+    background:
+        linear-gradient(
+            rgba(130,0,0,0.96),
+            rgba(160,0,0,0.96)
+        );
+}
+
+.light {
+    color: white;
+}
+
+.light h2 {
+    color: white;
+}
+
+.light p {
+    color: white;
+}
+
+.explore-grid {
+    max-width: 1400px;
+    margin: auto;
 
     display: grid;
 
     grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(300px, 1fr)
-        );
+        repeat(4, minmax(0, 1fr));
 
-    gap: 30px;
+    gap: 25px;
+}
 
-    padding-bottom: 70px;
+.explore-card {
+    min-height: 260px;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    transition: 0.3s;
+}
+
+.explore-card:hover {
+    background: rgba(255,255,255,0.17);
+
+    transform: translateY(-7px);
+}
+
+.explore-icon {
+    font-size: 58px;
+
+    margin-bottom: 15px;
+}
+
+.explore-card h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.explore-card p {
+    font-size: 17px;
 }
 
 
-/* Thẻ */
+/* ================= FOOTER ================= */
 
-.heritage-card {
+.footer {
+    background: #5c0000;
 
-    background: white;
+    color: white;
 
-    border-radius: 18px;
+    text-align: center;
 
-    overflow: hidden;
+    padding: 50px 20px;
+}
 
-    box-shadow:
-        0 8px 25px
-        rgba(0, 0, 0, 0.12);
+.footer-logo {
+    font-size: 25px;
+    font-weight: 800;
+}
 
-    transition: 0.3s;
+.footer p {
+    margin-top: 7px;
+    font-size: 17px;
+}
+
+.copyright {
+    margin-top: 20px !important;
+
+    opacity: 0.75;
+
+    font-size: 14px !important;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+    .header-inner {
+        padding: 12px 20px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    #mainMenu {
+        display: none;
+
+        position: absolute;
+
+        top: 76px;
+        left: 0;
+        right: 0;
+
+        background: white;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 0;
+
+        box-shadow:
+            0 10px 20px rgba(0,0,0,0.12);
+    }
+
+    #mainMenu.show {
+        display: flex;
+    }
+
+    #mainMenu a {
+        padding: 15px 25px;
+
+        border-bottom: 1px solid #eee;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .heritage-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .explore-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 60px 18px;
+    }
+
+    .hero-content {
+        padding: 60px 18px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero h2 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .intro-image img {
+        height: 300px;
+    }
+
+    .explore {
+        padding: 65px 18px;
+    }
+
+    .explore-grid {
+        grid-template-columns: 1fr;
+    }
+
+}/* =========================================================
+   MỘ TRẠCH HERITAGE
+   TRANG DANH SÁCH DI TÍCH
+========================================================= */
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.heritage-header {
+    background: #8f0000;
+    color: white;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+
+.heritage-header-inner {
+    max-width: 1250px;
+    margin: auto;
+
+    min-height: 76px;
+
+    padding: 0 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.heritage-logo {
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 26px;
+}
+
+
+.heritage-logo span {
+    font-size: 32px;
+}
+
+
+.heritage-logo strong {
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+
+.heritage-home {
+    color: white;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.15);
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+
+.heritage-home:hover {
+    background: rgba(255,255,255,0.30);
+
+    transform: translateY(-2px);
+}
+
+
+
+/* =========================================================
+   TOÀN TRANG
+========================================================= */
+
+.heritage-page {
+    background: #f7f2e9;
+
+    min-height: 700px;
+
+    padding: 55px 20px 70px;
+}
+
+
+
+/* =========================================================
+   TIÊU ĐỀ
+========================================================= */
+
+.heritage-heading {
+    max-width: 1000px;
+
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+
+.heritage-badge {
+    display: inline-block;
+
+    background: #f2dfad;
+
+    color: #8f0000;
+
+    padding: 10px 22px;
+
+    border-radius: 30px;
+
+    font-weight: 800;
+
+    font-size: 14px;
+
+    letter-spacing: 0.5px;
+}
+
+
+.heritage-heading h1 {
+    margin: 20px 0 10px;
+
+    color: #8f0000;
+
+    font-size: 48px;
+
+    line-height: 1.2;
+}
+
+
+.heritage-line {
+    width: 90px;
+
+    height: 4px;
+
+    background: #d6aa29;
+
+    margin: 18px auto;
+}
+
+
+.heritage-heading p {
+    max-width: 750px;
+
+    margin: auto;
+
+    color: #555;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+
+/* =========================================================
+   DANH SÁCH
+========================================================= */
+
+.heritage-list {
+    max-width: 1150px;
+
+    margin: auto;
 
     display: flex;
 
     flex-direction: column;
+
+    gap: 35px;
 }
 
-.heritage-card:hover {
 
-    transform:
-        translateY(-7px);
+
+/* =========================================================
+   CARD DI TÍCH
+========================================================= */
+
+.heritage-item {
+    background: white;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns: 43% 57%;
 
     box-shadow:
-        0 15px 35px
-        rgba(0, 0, 0, 0.2);
+        0 12px 35px rgba(70,40,10,0.12);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 
-/* Ảnh */
+.heritage-item:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(70,40,10,0.18);
+}
+
+
+
+/* =========================================================
+   ẢNH
+========================================================= */
 
 .heritage-image {
+    position: relative;
 
-    width: 100%;
-
-    height: 240px;
+    min-height: 360px;
 
     overflow: hidden;
 }
 
+
 .heritage-image img {
-
     width: 100%;
-
     height: 100%;
+
+    min-height: 360px;
+
+    display: block;
 
     object-fit: cover;
 
-    transition: 0.5s;
-}
-
-.heritage-card:hover
-.heritage-image img {
-
-    transform:
-        scale(1.06);
+    transition: transform 0.5s ease;
 }
 
 
-/* Nội dung */
+.heritage-item:hover .heritage-image img {
+    transform: scale(1.04);
+}
 
-.heritage-content {
 
-    padding: 25px;
+
+/* =========================================================
+   SỐ THỨ TỰ
+========================================================= */
+
+.heritage-number {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #8f0000;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.25);
+}
+
+
+
+/* =========================================================
+   NỘI DUNG CARD
+========================================================= */
+
+.heritage-info {
+    padding: 40px 45px;
 
     display: flex;
 
     flex-direction: column;
 
-    flex: 1;
+    justify-content: center;
 }
 
-.heritage-content h3 {
 
-    color: #8B0000;
+.heritage-type {
+    display: inline-block;
 
-    font-size: 27px;
+    color: #9a0000;
 
-    line-height: 1.3;
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
 
     margin-bottom: 12px;
 }
 
-.heritage-type {
 
-    color: #777;
+.heritage-info h2 {
+    color: #8f0000;
 
-    font-weight: bold;
+    font-size: 34px;
 
-    margin-bottom: 10px;
+    line-height: 1.2;
+
+    margin: 0 0 8px;
 }
 
-.heritage-address {
+
+.heritage-info h3 {
+    color: #777;
+
+    font-size: 20px;
+
+    margin: 0 0 20px;
+
+    font-weight: 700;
+}
+
+
+.heritage-info p {
+    color: #333;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    margin: 0 0 20px;
+}
+
+
+
+/* =========================================================
+   ĐỊA ĐIỂM
+========================================================= */
+
+.heritage-location {
+    background: #faf5ed;
+
+    border-left: 4px solid #d6aa29;
+
+    border-radius: 8px;
+
+    padding: 12px 15px;
+
+    color: #444;
+
+    font-size: 15px;
 
     line-height: 1.6;
 
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 
-/* Audio / Video */
 
-.media-icons {
+/* =========================================================
+   NÚT XEM CHI TIẾT
+========================================================= */
 
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin: 15px 0 20px;
-}
-
-.media-item {
-
+.heritage-detail-btn {
     display: inline-block;
 
-    background: #f8eeee;
+    align-self: flex-start;
 
-    color: #8B0000;
-
-    padding: 7px 12px;
-
-    border-radius: 20px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-/* Nút */
-
-.detail-btn {
-
-    display: block;
-
-    width: 100%;
-
-    margin-top: auto;
-
-    padding: 13px;
-
-    text-align: center;
-
-    background: #8B0000;
+    background: #a40000;
 
     color: white;
 
     text-decoration: none;
 
+    padding: 13px 25px;
+
     border-radius: 30px;
 
-    font-weight: bold;
+    font-size: 16px;
 
-    transition: 0.3s;
-}
+    font-weight: 800;
 
-.detail-btn:hover {
-
-    background: #c40000;
-
-    transform:
-        scale(1.02);
+    transition: 0.25s;
 }
 
 
-/* Không có kết quả */
+.heritage-detail-btn:hover {
+    background: #720000;
 
-.no-result {
+    transform: translateX(4px);
+}
 
-    grid-column: 1 / -1;
+
+
+/* =========================================================
+   ĐIỀU HƯỚNG CUỐI TRANG
+========================================================= */
+
+.heritage-navigation {
+    max-width: 1150px;
+
+    margin: 45px auto 0;
+
+    padding-top: 35px;
+
+    border-top: 1px solid #ddd;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.heritage-nav-btn {
+    display: inline-block;
+
+    text-decoration: none;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    font-weight: 800;
+
+    transition: 0.25s;
+}
+
+
+.heritage-nav-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.heritage-nav-btn.gray {
+    background: #555;
+
+    color: white;
+}
+
+
+.heritage-nav-btn.gold {
+    background: #d6aa29;
+
+    color: #222;
+}
+
+
+.heritage-nav-btn.red {
+    background: #a40000;
+
+    color: white;
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.heritage-footer {
+    background: #650000;
+
+    color: white;
 
     text-align: center;
 
-    padding: 70px 20px;
-
-    background: white;
-
-    border-radius: 15px;
+    padding: 40px 20px;
 }
 
 
-/* Lỗi */
+.heritage-footer h2 {
+    margin: 0 0 10px;
 
-.error-box {
-
-    grid-column: 1 / -1;
-
-    text-align: center;
-
-    padding: 40px;
-
-    background: #fff0f0;
-
-    color: #8B0000;
-
-    border: 1px solid #d99;
-
-    border-radius: 15px;
+    font-size: 25px;
 }
 
 
-/* Mobile */
+.heritage-footer p {
+    margin: 7px 0;
 
-@media (max-width: 700px) {
+    opacity: 0.95;
+}
 
-    .page-title {
 
-        font-size: 32px;
+.heritage-footer .copyright {
+    margin-top: 20px;
 
+    font-size: 14px;
+
+    opacity: 0.7;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .heritage-item {
+        grid-template-columns: 1fr;
+    }
+
+
+    .heritage-image {
+        min-height: 330px;
+    }
+
+
+    .heritage-image img {
+        min-height: 330px;
+        height: 330px;
+    }
+
+
+    .heritage-info {
+        padding: 32px;
+    }
+
+}
+
+
+
+/* =========================================================
+   ĐIỆN THOẠI
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .heritage-header-inner {
+        min-height: 65px;
+
+        padding: 0 15px;
+    }
+
+
+    .heritage-logo {
+        font-size: 18px;
+    }
+
+
+    .heritage-logo span {
+        font-size: 24px;
+    }
+
+
+    .heritage-home {
+        padding: 9px 14px;
+
+        font-size: 14px;
+    }
+
+
+    .heritage-page {
+        padding:
+            35px 12px
+            50px;
+    }
+
+
+    .heritage-heading {
+        margin-bottom: 30px;
+    }
+
+
+    .heritage-badge {
+        font-size: 12px;
+
+        padding: 8px 15px;
+    }
+
+
+    .heritage-heading h1 {
+        font-size: 34px;
+
+        margin-top: 15px;
+    }
+
+
+    .heritage-heading p {
+        font-size: 16px;
+    }
+
+
+    .heritage-list {
+        gap: 25px;
+    }
+
+
+    .heritage-item {
+        border-radius: 18px;
+    }
+
+
+    .heritage-image {
+        min-height: 250px;
+    }
+
+
+    .heritage-image img {
+        height: 250px;
+
+        min-height: 250px;
+    }
+
+
+    .heritage-number {
+        width: 45px;
+        height: 45px;
+
+        top: 15px;
+        left: 15px;
+
+        font-size: 16px;
+    }
+
+
+    .heritage-info {
+        padding: 25px 20px;
+    }
+
+
+    .heritage-info h2 {
+        font-size: 28px;
+    }
+
+
+    .heritage-info h3 {
+        font-size: 18px;
+    }
+
+
+    .heritage-info p {
+        font-size: 16px;
+    }
+
+
+    .heritage-location {
+        font-size: 14px;
+    }
+
+
+    .heritage-detail-btn {
+        width: 100%;
+
+        text-align: center;
+
+        box-sizing: border-box;
+    }
+
+
+    .heritage-navigation {
+        flex-direction: column;
+    }
+
+
+    .heritage-nav-btn {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        text-align: center;
+    }
+
+
+    .heritage-footer {
+        padding: 30px 15px;
+    }
+
+
+    .heritage-footer h2 {
+        font-size: 20px;
+    }
+
+}/* =========================================================
+   RESPONSIVE - MỘ TRẠCH HERITAGE
+   ========================================================= */
+
+/* Không cho website bị tràn ngang */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ảnh và video không vượt quá màn hình */
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+/* Các container chính */
+.container,
+.section,
+.hero,
+.explore,
+.intro,
+.heritage {
+    max-width: 100%;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .header-inner {
+        padding: 0 25px;
+    }
+
+    .hero-content {
+        width: 90%;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
     }
 
     .heritage-grid {
-
-        grid-template-columns: 1fr;
-
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .search-box {
+    .explore-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        width: 90%;
 
+/* =========================================================
+   ĐIỆN THOẠI
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    /* HEADER */
+
+    .header-inner {
+        padding: 12px 18px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo-icon {
+        font-size: 22px;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    #mainMenu {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 12px;
+    }
+
+    #mainMenu.show {
+        display: flex;
+    }
+
+    #mainMenu a {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero-content {
+        width: calc(100% - 40px);
+        max-width: none;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+
+    .hero-content h2 {
+        font-size: 23px;
+        line-height: 1.4;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+
+    /* SECTION */
+
+    .section {
+        padding: 50px 18px;
+        box-sizing: border-box;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+        line-height: 1.25;
+    }
+
+    .section-title p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+
+    /* GIỚI THIỆU */
+
+    .intro-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .intro-image {
+        width: 100%;
+    }
+
+    .intro-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 18px;
+    }
+
+    .intro-content h2 {
+        font-size: 28px;
+    }
+
+
+    /* DI TÍCH */
+
+    .heritage-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .heritage-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .heritage-card img {
+        width: 100%;
+        height: auto;
+    }
+
+
+    /* KHÁM PHÁ */
+
+    .explore {
+        padding: 50px 18px;
+        box-sizing: border-box;
+    }
+
+    .explore-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .explore-card {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .explore-card h3 {
+        font-size: 24px;
+    }
+
+    .explore-card p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+
+    /* BUTTON */
+
+    .btn {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* FOOTER */
+
+    .footer {
+        padding: 35px 18px;
+        box-sizing: border-box;
+    }
+
+    .footer-logo {
+        font-size: 22px;
+    }
+}
+
+
+/* =========================================================
+   ĐIỆN THOẠI NHỎ
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 27px;
+    }
+
+    .heritage-card h3 {
+        font-size: 23px;
+    }
+
+    .explore-card {
+        padding: 25px 18px;
+    }
+}/* =========================================================
+   MỘ TRẠCH HERITAGE
+   MAP PAGE
+   ========================================================= */
+
+.map-page {
+    background: #f7f2e9;
+}
+
+
+/* SEARCH */
+
+.search-box {
+    position: relative;
+    width: 100%;
+}
+
+
+.map-search {
+    width: 100%;
+    height: 48px;
+    padding: 0 45px 0 15px;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #333;
+
+    font-size: 16px;
+    outline: none;
+}
+
+
+.map-search:focus {
+    border-color: #990000;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(153,0,0,.08);
+}
+
+
+.clear-search {
+    position: absolute;
+
+    right: 8px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 31px;
+    height: 31px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #eee;
+    color: #777;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    display: none;
+}
+
+
+.clear-search:hover {
+    background: #800000;
+    color: white;
+}
+
+
+/* FILTER */
+
+.heritage-filter {
+    width: 100%;
+    height: 46px;
+
+    padding: 0 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    background: white;
+
+    color: #444;
+
+    font-size: 15px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    margin-bottom: 10px;
+}
+
+
+.heritage-filter:focus {
+    border-color: #990000;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(153,0,0,.08);
+}
+
+
+/* RESULT */
+
+.result-count {
+    color: #777;
+
+    font-size: 14px;
+
+    padding:
+        3px 4px 11px;
+
+    border-bottom:
+        1px solid #eee;
+
+    margin-bottom: 10px;
+}
+
+
+.result-count strong {
+    color: #990000;
+}
+
+
+/* LIST */
+
+#heritage-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    overflow-y: auto;
+}
+
+
+/* CARD */
+
+.heritage-card {
+    width: 100%;
+
+    border:
+        1px solid #eadfc9;
+
+    background: #fbf7ef;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+
+.heritage-card:hover {
+    background: #f5e7c5;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(0,0,0,.08);
+}
+
+
+.heritage-card.active {
+    background: #800000;
+
+    border-color: #800000;
+
+    color: white;
+}
+
+
+.heritage-card-title {
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1.35;
+}
+
+
+.heritage-card-type {
+    font-size: 14px;
+
+    margin-top: 6px;
+
+    color: #777;
+}
+
+
+.heritage-card.active
+.heritage-card-type {
+    color:
+        rgba(255,255,255,.85);
+}
+
+
+/* NO RESULT */
+
+.no-result {
+    text-align: center;
+
+    padding:
+        35px 15px;
+
+    color: #777;
+
+    line-height: 1.6;
+}
+
+
+.no-result-icon {
+    font-size: 40px;
+
+    margin-bottom: 8px;
+}
+
+
+/* MAP */
+
+#map {
+    width: 100%;
+
+    height: 680px;
+
+    min-height: 500px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: #ddd;
+
+    box-shadow:
+        0 8px 30px
+        rgba(0,0,0,.12);
+}
+
+
+/* POPUP */
+
+.heritage-popup h3 {
+    margin:
+        0 0 10px;
+
+    color: #a40000;
+
+    font-size: 20px;
+}
+
+
+.heritage-popup p {
+    margin: 7px 0;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+.popup-buttons {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 12px;
+}
+
+
+.popup-btn {
+    display: inline-block;
+
+    padding:
+        9px 12px;
+
+    background: #a40000;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.popup-btn:hover {
+    background: #760000;
+}
+
+
+.popup-map-btn {
+    background: #d4a526;
+
+    color: #111;
+}
+
+
+.popup-map-btn:hover {
+    background: #b88e20;
+
+    color: #111;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    #map {
+        height: 500px;
+
+        min-height: 0;
+
+        border-radius: 16px;
+    }
+
+    .heritage-card-title {
+        font-size: 17px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    #map {
+        height: 430px;
+    }
+
+    .map-actions {
+        grid-template-columns:
+            1fr;
+    }
+
+}/* =========================================================
+   MỘ TRẠCH HERITAGE - HEADER CHUNG
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    color: #17202a;
+    background: #f7f1e7;
+}
+
+
+/* HEADER */
+
+.site-header {
+    width: 100%;
+    min-height: 82px;
+    padding: 12px 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #980000;
+    color: white;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.15);
+
+    position: relative;
+    z-index: 2000;
+}
+
+
+.site-logo {
+    font-size: 27px;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+
+.site-logo span {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 7px;
+    letter-spacing: .5px;
+}
+
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.site-nav a {
+    color: white;
+    text-decoration: none;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    transition: .2s ease;
+}
+
+
+.site-nav a:hover {
+    background:
+        rgba(255,255,255,.15);
+
+    transform:
+        translateY(-1px);
+}
+
+
+.site-nav a.active {
+    background:
+        rgba(255,255,255,.18);
+}
+
+
+/* MOBILE HEADER */
+
+@media (max-width: 800px) {
+
+    .site-header {
+        padding: 12px 18px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+
+    .site-logo {
+        font-size: 22px;
+    }
+
+
+    .site-nav {
+        width: 100%;
+
+        justify-content: space-between;
+
+        gap: 4px;
+    }
+
+
+    .site-nav a {
+        padding: 9px 8px;
+
+        font-size: 14px;
     }
 
 }

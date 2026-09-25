@@ -1,143 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>Danh sách di tích - Mộ Trạch Heritage</title>
+    <title>Danh sách di tích - Mộ Trạch Heritage</title>
 
-<link rel="stylesheet" href="../css/style.css">
+    <meta name="description"
+          content="Danh sách các di tích tiêu biểu của Mộ Trạch">
 
-<style>
-
-body{
-    background:#f5f5f5;
-}
-
-.page-container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-    padding:50px 0 80px;
-}
-
-.page-title{
-    text-align:center;
-    color:#8B0000;
-    font-size:42px;
-    margin-bottom:35px;
-}
-
-.search-box{
-    display:block;
-    width:650px;
-    max-width:100%;
-    margin:0 auto 45px;
-    padding:16px 20px;
-    font-size:20px;
-    border:2px solid #8B0000;
-    border-radius:12px;
-    outline:none;
-    background:white;
-}
-
-.heritage-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(auto-fit,minmax(300px,1fr));
-    gap:30px;
-}
-
-.heritage-card{
-    background:white;
-    border-radius:18px;
-    overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-    transition:.3s;
-}
-
-.heritage-card:hover{
-    transform:translateY(-6px);
-}
-
-.heritage-image{
-    width:100%;
-    height:230px;
-}
-
-.heritage-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.heritage-content{
-    padding:25px;
-}
-
-.heritage-content h3{
-    color:#8B0000;
-    font-size:26px;
-    margin-bottom:10px;
-}
-
-.heritage-type{
-    font-weight:bold;
-    color:#777;
-}
-
-.heritage-address{
-    margin:12px 0;
-}
-
-.media-icons{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin:15px 0;
-}
-
-.media-item{
-    background:#f5e8e8;
-    color:#8B0000;
-    padding:7px 12px;
-    border-radius:20px;
-    font-size:14px;
-    font-weight:bold;
-}
-
-.detail-btn{
-    display:block;
-    text-align:center;
-    background:#8B0000;
-    color:white;
-    text-decoration:none;
-    padding:13px;
-    border-radius:30px;
-    font-weight:bold;
-}
-
-.detail-btn:hover{
-    background:#c40000;
-}
-
-.message{
-    text-align:center;
-    background:white;
-    padding:40px;
-    border-radius:15px;
-}
-
-header a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-</style>
+    <!-- CSS CHUNG -->
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -145,63 +21,352 @@ header a{
 <body>
 
 
-<header>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<div class="container">
+<header class="heritage-header">
 
-<div class="logo">
+    <div class="heritage-header-inner">
 
-<h1>MỘ TRẠCH HERITAGE</h1>
+        <a href="../index.html"
+           class="heritage-logo">
 
-<p>Di sản văn hóa - lịch sử làng Mộ Trạch</p>
+            <span>🏛️</span>
 
-</div>
+            <strong>
+                MỘ TRẠCH HERITAGE
+            </strong>
 
-<nav>
+        </a>
 
-<a href="../index.html">
-← Trang chủ
-</a>
 
-</nav>
+        <a href="../index.html"
+           class="heritage-home">
 
-</div>
+            🏠 Trang chủ
+
+        </a>
+
+    </div>
 
 </header>
 
 
-<main class="page-container">
 
-<h2 class="page-title">
-Danh sách di tích
-</h2>
+<!-- =====================================================
+     TIÊU ĐỀ
+===================================================== -->
 
-
-<input
-    id="search"
-    class="search-box"
-    type="text"
-    placeholder="🔎 Tìm kiếm di tích..."
->
+<main class="heritage-page">
 
 
-<div
-    id="heritage-list"
-    class="heritage-grid"
->
+    <section class="heritage-heading">
 
-<div class="message">
-Đang tải dữ liệu di tích...
-</div>
+        <div class="heritage-badge">
+            KHÔNG GIAN DI SẢN SỐ
+        </div>
 
-</div>
+
+        <h1>
+            Danh sách di tích
+        </h1>
+
+
+        <div class="heritage-line"></div>
+
+
+        <p>
+            Khám phá những di tích tiêu biểu
+            trong không gian lịch sử và văn hóa Mộ Trạch.
+        </p>
+
+    </section>
+
+
+
+<!-- =====================================================
+     DANH SÁCH DI TÍCH
+===================================================== -->
+
+<section class="heritage-list">
+
+
+    <!-- =================================================
+         1. LĂNG THẦN
+    ================================================== -->
+
+    <article class="heritage-item">
+
+
+        <div class="heritage-image">
+
+            <img
+                src="../images/lang-than-vu-hon.jpg"
+                alt="Lăng Thần - Mộ cụ Vũ Hồn"
+                onerror="this.src='../images/lang-than.jpg';"
+            >
+
+            <div class="heritage-number">
+                01
+            </div>
+
+        </div>
+
+
+
+        <div class="heritage-info">
+
+            <div class="heritage-type">
+                🏛️ DI TÍCH LỊCH SỬ
+            </div>
+
+
+            <h2>
+                Lăng Thần
+            </h2>
+
+
+            <h3>
+                Mộ cụ Vũ Hồn
+            </h3>
+
+
+            <p>
+                Quần thể lăng mộ gắn với Đức Thủy tổ
+                Vũ Hồn, nhân vật được cộng đồng Mộ Trạch
+                tôn kính và gắn với nguồn cội lịch sử
+                của làng.
+            </p>
+
+
+            <div class="heritage-location">
+
+                📍
+                Thôn Mộ Trạch, xã Đường An,
+                thành phố Hải Phòng
+
+            </div>
+
+
+            <a href="detail.html?id=1"
+               class="heritage-detail-btn">
+
+                Xem chi tiết →
+
+            </a>
+
+        </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         2. VĂN MIẾU
+    ================================================== -->
+
+    <article class="heritage-item">
+
+
+        <div class="heritage-image">
+
+            <img
+                src="../images/van-mieu.jpg"
+                alt="Văn Miếu Mộ Trạch"
+            >
+
+            <div class="heritage-number">
+                02
+            </div>
+
+        </div>
+
+
+
+        <div class="heritage-info">
+
+            <div class="heritage-type">
+                🏛️ DI TÍCH VĂN HÓA
+            </div>
+
+
+            <h2>
+                Văn Miếu Mộ Trạch
+            </h2>
+
+
+            <h3>
+                Đất học – Đất khoa bảng
+            </h3>
+
+
+            <p>
+                Không gian gắn với truyền thống hiếu học,
+                khoa bảng và những giá trị văn hóa,
+                giáo dục được lưu truyền qua nhiều thế hệ
+                ở Mộ Trạch.
+            </p>
+
+
+            <div class="heritage-location">
+
+                📍
+                Thôn Mộ Trạch, xã Đường An,
+                thành phố Hải Phòng
+
+            </div>
+
+
+            <a href="detail.html?id=2"
+               class="heritage-detail-btn">
+
+                Xem chi tiết →
+
+            </a>
+
+        </div>
+
+    </article>
+
+
+
+    <!-- =================================================
+         3. ĐÌNH LÀNG
+    ================================================== -->
+
+    <article class="heritage-item">
+
+
+        <div class="heritage-image">
+
+            <img
+                src="../images/dinh-lang.jpg"
+                alt="Đình làng Mộ Trạch"
+            >
+
+            <div class="heritage-number">
+                03
+            </div>
+
+        </div>
+
+
+
+        <div class="heritage-info">
+
+            <div class="heritage-type">
+                🏛️ DI TÍCH KIẾN TRÚC
+            </div>
+
+
+            <h2>
+                Đình làng Mộ Trạch
+            </h2>
+
+
+            <h3>
+                Không gian văn hóa cộng đồng
+            </h3>
+
+
+            <p>
+                Không gian văn hóa gắn với đời sống
+                cộng đồng, sinh hoạt truyền thống
+                và các nghi lễ của người dân Mộ Trạch.
+            </p>
+
+
+            <div class="heritage-location">
+
+                📍
+                Thôn Mộ Trạch, xã Đường An,
+                thành phố Hải Phòng
+
+            </div>
+
+
+            <a href="detail.html?id=3"
+               class="heritage-detail-btn">
+
+                Xem chi tiết →
+
+            </a>
+
+        </div>
+
+    </article>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     KHỐI ĐIỀU HƯỚNG
+===================================================== -->
+
+<section class="heritage-navigation">
+
+
+    <a href="../index.html"
+       class="heritage-nav-btn gray">
+
+        🏠
+        Trang chủ
+
+    </a>
+
+
+    <a href="map.html"
+       class="heritage-nav-btn gold">
+
+        🗺️
+        Xem bản đồ di sản
+
+    </a>
+
+
+    <a href="map-tour.html"
+       class="heritage-nav-btn red">
+
+        🧭
+        Tuyến tham quan
+
+    </a>
+
+
+</section>
 
 
 </main>
 
 
-<script src="../js/heritage.js"></script>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="heritage-footer">
+
+    <h2>
+        🏛️ MỘ TRẠCH HERITAGE
+    </h2>
+
+    <p>
+        Không gian di sản số
+    </p>
+
+    <p>
+        Làng Tiến sĩ – Đất học – Đất văn hiến
+    </p>
+
+    <p class="copyright">
+        © 2026 Mộ Trạch Heritage
+    </p>
+
+</footer>
+
 
 </body>
-
 </html>
