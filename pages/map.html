@@ -2,351 +2,1403 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Bản đồ di sản Mộ Trạch</title>
+
+    <!-- CSS chính -->
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Leaflet -->
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
+    >
 
     <style>
-        * {
-            box-sizing: border-box;
+
+        /* =====================================================
+           BƯỚC 6 - CSS RIÊNG CHO BẢN ĐỒ
+           ===================================================== */
+
+        .map-page {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 30px;
         }
 
-        body {
+        .map-title {
+            margin-bottom: 25px;
+        }
+
+        .map-title .badge {
+            display: inline-block;
+            padding: 10px 22px;
+            background: #f8dfa0;
+            color: #990000;
+            border-radius: 30px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .map-title h1 {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f7f4ee;
-            color: #333;
+            color: #990000;
+            font-size: 46px;
+            font-weight: 800;
         }
 
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #7d0000, #a90000);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
+        .map-title p {
+            font-size: 20px;
+            color: #555;
+            margin-top: 10px;
         }
 
-        header h1 {
-            margin: 0 0 8px;
+
+        /* =====================================================
+           KHUNG CHÍNH
+           ===================================================== */
+
+        .map-layout {
+            display: grid;
+            grid-template-columns: 430px 1fr;
+            gap: 24px;
+            align-items: stretch;
+        }
+
+
+        /* =====================================================
+           PANEL TRÁI
+           ===================================================== */
+
+        .heritage-panel {
+            background: #fff;
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.10);
+            min-height: 700px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .panel-heading .icon {
+            font-size: 38px;
+        }
+
+        .panel-heading h2 {
+            margin: 0;
+            color: #990000;
             font-size: 32px;
         }
 
-        header p {
-            margin: 0;
-            font-size: 16px;
+        .panel-description {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 18px;
         }
 
-        /* MENU */
-        .menu {
-            background: white;
-            padding: 12px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+        /* =====================================================
+           TÌM KIẾM
+           ===================================================== */
+
+        .search-box {
+            margin-bottom: 12px;
         }
 
-        .menu a {
-            text-decoration: none;
-            color: #7d0000;
-            font-weight: bold;
-            padding: 10px 18px;
-            border-radius: 25px;
-            background: #f7eeee;
+        .search-box input,
+        .type-filter select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px 17px;
+            border: 1px solid #ddd;
+            border-radius: 16px;
+            font-size: 17px;
+            outline: none;
+            background: #fff;
         }
 
-        .menu a:hover {
-            background: #7d0000;
-            color: white;
+        .search-box input:focus,
+        .type-filter select:focus {
+            border-color: #b00000;
         }
 
-        /* CONTENT */
-        .container {
-            width: 94%;
-            max-width: 1400px;
-            margin: 25px auto;
+        .type-filter {
+            margin-bottom: 18px;
         }
 
-        .title {
-            color: #8b0000;
-            font-size: 30px;
+
+        /* =====================================================
+           THÔNG BÁO
+           ===================================================== */
+
+        .data-status {
+            font-size: 17px;
+            margin-bottom: 12px;
+            color: #555;
+        }
+
+        .data-status.success {
+            color: #16803c;
+            font-weight: 700;
+        }
+
+        .data-status.error {
+            color: #b00000;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           DANH SÁCH
+           ===================================================== */
+
+        .heritage-list {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 6px;
+            min-height: 250px;
+        }
+
+        .heritage-item {
+            background: #fcf8ef;
+            border: 1px solid #eadfc9;
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: .25s;
+        }
+
+        .heritage-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,.08);
+        }
+
+        .heritage-item.active {
+            border: 2px solid #a40000;
+            background: #fffaf0;
+        }
+
+        .heritage-item h3 {
+            margin: 0 0 5px;
+            font-size: 22px;
+            color: #222;
+        }
+
+        .heritage-type {
+            color: #777;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .heritage-description {
+            color: #555;
+            line-height: 1.5;
+            font-size: 15px;
             margin-bottom: 10px;
         }
 
-        .intro {
-            font-size: 17px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* MAP */
-        #map {
-            width: 100%;
-            height: 600px;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 3px solid #d2b26b;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-        }
-
-        /* BUTTONS */
-        .tools {
+        .item-buttons {
             display: flex;
-            justify-content: center;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
-            margin: 18px 0;
         }
 
-        .btn {
+        .small-btn {
             border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
+            border-radius: 20px;
+            padding: 8px 14px;
             cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
-            background: #8b0000;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .small-btn.red {
+            background: #a40000;
             color: white;
         }
 
-        .btn:hover {
-            background: #5e0000;
+        .small-btn.gold {
+            background: #e3ad12;
+            color: #222;
         }
 
-        .btn.location {
-            background: #176b3a;
-        }
 
-        /* LIST */
-        .places-title {
-            margin-top: 35px;
-            color: #8b0000;
-            font-size: 26px;
-        }
+        /* =====================================================
+           NÚT PHÍA DƯỚI
+           ===================================================== */
 
-        #places {
+        .panel-actions {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-top: 15px;
         }
 
-        .place-card {
+        .main-btn {
+            border: none;
+            padding: 15px 12px;
+            border-radius: 18px;
+            font-size: 17px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .main-btn.red {
+            background: #a40000;
+            color: white;
+        }
+
+        .main-btn.gold {
+            background: #e3ad12;
+            color: #222;
+        }
+
+        .main-btn.gray {
+            background: #555;
+            color: white;
+        }
+
+        .main-btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+
+        /* =====================================================
+           BẢN ĐỒ
+           ===================================================== */
+
+        .map-wrapper {
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.12);
-            transition: 0.2s;
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.10);
+            min-height: 700px;
+            position: relative;
         }
 
-        .place-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .place-card img {
+        #map {
             width: 100%;
-            height: 190px;
-            object-fit: cover;
+            height: 670px;
+            min-height: 500px;
+            border-radius: 18px;
+            overflow: hidden;
         }
 
-        .place-content {
-            padding: 18px;
+
+        /* =====================================================
+           NÚT TRÊN BẢN ĐỒ
+           ===================================================== */
+
+        .map-controls {
+            position: absolute;
+            top: 28px;
+            right: 28px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
         }
 
-        .place-content h3 {
-            color: #8b0000;
+        .map-control-btn {
+            border: none;
+            padding: 12px 18px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,.15);
+        }
+
+        .map-control-btn.route {
+            background: #a40000;
+            color: white;
+        }
+
+        .map-control-btn.all {
+            background: white;
+            color: #333;
+        }
+
+
+        /* =====================================================
+           TUYẾN THAM QUAN - BƯỚC 6
+           ===================================================== */
+
+        .tour-section {
+            margin-top: 25px;
+            background: #fff;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .tour-section h2 {
+            color: #990000;
+            margin-top: 0;
+            font-size: 32px;
+        }
+
+        .tour-intro {
+            color: #555;
+            font-size: 18px;
+        }
+
+        .tour-info {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .tour-stat {
+            background: #faf5e9;
+            border: 1px solid #eadfc9;
+            border-radius: 16px;
+            padding: 14px 20px;
+            font-weight: 700;
+        }
+
+        .tour-stops {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .tour-stop {
+            position: relative;
+            background: #fcf8ef;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid #eadfc9;
+        }
+
+        .tour-number {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #a40000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .tour-stop h3 {
+            margin: 0 0 5px;
+            font-size: 20px;
+        }
+
+        .tour-stop p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           POPUP
+           ===================================================== */
+
+        .heritage-popup h3 {
+            color: #a40000;
             margin: 0 0 8px;
             font-size: 21px;
         }
 
-        .place-type {
-            color: #777;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .place-address {
+        .heritage-popup p {
             line-height: 1.5;
-            margin-bottom: 15px;
         }
 
-        .card-buttons {
+        .popup-actions {
             display: flex;
-            flex-wrap: wrap;
             gap: 8px;
+            margin-top: 12px;
         }
 
-        .card-buttons a {
+        .popup-actions a,
+        .popup-actions button {
             text-decoration: none;
-            padding: 9px 12px;
-            border-radius: 20px;
-            background: #f3e8e8;
-            color: #8b0000;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .card-buttons a:hover {
-            background: #8b0000;
-            color: white;
-        }
-
-        /* FOOTER */
-        footer {
-            margin-top: 40px;
-            background: #5e0000;
-            color: white;
-            text-align: center;
-            padding: 25px;
-            line-height: 1.7;
-        }
-
-        /* POPUP */
-        .popup-title {
-            color: #8b0000;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 7px;
-        }
-
-        .popup-image {
-            width: 220px;
-            height: 130px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .popup-btn {
-            display: inline-block;
-            margin-top: 8px;
+            border: none;
             padding: 8px 12px;
-            background: #8b0000;
-            color: white !important;
-            text-decoration: none;
             border-radius: 18px;
-            font-weight: bold;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .popup-detail {
+            background: #a40000;
+            color: white;
         }
 
         .popup-direction {
+            background: #e3ad12;
+            color: #222;
+        }
+
+
+        /* =====================================================
+           =====================================================
+           BƯỚC 7
+           TUYẾN THAM QUAN THÔNG MINH
+           =====================================================
+           ===================================================== */
+
+        .smart-tour-section {
+            margin-top: 25px;
+            background: #fff;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .smart-tour-header {
+            margin-bottom: 20px;
+        }
+
+        .smart-tour-badge {
             display: inline-block;
-            margin-top: 8px;
-            padding: 8px 12px;
-            background: #176b3a;
-            color: white !important;
-            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            background: #f8dfa0;
+            color: #990000;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .smart-tour-section h2 {
+            margin: 0 0 10px;
+            color: #990000;
+            font-size: 34px;
+        }
+
+        .smart-tour-intro {
+            margin: 0;
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           THỐNG KÊ BƯỚC 7
+           ===================================================== */
+
+        .smart-tour-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 22px 0;
+        }
+
+        .smart-stat {
+            background: #faf5e9;
+            border: 1px solid #eadfc9;
             border-radius: 18px;
-            font-weight: bold;
+            padding: 18px;
         }
 
-        /* MOBILE */
-        @media (max-width: 900px) {
-
-            #places {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            #map {
-                height: 500px;
-            }
+        .smart-stat-label {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 6px;
         }
 
-        @media (max-width: 600px) {
+        .smart-stat-value {
+            color: #990000;
+            font-size: 23px;
+            font-weight: 900;
+        }
 
-            header h1 {
-                font-size: 24px;
+
+        /* =====================================================
+           THANH TIẾN TRÌNH
+           ===================================================== */
+
+        .smart-progress-box {
+            margin: 20px 0 25px;
+            padding: 20px;
+            border-radius: 20px;
+            background: #fcf8ef;
+            border: 1px solid #eadfc9;
+        }
+
+        .smart-progress-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        #tourProgressText {
+            color: #990000;
+        }
+
+        .smart-progress {
+            width: 100%;
+            height: 14px;
+            background: #e6e0d3;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        #tourProgressBar {
+            width: 0%;
+            height: 100%;
+            background: #a40000;
+            border-radius: 20px;
+            transition: width .35s ease;
+        }
+
+
+        /* =====================================================
+           CÁC ĐIỂM TRONG TUYẾN THÔNG MINH
+           ===================================================== */
+
+        #smartTourStages {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .smart-stage {
+            display: grid;
+            grid-template-columns: 52px 1fr auto;
+            gap: 15px;
+            align-items: center;
+            padding: 18px;
+            background: #fcf8ef;
+            border: 1px solid #eadfc9;
+            border-radius: 18px;
+            transition: .25s;
+        }
+
+        .smart-stage:hover {
+            box-shadow: 0 7px 18px rgba(0,0,0,.08);
+        }
+
+        .smart-stage.active {
+            border: 2px solid #a40000;
+            background: #fff8e8;
+            box-shadow: 0 8px 22px rgba(164,0,0,.12);
+        }
+
+        .smart-stage.completed {
+            opacity: .72;
+        }
+
+        .stage-number {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #a40000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .stage-info h3 {
+            margin: 0 0 7px;
+            font-size: 21px;
+            color: #222;
+        }
+
+        .stage-meta {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .stage-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .stage-btn {
+            border: none;
+            border-radius: 20px;
+            padding: 9px 14px;
+            cursor: pointer;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .stage-btn.view {
+            background: #a40000;
+            color: white;
+        }
+
+        .stage-btn.route {
+            background: #e3ad12;
+            color: #222;
+        }
+
+
+        /* =====================================================
+           NÚT ĐIỀU KHIỂN BƯỚC 7
+           ===================================================== */
+
+        .smart-tour-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .smart-tour-actions .main-btn {
+            min-width: 170px;
+        }
+
+
+        /* =====================================================
+           GỢI Ý SỬ DỤNG
+           ===================================================== */
+
+        .smart-tour-note {
+            margin-top: 20px;
+            padding: 16px 18px;
+            border-left: 5px solid #e3ad12;
+            background: #fffaf0;
+            border-radius: 12px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .smart-tour-stats {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .container {
-                width: 96%;
+            .smart-stage {
+                grid-template-columns: 52px 1fr;
             }
 
-            #map {
-                height: 430px;
-                border-radius: 10px;
+            .stage-actions {
+                grid-column: 2;
+                justify-content: flex-start;
             }
 
-            #places {
+        }
+
+
+        @media (max-width: 1000px) {
+
+            .map-layout {
                 grid-template-columns: 1fr;
             }
 
-            .place-card img {
-                height: 210px;
+            .heritage-panel {
+                min-height: auto;
             }
 
-            .title {
-                font-size: 25px;
+            .map-wrapper {
+                min-height: 550px;
             }
+
+            #map {
+                height: 550px;
+            }
+
+            .tour-stops {
+                grid-template-columns: 1fr;
+            }
+
         }
+
+
+        @media (max-width: 600px) {
+
+            .map-page {
+                padding: 15px;
+            }
+
+            .map-title h1 {
+                font-size: 32px;
+            }
+
+            .panel-heading h2 {
+                font-size: 26px;
+            }
+
+            .map-controls {
+                top: 22px;
+                right: 22px;
+                flex-direction: column;
+            }
+
+            .panel-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .smart-tour-section {
+                padding: 20px;
+            }
+
+            .smart-tour-section h2 {
+                font-size: 28px;
+            }
+
+            .smart-tour-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .smart-stage {
+                grid-template-columns: 45px 1fr;
+                padding: 15px;
+            }
+
+            .stage-number {
+                width: 40px;
+                height: 40px;
+                font-size: 17px;
+            }
+
+            .stage-info h3 {
+                font-size: 18px;
+            }
+
+            .stage-actions {
+                grid-column: 1 / -1;
+            }
+
+            .smart-tour-actions {
+                flex-direction: column;
+            }
+
+            .smart-tour-actions .main-btn {
+                width: 100%;
+            }
+
+        }
+
     </style>
 </head>
 
+
 <body>
 
-<header>
-    <h1>🏛️ MỘ TRẠCH HERITAGE</h1>
-    <p>Không gian di sản số – Làng Tiến sĩ Mộ Trạch</p>
-</header>
 
-<nav class="menu">
-    <a href="../index.html">🏠 Trang chủ</a>
-    <a href="heritage.html">🏛️ Di tích</a>
-    <a href="map.html">🗺️ Bản đồ</a>
-</nav>
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-<main class="container">
+    <header class="site-header">
 
-    <h2 class="title">📍 Bản đồ di sản Mộ Trạch</h2>
+        <div class="header-inner">
 
-    <p class="intro">
-        Khám phá các di tích tiêu biểu của Mộ Trạch trên bản đồ.
-        Bạn có thể chọn từng địa điểm để xem thông tin, hình ảnh,
-        nghe thuyết minh, xem video hoặc tìm đường đến di tích.
-    </p>
+            <div class="brand">
 
-    <div class="tools">
+                <div class="brand-title">
+                    🏛️ MỘ TRẠCH HERITAGE
+                </div>
 
-        <button class="btn location" onclick="findMyLocation()">
-            📍 Vị trí của tôi
-        </button>
+                <div class="brand-subtitle">
+                    KHÔNG GIAN DI SẢN SỐ
+                </div>
 
-        <button class="btn" onclick="showAllPlaces()">
-            🗺️ Xem toàn bộ di tích
-        </button>
+            </div>
 
-    </div>
 
-    <div id="map"></div>
+            <nav class="main-nav">
 
-    <h2 class="places-title">
-        🏛️ Các điểm di sản
-    </h2>
+                <a href="../index.html">
+                    🏠 Giới thiệu
+                </a>
 
-    <div id="places">
-        <p>Đang tải dữ liệu di tích...</p>
-    </div>
+                <a href="heritage.html">
+                    🏛️ Di tích
+                </a>
 
-</main>
+                <a href="map.html" class="active">
+                    🗺️ Bản đồ
+                </a>
 
-<footer>
-    <strong>MỘ TRẠCH HERITAGE</strong><br>
-    Số hóa ký ức – Kết nối di sản – Lan tỏa truyền thống
-</footer>
+            </nav>
 
-<!-- Leaflet JS -->
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+        </div>
 
-<!-- File JavaScript của chúng ta -->
-<script src="../js/map.js"></script>
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="map-page">
+
+
+        <!-- =================================================
+             TIÊU ĐỀ
+             ================================================= -->
+
+        <section class="map-title">
+
+            <div class="badge">
+                KHÔNG GIAN DI SẢN SỐ
+            </div>
+
+            <h1>
+                🗺️ Bản đồ di sản Mộ Trạch
+            </h1>
+
+            <p>
+                Khám phá vị trí các di tích tiêu biểu
+                trong không gian văn hóa Mộ Trạch.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAP LAYOUT
+             ================================================= -->
+
+        <section class="map-layout">
+
+
+            <!-- =================================================
+                 PANEL TRÁI
+                 ================================================= -->
+
+            <aside class="heritage-panel">
+
+                <div class="panel-heading">
+
+                    <span class="icon">
+                        🏛️
+                    </span>
+
+                    <h2>
+                        Di tích
+                    </h2>
+
+                </div>
+
+
+                <div class="panel-description">
+
+                    Chọn một địa điểm để xem vị trí
+                    trên bản đồ.
+
+                </div>
+
+
+
+                <!-- TÌM KIẾM -->
+
+                <div class="search-box">
+
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="🔎 Tìm tên di tích..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <!-- BỘ LỌC -->
+
+                <div class="type-filter">
+
+                    <select id="typeFilter">
+
+                        <option value="">
+                            🏛️ Tất cả loại di tích
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- TRẠNG THÁI -->
+
+                <div
+                    id="dataStatus"
+                    class="data-status"
+                >
+                    ⏳ Đang tải dữ liệu...
+                </div>
+
+
+
+                <!-- DANH SÁCH -->
+
+                <div
+                    id="heritageList"
+                    class="heritage-list"
+                >
+
+                    <div
+                        style="
+                            padding:20px;
+                            text-align:center;
+                        "
+                    >
+                        ⏳ Đang tải danh sách di tích...
+                    </div>
+
+                </div>
+
+
+
+                <!-- NÚT -->
+
+                <div class="panel-actions">
+
+                    <button
+                        id="showAllBtn"
+                        class="main-btn red"
+                        type="button"
+                    >
+                        🗺️ Xem tất cả
+                    </button>
+
+
+                    <button
+                        id="myLocationBtn"
+                        class="main-btn gold"
+                        type="button"
+                    >
+                        📍 Vị trí tôi
+                    </button>
+
+                </div>
+
+            </aside>
+
+
+
+            <!-- =================================================
+                 BẢN ĐỒ
+                 ================================================= -->
+
+            <section class="map-wrapper">
+
+                <div class="map-controls">
+
+                    <button
+                        id="tourBtn"
+                        class="map-control-btn route"
+                        type="button"
+                    >
+                        🧭 Tuyến tham quan
+                    </button>
+
+
+                    <button
+                        id="fitAllBtn"
+                        class="map-control-btn all"
+                        type="button"
+                    >
+                        🗺️ Toàn bộ
+                    </button>
+
+                </div>
+
+
+                <div id="map"></div>
+
+            </section>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TUYẾN THAM QUAN - BƯỚC 6
+             ================================================= -->
+
+        <section
+            id="tourSection"
+            class="tour-section"
+        >
+
+            <h2>
+                🧭 Tuyến tham quan Mộ Trạch
+            </h2>
+
+
+            <p class="tour-intro">
+
+                Hành trình khám phá các điểm di sản tiêu biểu
+                của Mộ Trạch theo một tuyến tham quan thống nhất.
+
+            </p>
+
+
+
+            <div class="tour-info">
+
+                <div class="tour-stat">
+                    📍
+                    <span id="tourPointCount">
+                        0
+                    </span>
+                    điểm
+                </div>
+
+
+                <div class="tour-stat">
+                    📏 Tổng tuyến:
+                    <span id="tourDistance">
+                        0 km
+                    </span>
+                </div>
+
+
+                <div class="tour-stat">
+                    🧭 Trạng thái:
+                    <span id="tourStatus">
+                        Chưa mở tuyến
+                    </span>
+                </div>
+
+            </div>
+
+
+
+            <div
+                id="tourStops"
+                class="tour-stops"
+            >
+            </div>
+
+
+
+            <div
+                style="
+                    margin-top:20px;
+                    display:flex;
+                    gap:12px;
+                    flex-wrap:wrap;
+                "
+            >
+
+                <button
+                    id="startTourBtn"
+                    class="main-btn red"
+                    type="button"
+                >
+                    ▶️ Bắt đầu tuyến
+                </button>
+
+
+                <button
+                    id="tourAllBtn"
+                    class="main-btn gold"
+                    type="button"
+                >
+                    🗺️ Xem toàn bộ tuyến
+                </button>
+
+
+                <button
+                    id="clearTourBtn"
+                    class="main-btn gray"
+                    type="button"
+                >
+                    ✕ Xóa tuyến
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             =====================================================
+             BƯỚC 7 - TUYẾN THAM QUAN THÔNG MINH
+             =====================================================
+             ===================================================== -->
+
+        <section
+            id="smartTourSection"
+            class="smart-tour-section"
+        >
+
+
+            <!-- TIÊU ĐỀ BƯỚC 7 -->
+
+            <div class="smart-tour-header">
+
+                <div class="smart-tour-badge">
+                    BƯỚC 7
+                </div>
+
+                <h2>
+                    🧭 Tuyến tham quan thông minh
+                </h2>
+
+                <p class="smart-tour-intro">
+
+                    Khám phá các di tích Mộ Trạch theo
+                    trình tự của tuyến tham quan.
+                    Bạn có thể lần lượt di chuyển qua từng điểm
+                    ngay trên bản đồ.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 THỐNG KÊ
+                 ================================================= -->
+
+            <div class="smart-tour-stats">
+
+
+                <div class="smart-stat">
+
+                    <div class="smart-stat-label">
+                        📍 Số điểm tham quan
+                    </div>
+
+                    <div
+                        id="smartTourPoints"
+                        class="smart-stat-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+
+                <div class="smart-stat">
+
+                    <div class="smart-stat-label">
+                        📏 Tổng khoảng cách
+                    </div>
+
+                    <div
+                        id="smartTourDistance"
+                        class="smart-stat-value"
+                    >
+                        0 km
+                    </div>
+
+                </div>
+
+
+
+                <div class="smart-stat">
+
+                    <div class="smart-stat-label">
+                        🚶 Thời gian đi bộ
+                    </div>
+
+                    <div
+                        id="walkingTime"
+                        class="smart-stat-value"
+                    >
+                        0 phút
+                    </div>
+
+                </div>
+
+
+
+                <div class="smart-stat">
+
+                    <div class="smart-stat-label">
+                        🛵 Thời gian xe máy
+                    </div>
+
+                    <div
+                        id="motorbikeTime"
+                        class="smart-stat-value"
+                    >
+                        0 phút
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TIẾN TRÌNH
+                 ================================================= -->
+
+            <div class="smart-progress-box">
+
+                <div class="smart-progress-top">
+
+                    <span>
+                        Tiến trình tham quan
+                    </span>
+
+                    <span id="tourProgressText">
+                        Chưa bắt đầu
+                    </span>
+
+                </div>
+
+
+                <div class="smart-progress">
+
+                    <div
+                        id="tourProgressBar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DANH SÁCH ĐIỂM THAM QUAN
+                 ================================================= -->
+
+            <div
+                id="smartTourStages"
+            >
+
+                <div
+                    style="
+                        padding:20px;
+                        text-align:center;
+                        color:#777;
+                    "
+                >
+                    ⏳ Đang chuẩn bị tuyến tham quan...
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 NÚT ĐIỀU KHIỂN
+                 ================================================= -->
+
+            <div class="smart-tour-actions">
+
+
+                <button
+                    id="smartStartBtn"
+                    class="main-btn red"
+                    type="button"
+                >
+                    ▶️ Bắt đầu tham quan
+                </button>
+
+
+                <button
+                    id="previousStopBtn"
+                    class="main-btn gold"
+                    type="button"
+                    disabled
+                >
+                    ⬅️ Điểm trước
+                </button>
+
+
+                <button
+                    id="nextStopBtn"
+                    class="main-btn gold"
+                    type="button"
+                    disabled
+                >
+                    Điểm tiếp theo ➡️
+                </button>
+
+
+                <button
+                    id="resetSmartTourBtn"
+                    class="main-btn gray"
+                    type="button"
+                >
+                    ↺ Làm lại
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 GHI CHÚ
+                 ================================================= -->
+
+            <div class="smart-tour-note">
+
+                💡
+                <strong>Hướng dẫn:</strong>
+                Nhấn
+                <strong>“Bắt đầu tham quan”</strong>
+                để bắt đầu từ điểm số 1.
+                Sau đó sử dụng
+                <strong>“Điểm tiếp theo”</strong>
+                để lần lượt khám phá các di tích.
+                Chức năng này không yêu cầu GPS.
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         LEAFLET JS
+         ===================================================== -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+
+    <!-- =====================================================
+         JS BẢN ĐỒ
+         ===================================================== -->
+
+    <script src="../js/map.js"></script>
+
 
 </body>
 </html>
