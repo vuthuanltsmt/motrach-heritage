@@ -32,7 +32,11 @@ let selectedId = null;
 let smartTourIndex = -1;
 
 let smartTourStarted = false;
+const SMART_TOUR_STORAGE_KEY =
+    "motrachSmartTourProgress";
 
+let visitedHeritageIds =
+    new Set();
 
 /* =========================================================
    KHỞI ĐỘNG
@@ -404,9 +408,9 @@ async function loadHeritageData() {
         renderHeritageList();
 
         renderTourStops();
-
+loadSmartTourProgress();
         renderSmartTour();
-
+updateSmartTourButtons();
 
         showAllHeritage();
 
@@ -2246,7 +2250,11 @@ function selectSmartStop(index) {
 
     const item =
         heritageData[index];
+visitedHeritageIds.add(
+    String(item.id)
+);
 
+saveSmartTourProgress();
 
     /*
        Di chuyển bản đồ.
@@ -2387,13 +2395,22 @@ function highlightSmartStage(index) {
             );
 
 
-            if (i < index) {
+            const item =
+    heritageData[i];
 
-                stage.classList.add(
-                    "completed"
-                );
+if (
+    item &&
+    visitedHeritageIds.has(
+        String(item.id)
+    ) &&
+    i !== index
+) {
 
-            }
+    stage.classList.add(
+        "completed"
+    );
+
+}
 
 
             if (i === index) {
@@ -2479,44 +2496,49 @@ function updateSmartTourProgress() {
 
 
     const current =
-        smartTourIndex + 1;
+    heritageData.filter(
+        function (item) {
 
+            return visitedHeritageIds.has(
+                String(item.id)
+            );
 
-    const total =
-        heritageData.length;
+        }
+    ).length;
 
+const total =
+    heritageData.length;
 
-    const percent =
-        total === 1
-            ? 100
-            : (
-                current /
-                total
-            ) *
-            100;
+const percent =
+    total > 0
+        ? (
+            current /
+            total
+        ) * 100
+        : 0;
 
 
     if (text) {
 
-        if (
-            smartTourIndex >=
-            total - 1
-        ) {
+    if (
+        current >= total &&
+        total > 0
+    ) {
 
-            text.textContent =
-                "Đã hoàn thành";
+        text.textContent =
+            "Đã hoàn thành";
 
-        } else {
+    } else {
 
-            text.textContent =
-                "Điểm " +
-                current +
-                " / " +
-                total;
-
-        }
+        text.textContent =
+            "Đã tham quan " +
+            current +
+            " / " +
+            total;
 
     }
+
+}
 
 
     if (bar) {
@@ -2600,17 +2622,78 @@ function updateSmartTourButtons() {
 /* =========================================================
    KHỞI ĐỘNG LẠI BƯỚC 7
    ========================================================= */
+function saveSmartTourProgress() {
 
+    const data = {
+        started: smartTourStarted,
+        index: smartTourIndex,
+        visitedIds:
+            Array.from(
+                visitedHeritageIds
+            )
+    };
+
+    localStorage.setItem(
+        SMART_TOUR_STORAGE_KEY,
+        JSON.stringify(data)
+    );
+
+}
+function loadSmartTourProgress() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                SMART_TOUR_STORAGE_KEY
+            );
+
+        if (!saved) {
+            return;
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        smartTourStarted =
+            Boolean(data.started);
+
+        smartTourIndex =
+            Number.isInteger(data.index)
+                ? data.index
+                : -1;
+
+        visitedHeritageIds =
+            new Set(
+                Array.isArray(data.visitedIds)
+                    ? data.visitedIds
+                    : []
+            );
+
+    } catch (error) {
+
+        console.warn(
+            "Không thể đọc tiến trình tham quan:",
+            error
+        );
+
+    }
+
+}
 function resetSmartTour() {
 
     smartTourStarted =
         false;
 
 
-    smartTourIndex =
-        -1;
 
+smartTourIndex =
+    -1;
+visitedHeritageIds.clear();
 
+localStorage.removeItem(
+    SMART_TOUR_STORAGE_KEY
+);
     updateSmartTourProgress();
 
     updateSmartTourButtons();
