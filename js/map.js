@@ -750,21 +750,41 @@ function createPopup(item) {
 
 
     let detailButton = "";
+const stationUrl = {
+    "lang-than": "tram-lang-than.html",
+    "van-mieu-mo-trach": "tram-van-mieu.html",
+    "dinh-lang-mo-trach": "tram-dinh-lang.html"
+}[String(item.id)] || "";
 
+let stationButton = "";
 
-    if (item.detail) {
+   const detailUrl =
+    item.detail ||
+    (
+        "detail.html?id=" +
+        encodeURIComponent(item.id)
+    );
 
-        detailButton = `
-            <a
-                class="popup-detail"
-                href="${safeAttr(item.detail)}"
-            >
-                📖 Xem chi tiết
-            </a>
-        `;
+detailButton = `
+    <a
+        class="popup-detail"
+        href="${safeAttr(detailUrl)}"
+    >
+        📖 Xem chi tiết
+    </a>
+`;
+if (stationUrl) {
 
-    }
+    stationButton = `
+        <a
+            class="popup-station"
+            href="${safeAttr(stationUrl)}"
+        >
+            🏛️ Trạm tham quan
+        </a>
+    `;
 
+}
 
     return `
         <div class="heritage-popup">
@@ -786,7 +806,7 @@ function createPopup(item) {
             <div class="popup-actions">
 
                 ${detailButton}
-
+${stationButton}
                 <a
                     class="popup-direction"
                     href="${googleUrl}"

@@ -211,11 +211,14 @@
             background: #800000;
             color: white;
         }
-
+.btn-station {
+    background: #28734a;
+    color: white;
+}
         .btn-direction {
-            background: #2e7549;
-            color: white;
-        }
+    background: #e3ad12;
+    color: #222;
+}
 
         .btn-audio {
             background: #b38a35;
@@ -275,7 +278,15 @@
 
             border-radius: 20px;
         }
+.popup-station-btn {
+    background: #28734a;
+    color: white;
+}
 
+.popup-direction-btn {
+    background: #e3ad12;
+    color: #222;
+}
         /* =========================
            MOBILE
         ========================= */
@@ -571,7 +582,11 @@ document.addEventListener(
                     POPUP
                     ==========================
                     */
-
+const stationUrl = {
+    "lang-than": "tram-lang-than.html",
+    "van-mieu-mo-trach": "tram-van-mieu.html",
+    "dinh-lang-mo-trach": "tram-dinh-lang.html"
+}[String(item.id)] || "";
                     const popup = `
 
                         <div>
@@ -599,7 +614,28 @@ document.addEventListener(
                             >
                                 Xem chi tiết
                             </a>
-
+${
+    stationUrl
+    ?
+    `
+    <a
+        class="popup-btn popup-station-btn"
+        href="${stationUrl}"
+    >
+        🏛️ Trạm tham quan
+    </a>
+    `
+    :
+    ""
+}
+    <a
+    class="popup-btn popup-direction-btn"
+    href="https://www.google.com/maps/dir/?api=1&destination=${item.lat},${item.lng}"
+    target="_blank"
+    rel="noopener"
+>
+    🧭 Chỉ đường
+</a>
                         </div>
 
                     `;
@@ -671,7 +707,20 @@ document.addEventListener(
                                 >
                                     📖 Chi tiết
                                 </a>
-
+${
+    stationUrl
+    ?
+    `
+    <a
+        class="btn btn-station"
+        href="${stationUrl}"
+    >
+        🏛️ Trạm tham quan
+    </a>
+    `
+    :
+    ""
+}
 
                                 <a
                                     class="btn btn-direction"
