@@ -1896,7 +1896,11 @@ function renderSmartTour() {
 
             stage.dataset.index =
                 index;
-
+const stationUrl = {
+    "lang-than": "tram-lang-than.html",
+    "van-mieu-mo-trach": "tram-van-mieu.html",
+    "dinh-lang-mo-trach": "tram-dinh-lang.html"
+}[String(item.id)] || "";
 
             stage.innerHTML = `
 
@@ -1945,7 +1949,20 @@ function renderSmartTour() {
                     >
                         📍 Xem
                     </button>
-
+${
+    stationUrl
+    ?
+    `
+    <button
+        class="stage-btn station"
+        type="button"
+    >
+        🏛️ Trạm tham quan
+    </button>
+    `
+    :
+    ""
+}
                     <button
                         class="stage-btn route"
                         type="button"
@@ -1963,13 +1980,32 @@ function renderSmartTour() {
                     ".stage-btn.view"
                 );
 
+const stationButton =
+    stage.querySelector(
+        ".stage-btn.station"
+    );
 
             const routeButton =
                 stage.querySelector(
                     ".stage-btn.route"
                 );
 
+if (
+    stationButton &&
+    stationUrl
+) {
 
+    stationButton.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                stationUrl;
+
+        }
+    );
+
+}
             if (viewButton) {
 
                 viewButton.addEventListener(
