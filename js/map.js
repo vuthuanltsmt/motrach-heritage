@@ -1916,39 +1916,45 @@ const stationUrl = {
                         )}
                     </h3>
 
-                    <div class="stage-meta">
+                   <div class="stage-meta">
 
-                        <span>
-                            🏛️
-                            ${escapeHtml(
-                                item.type
-                            )}
-                        </span>
+    <span>
+        🏛️
+        ${escapeHtml(
+            item.type
+        )}
+    </span>
 
-                        <span>
-                            ${
-                                index === 0
-                                    ? "🚩 Điểm bắt đầu"
-                                    : "📏 " +
-                                      distance.toFixed(
-                                          2
-                                      ) +
-                                      " km từ điểm trước"
-                            }
-                        </span>
+    <span>
+        ${
+            index === 0
+                ? "🚩 Điểm bắt đầu"
+                : "📏 " +
+                  distance.toFixed(
+                      2
+                  ) +
+                  " km từ điểm trước"
+        }
+    </span>
+<span
+        class="stage-visited"
+        hidden
+    >
+        ✓ Đã tham quan
+</span>
+</div>
 
-                    </div>
 
-                </div>
+</div>
 
-                <div class="stage-actions">
+<div class="stage-actions">
 
-                    <button
-                        class="stage-btn view"
-                        type="button"
-                    >
-                        📍 Xem
-                    </button>
+    <button
+        class="stage-btn view"
+        type="button"
+    >
+        📍 Xem
+    </button>
 ${
     stationUrl
     ?
@@ -2433,6 +2439,23 @@ function highlightSmartStage(index) {
 
             const item =
     heritageData[i];
+    const visitedLabel =
+    stage.querySelector(
+        ".stage-visited"
+    );
+
+const isVisited =
+    item &&
+    visitedHeritageIds.has(
+        String(item.id)
+    );
+
+if (visitedLabel) {
+
+    visitedLabel.hidden =
+        !isVisited;
+
+}
 
 if (
     item &&
