@@ -1,56 +1,922 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-          content="Mộ Trạch Heritage - Không gian di sản số Mộ Trạch">
+    <title>
+        Giới thiệu - Mộ Trạch Heritage
+    </title>
 
-    <title>Mộ Trạch Heritage</title>
+    <meta
+        name="description"
+        content="Giới thiệu về lịch sử, văn hóa, truyền thống hiếu học và không gian di sản Mộ Trạch."
+    >
 
-    <!-- CSS chính -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+        rel="preload"
+        as="image"
+        href="../images/van-mieu.jpg"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f7f2e9;
+
+            color: #292929;
+
+            line-height: 1.7;
+
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+
+            max-width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+
+            color: inherit;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .gt-header {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background: #850000;
+
+            box-shadow:
+                0 3px 12px
+                rgba(0,0,0,.16);
+        }
+
+        .gt-header-inner {
+            width: min(
+                1250px,
+                calc(100% - 32px)
+            );
+
+            min-height: 72px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .gt-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: white;
+
+            font-size: 21px;
+
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+        .gt-logo-icon {
+            font-size: 27px;
+        }
+
+        .gt-menu-button {
+            display: none;
+
+            border: 1px solid
+                rgba(255,255,255,.5);
+
+            background: transparent;
+
+            color: white;
+
+            border-radius: 8px;
+
+            padding: 7px 11px;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+        .gt-nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+        .gt-nav a {
+            color: white;
+
+            padding: 9px 11px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .gt-nav a:hover,
+        .gt-nav a.active {
+            background:
+                rgba(255,255,255,.14);
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .gt-hero {
+            min-height: 430px;
+
+            background:
+                linear-gradient(
+                    rgba(65,0,0,.60),
+                    rgba(65,0,0,.70)
+                ),
+                url("../images/van-mieu.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+        }
+
+        .gt-hero-content {
+            width: min(
+                850px,
+                calc(100% - 32px)
+            );
+
+            padding:
+                60px 0;
+        }
+
+        .gt-badge {
+            display: inline-block;
+
+            padding:
+                7px 17px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.65);
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .gt-hero h1 {
+            margin:
+                18px 0 10px;
+
+            font-size:
+                clamp(
+                    38px,
+                    6vw,
+                    62px
+                );
+
+            line-height: 1.12;
+        }
+
+        .gt-hero-subtitle {
+            margin: 0;
+
+            font-size:
+                clamp(
+                    20px,
+                    3vw,
+                    28px
+                );
+
+            font-weight: 700;
+        }
+
+        .gt-hero-description {
+            max-width: 680px;
+
+            margin:
+                18px auto 0;
+
+            color:
+                rgba(255,255,255,.92);
+
+            font-size: 17px;
+        }
+
+
+        /* =========================================
+           KHUNG CHUNG
+        ========================================= */
+
+        .gt-section {
+            padding:
+                70px 20px;
+        }
+
+        .gt-container {
+            width: min(
+                1120px,
+                100%
+            );
+
+            margin: auto;
+        }
+
+        .gt-heading {
+            max-width: 760px;
+
+            margin:
+                0 auto 42px;
+
+            text-align: center;
+        }
+
+        .gt-heading h2 {
+            margin: 0;
+
+            color: #850000;
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    40px
+                );
+        }
+
+        .gt-title-line {
+            width: 70px;
+
+            height: 4px;
+
+            margin:
+                15px auto 18px;
+
+            border-radius: 10px;
+
+            background: #c99b3c;
+        }
+
+        .gt-heading p {
+            margin: 0;
+
+            color: #625d55;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================================
+           VỀ MỘ TRẠCH
+        ========================================= */
+
+        .gt-intro-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 45px;
+
+            align-items: center;
+        }
+
+        .gt-main-image {
+            width: 100%;
+
+            aspect-ratio: 4 / 3;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,.12);
+        }
+
+        .gt-small-title {
+            display: inline-block;
+
+            margin-bottom: 8px;
+
+            color: #a17016;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+        .gt-intro-content h2 {
+            margin:
+                0 0 18px;
+
+            color: #850000;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    38px
+                );
+
+            line-height: 1.25;
+        }
+
+        .gt-intro-content p {
+            margin:
+                0 0 17px;
+
+            font-size: 17px;
+
+            color: #49443e;
+        }
+
+
+        /* =========================================
+           GIÁ TRỊ
+        ========================================= */
+
+        .gt-values-section {
+            background: white;
+        }
+
+        .gt-values {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0, 1fr)
+                );
+
+            gap: 20px;
+        }
+
+        .gt-value-card {
+            padding: 27px 24px;
+
+            background: #faf6ed;
+
+            border:
+                1px solid #eadfc9;
+
+            border-radius: 16px;
+        }
+
+        .gt-value-icon {
+            font-size: 38px;
+
+            margin-bottom: 13px;
+        }
+
+        .gt-value-card h3 {
+            margin:
+                0 0 10px;
+
+            color: #850000;
+
+            font-size: 22px;
+        }
+
+        .gt-value-card p {
+            margin: 0;
+
+            color: #575149;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================================
+           CÂU CHUYỆN
+        ========================================= */
+
+        .gt-story {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 35px;
+
+            align-items: stretch;
+        }
+
+        .gt-story-text {
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 18px;
+
+            border:
+                1px solid #eee3d2;
+        }
+
+        .gt-story-text h2 {
+            margin:
+                0 0 17px;
+
+            color: #850000;
+
+            font-size: 30px;
+        }
+
+        .gt-story-text p {
+            margin:
+                0 0 16px;
+
+            color: #49443e;
+
+            font-size: 16px;
+        }
+
+        .gt-story-image {
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 360px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+        }
+
+
+        /* =========================================
+           DI TÍCH TIÊU BIỂU
+        ========================================= */
+
+        .gt-sites-section {
+            background: #efe6d6;
+        }
+
+        .gt-sites {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
+
+            gap: 22px;
+        }
+
+        .gt-site-card {
+            background: white;
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            border:
+                1px solid #e6dac6;
+        }
+
+        .gt-site-card img {
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            object-fit: cover;
+        }
+
+        .gt-site-content {
+            padding: 21px;
+        }
+
+        .gt-site-content h3 {
+            margin:
+                0 0 7px;
+
+            color: #850000;
+
+            font-size: 22px;
+        }
+
+        .gt-site-type {
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #a17016;
+
+            font-size: 13px;
+
+            font-weight: 800;
+        }
+
+        .gt-site-content p {
+            margin:
+                0 0 17px;
+
+            color: #575149;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .gt-button {
+            display: inline-block;
+
+            background: #920000;
+
+            color: white;
+
+            padding:
+                11px 20px;
+
+            border-radius: 25px;
+
+            font-weight: 800;
+
+            font-size: 14px;
+        }
+
+        .gt-button:hover {
+            background: #6e0000;
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================= */
+
+        .gt-cta {
+            text-align: center;
+
+            background: #850000;
+
+            color: white;
+        }
+
+        .gt-cta-inner {
+            width: min(
+                780px,
+                100%
+            );
+
+            margin: auto;
+        }
+
+        .gt-cta h2 {
+            margin:
+                0 0 13px;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    38px
+                );
+        }
+
+        .gt-cta p {
+            margin:
+                0 auto 23px;
+
+            color:
+                rgba(255,255,255,.88);
+
+            font-size: 17px;
+        }
+
+        .gt-button-light {
+            display: inline-block;
+
+            padding:
+                11px 21px;
+
+            border-radius: 25px;
+
+            background: white;
+
+            color: #850000;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .gt-footer {
+            padding:
+                32px 20px;
+
+            background: #570000;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .gt-footer strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 20px;
+        }
+
+        .gt-footer p {
+            margin: 4px 0;
+
+            color:
+                rgba(255,255,255,.82);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media(max-width:850px) {
+
+            .gt-menu-button {
+                display: block;
+            }
+
+            .gt-header-inner {
+                position: relative;
+            }
+
+            .gt-nav {
+                display: none;
+
+                position: absolute;
+
+                top: 72px;
+
+                left: 0;
+
+                right: 0;
+
+                padding: 9px 0;
+
+                background: white;
+
+                box-shadow:
+                    0 10px 18px
+                    rgba(0,0,0,.12);
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+            .gt-nav.show {
+                display: flex;
+            }
+
+            .gt-nav a {
+                color: #700000;
+
+                border-radius: 0;
+
+                padding:
+                    12px 18px;
+            }
+
+            .gt-nav a:hover,
+            .gt-nav a.active {
+                background: #f6efe4;
+            }
+
+            .gt-intro-grid,
+            .gt-story {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .gt-values,
+            .gt-sites {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .gt-story-image {
+                min-height: 330px;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media(max-width:600px) {
+
+            .gt-header-inner {
+                min-height: 64px;
+            }
+
+            .gt-logo {
+                font-size: 16px;
+            }
+
+            .gt-logo-icon {
+                font-size: 22px;
+            }
+
+            .gt-nav {
+                top: 64px;
+            }
+
+            .gt-hero {
+                min-height: 360px;
+            }
+
+            .gt-hero-content {
+                padding:
+                    45px 0;
+            }
+
+            .gt-hero-description {
+                font-size: 15px;
+            }
+
+            .gt-section {
+                padding:
+                    50px 15px;
+            }
+
+            .gt-heading {
+                margin-bottom: 30px;
+            }
+
+            .gt-heading p {
+                font-size: 16px;
+            }
+
+            .gt-intro-grid {
+                gap: 25px;
+            }
+
+            .gt-values,
+            .gt-sites {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .gt-story-text {
+                padding:
+                    23px 19px;
+            }
+
+            .gt-story-image {
+                min-height: 250px;
+            }
+
+            .gt-main-image {
+                border-radius: 14px;
+            }
+
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<!-- =====================================================
+
+<!-- =========================================
      HEADER
-===================================================== -->
-<header class="site-header">
+========================================= -->
 
-    <div class="header-inner">
+<header class="gt-header">
 
-        <a href="index.html" class="logo">
-            <span class="logo-icon">🏛️</span>
-            <span>MỘ TRẠCH HERITAGE</span>
+    <div class="gt-header-inner">
+
+        <a
+            href="../index.html"
+            class="gt-logo"
+        >
+            <span class="gt-logo-icon">
+                🏛️
+            </span>
+
+            <span>
+                MỘ TRẠCH HERITAGE
+            </span>
         </a>
 
-        <button class="menu-button"
-                id="menuButton"
-                aria-label="Mở menu">
+
+        <button
+            id="gtMenuButton"
+            class="gt-menu-button"
+            type="button"
+            aria-label="Mở menu"
+        >
             ☰
         </button>
 
-        <nav class="main-nav" id="mainNav">
 
-            <a href="../index.html" class="active">
+        <nav
+            id="gtNav"
+            class="gt-nav"
+        >
+
+            <a href="../index.html">
                 🏠 Trang chủ
             </a>
 
-            <a href="pages/heritage.html">
+            <a href="heritage.html">
                 🏛️ Di tích
             </a>
 
-            <a href="pages/map.html">
+            <a href="map.html">
                 🗺️ Bản đồ
             </a>
 
-            <a href="pages/tuyen-tham-quan.html">
+            <a href="map-tour.html">
                 🧭 Tuyến tham quan
+            </a>
+
+            <a href="bai-viet.html">
+                📰 Tin tức
+            </a>
+
+            <a
+                href="gioi-thieu.html"
+                class="active"
+            >
+                ℹ️ Giới thiệu
             </a>
 
         </nav>
@@ -60,113 +926,108 @@
 </header>
 
 
-<!-- =====================================================
+<!-- =========================================
      HERO
-===================================================== -->
-<section class="hero">
+========================================= -->
 
-    <div class="hero-overlay">
+<section class="gt-hero">
 
-        <div class="hero-content">
+    <div class="gt-hero-content">
 
-            <div class="hero-label">
-                KHÔNG GIAN DI SẢN SỐ
-            </div>
+        <span class="gt-badge">
+            KHÔNG GIAN DI SẢN SỐ
+        </span>
 
-            <h1>
-                MỘ TRẠCH HERITAGE
-            </h1>
+        <h1>
+            Mộ Trạch
+        </h1>
 
-            <p class="hero-subtitle">
-                Làng Tiến sĩ – Đất học – Đất văn hiến
-            </p>
+        <p class="gt-hero-subtitle">
+            Làng Tiến sĩ – Đất học – Đất văn hiến
+        </p>
 
-            <p class="hero-description">
-                Khám phá lịch sử, văn hóa, con người và những
-                di tích tiêu biểu của quê hương Mộ Trạch.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="pages/heritage.html"
-                   class="btn btn-light">
-                    🏛️ Khám phá di tích
-                </a>
-
-                <a href="pages/map.html"
-                   class="btn btn-red">
-                    🗺️ Bản đồ di sản
-                </a>
-
-            </div>
-
-        </div>
+        <p class="gt-hero-description">
+            Nơi lưu giữ những giá trị lịch sử,
+            văn hóa và truyền thống hiếu học
+            được vun đắp qua nhiều thế hệ.
+        </p>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     GIỚI THIỆU
-===================================================== -->
-<section class="intro section">
+<!-- =========================================
+     VỀ MỘ TRẠCH
+========================================= -->
 
-    <div class="container">
+<section class="gt-section">
 
-        <div class="section-title">
+    <div class="gt-container">
 
-            <h2>Về Mộ Trạch</h2>
+        <div class="gt-heading">
 
-            <div class="title-line"></div>
+            <h2>
+                Về Mộ Trạch
+            </h2>
+
+            <div class="gt-title-line"></div>
 
             <p>
-                Mộ Trạch là vùng đất giàu truyền thống lịch sử,
-                văn hóa và hiếu học. Không gian di sản nơi đây
-                lưu giữ những dấu ấn quan trọng của nhiều thế hệ.
+                Một vùng quê giàu truyền thống,
+                nơi lịch sử và văn hóa vẫn hiện diện
+                trong đời sống cộng đồng hôm nay.
             </p>
 
         </div>
 
 
-        <div class="intro-grid">
+        <div class="gt-intro-grid">
 
-            <div class="intro-image">
+            <div>
 
-                <img src="images/van-mieu.jpg"
-                     alt="Văn Miếu Mộ Trạch"
-                     onerror="this.style.display='none';">
+                <img
+                    class="gt-main-image"
+                    src="../images/van-mieu.jpg"
+                    alt="Văn Miếu Mộ Trạch"
+                    width="800"
+                    height="600"
+                >
 
             </div>
 
 
-            <div class="intro-content">
+            <div class="gt-intro-content">
 
-                <span class="small-title">
+                <span class="gt-small-title">
                     MỘ TRẠCH – ĐẤT HỌC
                 </span>
 
-                <h3>
-                    Đất học – Đất văn hiến
-                </h3>
+                <h2>
+                    Một miền quê của truyền thống khoa bảng
+                </h2>
 
                 <p>
-                    Mộ Trạch từ lâu được biết đến với truyền thống
-                    hiếu học và khoa bảng. Những giá trị ấy đã trở
-                    thành một phần quan trọng trong bản sắc văn hóa
-                    của quê hương.
+                    Mộ Trạch được biết đến với truyền thống
+                    hiếu học và khoa bảng, một nét văn hóa
+                    đã trở thành niềm tự hào của nhiều thế hệ
+                    người dân địa phương.
                 </p>
 
                 <p>
-                    Hệ thống di tích, đình, miếu, lăng mộ và các
-                    công trình văn hóa góp phần lưu giữ ký ức lịch
-                    sử và truyền thống của cộng đồng.
+                    Cùng với truyền thống học hành,
+                    hệ thống đình, văn miếu, lăng mộ
+                    và các công trình tín ngưỡng
+                    tạo nên một không gian văn hóa
+                    giàu bản sắc.
                 </p>
 
-                <a href="pages/heritage.html"
-                   class="btn btn-red">
-                    Tìm hiểu các di tích →
-                </a>
+                <p>
+                    Mộ Trạch Heritage được xây dựng
+                    nhằm góp phần giới thiệu,
+                    lưu giữ và lan tỏa những giá trị ấy
+                    bằng phương thức số.
+                </p>
 
             </div>
 
@@ -177,59 +1038,220 @@
 </section>
 
 
-<!-- =====================================================
-     DI TÍCH TIÊU BIỂU
-===================================================== -->
-<section class="heritage-section section">
+<!-- =========================================
+     GIÁ TRỊ DI SẢN
+========================================= -->
 
-    <div class="container">
+<section class="gt-section gt-values-section">
 
-        <div class="section-title">
+    <div class="gt-container">
 
-            <h2>Di tích tiêu biểu</h2>
+        <div class="gt-heading">
 
-            <div class="title-line"></div>
+            <h2>
+                Giá trị được lưu giữ
+            </h2>
+
+            <div class="gt-title-line"></div>
 
             <p>
-                Khám phá những địa điểm tiêu biểu trong
-                không gian di sản Mộ Trạch.
+                Di sản Mộ Trạch không chỉ nằm ở
+                những công trình kiến trúc,
+                mà còn trong ký ức,
+                tri thức và đời sống cộng đồng.
             </p>
 
         </div>
 
 
-        <div class="heritage-grid">
+        <div class="gt-values">
 
 
-            <!-- LĂNG THẦN -->
-            <article class="heritage-card">
+            <article class="gt-value-card">
 
-                <div class="card-image">
-
-                    <img src="images/lang-than-vu-hon.jpg"
-                         alt="Lăng Thần Mộ Trạch"
-                         onerror="this.src='images/van-mieu.jpg';">
-
+                <div class="gt-value-icon">
+                    📜
                 </div>
 
-                <div class="card-content">
+                <h3>
+                    Lịch sử
+                </h3>
+
+                <p>
+                    Những câu chuyện về nguồn cội,
+                    các nhân vật và dấu ấn lịch sử
+                    được truyền lại qua nhiều thế hệ.
+                </p>
+
+            </article>
+
+
+            <article class="gt-value-card">
+
+                <div class="gt-value-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    Truyền thống hiếu học
+                </h3>
+
+                <p>
+                    Tinh thần học tập và khoa bảng
+                    là một trong những giá trị
+                    nổi bật của quê hương Mộ Trạch.
+                </p>
+
+            </article>
+
+
+            <article class="gt-value-card">
+
+                <div class="gt-value-icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    Di sản văn hóa
+                </h3>
+
+                <p>
+                    Đình, văn miếu, lăng mộ
+                    và các không gian tín ngưỡng
+                    góp phần tạo nên bản sắc địa phương.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     MỤC TIÊU WEBSITE
+========================================= -->
+
+<section class="gt-section">
+
+    <div class="gt-container">
+
+        <div class="gt-story">
+
+            <div class="gt-story-text">
+
+                <span class="gt-small-title">
+                    MỘ TRẠCH HERITAGE
+                </span>
+
+                <h2>
+                    Kết nối di sản bằng công nghệ
+                </h2>
+
+                <p>
+                    Website Mộ Trạch Heritage
+                    hướng đến việc xây dựng
+                    một không gian di sản số
+                    dễ tiếp cận cho người dân,
+                    du khách và thế hệ trẻ.
+                </p>
+
+                <p>
+                    Thông qua bản đồ,
+                    hình ảnh, thuyết minh,
+                    video và các bài viết,
+                    người xem có thể tìm hiểu
+                    về di sản ngay cả khi
+                    chưa có điều kiện
+                    trực tiếp đến tham quan.
+                </p>
+
+                <p>
+                    Nội dung trên website
+                    sẽ tiếp tục được bổ sung
+                    và hoàn thiện trong quá trình phát triển.
+                </p>
+
+            </div>
+
+
+            <img
+                class="gt-story-image"
+                src="../images/dinh-lang.jpg"
+                alt="Đình làng Mộ Trạch"
+                width="800"
+                height="600"
+                loading="lazy"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     DI TÍCH TIÊU BIỂU
+========================================= -->
+
+<section class="gt-section gt-sites-section">
+
+    <div class="gt-container">
+
+        <div class="gt-heading">
+
+            <h2>
+                Một số di tích tiêu biểu
+            </h2>
+
+            <div class="gt-title-line"></div>
+
+            <p>
+                Khám phá những địa điểm
+                đang được giới thiệu
+                trong không gian số Mộ Trạch Heritage.
+            </p>
+
+        </div>
+
+
+        <div class="gt-sites">
+
+
+            <article class="gt-site-card">
+
+                <img
+                    src="../images/lang-than-vu-hon.jpg"
+                    alt="Lăng Thần Mộ Trạch"
+                    width="600"
+                    height="375"
+                    loading="lazy"
+                >
+
+                <div class="gt-site-content">
 
                     <h3>
                         Lăng Thần
                     </h3>
 
-                    <div class="card-type">
-                        Mộ cụ Vũ Hồn
-                    </div>
+                    <span class="gt-site-type">
+                        MỘ CỤ VŨ HỒN
+                    </span>
 
                     <p>
-                        Di tích gắn với Đức Thủy tổ Vũ Hồn
-                        và nguồn cội lịch sử của Mộ Trạch.
+                        Di tích gắn với nguồn cội
+                        và lịch sử của Mộ Trạch.
                     </p>
 
-                    <a href="pages/detail.html?id=1"
-                       class="card-button">
-                        Xem di tích →
+                    <a
+                        class="gt-button"
+                        href="detail.html?id=1"
+                    >
+                        Xem chi tiết →
                     </a>
 
                 </div>
@@ -237,35 +1259,37 @@
             </article>
 
 
-            <!-- VĂN MIẾU -->
-            <article class="heritage-card">
+            <article class="gt-site-card">
 
-                <div class="card-image">
+                <img
+                    src="../images/van-mieu.jpg"
+                    alt="Văn Miếu Mộ Trạch"
+                    width="600"
+                    height="375"
+                    loading="lazy"
+                >
 
-                    <img src="images/van-mieu.jpg"
-                         alt="Văn Miếu Mộ Trạch"
-                         onerror="this.src='images/lang-than-vu-hon.jpg';">
-
-                </div>
-
-                <div class="card-content">
+                <div class="gt-site-content">
 
                     <h3>
                         Văn Miếu Mộ Trạch
                     </h3>
 
-                    <div class="card-type">
-                        Di tích văn hóa
-                    </div>
+                    <span class="gt-site-type">
+                        VĂN HÓA – KHOA BẢNG
+                    </span>
 
                     <p>
-                        Biểu tượng cho truyền thống hiếu học
-                        và khoa bảng của quê hương.
+                        Không gian gắn với
+                        truyền thống hiếu học
+                        của quê hương.
                     </p>
 
-                    <a href="pages/detail.html?id=2"
-                       class="card-button">
-                        Xem di tích →
+                    <a
+                        class="gt-button"
+                        href="detail.html?id=van-mieu-mo-trach"
+                    >
+                        Xem chi tiết →
                     </a>
 
                 </div>
@@ -273,149 +1297,43 @@
             </article>
 
 
-            <!-- ĐÌNH LÀNG -->
-            <article class="heritage-card">
+            <article class="gt-site-card">
 
-                <div class="card-image">
+                <img
+                    src="../images/dinh-lang.jpg"
+                    alt="Đình làng Mộ Trạch"
+                    width="600"
+                    height="375"
+                    loading="lazy"
+                >
 
-                    <img src="images/dinh-lang.jpg"
-                         alt="Đình làng Mộ Trạch"
-                         onerror="this.src='images/van-mieu.jpg';">
-
-                </div>
-
-                <div class="card-content">
+                <div class="gt-site-content">
 
                     <h3>
                         Đình làng Mộ Trạch
                     </h3>
 
-                    <div class="card-type">
-                        Di tích kiến trúc
-                    </div>
+                    <span class="gt-site-type">
+                        SINH HOẠT CỘNG ĐỒNG
+                    </span>
 
                     <p>
-                        Không gian văn hóa gắn với đời sống
-                        cộng đồng và các nghi lễ truyền thống.
+                        Không gian văn hóa
+                        gắn với cộng đồng
+                        và nghi lễ truyền thống.
                     </p>
 
-                    <a href="pages/detail.html?id=3"
-                       class="card-button">
-                        Xem di tích →
+                    <a
+                        class="gt-button"
+                        href="detail.html?id=dinh-lang-mo-trach"
+                    >
+                        Xem chi tiết →
                     </a>
 
                 </div>
 
             </article>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     KHÁM PHÁ
-===================================================== -->
-<section class="explore-section">
-
-    <div class="container">
-
-        <div class="section-title section-title-white">
-
-            <h2>
-                Khám phá Mộ Trạch
-            </h2>
-
-            <div class="title-line"></div>
-
-            <p>
-                Một không gian số giúp kết nối du khách
-                với di sản ngay tại nơi tham quan.
-            </p>
-
-        </div>
-
-
-        <div class="explore-grid">
-
-
-            <!-- DI TÍCH -->
-            <a href="pages/heritage.html"
-               class="explore-card">
-
-                <div class="explore-icon">
-                    🏛️
-                </div>
-
-                <h3>
-                    Di tích
-                </h3>
-
-                <p>
-                    Tìm hiểu các di tích tiêu biểu.
-                </p>
-
-            </a>
-
-
-            <!-- BẢN ĐỒ -->
-            <a href="pages/map.html"
-               class="explore-card">
-
-                <div class="explore-icon">
-                    🗺️
-                </div>
-
-                <h3>
-                    Bản đồ
-                </h3>
-
-                <p>
-                    Xác định vị trí và tìm đường
-                    đến di tích.
-                </p>
-
-            </a>
-
-
-            <!-- THUYẾT MINH -->
-            <a href="pages/heritage.html"
-               class="explore-card">
-
-                <div class="explore-icon">
-                    🎧
-                </div>
-
-                <h3>
-                    Thuyết minh
-                </h3>
-
-                <p>
-                    Nghe câu chuyện về các di tích.
-                </p>
-
-            </a>
-
-
-            <!-- VIDEO -->
-            <a href="pages/heritage.html"
-               class="explore-card">
-
-                <div class="explore-icon">
-                    🎬
-                </div>
-
-                <h3>
-                    Video
-                </h3>
-
-                <p>
-                    Xem hình ảnh và video giới thiệu.
-                </p>
-
-            </a>
 
         </div>
 
@@ -424,70 +1342,112 @@
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================
+     CTA
+========================================= -->
+
+<section class="gt-section gt-cta">
+
+    <div class="gt-cta-inner">
+
+        <h2>
+            Khám phá di sản Mộ Trạch
+        </h2>
+
+        <p>
+            Xem bản đồ,
+            nghe thuyết minh
+            và tìm hiểu chi tiết
+            các địa điểm tiêu biểu.
+        </p>
+
+        <a
+            href="heritage.html"
+            class="gt-button-light"
+        >
+            🏛️ Khám phá các di tích
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
      FOOTER
-===================================================== -->
-<footer class="site-footer">
+========================================= -->
 
-    <div class="container">
+<footer class="gt-footer">
 
-        <div class="footer-logo">
-            🏛️ MỘ TRẠCH HERITAGE
-        </div>
+    <strong>
+        🏛️ MỘ TRẠCH HERITAGE
+    </strong>
 
-        <p>
-            Không gian di sản số
-        </p>
+    <p>
+        Không gian di sản số
+    </p>
 
-        <p>
-            Làng Tiến sĩ – Đất học – Đất văn hiến
-        </p>
+    <p>
+        Làng Tiến sĩ – Đất học – Đất văn hiến
+    </p>
 
-        <div class="footer-line"></div>
-
-        <p class="copyright">
-            © 2026 Mộ Trạch Heritage
-        </p>
-
-    </div>
+    <p>
+        © 2026 Mộ Trạch Heritage
+    </p>
 
 </footer>
 
 
-<!-- =====================================================
-     JAVASCRIPT MENU
-===================================================== -->
+<!-- =========================================
+     MOBILE MENU
+========================================= -->
+
 <script>
 
-    const menuButton =
-        document.getElementById("menuButton");
+const menuButton =
+    document.getElementById(
+        "gtMenuButton"
+    );
 
-    const mainNav =
-        document.getElementById("mainNav");
-
-
-    menuButton.addEventListener("click", function () {
-
-        mainNav.classList.toggle("show");
-
-    });
+const navigation =
+    document.getElementById(
+        "gtNav"
+    );
 
 
-    // Đóng menu khi chọn liên kết trên điện thoại
-    const navLinks =
-        mainNav.querySelectorAll("a");
+menuButton.addEventListener(
+    "click",
+    function () {
 
-    navLinks.forEach(function(link) {
+        navigation.classList
+            .toggle(
+                "show"
+            );
+    }
+);
 
-        link.addEventListener("click", function() {
 
-            mainNav.classList.remove("show");
+navigation
+    .querySelectorAll("a")
+    .forEach(
+        function (link) {
 
-        });
+            link.addEventListener(
+                "click",
+                function () {
 
-    });
+                    navigation.classList
+                        .remove(
+                            "show"
+                        );
+                }
+            );
+        }
+    );
 
 </script>
 
+
 </body>
+
 </html>
