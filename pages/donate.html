@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Ủng hộ phát triển - Mộ Trạch Heritage
+    </title>
+
+    <meta
+        name="description"
+        content="Ủng hộ phát triển và duy trì không gian di sản số Mộ Trạch Heritage."
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f6f2e8;
+
+            color: #292929;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .topbar {
+            background: #800000;
+
+            color: white;
+
+            padding: 15px 20px;
+        }
+
+        .topbar-inner {
+            width: min(
+                1000px,
+                calc(100% - 20px)
+            );
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+        }
+
+        .brand {
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: 800;
+
+            font-size: 20px;
+        }
+
+        .home-link {
+            color: white;
+
+            text-decoration: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.55);
+
+            border-radius: 8px;
+
+            padding: 8px 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+
+            padding:
+                45px 20px 25px;
+        }
+
+        .hero-icon {
+            font-size: 48px;
+
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            margin:
+                0 0 12px;
+
+            color: #800000;
+
+            font-size: 36px;
+        }
+
+        .hero p {
+            max-width: 700px;
+
+            margin: auto;
+
+            line-height: 1.7;
+
+            color: #665f55;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           DONATE CARD
+        ========================= */
+
+        .page {
+            width: min(
+                760px,
+                calc(100% - 25px)
+            );
+
+            margin:
+                15px auto 60px;
+        }
+
+        .donate-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 32px;
+
+            box-shadow:
+                0 8px 28px
+                rgba(0,0,0,.09);
+        }
+
+        .intro {
+            text-align: center;
+
+            line-height: 1.7;
+
+            font-size: 16px;
+
+            margin:
+                0 auto 25px;
+
+            max-width: 620px;
+        }
+
+
+        /* =========================
+           QR
+        ========================= */
+
+        .qr-box {
+            text-align: center;
+
+            background: #faf7ef;
+
+            border:
+                1px solid #eadfc8;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+            margin-bottom: 25px;
+        }
+
+        .qr-box h2 {
+            margin:
+                0 0 17px;
+
+            color: #800000;
+
+            font-size: 23px;
+        }
+
+        .qr-image {
+            display: block;
+
+            width: min(
+                430px,
+                100%
+            );
+
+            margin: auto;
+
+            border-radius: 12px;
+
+            background: white;
+        }
+
+        .qr-note {
+            margin:
+                16px 0 0;
+
+            color: #666;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           BANK INFO
+        ========================= */
+
+        .bank-info {
+            border:
+                1px solid #ece5d8;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            margin-top: 22px;
+        }
+
+        .bank-row {
+            display: grid;
+
+            grid-template-columns:
+                180px 1fr;
+
+            gap: 15px;
+
+            padding:
+                14px 17px;
+
+            border-bottom:
+                1px solid #eee8dc;
+        }
+
+        .bank-row:last-child {
+            border-bottom: 0;
+        }
+
+        .bank-label {
+            color: #777;
+
+            font-weight: 700;
+        }
+
+        .bank-value {
+            color: #222;
+
+            font-weight: 700;
+
+            word-break: break-word;
+        }
+
+        .account-number {
+            color: #800000;
+
+            font-size: 20px;
+        }
+
+
+        /* =========================
+           COPY BUTTON
+        ========================= */
+
+        .copy-button {
+            display: block;
+
+            width: 100%;
+
+            border: 0;
+
+            background: #800000;
+
+            color: white;
+
+            border-radius: 10px;
+
+            padding: 13px 16px;
+
+            margin-top: 18px;
+
+            font-weight: 800;
+
+            font-size: 15px;
+
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background: #660000;
+        }
+
+        #copyMessage {
+            min-height: 22px;
+
+            text-align: center;
+
+            color: #28734a;
+
+            font-weight: 700;
+
+            margin-top: 10px;
+        }
+
+
+        /* =========================
+           THANK YOU
+        ========================= */
+
+        .thanks {
+            margin-top: 26px;
+
+            padding: 20px;
+
+            background: #fff8e8;
+
+            border-left:
+                4px solid #c89b3c;
+
+            border-radius: 10px;
+
+            line-height: 1.7;
+        }
+
+        .thanks strong {
+            color: #800000;
+        }
+
+        .voluntary {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #800000;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 23px 15px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:600px) {
+
+            .topbar {
+                padding:
+                    12px 10px;
+            }
+
+            .topbar-inner {
+                width: 100%;
+            }
+
+            .brand {
+                font-size: 16px;
+            }
+
+            .home-link {
+                font-size: 13px;
+
+                padding:
+                    7px 9px;
+            }
+
+            .hero {
+                padding:
+                    32px 15px 18px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .donate-card {
+                padding:
+                    19px 15px;
+            }
+
+            .qr-box {
+                padding:
+                    16px 10px;
+            }
+
+            .qr-image {
+                width: 100%;
+            }
+
+            .bank-row {
+                grid-template-columns:
+                    1fr;
+
+                gap: 5px;
+            }
+
+            .account-number {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+            🏛️ Mộ Trạch Heritage
+        </a>
+
+        <a
+            class="home-link"
+            href="../index.html"
+        >
+            ← Trang chủ
+        </a>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-icon">
+        ❤️
+    </div>
+
+    <h1>
+        Ủng hộ phát triển website
+    </h1>
+
+    <p>
+        Nếu bạn thấy Mộ Trạch Heritage hữu ích,
+        bạn có thể ủng hộ một khoản tùy tâm
+        để góp phần duy trì và phát triển
+        không gian di sản số này.
+    </p>
+
+</section>
+
+
+<main class="page">
+
+    <section class="donate-card">
+
+        <p class="intro">
+            Mỗi sự ủng hộ là một nguồn động viên
+            để website tiếp tục bổ sung tư liệu,
+            hình ảnh, thuyết minh và các nội dung
+            về lịch sử – văn hóa Mộ Trạch.
+        </p>
+
+
+        <div class="qr-box">
+
+            <h2>
+                📱 Quét mã QR để ủng hộ
+            </h2>
+
+            <img
+                class="qr-image"
+                src="../images/qr/qr-donate.jpg"
+                alt="QR ủng hộ phát triển Mộ Trạch Heritage"
+            >
+
+            <p class="qr-note">
+                Mở ứng dụng ngân hàng,
+                chọn quét QR và nhập số tiền
+                bạn muốn ủng hộ.
+            </p>
+
+        </div>
+
+
+        <div class="bank-info">
+
+            <div class="bank-row">
+
+                <div class="bank-label">
+                    Ngân hàng
+                </div>
+
+                <div class="bank-value">
+                    Agribank
+                </div>
+
+            </div>
+
+
+            <div class="bank-row">
+
+                <div class="bank-label">
+                    Chủ tài khoản
+                </div>
+
+                <div class="bank-value">
+                    VU TRONG THUAN
+                </div>
+
+            </div>
+
+
+            <div class="bank-row">
+
+                <div class="bank-label">
+                    Số tài khoản
+                </div>
+
+                <div
+                    id="accountNumber"
+                    class="
+                        bank-value
+                        account-number
+                    "
+                >
+                    8888972348298
+                </div>
+
+            </div>
+
+
+            <div class="bank-row">
+
+                <div class="bank-label">
+                    Nội dung gợi ý
+                </div>
+
+                <div class="bank-value">
+                    UNG HO MO TRACH HERITAGE
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="copyButton"
+            class="copy-button"
+            type="button"
+        >
+            📋 Sao chép số tài khoản
+        </button>
+
+
+        <div id="copyMessage"></div>
+
+
+        <div class="thanks">
+
+            <strong>
+                ❤️ Xin chân thành cảm ơn!
+            </strong>
+
+            <br>
+
+            Sự đồng hành của bạn là nguồn động lực
+            để Mộ Trạch Heritage tiếp tục hoàn thiện,
+            lưu giữ và lan tỏa các giá trị
+            lịch sử – văn hóa của quê hương.
+
+        </div>
+
+
+        <div class="voluntary">
+
+            Việc ủng hộ hoàn toàn tự nguyện.
+            Bạn có thể sử dụng website bình thường
+            mà không cần đóng góp.
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © 2026 Mộ Trạch Heritage
+    · Không gian di sản số
+
+</footer>
+
+
+<script>
+
+const copyButton =
+    document.getElementById(
+        "copyButton"
+    );
+
+const copyMessage =
+    document.getElementById(
+        "copyMessage"
+    );
+
+const accountNumber =
+    document.getElementById(
+        "accountNumber"
+    ).textContent.trim();
+
+
+copyButton.addEventListener(
+    "click",
+    async function () {
+
+        try {
+
+            await navigator.clipboard
+                .writeText(
+                    accountNumber
+                );
+
+            copyMessage.textContent =
+                "✅ Đã sao chép số tài khoản.";
+
+        } catch (error) {
+
+            copyMessage.textContent =
+                "Số tài khoản: " +
+                accountNumber;
+        }
+    }
+);
+
+</script>
+
+
+</body>
+</html>
