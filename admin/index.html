@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Quản trị - Mộ Trạch Heritage
+    </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f3ed;
+            color: #222;
+        }
+
+        .admin-header {
+            background: #800000;
+            color: white;
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .logout-btn {
+            border: 1px solid rgba(255,255,255,.7);
+            background: transparent;
+            color: white;
+            padding: 9px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            min-height: calc(100vh - 65px);
+        }
+
+        .sidebar {
+            background: white;
+            border-right: 1px solid #ddd;
+            padding: 20px 14px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px 14px;
+            margin-bottom: 7px;
+            border-radius: 9px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #f2e5e5;
+            color: #800000;
+        }
+
+        .main {
+            padding: 28px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin: 0 0 8px;
+            color: #800000;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 22px;
+            box-shadow:
+                0 5px 18px rgba(0,0,0,.07);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            color: #800000;
+        }
+
+        .card p {
+            margin: 0 0 18px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card a {
+            display: inline-block;
+            text-decoration: none;
+            background: #800000;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        #adminStatus {
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media(max-width:700px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: flex;
+                overflow-x: auto;
+                gap: 6px;
+                border-right: 0;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .sidebar a {
+                white-space: nowrap;
+                margin-bottom: 0;
+            }
+
+            .main {
+                padding: 18px;
+            }
+
+            .admin-header h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="admin-header">
+
+    <div>
+        <h1>🏛️ Mộ Trạch Heritage</h1>
+        <small>Trang quản trị</small>
+    </div>
+
+    <button
+        id="logoutButton"
+        class="logout-btn"
+        type="button"
+    >
+        Đăng xuất
+    </button>
+
+</header>
+
+<div class="layout">
+
+    <nav class="sidebar">
+
+        <a
+            href="index.html"
+            class="active"
+        >
+            🏠 Tổng quan
+        </a>
+
+        <a href="write.html">
+    ✍️ Viết bài
+</a>
+
+        <a href="posts.html">
+    📚 Danh sách bài
+</a>
+
+        <a href="#">
+            🖼️ Ảnh
+        </a>
+
+        <a href="#">
+            🎧 Audio
+        </a>
+
+        <a href="#">
+            🎬 Video
+        </a>
+
+        <a href="../index.html">
+            🌐 Xem website
+        </a>
+
+    </nav>
+
+
+    <main class="main">
+
+        <div class="welcome">
+
+            <h2>
+                Bảng điều khiển
+            </h2>
+
+            <p>
+                Quản lý nội dung
+                Mộ Trạch Heritage
+            </p>
+
+            <div id="adminStatus">
+                Đang kiểm tra tài khoản quản trị...
+            </div>
+
+        </div>
+
+
+        <section class="cards">
+
+            <article class="card">
+
+                <div class="card-icon">
+                    ✍️
+                </div>
+
+                <h3>
+                    Viết bài mới
+                </h3>
+
+                <p>
+                    Viết và xuất bản
+                    bài giới thiệu,
+                    tin tức và tư liệu.
+                </p>
+
+                <a href="write.html">
+    Viết bài
+</a>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🖼️
+                </div>
+
+                <h3>
+                    Quản lý ảnh
+                </h3>
+
+                <p>
+                    Tải ảnh lên và
+                    sử dụng trong
+                    các bài viết.
+                </p>
+
+                <a href="#">
+                    Quản lý ảnh
+                </a>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🎧
+                </div>
+
+                <h3>
+                    Audio
+                </h3>
+
+                <p>
+                    Đăng file MP3
+                    phục vụ thuyết minh
+                    và bài viết.
+                </p>
+
+                <a href="#">
+                    Quản lý audio
+                </a>
+
+            </article>
+
+
+            <article class="card">
+
+                <div class="card-icon">
+                    🎬
+                </div>
+
+                <h3>
+                    Video
+                </h3>
+
+                <p>
+                    Đăng và quản lý
+                    video MP4.
+                </p>
+
+                <a href="#">
+                    Quản lý video
+                </a>
+
+            </article>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script
+    type="module"
+    src="../js/admin-dashboard.js"
+></script>
+
+</body>
+</html>

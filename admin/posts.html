@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Danh sách bài - Mộ Trạch Heritage
+    </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f2ea;
+            color: #222;
+        }
+
+        .admin-header {
+            background: #800000;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            padding: 15px 22px;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-btn {
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid
+                rgba(255,255,255,.6);
+
+            border-radius: 8px;
+
+            padding: 9px 13px;
+
+            font-weight: 700;
+        }
+
+        .page {
+            width: min(
+                1200px,
+                calc(100% - 30px)
+            );
+
+            margin: 28px auto 55px;
+        }
+
+        .page-heading {
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 18px;
+
+            margin-bottom: 22px;
+        }
+
+        .page-heading h2 {
+            margin: 0 0 7px;
+
+            color: #800000;
+
+            font-size: 30px;
+        }
+
+        .page-heading p {
+            margin: 0;
+
+            color: #666;
+        }
+
+        .new-post-btn {
+            display: inline-block;
+
+            text-decoration: none;
+
+            background: #800000;
+
+            color: white;
+
+            padding: 12px 17px;
+
+            border-radius: 9px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .status-bar {
+            background: white;
+
+            border-radius: 13px;
+
+            padding: 15px 18px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 4px 16px
+                rgba(0,0,0,.06);
+        }
+
+        #adminStatus {
+            color: #666;
+
+            font-size: 14px;
+        }
+
+        .toolbar {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .filter-btn {
+            border: 1px solid #ccc;
+
+            background: white;
+
+            color: #333;
+
+            padding: 10px 14px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .filter-btn.active {
+            background: #800000;
+
+            color: white;
+
+            border-color: #800000;
+        }
+
+        .posts-card {
+            background: white;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0,0,0,.07);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 850px;
+        }
+
+        th,
+        td {
+            padding: 15px 14px;
+
+            border-bottom: 1px solid #eee;
+
+            text-align: left;
+
+            vertical-align: middle;
+        }
+
+        th {
+            background: #faf7ef;
+
+            color: #5c5143;
+
+            font-size: 14px;
+        }
+
+        td {
+            font-size: 15px;
+        }
+
+        .post-title {
+            color: #800000;
+
+            font-weight: 700;
+
+            line-height: 1.4;
+        }
+
+        .post-slug {
+            margin-top: 5px;
+
+            color: #888;
+
+            font-size: 12px;
+
+            word-break: break-all;
+        }
+
+        .status {
+            display: inline-block;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .status-published {
+            background: #e6f4ea;
+
+            color: #28734a;
+        }
+
+        .status-draft {
+            background: #fff2cc;
+
+            color: #7b5a00;
+        }
+
+        .actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+        }
+
+        .action-btn {
+            border: 0;
+
+            border-radius: 7px;
+
+            padding: 8px 10px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            display: inline-block;
+        }
+
+        .btn-view {
+            background: #ece7dc;
+
+            color: #42392c;
+        }
+
+        .btn-edit {
+            background: #28734a;
+
+            color: white;
+        }
+
+        .btn-delete {
+            background: #a00000;
+
+            color: white;
+        }
+
+        .empty-state,
+        .loading-state {
+            padding: 45px 20px;
+
+            text-align: center;
+
+            color: #666;
+        }
+
+        .state-icon {
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+        #message {
+            margin-top: 18px;
+
+            min-height: 22px;
+
+            text-align: center;
+
+            font-weight: 700;
+        }
+
+        @media(max-width:700px) {
+
+            .admin-header {
+                padding: 13px 12px;
+            }
+
+            .admin-header h1 {
+                font-size: 17px;
+            }
+
+            .page {
+                width:
+                    calc(100% - 20px);
+
+                margin-top: 17px;
+            }
+
+            .page-heading {
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+            .new-post-btn {
+                text-align: center;
+            }
+
+            .toolbar {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .filter-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<header class="admin-header">
+
+    <h1>
+        🏛️ Mộ Trạch Heritage
+    </h1>
+
+    <div class="header-actions">
+
+        <a
+            class="header-btn"
+            href="index.html"
+        >
+            ← Quản trị
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="page">
+
+    <div class="page-heading">
+
+        <div>
+
+            <h2>
+                📚 Danh sách bài
+            </h2>
+
+            <p>
+                Quản lý bài nháp và
+                các bài đã xuất bản.
+            </p>
+
+        </div>
+
+
+        <a
+            class="new-post-btn"
+            href="write.html"
+        >
+            ✍️ Viết bài mới
+        </a>
+
+    </div>
+
+
+    <div class="status-bar">
+
+        <div id="adminStatus">
+            Đang kiểm tra tài khoản quản trị...
+        </div>
+
+    </div>
+
+
+    <div class="toolbar">
+
+        <button
+            class="filter-btn active"
+            data-status="all"
+            type="button"
+        >
+            Tất cả
+        </button>
+
+        <button
+            class="filter-btn"
+            data-status="published"
+            type="button"
+        >
+            ✅ Đã đăng
+        </button>
+
+        <button
+            class="filter-btn"
+            data-status="draft"
+            type="button"
+        >
+            📝 Bản nháp
+        </button>
+
+    </div>
+
+
+    <section class="posts-card">
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Bài viết
+                        </th>
+
+                        <th>
+                            Trạng thái
+                        </th>
+
+                        <th>
+                            Ngày tạo
+                        </th>
+
+                        <th>
+                            Cập nhật
+                        </th>
+
+                        <th>
+                            Thao tác
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="postsBody">
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            class="loading-state"
+                        >
+
+                            <div class="state-icon">
+                                ⏳
+                            </div>
+
+                            Đang tải danh sách bài...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <div id="message"></div>
+
+</main>
+
+
+<script
+    type="module"
+    src="../js/admin-posts.js"
+></script>
+
+</body>
+
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Bài viết - Mộ Trạch Heritage
+    </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f6f2e8;
+
+            color: #292929;
+        }
+
+
+        /* =========================
+           THANH TRÊN
+        ========================= */
+
+        .topbar {
+            background: #800000;
+
+            color: white;
+
+            padding: 15px 20px;
+        }
+
+        .topbar-inner {
+            width: min(
+                1000px,
+                calc(100% - 20px)
+            );
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+        }
+
+        .brand {
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 20px;
+
+            font-weight: 800;
+        }
+
+        .back-link {
+            color: white;
+
+            text-decoration: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.55);
+
+            border-radius: 8px;
+
+            padding: 8px 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           TRANG BÀI VIẾT
+        ========================= */
+
+        .page {
+            width: min(
+                900px,
+                calc(100% - 30px)
+            );
+
+            margin:
+                32px auto 60px;
+        }
+
+        .article {
+            background: white;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 7px 25px
+                rgba(0,0,0,.08);
+        }
+
+
+        /* =========================
+           ẢNH ĐẠI DIỆN
+        ========================= */
+
+        .cover-wrap {
+            width: 100%;
+
+            background: #eee8dc;
+
+            display: none;
+        }
+
+        .cover-wrap.visible {
+            display: block;
+        }
+
+        .cover-image {
+            width: 100%;
+
+            max-height: 520px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* =========================
+           PHẦN NỘI DUNG
+        ========================= */
+
+        .article-body {
+            padding: 35px;
+        }
+
+        .article-date {
+            color: #8a7663;
+
+            font-size: 14px;
+
+            margin-bottom: 12px;
+        }
+
+        .article-title {
+            margin:
+                0 0 16px;
+
+            color: #800000;
+
+            font-size: 36px;
+
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            margin:
+                0 0 28px;
+
+            padding:
+                15px 18px;
+
+            background: #faf6ec;
+
+            border-left:
+                4px solid #b99443;
+
+            border-radius: 8px;
+
+            color: #5f594f;
+
+            line-height: 1.7;
+
+            font-size: 17px;
+        }
+
+        .article-content {
+            font-size: 17px;
+
+            line-height: 1.85;
+
+            color: #333;
+
+            white-space: pre-line;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================
+           ẢNH BỔ SUNG
+        ========================= */
+
+        .gallery-section {
+            display: none;
+
+            margin-top: 35px;
+        }
+
+        .gallery-section.visible {
+            display: block;
+        }
+
+        .section-heading {
+            margin:
+                0 0 16px;
+
+            color: #800000;
+
+            font-size: 24px;
+        }
+
+        .gallery {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 14px;
+        }
+
+        .gallery img {
+            width: 100%;
+
+            aspect-ratio: 4 / 3;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           AUDIO
+        ========================= */
+
+        .audio-section {
+            display: none;
+
+            margin-top: 35px;
+
+            padding: 20px;
+
+            background: #faf7ef;
+
+            border-radius: 13px;
+        }
+
+        .audio-section.visible {
+            display: block;
+        }
+
+        audio {
+            width: 100%;
+
+            margin-top: 10px;
+        }
+
+
+        /* =========================
+           VIDEO
+        ========================= */
+
+        .video-section {
+            display: none;
+
+            margin-top: 35px;
+        }
+
+        .video-section.visible {
+            display: block;
+        }
+
+        video {
+            width: 100%;
+
+            max-height: 550px;
+
+            background: #000;
+
+            border-radius: 12px;
+        }
+
+
+        /* =========================
+           TRẠNG THÁI
+        ========================= */
+
+        .state-box {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            color: #666;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,0,0,.06);
+        }
+
+        .state-icon {
+            font-size: 44px;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================
+           CHÂN TRANG
+        ========================= */
+
+        footer {
+            background: #800000;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 24px 15px;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:600px) {
+
+            .topbar {
+                padding:
+                    12px 10px;
+            }
+
+            .topbar-inner {
+                width: 100%;
+            }
+
+            .brand {
+                font-size: 16px;
+            }
+
+            .back-link {
+                padding:
+                    7px 9px;
+
+                font-size: 13px;
+            }
+
+            .page {
+                width:
+                    calc(100% - 20px);
+
+                margin-top: 18px;
+            }
+
+            .article-body {
+                padding:
+                    22px 17px;
+            }
+
+            .article-title {
+                font-size: 28px;
+            }
+
+            .article-excerpt {
+                font-size: 16px;
+            }
+
+            .article-content {
+                font-size: 16px;
+            }
+
+            .gallery {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+            🏛️ Mộ Trạch Heritage
+        </a>
+
+
+        <a
+            class="back-link"
+            href="bai-viet.html"
+        >
+            ← Bài viết
+        </a>
+
+    </div>
+
+</header>
+
+
+<main
+    id="page"
+    class="page"
+>
+
+    <div
+        id="loadingState"
+        class="state-box"
+    >
+
+        <div class="state-icon">
+            ⏳
+        </div>
+
+        Đang tải bài viết...
+
+    </div>
+
+
+    <article
+        id="article"
+        class="article"
+        hidden
+    >
+
+
+        <!-- ẢNH ĐẠI DIỆN -->
+
+        <div
+            id="coverWrap"
+            class="cover-wrap"
+        >
+
+            <img
+                id="coverImage"
+                class="cover-image"
+                alt=""
+            >
+
+        </div>
+
+
+        <div class="article-body">
+
+
+            <!-- NGÀY ĐĂNG -->
+
+            <div
+                id="articleDate"
+                class="article-date"
+            ></div>
+
+
+            <!-- TIÊU ĐỀ -->
+
+            <h1
+                id="articleTitle"
+                class="article-title"
+            ></h1>
+
+
+            <!-- MÔ TẢ -->
+
+            <div
+                id="articleExcerpt"
+                class="article-excerpt"
+                hidden
+            ></div>
+
+
+            <!-- NỘI DUNG -->
+
+            <div
+                id="articleContent"
+                class="article-content"
+            ></div>
+
+
+            <!-- ẢNH BỔ SUNG -->
+
+            <section
+                id="gallerySection"
+                class="gallery-section"
+            >
+
+                <h2 class="section-heading">
+                    📷 Hình ảnh
+                </h2>
+
+                <div
+                    id="gallery"
+                    class="gallery"
+                ></div>
+
+            </section>
+
+
+            <!-- AUDIO -->
+
+            <section
+                id="audioSection"
+                class="audio-section"
+            >
+
+                <h2 class="section-heading">
+                    🎧 Thuyết minh
+                </h2>
+
+                <audio
+                    id="audioPlayer"
+                    controls
+                    preload="metadata"
+                ></audio>
+
+            </section>
+
+
+            <!-- VIDEO -->
+
+            <section
+                id="videoSection"
+                class="video-section"
+            >
+
+                <h2 class="section-heading">
+                    🎬 Video
+                </h2>
+
+                <video
+                    id="videoPlayer"
+                    controls
+                    preload="metadata"
+                ></video>
+
+            </section>
+
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer>
+    © Mộ Trạch Heritage
+</footer>
+
+
+<script
+    type="module"
+    src="../js/public-post-detail.js"
+></script>
+
+
+</body>
+
+</html>

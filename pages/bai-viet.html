@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Tin tức - Bài viết | Mộ Trạch Heritage
+    </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+            background: #f6f2e8;
+            color: #252525;
+        }
+
+        .topbar {
+            background: #800000;
+            color: white;
+            padding: 16px 20px;
+        }
+
+        .topbar-inner {
+            width: min(
+                1150px,
+                calc(100% - 20px)
+            );
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 21px;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            border:
+                1px solid
+                rgba(255,255,255,.55);
+            border-radius: 8px;
+            padding: 8px 13px;
+            font-weight: 700;
+        }
+
+        .hero {
+            padding: 50px 20px 38px;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #efe3c7,
+                    #f6f2e8
+                );
+        }
+
+        .hero h1 {
+            margin: 0 0 12px;
+            color: #800000;
+            font-size: 36px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #655f55;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .page {
+            width: min(
+                1150px,
+                calc(100% - 30px)
+            );
+            margin:
+                0 auto 60px;
+        }
+
+        .section-title {
+            margin:
+                10px 0 22px;
+        }
+
+        .section-title h2 {
+            margin: 0 0 6px;
+            color: #800000;
+            font-size: 26px;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: #777;
+        }
+
+        #postsGrid {
+            display: grid;
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0, 1fr)
+                );
+            gap: 24px;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 20px
+                rgba(0,0,0,.08);
+
+            display: flex;
+            flex-direction: column;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease;
+        }
+
+        .post-card:hover {
+            transform:
+                translateY(-4px);
+
+            box-shadow:
+                0 10px 28px
+                rgba(0,0,0,.12);
+        }
+
+        .post-image-wrap {
+            display: block;
+            background: #eee8dc;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .post-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 48px;
+
+            color: #967542;
+        }
+
+        .post-content {
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .post-date {
+            color: #8a7764;
+            font-size: 13px;
+            margin-bottom: 9px;
+        }
+
+        .post-title {
+            margin:
+                0 0 10px;
+
+            color: #800000;
+            font-size: 21px;
+            line-height: 1.35;
+        }
+
+        .post-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .post-title a:hover {
+            text-decoration: underline;
+        }
+
+        .post-excerpt {
+            margin:
+                0 0 20px;
+
+            color: #5f5f5f;
+
+            line-height: 1.6;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .read-more {
+            margin-top: auto;
+
+            display: inline-block;
+            align-self: flex-start;
+
+            background: #800000;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            padding: 10px 15px;
+
+            font-weight: 700;
+        }
+
+        .read-more:hover {
+            background: #660000;
+        }
+
+        .state-box {
+            grid-column: 1 / -1;
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 35px 20px;
+
+            text-align: center;
+
+            color: #666;
+
+            box-shadow:
+                0 4px 16px
+                rgba(0,0,0,.05);
+        }
+
+        .state-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px 20px;
+            background: #800000;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media(max-width:900px) {
+
+            #postsGrid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(0, 1fr)
+                    );
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            .topbar-inner {
+                width: 100%;
+            }
+
+            .brand {
+                font-size: 17px;
+            }
+
+            .hero {
+                padding:
+                    34px 18px 30px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            #postsGrid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .page {
+                width:
+                    calc(100% - 20px);
+            }
+
+            .post-content {
+                padding: 17px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+            🏛️ Mộ Trạch Heritage
+        </a>
+
+        <a
+            class="home-link"
+            href="../index.html"
+        >
+            ← Trang chủ
+        </a>
+
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>
+        📰 Tin tức – Bài viết
+    </h1>
+
+    <p>
+        Những câu chuyện, tư liệu,
+        hình ảnh và thông tin về
+        lịch sử, văn hóa và di sản
+        làng Mộ Trạch.
+    </p>
+
+</section>
+
+
+<main class="page">
+
+    <div class="section-title">
+
+        <h2>
+            Bài viết mới
+        </h2>
+
+        <p>
+            Nội dung được cập nhật
+            từ Mộ Trạch Heritage.
+        </p>
+
+    </div>
+
+
+    <section id="postsGrid">
+
+        <div class="state-box">
+
+            <div class="state-icon">
+                ⏳
+            </div>
+
+            Đang tải bài viết...
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    © Mộ Trạch Heritage
+</footer>
+
+
+<script
+    type="module"
+    src="../js/public-posts.js"
+></script>
+
+</body>
+
+</html>

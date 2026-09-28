@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Viết bài - Mộ Trạch Heritage
+    </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f2ea;
+            color: #222;
+        }
+
+        .admin-header {
+            background: #800000;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 22px;
+
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header-btn {
+            text-decoration: none;
+            color: white;
+
+            border: 1px solid
+                rgba(255,255,255,.6);
+
+            padding: 9px 13px;
+
+            border-radius: 8px;
+        }
+
+        .page {
+            width: min(
+                1050px,
+                calc(100% - 30px)
+            );
+
+            margin: 28px auto 50px;
+        }
+
+        .page-title {
+            margin-bottom: 22px;
+        }
+
+        .page-title h2 {
+            margin: 0 0 6px;
+            color: #800000;
+            font-size: 29px;
+        }
+
+        .page-title p {
+            margin: 0;
+            color: #666;
+        }
+
+        .editor-card {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 26px;
+
+            box-shadow:
+                0 5px 22px
+                rgba(0,0,0,.08);
+        }
+
+        .form-group {
+            margin-bottom: 23px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-weight: 700;
+
+            font-size: 16px;
+        }
+
+        .hint {
+            margin-top: 6px;
+
+            font-size: 13px;
+
+            color: #777;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+
+            border: 1px solid #ccc;
+
+            border-radius: 10px;
+
+            padding: 13px 14px;
+
+            font-size: 16px;
+
+            font-family: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+
+            border-color: #b99a49;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(185,154,73,.14);
+        }
+
+        #title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        #excerpt {
+            min-height: 95px;
+            resize: vertical;
+        }
+
+        #content {
+            min-height: 360px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        .upload-box {
+            border:
+                2px dashed #cfc5af;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            background: #faf8f3;
+        }
+
+        .upload-box input {
+            width: 100%;
+        }
+
+        .preview {
+            margin-top: 16px;
+        }
+
+        .preview img {
+            display: block;
+
+            width: 100%;
+            max-width: 520px;
+
+            max-height: 330px;
+
+            object-fit: cover;
+
+            border-radius: 12px;
+        }
+
+        .media-row {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+        }
+
+        .media-card {
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            padding: 18px;
+        }
+
+        .media-card h3 {
+            margin: 0 0 8px;
+
+            color: #800000;
+
+            font-size: 18px;
+        }
+
+        .file-name {
+            margin-top: 10px;
+
+            font-size: 13px;
+
+            color: #555;
+
+            word-break: break-all;
+        }
+
+        .gallery-preview {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(130px, 1fr)
+                );
+
+            gap: 10px;
+
+            margin-top: 15px;
+        }
+
+        .gallery-preview img {
+            width: 100%;
+            height: 110px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+        }
+
+        .actions {
+            display: flex;
+
+            justify-content: flex-end;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 28px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            border: 0;
+
+            border-radius: 9px;
+
+            padding: 13px 20px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .btn-draft {
+            background: #e6e0d1;
+            color: #3f3525;
+        }
+
+        .btn-publish {
+            background: #800000;
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: .55;
+            cursor: wait;
+        }
+
+        #message {
+            margin-top: 20px;
+
+            min-height: 24px;
+
+            padding: 0 4px;
+
+            text-align: center;
+
+            font-weight: 700;
+        }
+
+        .status-box {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            background: #faf7ee;
+
+            border-radius: 10px;
+
+            padding: 12px 15px;
+
+            margin-bottom: 24px;
+        }
+
+        #adminStatus {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media(max-width:700px) {
+
+            .admin-header {
+                padding: 13px 15px;
+            }
+
+            .admin-header h1 {
+                font-size: 17px;
+            }
+
+            .page {
+                width:
+                    calc(100% - 20px);
+
+                margin-top: 16px;
+            }
+
+            .editor-card {
+                padding: 18px 15px;
+            }
+
+            .media-row {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .actions {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+                min-height: 46px;
+            }
+
+            #content {
+                min-height: 300px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+<header class="admin-header">
+
+    <h1>
+        🏛️ Mộ Trạch Heritage
+    </h1>
+
+    <div class="header-actions">
+
+        <a
+            class="header-btn"
+            href="index.html"
+        >
+            ← Quản trị
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="page">
+
+    <div class="page-title">
+
+        <h2>
+            ✍️ Viết bài mới
+        </h2>
+
+        <p>
+            Tạo và xuất bản nội dung
+            trên Mộ Trạch Heritage.
+        </p>
+
+    </div>
+
+
+    <section class="editor-card">
+
+        <div class="status-box">
+
+            <span id="adminStatus">
+                Đang kiểm tra tài khoản quản trị...
+            </span>
+
+        </div>
+
+
+        <form id="postForm">
+
+
+            <!-- TIÊU ĐỀ -->
+
+            <div class="form-group">
+
+                <label for="title">
+                    Tiêu đề bài viết *
+                </label>
+
+                <input
+                    id="title"
+                    type="text"
+                    placeholder="Nhập tiêu đề bài viết..."
+                    required
+                >
+
+            </div>
+
+
+            <!-- SLUG -->
+
+            <div class="form-group">
+
+                <label for="slug">
+                    Đường dẫn bài viết
+                </label>
+
+                <input
+                    id="slug"
+                    type="text"
+                    placeholder="duong-dan-bai-viet"
+                >
+
+                <div class="hint">
+                    Sẽ tự tạo từ tiêu đề.
+                </div>
+
+            </div>
+
+
+            <!-- MÔ TẢ -->
+
+            <div class="form-group">
+
+                <label for="excerpt">
+                    Mô tả ngắn
+                </label>
+
+                <textarea
+                    id="excerpt"
+                    placeholder="Viết phần giới thiệu ngắn cho bài viết..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- ẢNH ĐẠI DIỆN -->
+
+            <div class="form-group">
+
+                <label>
+                    🖼️ Ảnh đại diện
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        id="coverImage"
+                        type="file"
+                        accept="
+                            image/jpeg,
+                            image/png,
+                            image/webp
+                        "
+                    >
+
+                    <div
+                        id="coverPreview"
+                        class="preview"
+                    ></div>
+
+                    <div class="hint">
+                        JPG, PNG hoặc WebP.
+                        Tối đa 10 MB.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NỘI DUNG -->
+
+            <div class="form-group">
+
+                <label for="content">
+                    Nội dung bài viết *
+                </label>
+
+                <textarea
+                    id="content"
+                    placeholder="Nhập nội dung bài viết tại đây..."
+                    required
+                ></textarea>
+
+                <div class="hint">
+                    Có thể xuống dòng và viết
+                    nội dung dài.
+                </div>
+
+            </div>
+
+
+            <!-- ẢNH TRONG BÀI -->
+
+            <div class="form-group">
+
+                <label>
+                    📷 Ảnh bổ sung trong bài
+                </label>
+
+                <div class="upload-box">
+
+                    <input
+                        id="galleryImages"
+                        type="file"
+                        accept="
+                            image/jpeg,
+                            image/png,
+                            image/webp
+                        "
+                        multiple
+                    >
+
+                    <div
+                        id="galleryPreview"
+                        class="gallery-preview"
+                    ></div>
+
+                    <div class="hint">
+                        Có thể chọn nhiều ảnh cùng lúc.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AUDIO + VIDEO -->
+
+            <div class="media-row">
+
+
+                <div class="media-card">
+
+                    <h3>
+                        🎧 Audio
+                    </h3>
+
+                    <input
+                        id="audioFile"
+                        type="file"
+                        accept="
+                            audio/mpeg,
+                            audio/mp4
+                        "
+                    >
+
+                    <div
+                        id="audioName"
+                        class="file-name"
+                    ></div>
+
+                    <div class="hint">
+                        MP3 hoặc M4A.
+                        Tối đa 50 MB.
+                    </div>
+
+                </div>
+
+
+                <div class="media-card">
+
+                    <h3>
+                        🎬 Video
+                    </h3>
+
+                    <input
+                        id="videoFile"
+                        type="file"
+                        accept="video/mp4"
+                    >
+
+                    <div
+                        id="videoName"
+                        class="file-name"
+                    ></div>
+
+                    <div class="hint">
+                        Video MP4.
+                        Tối đa 50 MB.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- THÔNG BÁO -->
+
+            <div id="message"></div>
+
+
+            <!-- NÚT LƯU -->
+
+            <div class="actions">
+
+                <button
+                    id="saveDraftButton"
+                    class="btn btn-draft"
+                    type="button"
+                >
+                    💾 Lưu bản nháp
+                </button>
+
+
+                <button
+                    id="publishButton"
+                    class="btn btn-publish"
+                    type="submit"
+                >
+                    🚀 Đăng bài
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="../js/admin-write.js"
+></script>
+
+</body>
+
+</html>
