@@ -529,23 +529,45 @@
 
 
     <div class="toolbar">
+<div class="toolbar-left">
 
-        <div class="toolbar-left">
+    <input
+        id="searchInput"
+        type="search"
+        placeholder="Tìm theo tên file..."
+    >
 
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="Tìm theo tên file..."
-            >
+    <button
+        id="refreshButton"
+        type="button"
+    >
+        🔄 Làm mới
+    </button>
 
-            <button
-                id="refreshButton"
-                type="button"
-            >
-                🔄 Làm mới
-            </button>
+    <button
+        id="uploadButton"
+        type="button"
+        style="
+            border:0;
+            border-radius:8px;
+            padding:11px 15px;
+            background:#800000;
+            color:white;
+            font-weight:700;
+            cursor:pointer;
+            white-space:nowrap;
+        "
+    >
+        ⬆️ Tải file lên
+    </button>
 
-        </div>
+    <input
+        id="uploadInput"
+        type="file"
+        hidden
+    >
+
+</div>
 
 
         <div

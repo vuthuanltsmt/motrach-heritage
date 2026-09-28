@@ -27,7 +27,15 @@ const refreshButton =
     document.getElementById(
         "refreshButton"
     );
+const uploadButton =
+    document.getElementById(
+        "uploadButton"
+    );
 
+const uploadInput =
+    document.getElementById(
+        "uploadInput"
+    );
 const mediaCount =
     document.getElementById(
         "mediaCount"
@@ -1228,7 +1236,395 @@ refreshButton.addEventListener(
     }
 );
 
+/* =====================================================
+   TẠO TÊN FILE AN TOÀN
+===================================================== */
 
+function createSafeName(text) {
+
+    return String(text || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
+        .replace(/đ/g, "d")
+        .replace(
+            /[^a-z0-9.-]/g,
+            "-"
+        )
+        .replace(
+            /-+/g,
+            "-"
+        )
+        .replace(
+            /^-+|-+$/g,
+            ""
+        );
+}
+
+
+function makeUploadFileName(
+    fileName
+) {
+
+    const dotIndex =
+        fileName.lastIndexOf(".");
+
+
+    const name =
+        dotIndex >= 0
+            ? fileName.substring(
+                0,
+                dotIndex
+            )
+            : fileName;
+
+
+    const extension =
+        dotIndex >= 0
+            ? fileName.substring(
+                dotIndex
+            ).toLowerCase()
+            : "";
+
+
+    return (
+        createSafeName(name) +
+        "-" +
+        Date.now() +
+        "-" +
+        Math.random()
+            .toString(36)
+            .substring(2, 7) +
+        extension
+    );
+}
+
+
+/* =====================================================
+   CẤU HÌNH INPUT UPLOAD
+===================================================== */
+
+function setupUploadInput() {
+
+    if (
+        currentType ===
+        "images"
+    ) {
+
+        uploadInput.accept =
+            "image/jpeg,image/png,image/webp";
+
+        return;
+    }
+
+
+    if (
+        currentType ===
+        "audio"
+    ) {
+
+        uploadInput.accept =
+            "audio/mpeg,audio/mp4";
+
+        return;
+    }
+
+
+    uploadInput.accept =
+        "video/mp4";
+}
+
+
+/* =====================================================
+   KIỂM TRA FILE UPLOAD
+===================================================== */
+
+function validateUploadFile(file) {
+
+    if (
+        currentType ===
+        "images"
+    ) {
+
+        const allowed = [
+            "image/jpeg",
+            "image/png",
+            "image/webp"
+        ];
+
+
+        if (
+            !allowed.includes(
+                file.type
+            )
+        ) {
+
+            throw new Error(
+                "Chỉ cho phép ảnh JPG, PNG hoặc WebP."
+            );
+        }
+
+
+        if (
+            file.size >
+            10 * 1024 * 1024
+        ) {
+
+            throw new Error(
+                "Ảnh không được vượt quá 10 MB."
+            );
+        }
+    }
+
+
+    if (
+        currentType ===
+        "audio"
+    ) {
+
+        const allowed = [
+            "audio/mpeg",
+            "audio/mp4"
+        ];
+
+
+        if (
+            !allowed.includes(
+                file.type
+            )
+        ) {
+
+            throw new Error(
+                "Chỉ cho phép file MP3 hoặc M4A."
+            );
+        }
+
+
+        if (
+            file.size >
+            50 * 1024 * 1024
+        ) {
+
+            throw new Error(
+                "Audio không được vượt quá 50 MB."
+            );
+        }
+    }
+
+
+    if (
+        currentType ===
+        "video"
+    ) {
+
+        if (
+            file.type !==
+            "video/mp4"
+        ) {
+
+            throw new Error(
+                "Chỉ cho phép video MP4."
+            );
+        }
+
+
+        if (
+            file.size >
+            50 * 1024 * 1024
+        ) {
+
+            throw new Error(
+                "Video không được vượt quá 50 MB."
+            );
+        }
+    }
+}
+
+
+/* =====================================================
+   UPLOAD FILE
+===================================================== */
+
+async function uploadMediaFile(
+    file
+) {
+
+    const config =
+        getConfig();
+
+
+    validateUploadFile(
+        file
+    );
+
+
+    let folder = "";
+
+
+    if (
+        currentType ===
+        "images"
+    ) {
+
+        /*
+            Ảnh tải trực tiếp từ
+            thư viện sẽ đưa vào gallery.
+        */
+
+        folder =
+            "gallery";
+    }
+
+
+    if (
+        currentType ===
+        "audio"
+    ) {
+
+        folder =
+            "audio";
+    }
+
+
+    if (
+        currentType ===
+        "video"
+    ) {
+
+        folder =
+            "video";
+    }
+
+
+    const fileName =
+        makeUploadFileName(
+            file.name
+        );
+
+
+    const path =
+        folder +
+        "/" +
+        fileName;
+
+
+    uploadButton.disabled =
+        true;
+
+    uploadButton.textContent =
+        "⏳ Đang tải...";
+
+
+    showMessage(
+        "Đang tải file lên...",
+        "success"
+    );
+
+
+    try {
+
+        const {
+            error
+        } =
+            await supabase.storage
+                .from(
+                    config.bucket
+                )
+                .upload(
+                    path,
+                    file,
+                    {
+                        cacheControl:
+                            "3600",
+
+                        upsert:
+                            false,
+
+                        contentType:
+                            file.type
+                    }
+                );
+
+
+        if (error) {
+            throw error;
+        }
+
+
+        showMessage(
+            "✅ Tải file thành công!",
+            "success"
+        );
+
+
+        await loadFiles();
+
+
+    } catch (error) {
+
+        console.error(
+            "Lỗi tải file:",
+            error
+        );
+
+
+        showMessage(
+            error.message ||
+            "Không thể tải file."
+        );
+
+
+    } finally {
+
+        uploadButton.disabled =
+            false;
+
+        uploadButton.textContent =
+            "⬆️ Tải file lên";
+
+        uploadInput.value =
+            "";
+    }
+}
+
+
+/* =====================================================
+   SỰ KIỆN UPLOAD
+===================================================== */
+
+uploadButton.addEventListener(
+    "click",
+    function () {
+
+        uploadInput.value =
+            "";
+
+        uploadInput.click();
+    }
+);
+
+
+uploadInput.addEventListener(
+    "change",
+    async function () {
+
+        const file =
+            uploadInput.files[0];
+
+
+        if (!file) {
+            return;
+        }
+
+
+        await uploadMediaFile(
+            file
+        );
+    }
+);
 /* =====================================================
    KHỞI ĐỘNG
 ===================================================== */
@@ -1236,7 +1632,7 @@ refreshButton.addEventListener(
 async function init() {
 
     setupPage();
-
+setupUploadInput();
 
     const isAdmin =
         await checkAdmin();
