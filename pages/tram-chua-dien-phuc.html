@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Chùa Diên Phúc - Mộ Trạch Heritage
+    </title>
+
+    <meta
+        name="description"
+        content="Trạm tham quan Chùa Diên Phúc - Không gian di sản số Mộ Trạch Heritage"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f7f1e5;
+
+            color: #333;
+
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            background: #720000;
+
+            color: white;
+
+            text-align: center;
+
+            padding:
+                24px 15px;
+        }
+
+        .station-badge {
+            display: inline-block;
+
+            margin-bottom: 10px;
+
+            padding:
+                6px 15px;
+
+            border:
+                1px solid rgba(255,255,255,.55);
+
+            border-radius: 30px;
+
+            color: #f3d99b;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .header h1 {
+            margin: 0;
+
+            font-size: 32px;
+        }
+
+        .header p {
+            margin:
+                8px 0 0;
+
+            color: #f3d99b;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .container {
+            width: 94%;
+
+            max-width: 760px;
+
+            margin: auto;
+        }
+
+        .hero {
+            margin-top: 22px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,.12);
+        }
+
+        .hero-image {
+            width: 100%;
+
+            height: 390px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .content {
+            padding:
+                26px;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        h2 {
+            color: #800000;
+
+            margin:
+                30px 0 15px;
+
+            border-left:
+                5px solid #c69a42;
+
+            padding-left: 12px;
+
+            font-size: 25px;
+        }
+
+        .intro {
+            margin:
+                0 0 17px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           INFO
+        ========================= */
+
+        .info-box {
+            margin-top: 28px;
+
+            padding:
+                20px;
+
+            background: #fff8e8;
+
+            border:
+                2px solid #d4ad57;
+
+            border-radius: 17px;
+        }
+
+        .info-row {
+            margin:
+                0 0 14px;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: #800000;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           NOTE
+        ========================= */
+
+        .heritage-note {
+            margin-top: 25px;
+
+            padding:
+                18px 20px;
+
+            background: #f4f8f4;
+
+            border-left:
+                5px solid #28734a;
+
+            border-radius: 10px;
+
+            color: #3d4b42;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            display: grid;
+
+            gap: 13px;
+
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: block;
+
+            padding:
+                15px 18px;
+
+            border-radius: 30px;
+
+            text-align: center;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            transition:
+                transform .2s ease,
+                opacity .2s ease;
+        }
+
+        .btn:hover {
+            transform:
+                translateY(-2px);
+
+            opacity: .92;
+        }
+
+        .red {
+            background: #850000;
+        }
+
+        .gold {
+            background: #b28a38;
+        }
+
+        .blue {
+            background: #315f87;
+        }
+
+        .green {
+            background: #28734a;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            margin-top: 38px;
+
+            padding:
+                27px 15px;
+
+            background: #570000;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .footer strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+
+            color:
+                rgba(255,255,255,.85);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:600px) {
+
+            .header {
+                padding:
+                    20px 12px;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .hero {
+                border-radius: 16px;
+            }
+
+            .hero-image {
+                height: 235px;
+            }
+
+            .content {
+                padding:
+                    17px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .intro {
+                font-size: 17px;
+            }
+
+            .info-box {
+                padding:
+                    16px;
+            }
+
+            .btn {
+                padding:
+                    14px 12px;
+
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="station-badge">
+        TRẠM 04
+    </div>
+
+    <h1>
+        🏯 CHÙA DIÊN PHÚC
+    </h1>
+
+    <p>
+        Không gian Phật giáo – văn hóa làng Mộ Trạch
+    </p>
+
+</header>
+
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<main class="container">
+
+    <section class="hero">
+
+
+        <!-- ẢNH CHÍNH -->
+
+        <img
+            class="hero-image"
+            src="../images/chua-dien-phuc.jpg"
+            alt="Chùa Diên Phúc - Mộ Trạch"
+            width="1200"
+            height="800"
+        >
+
+
+        <div class="content">
+
+
+            <!-- GIỚI THIỆU -->
+
+            <h2>
+                📖 Giới thiệu
+            </h2>
+
+            <p class="intro">
+                Chùa Diên Phúc là một công trình văn hóa,
+                tín ngưỡng của làng Mộ Trạch,
+                gắn với đời sống tinh thần của cộng đồng
+                và không gian di sản truyền thống
+                của địa phương.
+            </p>
+
+            <p class="intro">
+                Trong hệ thống các điểm tham quan
+                của Mộ Trạch Heritage,
+                Chùa Diên Phúc là Trạm số 04,
+                góp phần giới thiệu thêm
+                một không gian Phật giáo
+                và văn hóa đặc sắc của làng.
+            </p>
+
+
+            <!-- LỊCH SỬ -->
+
+            <h2>
+                📜 Lịch sử
+            </h2>
+
+            <p class="intro">
+                Theo tư liệu địa phương,
+                Chùa Diên Phúc gắn với
+                Đức Thần Tổ Vũ Hồn
+                và được dựng để thờ Phật.
+            </p>
+
+            <p class="intro">
+                Phía đông nam chùa có Giếng Rồng,
+                một địa điểm gắn với
+                không gian văn hóa truyền thống
+                của làng Mộ Trạch.
+            </p>
+
+            <p class="intro">
+                Trải qua thời gian,
+                Chùa Diên Phúc đã được
+                nhân dân địa phương gìn giữ
+                và tu tạo, góp phần bảo tồn
+                cảnh quan và giá trị tín ngưỡng
+                của cộng đồng.
+            </p>
+
+
+            <!-- GIÁ TRỊ -->
+
+            <h2>
+                🏛️ Giá trị di sản
+            </h2>
+
+            <p class="intro">
+                Chùa Diên Phúc không chỉ là
+                nơi sinh hoạt tín ngưỡng
+                mà còn là một thành tố
+                trong không gian văn hóa
+                của làng Mộ Trạch.
+            </p>
+
+            <p class="intro">
+                Việc đưa Chùa Diên Phúc
+                vào tuyến tham quan số
+                giúp người dân và du khách
+                có thêm điều kiện tìm hiểu,
+                tiếp cận và gìn giữ
+                những giá trị văn hóa địa phương.
+            </p>
+
+
+            <!-- THÔNG TIN VỊ TRÍ -->
+
+            <div class="info-box">
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        📍 Địa điểm:
+                    </span>
+
+                    Thôn Mộ Trạch,
+                    xã Đường An,
+                    thành phố Hải Phòng.
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        🧭 Tọa độ:
+                    </span>
+
+                    20.8652327,
+                    106.1671065
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="info-label">
+                        🗺️ Tuyến tham quan:
+                    </span>
+
+                    Trạm 04 –
+                    Chùa Diên Phúc
+
+                </div>
+
+            </div>
+
+
+            <div class="heritage-note">
+
+                💡 <strong>Mộ Trạch Heritage</strong>
+                sẽ tiếp tục bổ sung
+                tư liệu, hình ảnh,
+                audio và video
+                về Chùa Diên Phúc
+                trong quá trình hoàn thiện
+                kho di sản số.
+
+            </div>
+
+<!-- MÃ QR TRẠM THAM QUAN -->
+
+<div
+    class="station-qr"
+    style="
+        text-align: center;
+        margin: 32px 0;
+        padding: 22px;
+        background: #fff8e8;
+        border: 1px solid #e1c681;
+        border-radius: 16px;
+    "
+>
+
+    <h2>
+        📱 Quét mã tham quan
+    </h2>
+
+    <p>
+        Quét mã QR để mở nhanh
+        Trạm 04 – Chùa Diên Phúc
+        trên điện thoại.
+    </p>
+
+    <img
+        src="../images/qr/qr-chua-dien-phuc.png"
+        alt="Mã QR Trạm tham quan Chùa Diên Phúc"
+        style="
+            width: 210px;
+            max-width: 65%;
+            height: auto;
+            margin: 18px auto 0;
+            border-radius: 10px;
+        "
+    >
+
+</div>
+            <!-- BUTTONS -->
+
+            <div class="buttons">
+
+
+                <a
+                    class="btn red"
+                    href="https://www.google.com/maps/dir/?api=1&destination=20.8652327,106.1671065"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    🧭 CHỈ ĐƯỜNG ĐẾN CHÙA DIÊN PHÚC
+                </a>
+
+
+                <a
+                    class="btn gold"
+                    href="detail.html?id=chua-dien-phuc"
+                >
+                    📖 XEM ĐẦY ĐỦ THÔNG TIN DI TÍCH
+                </a>
+
+
+                <a
+                    class="btn blue"
+                    href="map-tour.html"
+                >
+                    🗺️ QUAY LẠI TUYẾN THAM QUAN
+                </a>
+
+
+                <a
+                    class="btn green"
+                    href="../index.html"
+                >
+                    🏠 VỀ TRANG CHỦ
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <strong>
+        🏛️ MỘ TRẠCH HERITAGE
+    </strong>
+
+    <p>
+        Trạm 04 – Chùa Diên Phúc
+    </p>
+
+    <p>
+        Không gian di sản số Mộ Trạch
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

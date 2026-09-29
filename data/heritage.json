@@ -60,5 +60,21 @@
     "video": "videos/dinh-lang.mp4",
 
     "image": "images/dinh-lang.jpg"
-  }
+  },
+{
+  "id": "chua-dien-phuc",
+  "name": "Chùa Diên Phúc",
+  "subtitle": "Không gian Phật giáo - văn hóa làng Mộ Trạch",
+  "type": "Di tích tôn giáo",
+  "location": "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng",
+
+  "lat": 20.8652327,
+  "lng": 106.1671065,
+
+  "description": "Chùa Diên Phúc là một công trình văn hóa, tín ngưỡng của làng Mộ Trạch, gắn với đời sống tinh thần của cộng đồng và không gian di sản truyền thống của địa phương.",
+
+  "history": "Theo tư liệu báo chí địa phương, Chùa Diên Phúc được Đức Thần Tổ Vũ Hồn dựng để thờ Phật. Phía đông nam chùa có giếng Rồng, nổi tiếng với nguồn nước ngầm dồi dào. Năm 2001, nhân dân địa phương đã đóng góp tu tạo chùa khang trang hơn.",
+
+  "image": "images/chua-dien-phuc.jpg"
+}
 ]
