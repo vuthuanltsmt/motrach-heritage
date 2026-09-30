@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Liên hệ - Mộ Trạch Heritage</title>
+
+    <meta
+        name="description"
+        content="Liên hệ, góp ý và đóng góp tư liệu cho dự án Mộ Trạch Heritage."
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f7f2e9;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .contact-header {
+            background: #800000;
+            color: white;
+        }
+
+        .header-inner {
+            width: min(
+                1200px,
+                calc(100% - 32px)
+            );
+
+            min-height: 72px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .logo {
+            color: white;
+
+            font-size: 21px;
+            font-weight: 900;
+
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+        }
+
+        .menu-button {
+            display: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.5);
+
+            background: transparent;
+            color: white;
+
+            padding: 7px 11px;
+
+            border-radius: 8px;
+
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav a {
+            color: white;
+
+            padding:
+                9px 11px;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background:
+                rgba(255,255,255,.15);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .contact-hero {
+            padding:
+                65px 20px;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(91,0,0,.91),
+                    rgba(130,0,0,.91)
+                );
+        }
+
+        .hero-icon {
+            font-size: 52px;
+        }
+
+        .contact-hero h1 {
+            margin:
+                8px 0 12px;
+
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    50px
+                );
+        }
+
+        .contact-hero p {
+            width: min(
+                700px,
+                100%
+            );
+
+            margin: auto;
+
+            color:
+                rgba(255,255,255,.90);
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .contact-main {
+            padding:
+                60px 20px;
+        }
+
+        .container {
+            width: min(
+                1050px,
+                100%
+            );
+
+            margin: auto;
+        }
+
+        .section-title {
+            max-width: 720px;
+
+            margin:
+                0 auto 35px;
+
+            text-align: center;
+        }
+
+        .section-title h2 {
+            margin: 0;
+
+            color: #800000;
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    38px
+                );
+        }
+
+        .title-line {
+            width: 70px;
+            height: 4px;
+
+            margin:
+                14px auto 17px;
+
+            border-radius: 10px;
+
+            background: #c69a42;
+        }
+
+        .section-title p {
+            margin: 0;
+            color: #665f56;
+        }
+
+
+        /* =========================
+           CONTACT CARDS
+        ========================= */
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
+
+            gap: 20px;
+
+            margin-bottom: 60px;
+        }
+
+        .contact-card {
+            background: white;
+
+            padding:
+                30px 22px;
+
+            border:
+                1px solid #e8ddcb;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 7px 20px
+                rgba(0,0,0,.06);
+        }
+
+        .contact-icon {
+            font-size: 42px;
+
+            margin-bottom: 12px;
+        }
+
+        .contact-card h3 {
+            margin:
+                0 0 8px;
+
+            color: #800000;
+
+            font-size: 21px;
+        }
+
+        .contact-card p {
+            margin:
+                0 0 18px;
+
+            color: #5d574f;
+        }
+
+        .contact-button {
+            display: inline-block;
+
+            padding:
+                10px 19px;
+
+            border-radius: 25px;
+
+            background: #800000;
+
+            color: white;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .contact-button:hover {
+            background: #620000;
+        }
+
+        .zalo-label {
+            display: inline-block;
+
+            padding:
+                9px 16px;
+
+            border-radius: 25px;
+
+            background: #eef5ff;
+
+            color: #2356a8;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           GÓP TƯ LIỆU
+        ========================= */
+
+        .contribute {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 30px;
+
+            align-items: stretch;
+
+            margin-bottom: 55px;
+        }
+
+        .contribute-box {
+            padding:
+                30px;
+
+            border-radius: 18px;
+
+            background: white;
+
+            border:
+                1px solid #e8ddcb;
+        }
+
+        .contribute-box.gold {
+            background: #fff8e8;
+
+            border:
+                1px solid #e0c67f;
+        }
+
+        .contribute-box h2 {
+            margin:
+                0 0 15px;
+
+            color: #800000;
+
+            font-size: 27px;
+        }
+
+        .contribute-box p {
+            margin:
+                0 0 15px;
+        }
+
+        .contribute-list {
+            padding-left: 21px;
+            margin-bottom: 23px;
+        }
+
+        .contribute-list li {
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================
+           EMAIL BOX
+        ========================= */
+
+        .email-box {
+            margin-top: 20px;
+
+            padding:
+                18px;
+
+            border-radius: 12px;
+
+            background: #f7f2e9;
+
+            word-break: break-word;
+        }
+
+        .email-box strong {
+            color: #800000;
+        }
+
+
+        /* =========================
+           INFO / NOTICE
+        ========================= */
+
+        .notice {
+            padding:
+                23px;
+
+            border-radius: 14px;
+
+            border-left:
+                5px solid #c69a42;
+
+            background: #fff8e8;
+
+            margin-bottom: 45px;
+        }
+
+        .notice strong {
+            color: #800000;
+        }
+
+
+        /* =========================
+           QUICK LINKS
+        ========================= */
+
+        .quick-links {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
+
+            gap: 16px;
+        }
+
+        .quick-link {
+            padding:
+                22px;
+
+            text-align: center;
+
+            background: #800000;
+
+            color: white;
+
+            border-radius: 15px;
+        }
+
+        .quick-link span {
+            display: block;
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+        .quick-link strong {
+            display: block;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            padding:
+                33px 20px;
+
+            background: #570000;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .footer strong {
+            font-size: 20px;
+        }
+
+        .footer p {
+            margin:
+                5px 0;
+
+            font-size: 14px;
+
+            color:
+                rgba(255,255,255,.82);
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media(max-width:850px) {
+
+            .menu-button {
+                display: block;
+            }
+
+            .header-inner {
+                position: relative;
+            }
+
+            .nav {
+                display: none;
+
+                position: absolute;
+
+                top: 72px;
+                left: 0;
+                right: 0;
+
+                background: white;
+
+                padding:
+                    8px 0;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                z-index: 1000;
+
+                box-shadow:
+                    0 10px 20px
+                    rgba(0,0,0,.12);
+            }
+
+            .nav.show {
+                display: flex;
+            }
+
+            .nav a {
+                color: #700000;
+
+                padding:
+                    12px 18px;
+
+                border-radius: 0;
+            }
+
+            .nav a:hover,
+            .nav a.active {
+                background: #f8f1e6;
+            }
+
+            .contact-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .contribute {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:550px) {
+
+            .logo {
+                font-size: 16px;
+            }
+
+            .contact-hero {
+                padding:
+                    48px 15px;
+            }
+
+            .contact-main {
+                padding:
+                    45px 14px;
+            }
+
+            .contribute-box {
+                padding:
+                    22px 18px;
+            }
+
+            .quick-links {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="contact-header">
+
+    <div class="header-inner">
+
+        <a
+            href="../index.html"
+            class="logo"
+        >
+            🏛️ MỘ TRẠCH HERITAGE
+        </a>
+
+
+        <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Mở menu"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            id="contactNav"
+            class="nav"
+        >
+
+            <a href="../index.html">
+                🏠 Trang chủ
+            </a>
+
+            <a href="heritage.html">
+                🏛️ Di tích
+            </a>
+
+            <a href="map-tour.html">
+                🧭 Tuyến tham quan
+            </a>
+
+            <a href="bai-viet.html">
+                📰 Tin tức
+            </a>
+
+            <a href="hoi-dap.html">
+                ❓ Hỏi đáp
+            </a>
+
+            <a
+                href="lien-he.html"
+                class="active"
+            >
+                📬 Liên hệ
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="contact-hero">
+
+    <div class="hero-icon">
+        📬
+    </div>
+
+    <h1>
+        Liên hệ
+    </h1>
+
+    <p>
+        Kết nối với Mộ Trạch Heritage,
+        gửi góp ý, đóng góp tư liệu
+        hoặc chia sẻ những câu chuyện,
+        hình ảnh và ký ức về quê hương Mộ Trạch.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="contact-main">
+
+    <div class="container">
+
+
+        <div class="section-title">
+
+            <h2>
+                Thông tin liên hệ
+            </h2>
+
+            <div class="title-line"></div>
+
+            <p>
+                Bạn có thể liên hệ với
+                Mộ Trạch Heritage
+                qua các kênh dưới đây.
+            </p>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="contact-grid">
+
+
+            <!-- PHONE -->
+
+            <article class="contact-card">
+
+                <div class="contact-icon">
+                    📞
+                </div>
+
+                <h3>
+                    Điện thoại
+                </h3>
+
+                <p>
+                    0972348298
+                </p>
+
+                <a
+                    href="tel:0972348298"
+                    class="contact-button"
+                >
+                    📞 Gọi điện
+                </a>
+
+            </article>
+
+
+            <!-- EMAIL -->
+
+            <article class="contact-card">
+
+                <div class="contact-icon">
+                    ✉️
+                </div>
+
+                <h3>
+                    Email
+                </h3>
+
+                <p>
+                    vuthuanltsmt@gmail.com
+                </p>
+
+                <a
+                    href="mailto:vuthuanltsmt@gmail.com"
+                    class="contact-button"
+                >
+                    ✉️ Gửi email
+                </a>
+
+            </article>
+
+
+            <!-- ZALO -->
+
+            <article class="contact-card">
+
+                <div class="contact-icon">
+                    💬
+                </div>
+
+                <h3>
+                    Zalo
+                </h3>
+
+                <p>
+                    Vũ Thuấn lts
+                </p>
+
+                <span class="zalo-label">
+                    Zalo: Vũ Thuấn lts
+                </span>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- =========================
+             CONTRIBUTE
+        ========================= -->
+
+        <div class="contribute">
+
+
+            <section class="contribute-box">
+
+                <h2>
+                    📚 Góp tư liệu di sản
+                </h2>
+
+                <p>
+                    Mộ Trạch Heritage
+                    mong muốn tiếp tục bổ sung
+                    những tư liệu có giá trị
+                    về lịch sử và văn hóa địa phương.
+                </p>
+
+                <p>
+                    Bạn có thể chia sẻ:
+                </p>
+
+                <ul class="contribute-list">
+
+                    <li>
+                        Ảnh Mộ Trạch xưa và nay.
+                    </li>
+
+                    <li>
+                        Tài liệu lịch sử,
+                        gia phả hoặc văn bản.
+                    </li>
+
+                    <li>
+                        Hình ảnh các di tích.
+                    </li>
+
+                    <li>
+                        Video, audio hoặc
+                        lời kể của người cao tuổi.
+                    </li>
+
+                    <li>
+                        Thông tin về nhân vật,
+                        danh nhân và truyền thống khoa bảng.
+                    </li>
+
+                    <li>
+                        Các câu chuyện,
+                        ký ức và phong tục địa phương.
+                    </li>
+
+                </ul>
+
+                <a
+                    href="mailto:vuthuanltsmt@gmail.com?subject=Góp tư liệu cho Mộ Trạch Heritage"
+                    class="contact-button"
+                >
+                    📎 Gửi tư liệu qua Email
+                </a>
+
+            </section>
+
+
+            <section class="contribute-box gold">
+
+                <h2>
+                    💡 Góp ý phát triển website
+                </h2>
+
+                <p>
+                    Nếu phát hiện thông tin
+                    chưa chính xác,
+                    liên kết không hoạt động
+                    hoặc có đề xuất chức năng mới,
+                    bạn có thể gửi góp ý.
+                </p>
+
+                <p>
+                    Những phản hồi của cộng đồng
+                    là nguồn thông tin quan trọng
+                    giúp Mộ Trạch Heritage
+                    tiếp tục hoàn thiện.
+                </p>
+
+
+                <div class="email-box">
+
+                    <strong>
+                        Email tiếp nhận:
+                    </strong>
+
+                    <br>
+
+                    vuthuanltsmt@gmail.com
+
+                </div>
+
+
+                <div
+                    class="email-box"
+                    style="margin-top:12px;"
+                >
+
+                    <strong>
+                        Điện thoại:
+                    </strong>
+
+                    <br>
+
+                    0972348298
+
+                </div>
+
+
+                <div
+                    class="email-box"
+                    style="margin-top:12px;"
+                >
+
+                    <strong>
+                        Zalo:
+                    </strong>
+
+                    <br>
+
+                    Vũ Thuấn lts
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- NOTICE -->
+
+        <div class="notice">
+
+            <strong>
+                📌 Lưu ý về tư liệu đóng góp:
+            </strong>
+
+            Khi gửi hình ảnh,
+            video hoặc tài liệu,
+            vui lòng cung cấp thêm
+            thông tin về nguồn,
+            thời gian, địa điểm
+            và nội dung liên quan nếu có.
+            Điều này giúp việc xác minh
+            và giới thiệu tư liệu
+            chính xác hơn.
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div class="quick-links">
+
+
+            <a
+                href="hoi-dap.html"
+                class="quick-link"
+            >
+
+                <span>
+                    ❓
+                </span>
+
+                <strong>
+                    Hỏi đáp
+                </strong>
+
+            </a>
+
+
+            <a
+                href="bai-viet.html"
+                class="quick-link"
+            >
+
+                <span>
+                    📰
+                </span>
+
+                <strong>
+                    Tin tức
+                </strong>
+
+            </a>
+
+
+            <a
+                href="donate.html"
+                class="quick-link"
+            >
+
+                <span>
+                    ❤️
+                </span>
+
+                <strong>
+                    Ủng hộ dự án
+                </strong>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+    <strong>
+        🏛️ MỘ TRẠCH HERITAGE
+    </strong>
+
+    <p>
+        Không gian di sản số
+    </p>
+
+    <p>
+        Làng Tiến sĩ – Đất học – Đất văn hiến
+    </p>
+
+    <p>
+        © 2026 Mộ Trạch Heritage
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<script>
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+const contactNav =
+    document.getElementById(
+        "contactNav"
+    );
+
+
+menuButton.addEventListener(
+    "click",
+    function() {
+
+        contactNav.classList
+            .toggle("show");
+
+    }
+);
+
+
+contactNav
+    .querySelectorAll("a")
+    .forEach(
+        function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    contactNav.classList
+                        .remove("show");
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
