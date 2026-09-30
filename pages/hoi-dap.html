@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Hỏi đáp - Mộ Trạch Heritage
+    </title>
+
+    <meta
+        name="description"
+        content="Hướng dẫn sử dụng và các câu hỏi thường gặp trên website Mộ Trạch Heritage."
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f7f2e9;
+
+            color: #333;
+
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .faq-header {
+            background: #800000;
+            color: white;
+        }
+
+        .faq-header-inner {
+            width: min(
+                1200px,
+                calc(100% - 32px)
+            );
+
+            min-height: 72px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .faq-logo {
+            color: white;
+
+            font-size: 21px;
+
+            font-weight: 900;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+        }
+
+        .faq-nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+        .faq-nav a {
+            color: white;
+
+            padding:
+                9px 12px;
+
+            border-radius: 9px;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .faq-nav a:hover,
+        .faq-nav a.active {
+            background:
+                rgba(255,255,255,.15);
+        }
+
+        .menu-button {
+            display: none;
+
+            border:
+                1px solid
+                rgba(255,255,255,.5);
+
+            background: transparent;
+
+            color: white;
+
+            padding:
+                7px 11px;
+
+            border-radius: 8px;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .faq-hero {
+            background:
+                linear-gradient(
+                    rgba(91,0,0,.88),
+                    rgba(128,0,0,.90)
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding:
+                65px 20px;
+        }
+
+        .faq-hero-icon {
+            font-size: 55px;
+
+            margin-bottom: 8px;
+        }
+
+        .faq-hero h1 {
+            margin:
+                0 0 12px;
+
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    50px
+                );
+        }
+
+        .faq-hero p {
+            width: min(
+                700px,
+                100%
+            );
+
+            margin: auto;
+
+            font-size: 17px;
+
+            color:
+                rgba(255,255,255,.90);
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .faq-main {
+            padding:
+                60px 20px;
+        }
+
+        .faq-container {
+            width: min(
+                950px,
+                100%
+            );
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           QUICK GUIDE
+        ========================= */
+
+        .quick-guide {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0,1fr)
+                );
+
+            gap: 15px;
+
+            margin-bottom: 55px;
+        }
+
+        .quick-card {
+            background: white;
+
+            padding:
+                22px 15px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            border:
+                1px solid #eadfc9;
+
+            box-shadow:
+                0 6px 18px
+                rgba(0,0,0,.06);
+        }
+
+        .quick-icon {
+            font-size: 35px;
+
+            margin-bottom: 8px;
+        }
+
+        .quick-card strong {
+            display: block;
+
+            color: #800000;
+
+            margin-bottom: 5px;
+        }
+
+        .quick-card span {
+            color: #666;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .faq-section {
+            margin-bottom: 55px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 28px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+
+            color: #800000;
+
+            font-size:
+                clamp(
+                    27px,
+                    4vw,
+                    35px
+                );
+        }
+
+        .title-line {
+            width: 70px;
+
+            height: 4px;
+
+            margin:
+                13px auto;
+
+            border-radius: 10px;
+
+            background: #c69a42;
+        }
+
+        .section-title p {
+            margin: 0;
+
+            color: #6c665d;
+        }
+
+
+        /* =========================
+           FAQ ITEM
+        ========================= */
+
+        .faq-list {
+            display: grid;
+
+            gap: 13px;
+        }
+
+        .faq-item {
+            background: white;
+
+            border:
+                1px solid #e8ddcb;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 4px 14px
+                rgba(0,0,0,.04);
+        }
+
+        .faq-question {
+            width: 100%;
+
+            border: none;
+
+            background: white;
+
+            padding:
+                19px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            color: #650000;
+
+            font-size: 17px;
+
+            font-weight: 800;
+        }
+
+        .faq-question:hover {
+            background: #fff9ee;
+        }
+
+        .faq-symbol {
+            min-width: 28px;
+
+            height: 28px;
+
+            border-radius: 50%;
+
+            background: #800000;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+
+            line-height: 1;
+        }
+
+        .faq-answer {
+            display: none;
+
+            padding:
+                0 20px 20px;
+
+            color: #4f4942;
+
+            font-size: 16px;
+        }
+
+        .faq-answer p {
+            margin:
+                0 0 12px;
+        }
+
+        .faq-answer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-item.open
+        .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open
+        .faq-symbol {
+            background: #c69a42;
+
+            transform:
+                rotate(45deg);
+        }
+
+        .faq-link {
+            color: #8b0000;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           NOTICE
+        ========================= */
+
+        .faq-note {
+            margin-top: 45px;
+
+            padding:
+                23px;
+
+            background: #fff8e8;
+
+            border-left:
+                5px solid #c69a42;
+
+            border-radius: 12px;
+        }
+
+        .faq-note strong {
+            color: #800000;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .faq-cta {
+            margin-top: 45px;
+
+            padding:
+                32px 20px;
+
+            border-radius: 18px;
+
+            background: #800000;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .faq-cta h2 {
+            margin:
+                0 0 10px;
+        }
+
+        .faq-cta p {
+            width: min(
+                650px,
+                100%
+            );
+
+            margin:
+                0 auto 20px;
+
+            color:
+                rgba(255,255,255,.88);
+        }
+
+        .faq-button {
+            display: inline-block;
+
+            background: white;
+
+            color: #800000;
+
+            padding:
+                11px 21px;
+
+            border-radius: 25px;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .faq-footer {
+            padding:
+                32px 20px;
+
+            background: #570000;
+
+            color: white;
+
+            text-align: center;
+        }
+
+        .faq-footer strong {
+            font-size: 20px;
+        }
+
+        .faq-footer p {
+            margin:
+                5px 0;
+
+            font-size: 14px;
+
+            color:
+                rgba(255,255,255,.82);
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media(max-width:850px) {
+
+            .menu-button {
+                display: block;
+            }
+
+            .faq-header-inner {
+                position: relative;
+            }
+
+            .faq-nav {
+                display: none;
+
+                position: absolute;
+
+                top: 72px;
+
+                left: 0;
+
+                right: 0;
+
+                padding:
+                    8px 0;
+
+                background: white;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                z-index: 1000;
+
+                box-shadow:
+                    0 10px 20px
+                    rgba(0,0,0,.12);
+            }
+
+            .faq-nav.show {
+                display: flex;
+            }
+
+            .faq-nav a {
+                color: #700000;
+
+                padding:
+                    12px 18px;
+
+                border-radius: 0;
+            }
+
+            .faq-nav a:hover,
+            .faq-nav a.active {
+                background: #f8f1e6;
+            }
+
+            .quick-guide {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:550px) {
+
+            .faq-logo {
+                font-size: 16px;
+            }
+
+            .faq-hero {
+                padding:
+                    48px 15px;
+            }
+
+            .faq-main {
+                padding:
+                    45px 14px;
+            }
+
+            .quick-guide {
+                grid-template-columns:
+                    1fr;
+            }
+
+            .faq-question {
+                padding:
+                    17px 15px;
+
+                font-size: 16px;
+            }
+
+            .faq-answer {
+                padding:
+                    0 15px 17px;
+
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="faq-header">
+
+    <div class="faq-header-inner">
+
+        <a
+            href="../index.html"
+            class="faq-logo"
+        >
+            🏛️ MỘ TRẠCH HERITAGE
+        </a>
+
+
+        <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Mở menu"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            id="faqNav"
+            class="faq-nav"
+        >
+
+            <a href="../index.html">
+                🏠 Trang chủ
+            </a>
+
+            <a href="heritage.html">
+                🏛️ Di tích
+            </a>
+
+            <a href="map.html">
+                🗺️ Bản đồ
+            </a>
+
+            <a href="map-tour.html">
+                🧭 Tuyến tham quan
+            </a>
+
+            <a href="bai-viet.html">
+                📰 Tin tức
+            </a>
+
+            <a
+                href="hoi-dap.html"
+                class="active"
+            >
+                ❓ Hỏi đáp
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="faq-hero">
+
+    <div class="faq-hero-icon">
+        ❓
+    </div>
+
+    <h1>
+        Hỏi đáp & Hướng dẫn
+    </h1>
+
+    <p>
+        Tìm câu trả lời nhanh về cách sử dụng
+        Mộ Trạch Heritage, tham quan di tích,
+        nghe thuyết minh, xem video,
+        sử dụng bản đồ và quản trị nội dung.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="faq-main">
+
+    <div class="faq-container">
+
+
+        <!-- HƯỚNG DẪN NHANH -->
+
+        <div class="quick-guide">
+
+            <a
+                href="heritage.html"
+                class="quick-card"
+            >
+                <div class="quick-icon">
+                    🏛️
+                </div>
+
+                <strong>
+                    Xem di tích
+                </strong>
+
+                <span>
+                    Khám phá các điểm di sản
+                </span>
+            </a>
+
+
+            <a
+                href="map-tour.html"
+                class="quick-card"
+            >
+                <div class="quick-icon">
+                    🧭
+                </div>
+
+                <strong>
+                    Tuyến tham quan
+                </strong>
+
+                <span>
+                    Đi theo các trạm di sản
+                </span>
+            </a>
+
+
+            <a
+                href="map.html"
+                class="quick-card"
+            >
+                <div class="quick-icon">
+                    🗺️
+                </div>
+
+                <strong>
+                    Bản đồ
+                </strong>
+
+                <span>
+                    Xem vị trí và chỉ đường
+                </span>
+            </a>
+
+
+            <a
+                href="bai-viet.html"
+                class="quick-card"
+            >
+                <div class="quick-icon">
+                    📰
+                </div>
+
+                <strong>
+                    Tin tức
+                </strong>
+
+                <span>
+                    Đọc bài viết mới
+                </span>
+            </a>
+
+        </div>
+
+
+        <!-- =========================
+             KHÁCH THAM QUAN
+        ========================= -->
+
+        <section class="faq-section">
+
+            <div class="section-title">
+
+                <h2>
+                    👥 Hướng dẫn khách tham quan
+                </h2>
+
+                <div class="title-line"></div>
+
+                <p>
+                    Những câu hỏi thường gặp
+                    khi sử dụng website.
+                </p>
+
+            </div>
+
+
+            <div class="faq-list">
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🏛️ Làm thế nào để xem các di tích?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Bạn vào mục
+                            <a
+                                href="heritage.html"
+                                class="faq-link"
+                            >
+                                Di tích
+                            </a>
+                            để xem danh sách các địa điểm
+                            đang được giới thiệu trên
+                            Mộ Trạch Heritage.
+                        </p>
+
+                        <p>
+                            Bạn cũng có thể chọn trực tiếp
+                            một địa điểm trên Bản đồ.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🧭 Tuyến tham quan sử dụng như thế nào?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Vào mục
+                            <a
+                                href="map-tour.html"
+                                class="faq-link"
+                            >
+                                Tuyến tham quan
+                            </a>
+                            để xem các điểm di sản
+                            theo thứ tự gợi ý.
+                        </p>
+
+                        <p>
+                            Tuyến hiện gồm:
+                            Lăng Thần →
+                            Văn Miếu Mộ Trạch →
+                            Đình làng Mộ Trạch →
+                            Chùa Diên Phúc.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🎧 Làm thế nào để nghe thuyết minh?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Mở một Trạm tham quan,
+                            tìm mục
+                            <strong>
+                                🎧 Thuyết minh di tích
+                            </strong>
+                            rồi bấm nút Play trên
+                            trình phát âm thanh.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🎬 Làm thế nào để xem video?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Trong trang Trạm tham quan,
+                            kéo đến mục
+                            <strong>
+                                🎬 Video giới thiệu
+                            </strong>
+                            và bấm Play.
+                        </p>
+
+                        <p>
+                            Nếu mạng chậm,
+                            hãy chờ một vài giây
+                            để video tải dữ liệu.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            📱 Mã QR tại mỗi trạm dùng để làm gì?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Mỗi trạm có mã QR riêng.
+                            Dùng camera điện thoại
+                            hoặc ứng dụng quét QR
+                            để mở nhanh đúng trang
+                            của điểm tham quan.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🗺️ Làm thế nào để chỉ đường tới di tích?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Bấm nút
+                            <strong>
+                                🧭 Chỉ đường
+                            </strong>
+                            tại điểm tham quan.
+                        </p>
+
+                        <p>
+                            Website sẽ mở Google Maps
+                            với vị trí của di tích
+                            để bạn lựa chọn tuyến đường.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            📰 Tôi có thể đọc các bài viết mới ở đâu?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Vào mục
+                            <a
+                                href="bai-viet.html"
+                                class="faq-link"
+                            >
+                                📰 Tin tức
+                            </a>
+                            để xem các bài viết
+                            đã được xuất bản.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            ❤️ Tôi muốn ủng hộ dự án thì làm thế nào?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Bạn có thể mở trang
+                            <a
+                                href="donate.html"
+                                class="faq-link"
+                            >
+                                ❤️ Ủng hộ
+                            </a>
+                            để xem thông tin và mã QR.
+                        </p>
+
+                        <p>
+                            Việc ủng hộ hoàn toàn tự nguyện
+                            và nhằm góp phần duy trì,
+                            bổ sung tư liệu và phát triển
+                            Mộ Trạch Heritage.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            📱 Website có dùng được trên điện thoại không?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Có. Các trang chính của
+                            Mộ Trạch Heritage
+                            đã được thiết kế để sử dụng
+                            trên điện thoại,
+                            máy tính bảng và máy tính.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🔄 Audio hoặc video không chạy thì làm gì?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Trước tiên hãy kiểm tra
+                            kết nối Internet.
+                        </p>
+
+                        <p>
+                            Nếu vẫn chưa được,
+                            hãy tải lại trang.
+                            Trên máy tính có thể dùng
+                            <strong>Ctrl + F5</strong>.
+                        </p>
+
+                        <p>
+                            Trên điện thoại,
+                            hãy đóng trang rồi mở lại.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ADMIN
+        ========================= -->
+
+        <section class="faq-section">
+
+            <div class="section-title">
+
+                <h2>
+                    🔐 Hướng dẫn quản trị
+                </h2>
+
+                <div class="title-line"></div>
+
+                <p>
+                    Dành cho người quản lý nội dung website.
+                </p>
+
+            </div>
+
+
+            <div class="faq-list">
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🔑 Quản trị viên đăng nhập ở đâu?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Truy cập trang đăng nhập quản trị:
+                        </p>
+
+                        <p>
+                            <strong>
+                                /admin/login.html
+                            </strong>
+                        </p>
+
+                        <p>
+                            Chỉ tài khoản được cấp quyền
+                            mới có thể sử dụng
+                            khu vực quản trị.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            ✍️ Làm thế nào để đăng bài mới?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Sau khi đăng nhập,
+                            vào Dashboard rồi chọn
+                            <strong>Viết bài</strong>.
+                        </p>
+
+                        <p>
+                            Nhập tiêu đề,
+                            nội dung, ảnh và các media cần thiết,
+                            sau đó chọn
+                            <strong>Lưu bản nháp</strong>
+                            hoặc
+                            <strong>Đăng bài</strong>.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            📝 Làm thế nào để sửa hoặc xóa bài?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Vào mục
+                            <strong>
+                                Danh sách bài viết
+                            </strong>.
+                        </p>
+
+                        <p>
+                            Tại từng bài có các nút
+                            Xem, Sửa và Xóa.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🖼️ Làm thế nào để tải ảnh lên?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Vào Dashboard →
+                            <strong>Quản lý ảnh</strong> →
+                            chọn
+                            <strong>Tải file lên</strong>.
+                        </p>
+
+                        <p>
+                            Hệ thống hỗ trợ
+                            JPEG, PNG và WebP.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            🎧🎬 Quản lý Audio và Video ở đâu?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Dashboard có khu vực riêng
+                            cho
+                            <strong>Audio</strong>
+                            và
+                            <strong>Video</strong>.
+                        </p>
+
+                        <p>
+                            Bạn có thể tải file mới,
+                            xem trước và xóa
+                            những file không còn sử dụng.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question">
+
+                        <span>
+                            ⚠️ Vì sao có file media không xóa được?
+                        </span>
+
+                        <span class="faq-symbol">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Nếu file đang được
+                            một bài viết sử dụng,
+                            hệ thống sẽ chặn thao tác xóa
+                            để tránh làm hỏng nội dung
+                            trên website.
+                        </p>
+
+                        <p>
+                            Hãy sửa hoặc xóa liên kết media
+                            trong bài viết trước,
+                            rồi mới xóa file.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- LƯU Ý -->
+
+        <div class="faq-note">
+
+            <strong>
+                💡 Lưu ý:
+            </strong>
+
+            Nội dung và chức năng của
+            Mộ Trạch Heritage
+            sẽ tiếp tục được cập nhật.
+            Trang Hỏi đáp cũng sẽ được bổ sung
+            khi xuất hiện những câu hỏi mới
+            trong quá trình sử dụng.
+
+        </div>
+
+
+        <!-- CTA -->
+
+        <div class="faq-cta">
+
+            <h2>
+                Bắt đầu khám phá Mộ Trạch
+            </h2>
+
+            <p>
+                Sử dụng Tuyến tham quan để
+                khám phá các điểm di sản,
+                nghe thuyết minh,
+                xem video và tìm đường
+                tới từng địa điểm.
+            </p>
+
+            <a
+                href="map-tour.html"
+                class="faq-button"
+            >
+                🧭 Mở tuyến tham quan
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="faq-footer">
+
+    <strong>
+        🏛️ MỘ TRẠCH HERITAGE
+    </strong>
+
+    <p>
+        Không gian di sản số
+    </p>
+
+    <p>
+        Làng Tiến sĩ – Đất học – Đất văn hiến
+    </p>
+
+    <p>
+        © 2026 Mộ Trạch Heritage
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     SCRIPT
+========================= -->
+
+<script>
+
+const faqItems =
+    document.querySelectorAll(
+        ".faq-item"
+    );
+
+
+faqItems.forEach(
+    function(item) {
+
+        const question =
+            item.querySelector(
+                ".faq-question"
+            );
+
+        question.addEventListener(
+            "click",
+            function() {
+
+                item.classList
+                    .toggle("open");
+
+            }
+        );
+
+    }
+);
+
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+const faqNav =
+    document.getElementById(
+        "faqNav"
+    );
+
+
+menuButton.addEventListener(
+    "click",
+    function() {
+
+        faqNav.classList
+            .toggle("show");
+
+    }
+);
+
+
+faqNav
+    .querySelectorAll("a")
+    .forEach(
+        function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    faqNav.classList
+                        .remove("show");
+
+                }
+            );
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
