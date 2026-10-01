@@ -320,7 +320,7 @@ function setupPage() {
                 /^[^\s]+\s/,
                 ""
             ) +
-        " - Mộ Trạch Heritage";
+        " - Di sản Mộ Trạch";
 }
 
 

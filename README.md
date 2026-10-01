@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mộ Trạch Heritage</title>
+    <title>Di sản Mộ Trạch</title>
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -23,7 +23,7 @@
 
             <div class="logo">
 
-                <h1>MỘ TRẠCH HERITAGE</h1>
+                <h1>DI SẢN MỘ TRẠCH</h1>
 
                 <p>Làng Tiến sĩ Việt Nam</p>
 
@@ -152,7 +152,7 @@ Di tích
 
             <p>
 
-                Dự án Mộ Trạch Heritage phục vụ công tác số hóa
+                Dự án Di sản Mộ Trạch phục vụ công tác số hóa
                 di tích lịch sử và quảng bá văn hóa địa phương.
 
             </p>
@@ -167,7 +167,7 @@ Di tích
 
         <p>
 
-            © 2026 Mộ Trạch Heritage
+            © 2026 Di sản Mộ Trạch
 
         </p>
 

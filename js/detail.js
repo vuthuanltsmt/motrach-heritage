@@ -1,5 +1,5 @@
 /* =========================================================
-   MỘ TRẠCH HERITAGE
+   DI SẢN MỘ TRẠCH
    DETAIL.JS
    Hỗ trợ URL:
    ?id=1
