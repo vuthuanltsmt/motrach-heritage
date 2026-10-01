@@ -1,0 +1,90 @@
+{
+  "vi": {
+    "brand": "DI SẢN MỘ TRẠCH",
+
+    "nav_home": "🏠 Trang chủ",
+    "nav_heritage": "🏛️ Di tích",
+    "nav_map": "🗺️ Bản đồ",
+    "nav_tour": "🧭 Tuyến tham quan",
+    "nav_news": "📰 Tin tức",
+    "nav_search": "🔎 Tìm kiếm",
+    "nav_qa": "❓ Hỏi đáp",
+    "nav_contact": "📬 Liên hệ",
+    "nav_donate": "❤️ Ủng hộ",
+
+    "hero_badge": "KHÔNG GIAN DI SẢN SỐ",
+    "hero_title": "DI SẢN MỘ TRẠCH",
+    "hero_subtitle": "Làng Tiến sĩ – Đất học – Đất văn hiến",
+    "hero_description": "Khám phá lịch sử, văn hóa, con người và những di tích tiêu biểu của quê hương Mộ Trạch.",
+    "hero_heritage": "🏛️ Khám phá di tích",
+    "hero_map": "🗺️ Bản đồ di sản"
+  },"about_title": "Về Mộ Trạch",
+"about_intro": "Mộ Trạch là vùng đất giàu truyền thống lịch sử, văn hóa và hiếu học. Không gian di sản nơi đây lưu giữ những dấu ấn quan trọng của nhiều thế hệ.",
+
+"about_heading": "Đất học – Đất văn hiến",
+"about_p1": "Mộ Trạch từ lâu được biết đến với truyền thống hiếu học và khoa bảng. Những giá trị ấy đã trở thành một phần quan trọng trong bản sắc văn hóa của quê hương.",
+"about_p2": "Hệ thống di tích, đình, miếu, lăng mộ và các công trình văn hóa góp phần lưu giữ ký ức lịch sử và truyền thống của cộng đồng.",
+"about_button": "Tìm hiểu các di tích →",
+
+"featured_title": "Di tích tiêu biểu",
+"featured_intro": "Khám phá những địa điểm tiêu biểu trong không gian di sản Mộ Trạch.",
+
+"site1_title": "Lăng Thần",
+"site1_subtitle": "Mộ cụ Vũ Hồn",
+"site1_description": "Di tích gắn với Đức Thủy tổ Vũ Hồn và nguồn cội lịch sử của Mộ Trạch.",
+
+"site2_title": "Văn Miếu Mộ Trạch",
+"site2_subtitle": "Di tích văn hóa",
+"site2_description": "Biểu tượng cho truyền thống hiếu học và khoa bảng của quê hương.",
+
+"site3_title": "Đình làng Mộ Trạch",
+"site3_subtitle": "Di tích kiến trúc",
+"site3_description": "Không gian văn hóa gắn với đời sống cộng đồng và các nghi lễ truyền thống.",
+
+"view_site": "Xem di tích →"
+
+  "en": {
+    "brand": "MO TRACH HERITAGE",
+
+    "nav_home": "🏠 Home",
+    "nav_heritage": "🏛️ Heritage Sites",
+    "nav_map": "🗺️ Map",
+    "nav_tour": "🧭 Heritage Tour",
+    "nav_news": "📰 News",
+    "nav_search": "🔎 Search",
+    "nav_qa": "❓ Q&A",
+    "nav_contact": "📬 Contact",
+    "nav_donate": "❤️ Support",
+
+    "hero_badge": "DIGITAL HERITAGE SPACE",
+    "hero_title": "MO TRACH HERITAGE",
+    "hero_subtitle": "Village of Scholars – A Land of Learning and Culture",
+    "hero_description": "Discover the history, culture, people and notable heritage sites of Mo Trach.",
+    "hero_heritage": "🏛️ Explore Heritage Sites",
+    "hero_map": "🗺️ Heritage Map"
+    "about_title": "About Mo Trach",
+"about_intro": "Mo Trach is a village with a rich historical and cultural heritage and a long tradition of learning. Its heritage spaces preserve the memories and values of many generations.",
+
+"about_heading": "A Land of Learning and Culture",
+"about_p1": "Mo Trach has long been known for its tradition of scholarship and academic achievement. These values have become an important part of the village's cultural identity.",
+"about_p2": "Its communal houses, temples, tombs and other cultural sites help preserve the historical memory and traditions of the local community.",
+"about_button": "Explore the heritage sites →",
+
+"featured_title": "Featured Heritage Sites",
+"featured_intro": "Discover some of the most notable places within the heritage landscape of Mo Trach.",
+
+"site1_title": "Vu Hon Ancestral Tomb",
+"site1_subtitle": "Tomb of Ancestor Vu Hon",
+"site1_description": "A heritage site associated with Ancestor Vu Hon and the historical origins of Mo Trach.",
+
+"site2_title": "Mo Trach Temple of Literature",
+"site2_subtitle": "Cultural Heritage Site",
+"site2_description": "A symbol of the village's long-standing tradition of learning and scholarship.",
+
+"site3_title": "Mo Trach Communal House",
+"site3_subtitle": "Architectural Heritage Site",
+"site3_description": "A cultural space closely connected with community life and traditional ceremonies.",
+
+"view_site": "View Site →"
+  }
+}

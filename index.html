@@ -9,8 +9,8 @@
     <meta name="description"
           content="Không gian di sản số Mộ Trạch - Làng Tiến sĩ, Đất học, Đất văn hiến">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/i18n.css">
 </head>
 
 <body>
@@ -20,178 +20,132 @@
 
         <a href="index.html" class="logo">
             <span class="logo-icon">🏛️</span>
-            <span>DI SẢN MỘ TRẠCH</span>
+            <span data-i18n="brand">DI SẢN MỘ TRẠCH</span>
         </a>
 
-        <button class="menu-button" onclick="toggleMenu()">
+        <button class="menu-button" onclick="toggleMenu()" aria-label="Menu">
             ☰
         </button>
 
         <nav id="mainMenu">
-
-            <a href="index.html">🏠 Trang chủ</a>
-
-            <a href="pages/heritage.html">
-                🏛️ Di tích
-            </a>
-
-            <a href="pages/map.html">
-                🗺️ Bản đồ
-            </a>
-
-            <a href="pages/map-tour.html">
-                🧭 Tuyến tham quan
-            </a>
-<a href="pages/bai-viet.html">
-    📰 Tin tức
-</a>
-
-<a href="pages/tim-kiem.html">
-    🔎 Tìm kiếm
-</a>
-
-<a href="pages/hoi-dap.html">
-    ❓ Hỏi đáp
-</a>
-
-<a href="pages/lien-he.html">
-    📬 Liên hệ
-</a>
-
-<a href="pages/donate.html">
-    ❤️ Ủng hộ
-</a>
-
+            <a href="index.html" data-i18n="nav_home">🏠 Trang chủ</a>
+            <a href="pages/heritage.html" data-i18n="nav_heritage">🏛️ Di tích</a>
+            <a href="pages/map.html" data-i18n="nav_map">🗺️ Bản đồ</a>
+            <a href="pages/map-tour.html" data-i18n="nav_tour">🧭 Tuyến tham quan</a>
+            <a href="pages/bai-viet.html" data-i18n="nav_news">📰 Tin tức</a>
+            <a href="pages/gioi-thieu.html" data-i18n="nav_about">ℹ️ Giới thiệu</a>
+            <a href="pages/tim-kiem.html" data-i18n="nav_search">🔎 Tìm kiếm</a>
+            <a href="pages/hoi-dap.html" data-i18n="nav_qa">❓ Hỏi đáp</a>
+            <a href="pages/lien-he.html" data-i18n="nav_contact">📬 Liên hệ</a>
+            <a href="pages/donate.html" data-i18n="nav_donate">❤️ Ủng hộ</a>
         </nav>
+
+        <div class="language-switcher" aria-label="Language selector">
+            <button type="button" data-lang="vi" aria-pressed="true">VI</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
 
     </div>
 </header>
 
 
 <!-- HERO -->
-
 <section class="hero">
-
     <div class="hero-overlay">
-
         <div class="hero-content">
 
-            <div class="badge">
+            <div class="badge" data-i18n="hero_badge">
                 KHÔNG GIAN DI SẢN SỐ
             </div>
 
-            <h1>DI SẢN MỘ TRẠCH</h1>
+            <h1 data-i18n="hero_title">DI SẢN MỘ TRẠCH</h1>
 
-            <h2>
+            <h2 data-i18n="hero_subtitle">
                 Làng Tiến sĩ – Đất học – Đất văn hiến
             </h2>
 
-            <p>
-                Khám phá lịch sử, văn hóa, con người
-                và những di tích tiêu biểu của quê hương Mộ Trạch.
+            <p data-i18n="hero_description">
+                Khám phá lịch sử, văn hóa, con người và những di tích tiêu biểu của quê hương Mộ Trạch.
             </p>
 
             <div class="hero-buttons">
-
                 <a href="pages/heritage.html"
-                   class="btn btn-light">
+                   class="btn btn-light"
+                   data-i18n="hero_heritage">
                     🏛️ Khám phá di tích
                 </a>
 
                 <a href="pages/map.html"
-                   class="btn btn-red">
+                   class="btn btn-red"
+                   data-i18n="hero_map">
                     🗺️ Bản đồ di sản
                 </a>
-
             </div>
-</div>
+
         </div>
-
     </div>
-
 </section>
 
 
 <!-- GIỚI THIỆU -->
-
 <section class="section intro">
 
     <div class="section-title">
-
-        <h2>Về Mộ Trạch</h2>
+        <h2 data-i18n="about_title">Về Mộ Trạch</h2>
 
         <div class="title-line"></div>
 
-        <p>
-            Mộ Trạch là vùng đất giàu truyền thống lịch sử,
-            văn hóa và hiếu học. Không gian di sản nơi đây
-            lưu giữ những dấu ấn quan trọng của nhiều thế hệ.
+        <p data-i18n="about_intro">
+            Mộ Trạch là vùng đất giàu truyền thống lịch sử, văn hóa và hiếu học. Không gian di sản nơi đây lưu giữ những dấu ấn quan trọng của nhiều thế hệ.
         </p>
-
     </div>
-
 
     <div class="intro-grid">
 
         <div class="intro-image">
-
-            <img src="images/van-mieu.jpg"
-                 alt="Văn Miếu Mộ Trạch">
-
+            <img src="images/van-mieu.jpg" alt="Văn Miếu Mộ Trạch">
         </div>
-
 
         <div class="intro-content">
 
-            <h2>Đất học – Đất văn hiến</h2>
+            <h2 data-i18n="about_heading">
+                Đất học – Đất văn hiến
+            </h2>
 
-            <p>
-                Mộ Trạch từ lâu được biết đến với truyền thống
-                hiếu học và khoa bảng. Những giá trị ấy đã trở
-                thành một phần quan trọng trong bản sắc văn hóa
-                của quê hương.
+            <p data-i18n="about_p1">
+                Mộ Trạch từ lâu được biết đến với truyền thống hiếu học và khoa bảng. Những giá trị ấy đã trở thành một phần quan trọng trong bản sắc văn hóa của quê hương.
             </p>
 
-            <p>
-                Hệ thống di tích, đình, miếu, lăng mộ và các
-                công trình văn hóa góp phần lưu giữ ký ức lịch sử
-                và truyền thống của cộng đồng.
+            <p data-i18n="about_p2">
+                Hệ thống di tích, đình, miếu, lăng mộ và các công trình văn hóa góp phần lưu giữ ký ức lịch sử và truyền thống của cộng đồng.
             </p>
 
             <a href="pages/heritage.html"
-               class="btn btn-red">
+               class="btn btn-red"
+               data-i18n="about_button">
                 Tìm hiểu các di tích →
             </a>
 
         </div>
-
     </div>
 
 </section>
 
 
 <!-- DI TÍCH -->
-
 <section class="section heritage">
 
     <div class="section-title">
-
-        <h2>Di tích tiêu biểu</h2>
+        <h2 data-i18n="featured_title">Di tích tiêu biểu</h2>
 
         <div class="title-line"></div>
 
-        <p>
-            Khám phá những địa điểm tiêu biểu trong
-            không gian di sản Mộ Trạch.
+        <p data-i18n="featured_intro">
+            Khám phá những địa điểm tiêu biểu trong không gian di sản Mộ Trạch.
         </p>
-
     </div>
 
-
     <div class="heritage-grid">
-
-
-        <!-- LĂNG THẦN -->
 
         <article class="heritage-card">
 
@@ -200,26 +154,25 @@
 
             <div class="card-content">
 
-                <h3>Lăng Thần</h3>
+                <h3 data-i18n="site1_title">Lăng Thần</h3>
 
-                <strong>Mộ cụ Vũ Hồn</strong>
+                <strong data-i18n="site1_subtitle">
+                    Mộ cụ Vũ Hồn
+                </strong>
 
-                <p>
-                    Di tích gắn với Đức Thủy tổ Vũ Hồn
-                    và nguồn cội lịch sử của Mộ Trạch.
+                <p data-i18n="site1_description">
+                    Di tích gắn với Đức Thủy tổ Vũ Hồn và nguồn cội lịch sử của Mộ Trạch.
                 </p>
 
                 <a href="pages/detail.html?id=1"
-                   class="btn btn-red">
+                   class="btn btn-red"
+                   data-i18n="view_site">
                     Xem di tích →
                 </a>
 
             </div>
-
         </article>
 
-
-        <!-- VĂN MIẾU -->
 
         <article class="heritage-card">
 
@@ -228,26 +181,27 @@
 
             <div class="card-content">
 
-                <h3>Văn Miếu Mộ Trạch</h3>
+                <h3 data-i18n="site2_title">
+                    Văn Miếu Mộ Trạch
+                </h3>
 
-                <strong>Di tích văn hóa</strong>
+                <strong data-i18n="site2_subtitle">
+                    Di tích văn hóa
+                </strong>
 
-                <p>
-                    Biểu tượng cho truyền thống hiếu học
-                    và khoa bảng của quê hương.
+                <p data-i18n="site2_description">
+                    Biểu tượng cho truyền thống hiếu học và khoa bảng của quê hương.
                 </p>
 
                 <a href="pages/detail.html?id=2"
-                   class="btn btn-red">
+                   class="btn btn-red"
+                   data-i18n="view_site">
                     Xem di tích →
                 </a>
 
             </div>
-
         </article>
 
-
-        <!-- ĐÌNH LÀNG -->
 
         <article class="heritage-card">
 
@@ -256,101 +210,104 @@
 
             <div class="card-content">
 
-                <h3>Đình làng Mộ Trạch</h3>
+                <h3 data-i18n="site3_title">
+                    Đình làng Mộ Trạch
+                </h3>
 
-                <strong>Di tích kiến trúc</strong>
+                <strong data-i18n="site3_subtitle">
+                    Di tích kiến trúc
+                </strong>
 
-                <p>
-                    Không gian văn hóa gắn với đời sống
-                    cộng đồng và các nghi lễ truyền thống.
+                <p data-i18n="site3_description">
+                    Không gian văn hóa gắn với đời sống cộng đồng và các nghi lễ truyền thống.
                 </p>
 
                 <a href="pages/detail.html?id=3"
-                   class="btn btn-red">
+                   class="btn btn-red"
+                   data-i18n="view_site">
                     Xem di tích →
                 </a>
 
             </div>
-
         </article>
 
     </div>
-
 </section>
 
 
 <!-- KHÁM PHÁ -->
-
 <section class="explore">
 
     <div class="section-title light">
 
-        <h2>Khám phá Mộ Trạch</h2>
+        <h2 data-i18n="explore_title">
+            Khám phá Mộ Trạch
+        </h2>
 
         <div class="title-line"></div>
 
-        <p>
-            Một không gian số giúp kết nối du khách
-            với di sản ngay tại nơi tham quan.
+        <p data-i18n="explore_intro">
+            Một không gian số giúp kết nối du khách với di sản ngay tại nơi tham quan.
         </p>
 
     </div>
 
-
     <div class="explore-grid">
 
-
-        <a href="pages/heritage.html"
-           class="explore-card">
+        <a href="pages/heritage.html" class="explore-card">
 
             <div class="explore-icon">🏛️</div>
 
-            <h3>Di tích</h3>
+            <h3 data-i18n="explore_heritage_title">
+                Di tích
+            </h3>
 
-            <p>
+            <p data-i18n="explore_heritage_desc">
                 Tìm hiểu các di tích tiêu biểu.
             </p>
 
         </a>
 
 
-        <a href="pages/map.html"
-           class="explore-card">
+        <a href="pages/map.html" class="explore-card">
 
             <div class="explore-icon">🗺️</div>
 
-            <h3>Bản đồ</h3>
+            <h3 data-i18n="explore_map_title">
+                Bản đồ
+            </h3>
 
-            <p>
-                Xác định vị trí và tìm đường
-                đến di tích.
+            <p data-i18n="explore_map_desc">
+                Xác định vị trí và tìm đường đến di tích.
             </p>
 
         </a>
 
 
-        <a href="pages/heritage.html"
-           class="explore-card">
+        <a href="pages/heritage.html" class="explore-card">
 
             <div class="explore-icon">🎧</div>
 
-            <h3>Thuyết minh</h3>
+            <h3 data-i18n="explore_audio_title">
+                Thuyết minh
+            </h3>
 
-            <p>
+            <p data-i18n="explore_audio_desc">
                 Nghe câu chuyện về các di tích.
             </p>
 
         </a>
 
 
-        <a href="pages/heritage.html"
-           class="explore-card">
+        <a href="pages/heritage.html" class="explore-card">
 
             <div class="explore-icon">🎬</div>
 
-            <h3>Video</h3>
+            <h3 data-i18n="explore_video_title">
+                Video
+            </h3>
 
-            <p>
+            <p data-i18n="explore_video_desc">
                 Xem hình ảnh và video giới thiệu.
             </p>
 
@@ -360,6 +317,8 @@
 
 </section>
 
+
+<!-- ỦNG HỘ -->
 <section
     style="
         padding: 50px 20px;
@@ -367,7 +326,6 @@
         text-align: center;
     "
 >
-
     <div
         style="
             max-width: 850px;
@@ -389,6 +347,7 @@
         </div>
 
         <h2
+            data-i18n="donate_title"
             style="
                 margin: 0 0 12px;
                 color: #800000;
@@ -399,6 +358,7 @@
         </h2>
 
         <p
+            data-i18n="donate_desc"
             style="
                 max-width: 650px;
                 margin: 0 auto 22px;
@@ -407,37 +367,37 @@
                 font-size: 16px;
             "
         >
-            Nếu bạn thấy website hữu ích,
-            bạn có thể ủng hộ một khoản tùy tâm
-            để góp phần duy trì, bổ sung tư liệu
-            và phát triển không gian di sản số Mộ Trạch.
+            Nếu bạn thấy website hữu ích, bạn có thể ủng hộ một khoản tùy tâm để góp phần duy trì, bổ sung tư liệu và phát triển không gian di sản số Mộ Trạch.
         </p>
 
         <a
             href="pages/donate.html"
             class="btn btn-red"
+            data-i18n="donate_button"
         >
             ❤️ Ủng hộ phát triển website
         </a>
 
     </div>
-
 </section>
-<!-- FOOTER -->
 
+
+<!-- FOOTER -->
 <footer class="footer">
 
-    <div class="footer-logo">
+    <div class="footer-logo" data-i18n="footer_brand">
         🏛️ DI SẢN MỘ TRẠCH
     </div>
 
-    <p>Không gian di sản số</p>
+    <p data-i18n="footer_space">
+        Không gian di sản số
+    </p>
 
-    <p>
+    <p data-i18n="footer_slogan">
         Làng Tiến sĩ – Đất học – Đất văn hiến
     </p>
 
-    <p class="copyright">
+    <p class="copyright" data-i18n="footer_copyright">
         © 2026 Di sản Mộ Trạch
     </p>
 
@@ -445,16 +405,13 @@
 
 
 <script>
-
 function toggleMenu() {
-
     const menu = document.getElementById("mainMenu");
-
     menu.classList.toggle("show");
-
 }
-
 </script>
+
+<script src="js/i18n.js?v=2"></script>
 
 </body>
 </html>

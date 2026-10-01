@@ -1,59 +1,58 @@
 /* =========================================================
    DI SẢN MỘ TRẠCH
-   DETAIL.JS
-   Hỗ trợ URL:
-   ?id=1
-   ?id=2
-   ?id=3
-
-   và URL chuẩn:
-   ?id=lang-than
-   ?id=van-mieu-mo-trach
-   ?id=dinh-lang-mo-trach
+   DETAIL.JS - VI / EN
    ========================================================= */
 
 "use strict";
 
-console.log("========================================");
-console.log("DETAIL.JS - PHIÊN BẢN SLUG");
-console.log("========================================");
+let heritageData = [];
+let currentHeritage = null;
 
+const LOCALIZED_PREFIX = {
+    "lang-than": "detail_lang_than",
+    "van-mieu-mo-trach": "detail_van_mieu",
+    "dinh-lang-mo-trach": "detail_dinh_lang",
+    "chua-dien-phuc": "detail_chua"
+};
 
 document.addEventListener("DOMContentLoaded", function () {
     loadHeritageDetail();
 });
 
+document.addEventListener("motrach:languagechange", function () {
+    if (currentHeritage) {
+        const container = document.getElementById("detail-content");
+        if (container) {
+            renderHeritage(currentHeritage, container);
+        }
+    }
+});
 
-/* =========================================================
-   BIẾN
-   ========================================================= */
 
-let heritageData = [];
+function tr(key) {
+    if (window.MoTrachI18n && typeof window.MoTrachI18n.t === "function") {
+        return window.MoTrachI18n.t(key);
+    }
+    return key;
+}
 
-let currentHeritage = null;
 
+function getCurrentLanguage() {
+    if (window.MoTrachI18n && typeof window.MoTrachI18n.getLanguage === "function") {
+        return window.MoTrachI18n.getLanguage();
+    }
 
-/* =========================================================
-   LẤY ID / SLUG TỪ URL
-   ========================================================= */
+    return localStorage.getItem("motrach-language") === "en" ? "en" : "vi";
+}
+
 
 function getUrlId() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
+    const params = new URLSearchParams(window.location.search);
     return params.get("id");
 }
 
 
-/* =========================================================
-   TẠO SLUG
-   ========================================================= */
-
 function createSlug(text) {
-
     return String(text || "")
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
@@ -65,875 +64,423 @@ function createSlug(text) {
 }
 
 
-/* =========================================================
-   CHUẨN HÓA DỮ LIỆU
-   ========================================================= */
-
 function normalizeData(data) {
-
-    if (Array.isArray(data)) {
-        return data;
-    }
-
-    if (
-        data &&
-        Array.isArray(data.heritage)
-    ) {
-        return data.heritage;
-    }
-
-    if (
-        data &&
-        Array.isArray(data.items)
-    ) {
-        return data.items;
-    }
-
-    if (
-        data &&
-        Array.isArray(data.data)
-    ) {
-        return data.data;
-    }
-
-    if (
-        data &&
-        Array.isArray(data.sites)
-    ) {
-        return data.sites;
-    }
-
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.heritage)) return data.heritage;
+    if (data && Array.isArray(data.items)) return data.items;
+    if (data && Array.isArray(data.data)) return data.data;
+    if (data && Array.isArray(data.sites)) return data.sites;
     return [];
 }
 
 
-/* =========================================================
-   TẠO SLUG CHUẨN CHO TỪNG DI TÍCH
-   ========================================================= */
-
 function getHeritageSlug(item) {
-
-    /*
-       Nếu JSON đã có slug thì ưu tiên.
-    */
-
     if (item.slug) {
-
-        return createSlug(
-            item.slug
-        );
-
+        return createSlug(item.slug);
     }
 
+    const generated = createSlug(item.name || item.title || "");
 
-    /*
-       Nếu chưa có slug thì tạo từ tên.
-    */
-
-    const generated =
-        createSlug(
-            item.name ||
-            item.title ||
-            ""
-        );
-
-
-    /*
-       Đảm bảo 3 URL chính xác
-       theo yêu cầu của dự án.
-    */
-
-    if (
-        generated === "lang-than" ||
-        generated === "lang-than-vu-hon"
-    ) {
-
+    if (generated === "lang-than" || generated === "lang-than-vu-hon") {
         return "lang-than";
-
     }
 
-
-    if (
-        generated === "van-mieu-mo-trach"
-    ) {
-
+    if (generated === "van-mieu-mo-trach") {
         return "van-mieu-mo-trach";
-
     }
 
-
-    if (
-        generated === "dinh-lang-mo-trach"
-    ) {
-
+    if (generated === "dinh-lang-mo-trach") {
         return "dinh-lang-mo-trach";
-
     }
 
+    if (generated === "chua-dien-phuc") {
+        return "chua-dien-phuc";
+    }
 
     return generated;
 }
 
 
-/* =========================================================
-   TÌM DI TÍCH
-   ========================================================= */
+function findHeritage(requestedId) {
+    const wanted = String(requestedId || "").trim().toLowerCase();
 
-function findHeritage(
-    requestedId
-) {
+    let item = heritageData.find(function (heritage) {
+        return getHeritageSlug(heritage) === wanted;
+    });
 
-    const wanted =
-        String(
-            requestedId || ""
-        )
-        .trim()
-        .toLowerCase();
+    if (item) return item;
 
+    item = heritageData.find(function (heritage) {
+        return String(heritage.id).toLowerCase() === wanted;
+    });
 
-    console.log(
-        "Đang tìm di tích với mã:",
-        wanted
-    );
+    if (item) return item;
 
+    item = heritageData.find(function (heritage) {
+        return createSlug(heritage.name) === wanted;
+    });
 
-    /*
-       -------------------------------------------------------
-       1. Tìm theo slug
-       -------------------------------------------------------
-    */
-
-    let item =
-        heritageData.find(
-            function (heritage) {
-
-                return (
-                    getHeritageSlug(
-                        heritage
-                    )
-                    === wanted
-                );
-
-            }
-        );
-
-
-    if (item) {
-
-        console.log(
-            "✓ TÌM THẤY THEO SLUG:",
-            getHeritageSlug(item),
-            "|",
-            item.name
-        );
-
-        return item;
-    }
-
-
-    /*
-       -------------------------------------------------------
-       2. Tìm theo id số trong JSON
-       -------------------------------------------------------
-    */
-
-    item =
-        heritageData.find(
-            function (heritage) {
-
-                return (
-                    String(
-                        heritage.id
-                    )
-                    .toLowerCase()
-                    === wanted
-                );
-
-            }
-        );
-
-
-    if (item) {
-
-        console.log(
-            "✓ TÌM THẤY THEO ID:",
-            item.id,
-            "|",
-            item.name
-        );
-
-        return item;
-    }
-
-
-    /*
-       -------------------------------------------------------
-       3. Tìm theo tên
-       -------------------------------------------------------
-    */
-
-    item =
-        heritageData.find(
-            function (heritage) {
-
-                return (
-                    createSlug(
-                        heritage.name
-                    )
-                    === wanted
-                );
-
-            }
-        );
-
-
-    if (item) {
-
-        console.log(
-            "✓ TÌM THẤY THEO TÊN:",
-            item.name
-        );
-
-        return item;
-    }
-
-
-    /*
-       -------------------------------------------------------
-       4. Tương thích với id=1, id=2, id=3
-       -------------------------------------------------------
-    */
+    if (item) return item;
 
     if (/^\d+$/.test(wanted)) {
+        const index = Number(wanted) - 1;
 
-        const index =
-            Number(wanted) - 1;
-
-
-        if (
-            index >= 0 &&
-            index < heritageData.length
-        ) {
-
-            item =
-                heritageData[index];
-
-
-            console.log(
-                "✓ TÌM THẤY THEO VỊ TRÍ:",
-                index + 1,
-                "|",
-                item.name
-            );
-
-
-            return item;
+        if (index >= 0 && index < heritageData.length) {
+            return heritageData[index];
         }
     }
-
 
     return null;
 }
 
 
-/* =========================================================
-   TẢI DỮ LIỆU
-   ========================================================= */
+function localizedItem(item) {
+    const slug = getHeritageSlug(item);
+    const prefix = LOCALIZED_PREFIX[slug];
 
-async function loadHeritageDetail() {
-
-    const container =
-        document.getElementById(
-            "detail-content"
-        );
-
-
-    if (!container) {
-
-        console.error(
-            "Không tìm thấy #detail-content"
-        );
-
-        return;
+    if (!prefix) {
+        return {
+            name: item.name || "Di tích Mộ Trạch",
+            subtitle: item.subtitle || "",
+            type: item.type || "Di tích",
+            location: item.location || item.address || "",
+            description: item.description || "",
+            history: item.history || ""
+        };
     }
 
-
-    const requestedId =
-        getUrlId();
-
-
-    console.log(
-        "URL hiện tại:",
-        window.location.href
-    );
-
-
-    console.log(
-        "ID nhận được:",
-        requestedId
-    );
-
-
-    if (!requestedId) {
-
-        showError(
-            "Không xác định được di tích",
-            "Đường dẫn không chứa mã di tích."
-        );
-
-        return;
-    }
-
-
-    /*
-       Loading
-    */
-
-    container.innerHTML = `
-
-        <div class="qr-loading">
-
-            <div class="qr-loading-icon">
-                ⏳
-            </div>
-
-            <h2>
-                Đang tải thông tin di tích...
-            </h2>
-
-            <p>
-                Vui lòng chờ trong giây lát.
-            </p>
-
-        </div>
-
-    `;
-
-
-    try {
-
-        console.log(
-            "Đang tải ../data/heritage.json..."
-        );
-
-
-        const response =
-            await fetch(
-                "../data/heritage.json?v=" +
-                Date.now(),
-                {
-                    cache: "no-store"
-                }
-            );
-
-
-        console.log(
-            "HTTP:",
-            response.status
-        );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "HTTP " +
-                response.status
-            );
-
-        }
-
-
-        const data =
-            await response.json();
-
-
-        heritageData =
-            normalizeData(data);
-
-
-        console.log(
-            "Dữ liệu thực tế:",
-            heritageData
-        );
-
-
-        console.log(
-            "Số lượng di tích:",
-            heritageData.length
-        );
-
-
-        /*
-           In danh sách slug
-        */
-
-        console.log(
-            "===== DANH SÁCH SLUG ====="
-        );
-
-
-        heritageData.forEach(
-            function (item, index) {
-
-                console.log(
-                    index + 1,
-                    "| ID JSON:",
-                    item.id,
-                    "| SLUG:",
-                    getHeritageSlug(item),
-                    "| Tên:",
-                    item.name
-                );
-
-            }
-        );
-
-
-        console.log(
-            "=========================="
-        );
-
-
-        currentHeritage =
-            findHeritage(
-                requestedId
-            );
-
-
-        if (!currentHeritage) {
-
-            console.error(
-                "✗ KHÔNG TÌM THẤY:",
-                requestedId
-            );
-
-
-            showError(
-                "Không tìm thấy di tích",
-                "Mã di tích \"" +
-                requestedId +
-                "\" không tồn tại trong heritage.json."
-            );
-
-
-            return;
-        }
-
-
-        console.log(
-            "✓ DI TÍCH ĐƯỢC CHỌN:",
-            currentHeritage.name
-        );
-
-
-        console.log(
-            "✓ SLUG:",
-            getHeritageSlug(
-                currentHeritage
-            )
-        );
-
-
-        renderHeritage(
-            currentHeritage,
-            container
-        );
-
-    }
-    catch (error) {
-
-        console.error(
-            "LỖI DETAIL.JS:",
-            error
-        );
-
-
-        showError(
-            "Không thể tải thông tin di tích",
-            error.message
-        );
-
-    }
-
+    return {
+        name: tr(prefix + "_name"),
+        subtitle: tr(prefix + "_subtitle"),
+        type: tr(prefix + "_type"),
+        location: tr(prefix + "_location"),
+        description: tr(prefix + "_description"),
+        history: tr(prefix + "_history")
+    };
 }
 
 
-/* =========================================================
-   RENDER
-   ========================================================= */
+async function loadHeritageDetail() {
+    const container = document.getElementById("detail-content");
 
-function renderHeritage(
-    item,
-    container
-) {
+    if (!container) {
+        console.error("Không tìm thấy #detail-content");
+        return;
+    }
 
-    const name =
-        item.name ||
-        "Di tích Mộ Trạch";
+    const requestedId = getUrlId();
+
+    if (!requestedId) {
+        showError(
+            tr("detail_error_no_id_title"),
+            tr("detail_error_no_id_message")
+        );
+        return;
+    }
+
+    container.innerHTML = `
+        <div class="qr-loading">
+            <div class="qr-loading-icon">⏳</div>
+            <h2>${escapeHtml(tr("detail_loading"))}</h2>
+            <p>${escapeHtml(tr("detail_wait"))}</p>
+        </div>
+    `;
+
+    try {
+        const response = await fetch(
+            "../data/heritage.json?v=" + Date.now(),
+            { cache: "no-store" }
+        );
+
+        if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+        }
+
+        const data = await response.json();
+        heritageData = normalizeData(data);
+        currentHeritage = findHeritage(requestedId);
+
+        if (!currentHeritage) {
+            showError(
+                tr("detail_error_not_found_title"),
+                tr("detail_error_not_found_prefix") + " " + requestedId
+            );
+            return;
+        }
+
+        renderHeritage(currentHeritage, container);
+    }
+    catch (error) {
+        console.error("LỖI DETAIL.JS:", error);
+
+        showError(
+            tr("detail_error_load_title"),
+            error.message
+        );
+    }
+}
 
 
-    const subtitle =
-        item.subtitle ||
-        "";
+function renderHeritage(item, container) {
+    const localized = localizedItem(item);
 
-
-    const type =
-        item.type ||
-        "Di tích";
-
-
-    const description =
-        item.description ||
-        "";
-
-
-    const history =
-        item.history ||
-        "";
-
+    const name = localized.name || item.name || "Di tích Mộ Trạch";
+    const subtitle = localized.subtitle || "";
+    const type = localized.type || "";
+    const description = localized.description || "";
+    const history = localized.history || "";
 
     const address =
+        localized.location ||
+        item.location ||
         item.address ||
         "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng";
 
+    const year = item.year || "";
+    const rank = item.rank || "";
 
-    const year =
-        item.year ||
-        "";
+    const image = getAssetPath(item.image || item.cover);
+    const audio = getAssetPath(item.audio);
+    const video = getAssetPath(item.video);
 
-
-    const rank =
-        item.rank ||
-        "";
-
-
-    const image =
-        getAssetPath(
-            item.image ||
-            item.cover
-        );
-
-
-    const audio =
-        getAssetPath(
-            item.audio
-        );
-
-
-    const video =
-        getAssetPath(
-            item.video
-        );
-
-
-    const gallery =
-        Array.isArray(
-            item.gallery
-        )
+    const gallery = Array.isArray(item.gallery)
         ? item.gallery
         : [];
-
 
     const mapUrl =
         item.map ||
         createGoogleMapUrl(item);
-const stationUrl = {
-    "lang-than": "tram-lang-than.html",
-    "van-mieu-mo-trach": "tram-van-mieu.html",
-    "dinh-lang-mo-trach": "tram-dinh-lang.html"
-}[getHeritageSlug(item)] || "";
 
-    /*
-       Tạo HTML
-    */
+    const stationUrl = {
+        "lang-than": "tram-lang-than.html",
+        "van-mieu-mo-trach": "tram-van-mieu.html",
+        "dinh-lang-mo-trach": "tram-dinh-lang.html"
+    }[getHeritageSlug(item)] || "";
+
+    document.title =
+        name +
+        (getCurrentLanguage() === "en"
+            ? " - Mo Trach Heritage"
+            : " - Di sản Mộ Trạch");
 
     container.innerHTML = `
-
         <article class="qr-card">
-
-            <!-- ẢNH CHÍNH -->
 
             ${
                 image
-                ?
-                `
+                ? `
                 <div class="hero-image-wrap">
-
                     <img
                         src="${safe(image)}"
                         alt="${safe(name)}"
                         class="qr-main-image"
                     >
-
                     <div class="hero-image-caption">
                         ${escapeHtml(name)}
                     </div>
-
                 </div>
                 `
-                :
-                `
+                : `
                 <div class="hero-no-image">
                     🏛️
                 </div>
                 `
             }
 
-
             <div class="qr-content">
 
-
-                <!-- BADGE -->
-
                 <div class="qr-badge">
-                    KHÔNG GIAN DI SẢN SỐ
+                    ${escapeHtml(tr("detail_badge"))}
                 </div>
-
-
-                <!-- TÊN -->
 
                 <h1 class="qr-title">
                     ${escapeHtml(name)}
                 </h1>
 
-
                 ${
                     subtitle
-                    ?
-                    `
+                    ? `
                     <div class="qr-subtitle">
                         ${escapeHtml(subtitle)}
                     </div>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- THÔNG TIN -->
 
                 <div class="qr-info">
 
                     <p>
                         🏛️
-                        <strong>Loại di tích:</strong>
+                        <strong>${escapeHtml(tr("detail_type_label"))}</strong>
                         ${escapeHtml(type)}
                     </p>
 
                     <p>
                         📍
-                        <strong>Địa điểm:</strong>
+                        <strong>${escapeHtml(tr("detail_location_label"))}</strong>
                         ${escapeHtml(address)}
                     </p>
 
                     ${
                         year
-                        ?
-                        `
+                        ? `
                         <p>
                             📅
-                            <strong>Niên đại:</strong>
+                            <strong>${escapeHtml(tr("detail_year_label"))}</strong>
                             ${escapeHtml(year)}
                         </p>
                         `
-                        :
-                        ""
+                        : ""
                     }
 
                     ${
                         rank
-                        ?
-                        `
+                        ? `
                         <p>
                             🏅
-                            <strong>Xếp hạng:</strong>
+                            <strong>${escapeHtml(tr("detail_rank_label"))}</strong>
                             ${escapeHtml(rank)}
                         </p>
                         `
-                        :
-                        ""
+                        : ""
                     }
 
                 </div>
-
-
-                <!-- NÚT -->
 
                 <div class="qr-actions">
 
                     ${
                         audio
-                        ?
-                        `
+                        ? `
                         <button
                             id="audioJumpButton"
                             type="button"
                             class="qr-action qr-action-audio"
                         >
-                            🎧 NGHE THUYẾT MINH
+                            ${escapeHtml(tr("detail_audio_button"))}
                         </button>
                         `
-                        :
-                        ""
+                        : ""
                     }
-
 
                     ${
                         video
-                        ?
-                        `
+                        ? `
                         <button
                             id="videoJumpButton"
                             type="button"
                             class="qr-action qr-action-video"
                         >
-                            🎬 XEM VIDEO
+                            ${escapeHtml(tr("detail_video_button"))}
                         </button>
                         `
-                        :
-                        ""
+                        : ""
                     }
-
 
                     ${
                         mapUrl
-                        ?
-                        `
+                        ? `
                         <a
                             href="${safe(mapUrl)}"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="qr-action qr-action-map"
                         >
-                            📍 CHỈ ĐƯỜNG
+                            ${escapeHtml(tr("detail_directions_button"))}
                         </a>
                         `
-                        :
-                        ""
+                        : ""
                     }
+
                     ${
                         stationUrl
-                        ?
-                        `
+                        ? `
                         <a
                             href="${safe(stationUrl)}"
                             class="qr-action qr-action-station"
                         >
-                            🏛️ TRẠM THAM QUAN
+                            ${escapeHtml(tr("detail_station_button"))}
                         </a>
                         `
-                        :
-                        ""
+                        : ""
                     }
+
                 </div>
-
-
-                <!-- GIỚI THIỆU -->
 
                 ${
                     description
-                    ?
-                    `
+                    ? `
                     <section class="qr-section">
-
                         <h2 class="qr-section-title">
-                            📜 Giới thiệu
+                            ${escapeHtml(tr("detail_intro_title"))}
                         </h2>
-
                         <div class="qr-text">
                             ${formatText(description)}
                         </div>
-
                     </section>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- LỊCH SỬ -->
 
                 ${
                     history
-                    ?
-                    `
+                    ? `
                     <section class="qr-section">
-
                         <h2 class="qr-section-title">
-                            📖 Lịch sử
+                            ${escapeHtml(tr("detail_history_title"))}
                         </h2>
-
                         <div class="qr-text">
                             ${formatText(history)}
                         </div>
-
                     </section>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- THUYẾT MINH -->
 
                 ${
                     audio
-                    ?
-                    `
-                    <section
-                        class="qr-section"
-                        id="audio"
-                    >
+                    ? `
+                    <section class="qr-section" id="audio">
 
                         <h2 class="qr-section-title">
-                            🎧 Thuyết minh
+                            ${escapeHtml(tr("detail_audio_title"))}
                         </h2>
-
 
                         <div class="audio-player-card">
 
                             <div class="audio-player-header">
 
-                                <div class="audio-icon">
-                                    🎧
-                                </div>
+                                <div class="audio-icon">🎧</div>
 
                                 <div>
-
                                     <div class="audio-player-title">
-                                        Thuyết minh di tích
+                                        ${escapeHtml(tr("detail_audio_player_title"))}
                                     </div>
 
                                     <div class="audio-player-name">
                                         ${escapeHtml(name)}
                                     </div>
-
                                 </div>
 
                             </div>
-
 
                             <audio
                                 id="audioPlayer"
                                 preload="metadata"
                                 controls
                             >
-
                                 <source
                                     src="${safe(audio)}"
                                     type="audio/mpeg"
                                 >
-
                             </audio>
-
 
                             <div
                                 id="audioStatus"
                                 class="audio-status"
                             >
-                                ⏳ Đang chuẩn bị thuyết minh...
+                                ${escapeHtml(tr("detail_audio_preparing"))}
                             </div>
-
 
                             <div
                                 id="audioError"
@@ -941,143 +488,100 @@ const stationUrl = {
                             ></div>
 
                         </div>
-
                     </section>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- VIDEO -->
 
                 ${
                     video
-                    ?
-                    `
-                    <section
-                        class="qr-section"
-                        id="video"
-                    >
+                    ? `
+                    <section class="qr-section" id="video">
 
                         <h2 class="qr-section-title">
-                            🎬 Video giới thiệu
+                            ${escapeHtml(tr("detail_video_title"))}
                         </h2>
 
                         <div class="qr-media qr-video">
-
                             <video
                                 controls
                                 preload="metadata"
                                 playsinline
                             >
-
                                 <source
                                     src="${safe(video)}"
                                     type="video/mp4"
                                 >
-
                             </video>
-
                         </div>
 
                     </section>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- GALLERY -->
 
                 ${
                     gallery.length
-                    ?
-                    `
+                    ? `
                     <section class="qr-section">
 
                         <h2 class="qr-section-title">
-                            🖼️ Hình ảnh
+                            ${escapeHtml(tr("detail_gallery_title"))}
                         </h2>
 
                         <div class="heritage-gallery">
-
                             ${
-                                gallery.map(
-                                    function (photo, index) {
+                                gallery.map(function (photo) {
 
-                                        const src =
-                                            getAssetPath(
-                                                typeof photo === "string"
+                                    const src =
+                                        getAssetPath(
+                                            typeof photo === "string"
                                                 ? photo
                                                 : photo.image
-                                            );
+                                        );
 
-
-                                        const caption =
-                                            typeof photo === "string"
+                                    const caption =
+                                        typeof photo === "string"
                                             ? ""
-                                            : (
-                                                photo.caption ||
-                                                ""
-                                            );
+                                            : (photo.caption || "");
 
+                                    return `
+                                        <figure>
+                                            <img
+                                                src="${safe(src)}"
+                                                alt="${safe(caption || name)}"
+                                                loading="lazy"
+                                                class="gallery-image"
+                                            >
 
-                                        return `
+                                            ${
+                                                caption
+                                                ? `
+                                                <figcaption>
+                                                    ${escapeHtml(caption)}
+                                                </figcaption>
+                                                `
+                                                : ""
+                                            }
+                                        </figure>
+                                    `;
 
-                                            <figure>
-
-                                                <img
-                                                    src="${safe(src)}"
-                                                    alt="${safe(
-                                                        caption ||
-                                                        name
-                                                    )}"
-                                                    loading="lazy"
-                                                    class="gallery-image"
-                                                >
-
-                                                ${
-                                                    caption
-                                                    ?
-                                                    `
-                                                    <figcaption>
-                                                        ${escapeHtml(
-                                                            caption
-                                                        )}
-                                                    </figcaption>
-                                                    `
-                                                    :
-                                                    ""
-                                                }
-
-                                            </figure>
-
-                                        `;
-
-                                    }
-                                ).join("")
+                                }).join("")
                             }
-
                         </div>
 
                     </section>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- BẢN ĐỒ -->
 
                 ${
                     mapUrl
-                    ?
-                    `
+                    ? `
                     <section class="qr-section">
 
                         <h2 class="qr-section-title">
-                            📍 Vị trí di tích
+                            ${escapeHtml(tr("detail_location_title"))}
                         </h2>
 
                         <div class="qr-map-box">
@@ -1092,19 +596,14 @@ const stationUrl = {
                                 rel="noopener noreferrer"
                                 class="qr-map-button"
                             >
-                                🗺️ MỞ GOOGLE MAPS
+                                ${escapeHtml(tr("detail_open_maps"))}
                             </a>
 
                         </div>
-
                     </section>
                     `
-                    :
-                    ""
+                    : ""
                 }
-
-
-                <!-- ĐIỀU HƯỚNG -->
 
                 <div class="qr-navigation">
 
@@ -1112,361 +611,160 @@ const stationUrl = {
                         href="../index.html"
                         class="qr-nav-button"
                     >
-                        🏠 Trang chủ
+                        ${escapeHtml(tr("detail_home"))}
                     </a>
 
                     <a
                         href="map.html"
                         class="qr-nav-button"
                     >
-                        🗺️ Bản đồ
+                        ${escapeHtml(tr("detail_map"))}
                     </a>
 
                 </div>
 
-
             </div>
 
         </article>
-
     `;
 
-
     addUpgradeStyles();
-
     setupAudio();
-
     setupJumpButtons();
-
 }
 
-
-/* =========================================================
-   AUDIO
-   ========================================================= */
 
 function setupAudio() {
+    const audio = document.getElementById("audioPlayer");
 
-    const audio =
-        document.getElementById(
-            "audioPlayer"
-        );
+    if (!audio) return;
 
+    const status = document.getElementById("audioStatus");
+    const error = document.getElementById("audioError");
 
-    if (!audio) {
-        return;
-    }
+    audio.addEventListener("loadedmetadata", function () {
+        status.textContent = tr("detail_audio_ready");
+    });
 
+    audio.addEventListener("play", function () {
+        status.textContent = tr("detail_audio_playing");
+    });
 
-    const status =
-        document.getElementById(
-            "audioStatus"
-        );
-
-
-    const error =
-        document.getElementById(
-            "audioError"
-        );
-
-
-    audio.addEventListener(
-        "loadedmetadata",
-        function () {
-
-            status.textContent =
-                "▶ Sẵn sàng phát thuyết minh";
-
+    audio.addEventListener("pause", function () {
+        if (!audio.ended) {
+            status.textContent = tr("detail_audio_paused");
         }
-    );
+    });
 
+    audio.addEventListener("ended", function () {
+        status.textContent = tr("detail_audio_finished");
+    });
 
-    audio.addEventListener(
-        "play",
-        function () {
-
-            status.textContent =
-                "🔊 Đang phát thuyết minh...";
-
-        }
-    );
-
-
-    audio.addEventListener(
-        "pause",
-        function () {
-
-            if (!audio.ended) {
-
-                status.textContent =
-                    "⏸ Đã tạm dừng";
-
-            }
-
-        }
-    );
-
-
-    audio.addEventListener(
-        "ended",
-        function () {
-
-            status.textContent =
-                "✅ Đã phát xong thuyết minh";
-
-        }
-    );
-
-
-    audio.addEventListener(
-        "error",
-        function () {
-
-            console.error(
-                "Không phát được audio:",
-                audio.currentSrc
-            );
-
-
-            status.textContent =
-                "⚠️ Không phát được thuyết minh";
-
-
-            error.textContent =
-                "Không tìm thấy hoặc không đọc được file: " +
-                audio.currentSrc;
-
-        }
-    );
-
+    audio.addEventListener("error", function () {
+        status.textContent = tr("detail_audio_failed");
+        error.textContent =
+            tr("detail_audio_file_error") +
+            " " +
+            audio.currentSrc;
+    });
 }
 
-
-/* =========================================================
-   NÚT NHẢY AUDIO / VIDEO
-   ========================================================= */
 
 function setupJumpButtons() {
-
-    const audioButton =
-        document.getElementById(
-            "audioJumpButton"
-        );
-
-
-    const videoButton =
-        document.getElementById(
-            "videoJumpButton"
-        );
-
+    const audioButton = document.getElementById("audioJumpButton");
+    const videoButton = document.getElementById("videoJumpButton");
 
     if (audioButton) {
-
-        audioButton.addEventListener(
-            "click",
-            function () {
-
-                document
-                    .getElementById("audio")
-                    ?.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }
-        );
-
+        audioButton.addEventListener("click", function () {
+            document
+                .getElementById("audio")
+                ?.scrollIntoView({ behavior: "smooth" });
+        });
     }
-
 
     if (videoButton) {
-
-        videoButton.addEventListener(
-            "click",
-            function () {
-
-                document
-                    .getElementById("video")
-                    ?.scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-            }
-        );
-
+        videoButton.addEventListener("click", function () {
+            document
+                .getElementById("video")
+                ?.scrollIntoView({ behavior: "smooth" });
+        });
     }
-
 }
 
 
-/* =========================================================
-   ĐƯỜNG DẪN FILE
-   ========================================================= */
-
 function getAssetPath(path) {
+    if (!path) return "";
 
-    if (!path) {
-        return "";
-    }
-
-
-    let value =
-        String(path).trim();
-
+    let value = String(path).trim();
 
     if (
         value.startsWith("http://") ||
         value.startsWith("https://") ||
         value.startsWith("data:")
     ) {
-
         return value;
-
     }
 
+    if (value.startsWith("../")) return value;
+    if (value.startsWith("/")) return value;
 
-    if (
-        value.startsWith("../")
-    ) {
-
-        return value;
-
-    }
-
-
-    if (
-        value.startsWith("/")
-    ) {
-
-        return value;
-
-    }
-
-
-    /*
-       detail.html nằm trong /pages
-       nên:
-
-       audio/lang-than.mp3
-       →
-       ../audio/lang-than.mp3
-    */
-
-    return "../" +
-        value.replace(
-            /^\/+/,
-            ""
-        );
-
+    return "../" + value.replace(/^\/+/, "");
 }
 
 
-/* =========================================================
-   GOOGLE MAP
-   ========================================================= */
-
 function createGoogleMapUrl(item) {
-
     if (
         item.lat !== undefined &&
         item.lng !== undefined
     ) {
-
         return (
             "https://www.google.com/maps/dir/?api=1" +
             "&destination=" +
-            encodeURIComponent(
-                item.lat +
-                "," +
-                item.lng
-            )
+            encodeURIComponent(item.lat + "," + item.lng)
         );
-
     }
 
-
     if (item.name) {
-
         return (
             "https://www.google.com/maps/search/?api=1" +
             "&query=" +
-            encodeURIComponent(
-                item.name +
-                " Mộ Trạch Hải Phòng"
-            )
+            encodeURIComponent(item.name + " Mộ Trạch Hải Phòng")
         );
-
     }
-
 
     return "";
 }
 
 
-/* =========================================================
-   FORMAT TEXT
-   ========================================================= */
-
 function formatText(text) {
-
-    return escapeHtml(
-        text
-    )
-    .replace(/\r\n/g, "\n")
-    .replace(/\r/g, "\n")
-    .replace(/\n/g, "<br>");
-
+    return escapeHtml(text)
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .replace(/\n/g, "<br>");
 }
 
 
-/* =========================================================
-   ESCAPE
-   ========================================================= */
-
 function escapeHtml(value) {
-
-    return String(
-        value ?? ""
-    )
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 
 function safe(value) {
-
-    return escapeHtml(
-        value
-    );
-
+    return escapeHtml(value);
 }
 
 
-/* =========================================================
-   LỖI
-   ========================================================= */
+function showError(title, message) {
+    const container = document.getElementById("detail-content");
 
-function showError(
-    title,
-    message
-) {
-
-    const container =
-        document.getElementById(
-            "detail-content"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
+    if (!container) return;
 
     container.innerHTML = `
-
         <div class="qr-error">
 
             <div style="
@@ -1476,13 +774,9 @@ function showError(
                 ⚠️
             </div>
 
-            <h2>
-                ${escapeHtml(title)}
-            </h2>
+            <h2>${escapeHtml(title)}</h2>
 
-            <p>
-                ${escapeHtml(message)}
-            </p>
+            <p>${escapeHtml(message)}</p>
 
             <div style="
                 display:flex;
@@ -1496,52 +790,32 @@ function showError(
                     href="../index.html"
                     class="qr-nav-button"
                 >
-                    🏠 Về trang chủ
+                    ${escapeHtml(tr("detail_back_home"))}
                 </a>
 
                 <a
                     href="map.html"
                     class="qr-nav-button"
                 >
-                    🗺️ Xem bản đồ
+                    ${escapeHtml(tr("detail_view_map"))}
                 </a>
 
             </div>
 
         </div>
-
     `;
-
 }
 
 
-/* =========================================================
-   CSS NHỎ CHO AUDIO
-   ========================================================= */
-
 function addUpgradeStyles() {
-
-    if (
-        document.getElementById(
-            "detail-upgrade-style"
-        )
-    ) {
+    if (document.getElementById("detail-upgrade-style")) {
         return;
     }
 
-
-    const style =
-        document.createElement(
-            "style"
-        );
-
-
-    style.id =
-        "detail-upgrade-style";
-
+    const style = document.createElement("style");
+    style.id = "detail-upgrade-style";
 
     style.textContent = `
-
         .audio-player-card {
             background:#fff8ed;
             border:1px solid #ead8b8;
@@ -1614,8 +888,7 @@ function addUpgradeStyles() {
 
         .heritage-gallery {
             display:grid;
-            grid-template-columns:
-                repeat(3,1fr);
+            grid-template-columns:repeat(3,1fr);
             gap:15px;
         }
 
@@ -1624,8 +897,7 @@ function addUpgradeStyles() {
             overflow:hidden;
             border-radius:12px;
             background:#fff;
-            box-shadow:
-                0 4px 15px rgba(0,0,0,.08);
+            box-shadow:0 4px 15px rgba(0,0,0,.08);
         }
 
         .gallery-image {
@@ -1642,7 +914,6 @@ function addUpgradeStyles() {
         }
 
         @media(max-width:700px) {
-
             .heritage-gallery {
                 grid-template-columns:1fr;
             }
@@ -1650,14 +921,8 @@ function addUpgradeStyles() {
             .gallery-image {
                 height:230px;
             }
-
         }
-
     `;
 
-
-    document.head.appendChild(
-        style
-    );
-
+    document.head.appendChild(style);
 }

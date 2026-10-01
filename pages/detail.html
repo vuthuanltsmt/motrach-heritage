@@ -13,114 +13,67 @@
           content="Không gian di sản số Mộ Trạch">
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/i18n.css">
 
     <style>
-
-        /* =========================================
-           RESET
-        ========================================= */
-
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
             background: #f5f0e7;
             color: #333;
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
-
-
-        /* =========================================
-           HEADER
-        ========================================= */
 
         .qr-header {
             background: #8b0000;
             color: white;
-
             min-height: 70px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 12px 5%;
-
-            box-shadow:
-                0 3px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
         }
 
         .qr-brand {
             display: flex;
             align-items: center;
             gap: 10px;
-
             font-size: 24px;
             font-weight: 800;
         }
 
-        .qr-brand-icon {
-            font-size: 30px;
-        }
+        .qr-brand-icon { font-size: 30px; }
 
         .qr-home {
             display: inline-flex;
             align-items: center;
             gap: 7px;
-
             color: white;
             text-decoration: none;
-
             background: rgba(255,255,255,0.15);
-
             padding: 11px 18px;
-
             border-radius: 30px;
-
             font-weight: bold;
-
             transition: 0.2s;
         }
 
-        .qr-home:hover {
-            background: rgba(255,255,255,0.28);
-        }
-
-
-        /* =========================================
-           MAIN
-        ========================================= */
+        .qr-home:hover { background: rgba(255,255,255,0.28); }
 
         .qr-container {
             width: 100%;
             max-width: 1050px;
-
             margin: 35px auto 60px;
-
             padding: 0 18px;
         }
 
-
-        /* =========================================
-           LOADING
-        ========================================= */
-
         .qr-loading {
             background: white;
-
             border-radius: 24px;
-
             padding: 70px 20px;
-
             text-align: center;
-
-            box-shadow:
-                0 8px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
 
         .qr-loading-icon {
@@ -128,514 +81,281 @@
             margin-bottom: 15px;
         }
 
-
-        /* =========================================
-           CARD
-        ========================================= */
-
         .qr-card {
             background: white;
-
             border-radius: 25px;
-
             overflow: hidden;
-
-            box-shadow:
-                0 10px 35px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.12);
         }
-
-
-        /* =========================================
-           MAIN IMAGE
-        ========================================= */
 
         .qr-main-image {
             width: 100%;
-
             height: 480px;
-
             object-fit: cover;
-
             display: block;
         }
 
-
-        /* =========================================
-           CONTENT
-        ========================================= */
-
-        .qr-content {
-            padding: 35px 45px 45px;
-        }
-
+        .qr-content { padding: 35px 45px 45px; }
 
         .qr-badge {
             display: inline-block;
-
             background: #f1dfb0;
-
             color: #7d0000;
-
             padding: 7px 14px;
-
             border-radius: 30px;
-
             font-size: 14px;
-
             font-weight: bold;
-
             margin-bottom: 14px;
         }
 
-
         .qr-title {
             color: #8b0000;
-
             font-size: 40px;
-
             line-height: 1.2;
-
             margin: 0 0 8px;
         }
 
-
         .qr-subtitle {
             color: #777;
-
             font-size: 20px;
-
             font-weight: bold;
-
             margin-bottom: 25px;
         }
 
-
-        /* =========================================
-           INFO
-        ========================================= */
-
         .qr-info {
             background: #faf5ed;
-
             border-left: 6px solid #a00000;
-
             border-radius: 12px;
-
             padding: 18px 20px;
-
             margin-bottom: 30px;
-
             line-height: 1.7;
-
             font-size: 17px;
         }
 
-        .qr-info p {
-            margin: 5px 0;
-        }
-
-
-        /* =========================================
-           BIG ACTION BUTTONS
-        ========================================= */
+        .qr-info p { margin: 5px 0; }
 
         .qr-actions {
             display: grid;
-
-            grid-template-columns:
-    repeat(4, 1fr);
-
+            grid-template-columns: repeat(4, 1fr);
             gap: 14px;
-
             margin: 25px 0 35px;
         }
 
-
         .qr-action {
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             gap: 8px;
-
             min-height: 58px;
-
             padding: 12px 15px;
-
             border-radius: 14px;
-
             text-decoration: none;
-
             font-size: 17px;
-
             font-weight: 800;
-
             text-align: center;
-
             border: none;
-
             cursor: pointer;
         }
 
+        .qr-action-audio { background: #8b0000; color: white; }
+        .qr-action-video { background: #333; color: white; }
+        .qr-action-map { background: #d4a72c; color: #222; }
+        .qr-action-station { background: #28734a; color: white; }
 
-        .qr-action-audio {
-            background: #8b0000;
-            color: white;
-        }
-
-        .qr-action-video {
-            background: #333;
-            color: white;
-        }
-
-        .qr-action-map {
-            background: #d4a72c;
-            color: #222;
-        }.qr-action-station {
-    background: #28734a;
-    color: white;
-}
-.qr-action-station {
-    background: #28734a;
-    color: white;
-}
-
-        /* =========================================
-           SECTION
-        ========================================= */
-
-        .qr-section {
-            margin-top: 35px;
-        }
-
+        .qr-section { margin-top: 35px; }
 
         .qr-section-title {
             color: #8b0000;
-
             font-size: 27px;
-
             margin: 0 0 14px;
-
             padding-bottom: 8px;
-
-            border-bottom:
-                2px solid #d7b35a;
+            border-bottom: 2px solid #d7b35a;
         }
-
 
         .qr-text {
             font-size: 18px;
-
             line-height: 1.85;
-
             margin: 0;
         }
 
-
-        /* =========================================
-           AUDIO
-        ========================================= */
-
         .qr-media {
             background: #faf5ed;
-
             border-radius: 15px;
-
             padding: 18px;
-
             margin-top: 15px;
         }
 
         .qr-media audio,
         .qr-media video {
             display: block;
-
             width: 100%;
-
             max-width: 100%;
-
             border-radius: 10px;
         }
 
-
-        /* =========================================
-           VIDEO
-        ========================================= */
-
-        .qr-video {
-            margin-top: 15px;
-        }
-
-
-        /* =========================================
-           MAP
-        ========================================= */
+        .qr-video { margin-top: 15px; }
 
         .qr-map-box {
             background: #faf5ed;
-
             border-radius: 15px;
-
             padding: 20px;
-
             margin-top: 15px;
         }
 
         .qr-map-button {
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 8px;
-
             background: #8b0000;
-
             color: white;
-
             text-decoration: none;
-
             padding: 14px 22px;
-
             border-radius: 30px;
-
             font-weight: bold;
-
             margin-top: 8px;
         }
 
-
-        /* =========================================
-           NAVIGATION
-        ========================================= */
-
         .qr-navigation {
             display: flex;
-
             justify-content: space-between;
-
             gap: 12px;
-
             margin-top: 40px;
-
             padding-top: 25px;
-
-            border-top:
-                1px solid #ddd;
+            border-top: 1px solid #ddd;
         }
-
 
         .qr-nav-button {
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
             text-align: center;
-
             padding: 13px 18px;
-
             border-radius: 30px;
-
             background: #8b0000;
-
             color: white;
-
             text-decoration: none;
-
             font-weight: bold;
         }
 
-        .qr-nav-button.secondary {
-            background: #555;
-        }
-
-
-        /* =========================================
-           FOOTER
-        ========================================= */
+        .qr-nav-button.secondary { background: #555; }
 
         .qr-footer {
             background: #600000;
-
             color: white;
-
             text-align: center;
-
             padding: 35px 20px;
-
             margin-top: 50px;
         }
 
         .qr-footer h2 {
             margin: 0 0 8px;
-
             font-size: 22px;
         }
 
-        .qr-footer p {
-            margin: 6px 0;
-        }
-
-
-        /* =========================================
-           ERROR
-        ========================================= */
+        .qr-footer p { margin: 6px 0; }
 
         .qr-error {
             background: white;
-
             border-radius: 25px;
-
             padding: 60px 25px;
-
             text-align: center;
-
-            box-shadow:
-                0 8px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
         }
 
-        .qr-error h1 {
-            color: #8b0000;
-        }
-
-
-        /* =========================================
-           MOBILE
-        ========================================= */
+        .qr-error h1 { color: #8b0000; }
 
         @media (max-width: 700px) {
-
             .qr-header {
                 min-height: 62px;
-
                 padding: 10px 14px;
             }
 
-            .qr-brand {
-                font-size: 17px;
-            }
-
-            .qr-brand-icon {
-                font-size: 24px;
-            }
+            .qr-brand { font-size: 17px; }
+            .qr-brand-icon { font-size: 24px; }
 
             .qr-home {
                 padding: 9px 12px;
-
                 font-size: 14px;
             }
 
             .qr-container {
                 margin-top: 18px;
-
                 padding: 0 10px;
             }
 
-            .qr-card {
-                border-radius: 18px;
-            }
-
-            .qr-main-image {
-                height: 270px;
-            }
-
-            .qr-content {
-                padding: 24px 18px 30px;
-            }
-
-            .qr-title {
-                font-size: 30px;
-            }
-
-            .qr-subtitle {
-                font-size: 17px;
-            }
-
-            .qr-info {
-                font-size: 16px;
-            }
-
-            /*
-               Trên điện thoại:
-               3 nút xếp thành 1 cột
-            */
+            .qr-card { border-radius: 18px; }
+            .qr-main-image { height: 270px; }
+            .qr-content { padding: 24px 18px 30px; }
+            .qr-title { font-size: 30px; }
+            .qr-subtitle { font-size: 17px; }
+            .qr-info { font-size: 16px; }
 
             .qr-actions {
                 grid-template-columns: 1fr;
-
                 gap: 10px;
             }
 
             .qr-action {
                 min-height: 58px;
-
                 font-size: 17px;
             }
 
-            .qr-section-title {
-                font-size: 23px;
-            }
+            .qr-section-title { font-size: 23px; }
 
             .qr-text {
                 font-size: 17px;
-
                 line-height: 1.75;
             }
 
-            .qr-navigation {
-                flex-direction: column;
+            .qr-navigation { flex-direction: column; }
+            .qr-nav-button { width: 100%; }
+
+            .qr-header-actions {
+                gap: 5px;
             }
 
-            .qr-nav-button {
-                width: 100%;
+            .qr-home {
+                padding: 8px 10px;
             }
         }
-
     </style>
-
 </head>
 
-
-<body>
-
-
-<!-- =========================================
-     HEADER
-========================================= -->
+<body
+    data-i18n-title="detail_page_title"
+    data-i18n-description="detail_meta_description"
+>
 
 <header class="qr-header">
 
     <div class="qr-brand">
+        <span class="qr-brand-icon">🏛️</span>
+        <span data-i18n="brand">DI SẢN MỘ TRẠCH</span>
+    </div>
 
-        <span class="qr-brand-icon">
-            🏛️
-        </span>
+    <div class="qr-header-actions">
 
-        <span>
-            DI SẢN MỘ TRẠCH
-        </span>
+        <a href="../index.html"
+           class="qr-home"
+           data-i18n="nav_home">
+            🏠 Trang chủ
+        </a>
+
+        <div class="language-switcher"
+             aria-label="Language selector">
+            <button type="button"
+                    data-lang="vi"
+                    aria-pressed="true">VI</button>
+            <button type="button"
+                    data-lang="en"
+                    aria-pressed="false">EN</button>
+        </div>
 
     </div>
 
-
-    <a
-        href="../index.html"
-        class="qr-home"
-    >
-        🏠 Trang chủ
-    </a>
-
 </header>
 
-
-
-<!-- =========================================
-     MAIN
-========================================= -->
 
 <main class="qr-container">
 
@@ -643,15 +363,13 @@
 
         <div class="qr-loading">
 
-            <div class="qr-loading-icon">
-                ⏳
-            </div>
+            <div class="qr-loading-icon">⏳</div>
 
-            <h2>
+            <h2 data-i18n="detail_loading">
                 Đang tải thông tin di tích...
             </h2>
 
-            <p>
+            <p data-i18n="detail_wait">
                 Vui lòng chờ trong giây lát.
             </p>
 
@@ -662,40 +380,29 @@
 </main>
 
 
-
-<!-- =========================================
-     FOOTER
-========================================= -->
-
 <footer class="qr-footer">
 
-    <h2>
+    <h2 data-i18n="footer_brand">
         🏛️ DI SẢN MỘ TRẠCH
     </h2>
 
-    <p>
+    <p data-i18n="footer_space">
         Không gian di sản số
     </p>
 
-    <p>
+    <p data-i18n="footer_slogan">
         Làng Tiến sĩ – Đất học – Đất văn hiến
     </p>
 
-    <p>
+    <p data-i18n="footer_copyright">
         © 2026 Di sản Mộ Trạch
     </p>
 
 </footer>
 
 
-
-<!-- =========================================
-     JAVASCRIPT
-========================================= -->
-
-<script src="../js/detail.js?v=20260919"></script>
-
+<script src="../js/i18n.js?v=4"></script>
+<script src="../js/detail.js?v=20261001-vi-en"></script>
 
 </body>
-
 </html>

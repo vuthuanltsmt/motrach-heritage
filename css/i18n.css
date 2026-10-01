@@ -1,0 +1,100 @@
+/* ===============================
+   CHUYỂN NGÔN NGỮ VI / EN
+================================ */
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.language-switcher button {
+    font-size: 14px;
+    font-weight: 800;
+    padding: 7px 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+/* =================================
+   TRANG CHỦ - HEADER NỀN TRẮNG
+================================= */
+
+.header .language-switcher button {
+    background: transparent;
+    color: #850000;
+    border: 1px solid #850000;
+}
+
+.header .language-switcher button.active {
+    background: #850000;
+    color: white;
+}
+
+.header .language-switcher button:hover {
+    background: #850000;
+    color: white;
+}
+
+
+/* =================================
+   HEADER NỀN ĐỎ
+================================= */
+
+.gt-header .language-switcher button,
+.heritage-header .language-switcher button,
+.qr-header .language-switcher button {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,.75);
+}
+
+.gt-header .language-switcher button.active,
+.heritage-header .language-switcher button.active,
+.qr-header .language-switcher button.active {
+    background: white;
+    color: #850000;
+    border-color: white;
+}
+
+.gt-header .language-switcher button:hover,
+.heritage-header .language-switcher button:hover,
+.qr-header .language-switcher button:hover {
+    background: white;
+    color: #850000;
+}
+
+
+/* =================================
+   NHÓM NÚT TRÊN HEADER TRANG CON
+================================= */
+
+.heritage-header-actions,
+.qr-header-actions,
+.gt-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .language-switcher {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    .language-switcher {
+        gap: 4px;
+    }
+
+    .language-switcher button {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+}
