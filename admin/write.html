@@ -146,17 +146,20 @@
                 rgba(185,154,73,.14);
         }
 
-        #title {
+        #title,
+        #titleEn {
             font-size: 20px;
             font-weight: 700;
         }
 
-        #excerpt {
+        #excerpt,
+        #excerptEn {
             min-height: 95px;
             resize: vertical;
         }
 
-        #content {
+        #content,
+        #contentEn {
             min-height: 360px;
             resize: vertical;
             line-height: 1.7;
@@ -541,7 +544,79 @@
             </div>
 
 
-            <!-- ẢNH TRONG BÀI -->
+                        <!-- ENGLISH CONTENT -->
+
+            <div
+                class="form-group"
+                style="
+                    margin-top: 30px;
+                    padding-top: 25px;
+                    border-top: 2px solid #eadfc9;
+                "
+            >
+                <h3
+                    style="
+                        margin: 0 0 6px;
+                        color: #800000;
+                        font-size: 21px;
+                    "
+                >
+                    🇬🇧 Nội dung tiếng Anh
+                </h3>
+
+                <div class="hint" style="margin-bottom:18px;">
+                    Không bắt buộc. Nếu để trống, website sẽ dùng nội dung tiếng Việt.
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="titleEn">
+                    Tiêu đề tiếng Anh
+                </label>
+
+                <input
+                    id="titleEn"
+                    type="text"
+                    placeholder="Enter the English title..."
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="excerptEn">
+                    Mô tả ngắn tiếng Anh
+                </label>
+
+                <textarea
+                    id="excerptEn"
+                    placeholder="Write a short English introduction..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="contentEn">
+                    Nội dung bài viết tiếng Anh
+                </label>
+
+                <textarea
+                    id="contentEn"
+                    placeholder="Enter the English article content here..."
+                ></textarea>
+
+                <div class="hint">
+                    Có thể bổ sung bản dịch tiếng Anh ngay hoặc cập nhật sau.
+                </div>
+
+            </div>
+
+<!-- ẢNH TRONG BÀI -->
 
             <div class="form-group">
 
