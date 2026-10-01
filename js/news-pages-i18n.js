@@ -238,6 +238,19 @@
     }
   }
 
+  function announceLanguageChange() {
+    window.dispatchEvent(
+      new CustomEvent(
+        "motrach:languagechange",
+        {
+          detail: {
+            language: currentLanguage
+          }
+        }
+      )
+    );
+  }
+
   function applyLanguage(lang) {
     currentLanguage = lang === "en" ? "en" : "vi";
     localStorage.setItem(STORAGE_KEY, currentLanguage);
@@ -248,6 +261,8 @@
     updateTitle();
     updateSwitcher();
     mutating = false;
+
+    announceLanguageChange();
   }
 
   function startObserver() {

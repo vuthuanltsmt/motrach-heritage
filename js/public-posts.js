@@ -1,7 +1,48 @@
 import { supabase } from "./supabase-client.js";
 
+const STORAGE_KEY = "motrach-language";
+
 const postsGrid =
     document.getElementById("postsGrid");
+
+let loadedPosts = [];
+
+
+function getLanguage() {
+    return localStorage.getItem(STORAGE_KEY) === "en"
+        ? "en"
+        : "vi";
+}
+
+
+function localizePost(post) {
+
+    if (getLanguage() !== "en") {
+        return post;
+    }
+
+    return {
+        ...post,
+
+        title:
+            post.title_en &&
+            post.title_en.trim()
+                ? post.title_en.trim()
+                : post.title,
+
+        excerpt:
+            post.excerpt_en &&
+            post.excerpt_en.trim()
+                ? post.excerpt_en.trim()
+                : post.excerpt,
+
+        content:
+            post.content_en &&
+            post.content_en.trim()
+                ? post.content_en.trim()
+                : post.content
+    };
+}
 
 
 function escapeHtml(value) {
@@ -32,7 +73,9 @@ function formatDate(value) {
     }
 
     return new Intl.DateTimeFormat(
-        "vi-VN",
+        getLanguage() === "en"
+            ? "en-GB"
+            : "vi-VN",
         {
             day: "2-digit",
             month: "2-digit",
@@ -92,7 +135,12 @@ function renderPosts(posts) {
 
     postsGrid.innerHTML =
         posts.map(
-            function (post) {
+            function (rawPost) {
+
+                const post =
+                    localizePost(
+                        rawPost
+                    );
 
                 const title =
                     escapeHtml(
@@ -210,9 +258,12 @@ async function loadPosts() {
                 .select(`
                     id,
                     title,
+                    title_en,
                     slug,
                     excerpt,
+                    excerpt_en,
                     content,
+                    content_en,
                     cover_image_url,
                     published_at,
                     created_at
@@ -234,8 +285,12 @@ async function loadPosts() {
         }
 
 
+        loadedPosts =
+            data || [];
+
+
         renderPosts(
-            data || []
+            loadedPosts
         );
 
 
@@ -261,6 +316,17 @@ async function loadPosts() {
         `;
     }
 }
+
+
+window.addEventListener(
+    "motrach:languagechange",
+    function () {
+
+        renderPosts(
+            loadedPosts
+        );
+    }
+);
 
 
 loadPosts();

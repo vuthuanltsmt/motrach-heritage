@@ -1,5 +1,6 @@
 import { supabase } from "./supabase-client.js";
 
+const STORAGE_KEY = "motrach-language";
 
 const loadingState =
     document.getElementById("loadingState");
@@ -43,6 +44,45 @@ const videoSection =
 const videoPlayer =
     document.getElementById("videoPlayer");
 
+let loadedPost = null;
+
+
+function getLanguage() {
+    return localStorage.getItem(STORAGE_KEY) === "en"
+        ? "en"
+        : "vi";
+}
+
+
+function localizePost(post) {
+
+    if (!post || getLanguage() !== "en") {
+        return post;
+    }
+
+    return {
+        ...post,
+
+        title:
+            post.title_en &&
+            post.title_en.trim()
+                ? post.title_en.trim()
+                : post.title,
+
+        excerpt:
+            post.excerpt_en &&
+            post.excerpt_en.trim()
+                ? post.excerpt_en.trim()
+                : post.excerpt,
+
+        content:
+            post.content_en &&
+            post.content_en.trim()
+                ? post.content_en.trim()
+                : post.content
+    };
+}
+
 
 function formatDate(value) {
 
@@ -62,7 +102,9 @@ function formatDate(value) {
     }
 
     return new Intl.DateTimeFormat(
-        "vi-VN",
+        getLanguage() === "en"
+            ? "en-GB"
+            : "vi-VN",
         {
             day: "2-digit",
             month: "2-digit",
@@ -99,15 +141,18 @@ function showError(text) {
 
 function renderGallery(images) {
 
+    gallery.innerHTML = "";
+    gallerySection.classList.remove(
+        "visible"
+    );
+
+
     if (
         !Array.isArray(images) ||
         images.length === 0
     ) {
         return;
     }
-
-
-    gallery.innerHTML = "";
 
 
     images.forEach(
@@ -126,7 +171,11 @@ function renderGallery(images) {
 
             image.alt =
                 articleTitle.textContent +
-                " - ảnh " +
+                (
+                    getLanguage() === "en"
+                        ? " - image "
+                        : " - ảnh "
+                ) +
                 (index + 1);
 
             image.loading =
@@ -164,27 +213,37 @@ function renderGallery(images) {
 }
 
 
-function renderPost(post) {
+function renderPost(rawPost) {
+
+    const post =
+        localizePost(
+            rawPost
+        );
+
 
     document.title =
-        post.title +
-        " - Di sản Mộ Trạch";
+        (post.title || "") +
+        (
+            getLanguage() === "en"
+                ? " - Mo Trach Heritage"
+                : " - Di sản Mộ Trạch"
+        );
 
 
     articleTitle.textContent =
         post.title || "";
 
 
-    articleDate.textContent =
+    const formattedDate =
         formatDate(
             post.published_at ||
             post.created_at
-        )
-            ? "📅 " +
-              formatDate(
-                  post.published_at ||
-                  post.created_at
-              )
+        );
+
+
+    articleDate.textContent =
+        formattedDate
+            ? "📅 " + formattedDate
             : "";
 
 
@@ -202,6 +261,13 @@ function renderPost(post) {
 
         articleExcerpt.hidden =
             false;
+
+    } else {
+
+        articleExcerpt.textContent = "";
+
+        articleExcerpt.hidden =
+            true;
     }
 
 
@@ -211,9 +277,24 @@ function renderPost(post) {
             post.cover_image_url;
 
         coverImage.alt =
-            post.title || "Ảnh bài viết";
+            post.title ||
+            (
+                getLanguage() === "en"
+                    ? "Article image"
+                    : "Ảnh bài viết"
+            );
 
         coverWrap.classList.add(
+            "visible"
+        );
+
+    } else {
+
+        coverImage.removeAttribute(
+            "src"
+        );
+
+        coverWrap.classList.remove(
             "visible"
         );
     }
@@ -232,6 +313,16 @@ function renderPost(post) {
         audioSection.classList.add(
             "visible"
         );
+
+    } else {
+
+        audioPlayer.removeAttribute(
+            "src"
+        );
+
+        audioSection.classList.remove(
+            "visible"
+        );
     }
 
 
@@ -241,6 +332,16 @@ function renderPost(post) {
             post.video_url;
 
         videoSection.classList.add(
+            "visible"
+        );
+
+    } else {
+
+        videoPlayer.removeAttribute(
+            "src"
+        );
+
+        videoSection.classList.remove(
             "visible"
         );
     }
@@ -287,9 +388,12 @@ async function loadPost() {
                 .select(`
                     id,
                     title,
+                    title_en,
                     slug,
                     excerpt,
+                    excerpt_en,
                     content,
+                    content_en,
                     cover_image_url,
                     gallery_images,
                     audio_url,
@@ -324,8 +428,12 @@ async function loadPost() {
         }
 
 
+        loadedPost =
+            data;
+
+
         renderPost(
-            data
+            loadedPost
         );
 
 
@@ -342,6 +450,20 @@ async function loadPost() {
         );
     }
 }
+
+
+window.addEventListener(
+    "motrach:languagechange",
+    function () {
+
+        if (loadedPost) {
+
+            renderPost(
+                loadedPost
+            );
+        }
+    }
+);
 
 
 loadPost();

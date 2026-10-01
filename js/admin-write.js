@@ -20,6 +20,15 @@ const excerptInput =
 const contentInput =
     document.getElementById("content");
 
+const titleEnInput =
+    document.getElementById("titleEn");
+
+const excerptEnInput =
+    document.getElementById("excerptEn");
+
+const contentEnInput =
+    document.getElementById("contentEn");
+
 const coverImageInput =
     document.getElementById("coverImage");
 
@@ -966,6 +975,15 @@ async function loadExistingPost() {
         contentInput.value =
             data.content || "";
 
+        titleEnInput.value =
+            data.title_en || "";
+
+        excerptEnInput.value =
+            data.excerpt_en || "";
+
+        contentEnInput.value =
+            data.content_en || "";
+
 
         slugEditedManually =
             true;
@@ -1077,6 +1095,15 @@ async function savePost(status) {
 
     const content =
         contentInput.value.trim();
+
+    const titleEn =
+        titleEnInput.value.trim();
+
+    const excerptEn =
+        excerptEnInput.value.trim();
+
+    const contentEn =
+        contentEnInput.value.trim();
 
     let slug =
         slugInput.value.trim();
@@ -1307,6 +1334,15 @@ async function savePost(status) {
 
             content:
                 content,
+
+            title_en:
+                titleEn || null,
+
+            excerpt_en:
+                excerptEn || null,
+
+            content_en:
+                contentEn || null,
 
             cover_image_url:
                 coverImageUrl,
