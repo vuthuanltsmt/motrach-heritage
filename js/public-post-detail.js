@@ -168,7 +168,7 @@ function renderPost(post) {
 
     document.title =
         post.title +
-        " - Mộ Trạch Heritage";
+        " - Di sản Mộ Trạch";
 
 
     articleTitle.textContent =

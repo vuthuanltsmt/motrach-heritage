@@ -1,7 +1,7 @@
 "use strict";
 
 /* =========================================================
-   MỘ TRẠCH HERITAGE
+   DI SẢN MỘ TRẠCH
    HERITAGE.JS
 
    URL chuẩn:

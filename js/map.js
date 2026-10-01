@@ -1,5 +1,5 @@
 /* =========================================================
-   MỘ TRẠCH HERITAGE
+   DI SẢN MỘ TRẠCH
    MAP.JS - BƯỚC 6 + BƯỚC 7
    ========================================================= */
 
@@ -383,7 +383,7 @@ async function loadHeritageData() {
 
 
         console.log(
-            "MỘ TRẠCH HERITAGE:",
+            "DI SẢN MỘ TRẠCH:",
             heritageData
         );
 

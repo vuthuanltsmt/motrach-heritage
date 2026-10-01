@@ -1014,7 +1014,7 @@ async function loadExistingPost() {
 
 
         document.title =
-            "Sửa bài - Mộ Trạch Heritage";
+            "Sửa bài - Di sản Mộ Trạch";
 
 
         refreshButtonLabels();
