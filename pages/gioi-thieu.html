@@ -1,1453 +1,2269 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
         Giới thiệu - Di sản Mộ Trạch
+
     </title>
+<meta content="Giới thiệu về lịch sử, văn hóa, truyền thống hiếu học và không gian di sản Mộ Trạch." name="description"/>
+<link as="image" href="../images/van-mieu.jpg" rel="preload"/>
+<style>
 
-    <meta
-        name="description"
-        content="Giới thiệu về lịch sử, văn hóa, truyền thống hiếu học và không gian di sản Mộ Trạch."
-    >
 
-    <link
-        rel="preload"
-        as="image"
-        href="../images/van-mieu.jpg"
-    >
-
-    <style>
 
         * {
+
             box-sizing: border-box;
+
         }
+
+
 
         html {
+
             scroll-behavior: smooth;
+
         }
 
+
+
         body {
+
             margin: 0;
 
+
+
             font-family:
+
                 Arial,
+
                 Helvetica,
+
                 sans-serif;
+
+
 
             background: #f7f2e9;
 
+
+
             color: #292929;
+
+
 
             line-height: 1.7;
 
+
+
             overflow-x: hidden;
+
         }
+
+
 
         img {
+
             display: block;
 
+
+
             max-width: 100%;
+
         }
+
+
 
         a {
+
             text-decoration: none;
 
+
+
             color: inherit;
+
         }
+
+
+
 
 
         /* =========================================
+
            HEADER
+
         ========================================= */
 
+
+
         .gt-header {
+
             position: sticky;
+
+
 
             top: 0;
 
+
+
             z-index: 1000;
+
+
 
             background: #850000;
 
+
+
             box-shadow:
+
                 0 3px 12px
+
                 rgba(0,0,0,.16);
+
         }
 
+
+
         .gt-header-inner {
+
             width: min(
+
                 1250px,
+
                 calc(100% - 32px)
+
             );
+
+
 
             min-height: 72px;
 
+
+
             margin: auto;
+
+
 
             display: flex;
 
+
+
             align-items: center;
+
+
 
             justify-content: space-between;
 
+
+
             gap: 25px;
+
         }
 
+
+
         .gt-logo {
+
             display: flex;
 
+
+
             align-items: center;
+
+
 
             gap: 9px;
 
+
+
             color: white;
+
+
 
             font-size: 21px;
 
+
+
             font-weight: 900;
 
+
+
             white-space: nowrap;
+
         }
+
+
 
         .gt-logo-icon {
+
             font-size: 27px;
+
         }
 
+
+
         .gt-menu-button {
+
             display: none;
 
+
+
             border: 1px solid
+
                 rgba(255,255,255,.5);
+
+
 
             background: transparent;
 
+
+
             color: white;
 
+
+
             border-radius: 8px;
+
+
 
             padding: 7px 11px;
 
+
+
             font-size: 22px;
 
+
+
             cursor: pointer;
+
         }
 
+
+
         .gt-nav {
+
             display: flex;
+
+
 
             align-items: center;
 
+
+
             gap: 5px;
+
         }
 
+
+
         .gt-nav a {
+
             color: white;
+
+
 
             padding: 9px 11px;
 
+
+
             border-radius: 8px;
+
+
 
             font-size: 14px;
 
+
+
             font-weight: 700;
+
         }
 
+
+
         .gt-nav a:hover,
+
         .gt-nav a.active {
+
             background:
+
                 rgba(255,255,255,.14);
+
         }
+
+
+
 
 
         /* =========================================
+
            HERO
+
         ========================================= */
 
+
+
         .gt-hero {
+
             min-height: 430px;
 
+
+
             background:
+
                 linear-gradient(
+
                     rgba(65,0,0,.60),
+
                     rgba(65,0,0,.70)
+
                 ),
+
                 url("../images/van-mieu.jpg");
+
+
 
             background-size: cover;
 
+
+
             background-position: center;
+
+
 
             display: flex;
 
+
+
             align-items: center;
+
+
 
             justify-content: center;
 
+
+
             text-align: center;
 
+
+
             color: white;
+
         }
+
+
 
         .gt-hero-content {
+
             width: min(
+
                 850px,
+
                 calc(100% - 32px)
+
             );
 
+
+
             padding:
+
                 60px 0;
+
         }
 
+
+
         .gt-badge {
+
             display: inline-block;
 
+
+
             padding:
+
                 7px 17px;
 
+
+
             border:
+
                 1px solid
+
                 rgba(255,255,255,.65);
+
+
 
             border-radius: 30px;
 
+
+
             font-size: 13px;
+
+
 
             font-weight: 800;
 
+
+
             letter-spacing: 1px;
+
         }
+
+
 
         .gt-hero h1 {
+
             margin:
+
                 18px 0 10px;
 
+
+
             font-size:
+
                 clamp(
+
                     38px,
+
                     6vw,
+
                     62px
+
                 );
+
+
 
             line-height: 1.12;
+
         }
+
+
 
         .gt-hero-subtitle {
+
             margin: 0;
 
+
+
             font-size:
+
                 clamp(
+
                     20px,
+
                     3vw,
+
                     28px
+
                 );
 
+
+
             font-weight: 700;
+
         }
+
+
 
         .gt-hero-description {
+
             max-width: 680px;
 
+
+
             margin:
+
                 18px auto 0;
 
+
+
             color:
+
                 rgba(255,255,255,.92);
 
+
+
             font-size: 17px;
+
         }
+
+
+
 
 
         /* =========================================
+
            KHUNG CHUNG
+
         ========================================= */
 
+
+
         .gt-section {
+
             padding:
+
                 70px 20px;
+
         }
+
+
 
         .gt-container {
+
             width: min(
+
                 1120px,
+
                 100%
+
             );
 
+
+
             margin: auto;
+
         }
+
+
 
         .gt-heading {
+
             max-width: 760px;
 
+
+
             margin:
+
                 0 auto 42px;
 
+
+
             text-align: center;
+
         }
 
+
+
         .gt-heading h2 {
+
             margin: 0;
+
+
 
             color: #850000;
 
+
+
             font-size:
+
                 clamp(
+
                     30px,
+
                     4vw,
+
                     40px
+
                 );
+
         }
 
+
+
         .gt-title-line {
+
             width: 70px;
+
+
 
             height: 4px;
 
+
+
             margin:
+
                 15px auto 18px;
+
+
 
             border-radius: 10px;
 
+
+
             background: #c99b3c;
+
         }
 
+
+
         .gt-heading p {
+
             margin: 0;
+
+
 
             color: #625d55;
 
+
+
             font-size: 17px;
+
         }
 
 
+
+
+
         /* =========================================
+
            VỀ MỘ TRẠCH
+
         ========================================= */
 
+
+
         .gt-intro-grid {
+
             display: grid;
 
+
+
             grid-template-columns:
+
                 1fr 1fr;
+
+
 
             gap: 45px;
 
+
+
             align-items: center;
+
         }
 
+
+
         .gt-main-image {
+
             width: 100%;
+
+
 
             aspect-ratio: 4 / 3;
 
+
+
             object-fit: cover;
+
+
 
             border-radius: 18px;
 
+
+
             box-shadow:
+
                 0 10px 25px
+
                 rgba(0,0,0,.12);
+
         }
 
+
+
         .gt-small-title {
+
             display: inline-block;
+
+
 
             margin-bottom: 8px;
 
+
+
             color: #a17016;
 
+
+
             font-size: 13px;
+
+
 
             font-weight: 900;
 
+
+
             letter-spacing: 1px;
+
         }
 
+
+
         .gt-intro-content h2 {
+
             margin:
+
                 0 0 18px;
+
+
 
             color: #850000;
 
+
+
             font-size:
+
                 clamp(
+
                     28px,
+
                     4vw,
+
                     38px
+
                 );
 
+
+
             line-height: 1.25;
+
         }
 
+
+
         .gt-intro-content p {
+
             margin:
+
                 0 0 17px;
+
+
 
             font-size: 17px;
 
+
+
             color: #49443e;
+
         }
+
+
+
 
 
         /* =========================================
+
            GIÁ TRỊ
+
         ========================================= */
 
+
+
         .gt-values-section {
+
             background: white;
+
         }
+
+
 
         .gt-values {
+
             display: grid;
 
+
+
             grid-template-columns:
+
                 repeat(
+
                     3,
+
                     minmax(0, 1fr)
+
                 );
 
+
+
             gap: 20px;
+
         }
 
+
+
         .gt-value-card {
+
             padding: 27px 24px;
+
+
 
             background: #faf6ed;
 
+
+
             border:
+
                 1px solid #eadfc9;
 
+
+
             border-radius: 16px;
+
         }
+
+
 
         .gt-value-icon {
+
             font-size: 38px;
 
+
+
             margin-bottom: 13px;
+
         }
 
+
+
         .gt-value-card h3 {
+
             margin:
+
                 0 0 10px;
+
+
 
             color: #850000;
 
+
+
             font-size: 22px;
+
         }
 
+
+
         .gt-value-card p {
+
             margin: 0;
+
+
 
             color: #575149;
 
+
+
             font-size: 15px;
+
         }
 
 
+
+
+
         /* =========================================
+
            CÂU CHUYỆN
+
         ========================================= */
 
+
+
         .gt-story {
+
             display: grid;
 
+
+
             grid-template-columns:
+
                 1fr 1fr;
+
+
 
             gap: 35px;
 
+
+
             align-items: stretch;
+
         }
 
+
+
         .gt-story-text {
+
             padding: 30px;
+
+
 
             background: white;
 
+
+
             border-radius: 18px;
 
+
+
             border:
+
                 1px solid #eee3d2;
+
         }
 
+
+
         .gt-story-text h2 {
+
             margin:
+
                 0 0 17px;
+
+
 
             color: #850000;
 
+
+
             font-size: 30px;
+
         }
 
+
+
         .gt-story-text p {
+
             margin:
+
                 0 0 16px;
+
+
 
             color: #49443e;
 
+
+
             font-size: 16px;
+
         }
 
+
+
         .gt-story-image {
+
             width: 100%;
+
+
 
             height: 100%;
 
+
+
             min-height: 360px;
+
+
 
             object-fit: cover;
 
+
+
             border-radius: 18px;
+
         }
+
+
+
 
 
         /* =========================================
+
            DI TÍCH TIÊU BIỂU
+
         ========================================= */
 
+
+
         .gt-sites-section {
+
             background: #efe6d6;
+
         }
+
+
 
         .gt-sites {
+
             display: grid;
 
+
+
             grid-template-columns:
+
                 repeat(
+
                     3,
+
                     minmax(0,1fr)
+
                 );
 
+
+
             gap: 22px;
+
         }
 
+
+
         .gt-site-card {
+
             background: white;
+
+
 
             border-radius: 17px;
 
+
+
             overflow: hidden;
 
+
+
             border:
+
                 1px solid #e6dac6;
+
         }
 
+
+
         .gt-site-card img {
+
             width: 100%;
+
+
 
             aspect-ratio: 16 / 10;
 
+
+
             object-fit: cover;
+
         }
+
+
 
         .gt-site-content {
+
             padding: 21px;
+
         }
 
+
+
         .gt-site-content h3 {
+
             margin:
+
                 0 0 7px;
+
+
 
             color: #850000;
 
+
+
             font-size: 22px;
+
         }
 
+
+
         .gt-site-type {
+
             display: block;
+
+
 
             margin-bottom: 12px;
 
+
+
             color: #a17016;
+
+
 
             font-size: 13px;
 
+
+
             font-weight: 800;
+
         }
 
+
+
         .gt-site-content p {
+
             margin:
+
                 0 0 17px;
+
+
 
             color: #575149;
 
+
+
             font-size: 15px;
+
         }
 
 
+
+
+
         /* =========================================
+
            BUTTON
+
         ========================================= */
 
+
+
         .gt-button {
+
             display: inline-block;
+
+
 
             background: #920000;
 
+
+
             color: white;
 
+
+
             padding:
+
                 11px 20px;
+
+
 
             border-radius: 25px;
 
+
+
             font-weight: 800;
 
+
+
             font-size: 14px;
+
         }
 
+
+
         .gt-button:hover {
+
             background: #6e0000;
+
         }
+
+
+
 
 
         /* =========================================
+
            CTA
+
         ========================================= */
 
+
+
         .gt-cta {
+
             text-align: center;
+
+
 
             background: #850000;
 
+
+
             color: white;
+
         }
+
+
 
         .gt-cta-inner {
+
             width: min(
+
                 780px,
+
                 100%
+
             );
 
+
+
             margin: auto;
+
         }
+
+
 
         .gt-cta h2 {
+
             margin:
+
                 0 0 13px;
 
+
+
             font-size:
+
                 clamp(
+
                     28px,
+
                     4vw,
+
                     38px
+
                 );
+
         }
+
+
 
         .gt-cta p {
+
             margin:
+
                 0 auto 23px;
 
+
+
             color:
+
                 rgba(255,255,255,.88);
 
+
+
             font-size: 17px;
+
         }
 
+
+
         .gt-button-light {
+
             display: inline-block;
 
+
+
             padding:
+
                 11px 21px;
+
+
 
             border-radius: 25px;
 
+
+
             background: white;
+
+
 
             color: #850000;
 
+
+
             font-weight: 800;
+
         }
 
 
+
+
+
         /* =========================================
+
            FOOTER
+
         ========================================= */
 
+
+
         .gt-footer {
+
             padding:
+
                 32px 20px;
+
+
 
             background: #570000;
 
+
+
             color: white;
 
+
+
             text-align: center;
+
         }
 
+
+
         .gt-footer strong {
+
             display: block;
+
+
 
             margin-bottom: 7px;
 
+
+
             font-size: 20px;
+
         }
+
+
 
         .gt-footer p {
+
             margin: 4px 0;
 
+
+
             color:
+
                 rgba(255,255,255,.82);
 
+
+
             font-size: 14px;
+
         }
+
+
+
 
 
         /* =========================================
+
            TABLET
+
         ========================================= */
+
+
 
         @media(max-width:850px) {
 
+
+
             .gt-menu-button {
+
                 display: block;
+
             }
+
+
 
             .gt-header-inner {
+
                 position: relative;
+
             }
 
+
+
             .gt-nav {
+
                 display: none;
+
+
 
                 position: absolute;
 
+
+
                 top: 72px;
+
+
 
                 left: 0;
 
+
+
                 right: 0;
+
+
 
                 padding: 9px 0;
 
+
+
                 background: white;
 
+
+
                 box-shadow:
+
                     0 10px 18px
+
                     rgba(0,0,0,.12);
+
+
 
                 flex-direction: column;
 
+
+
                 align-items: stretch;
+
             }
+
+
 
             .gt-nav.show {
+
                 display: flex;
+
             }
 
+
+
             .gt-nav a {
+
                 color: #700000;
+
+
 
                 border-radius: 0;
 
+
+
                 padding:
+
                     12px 18px;
+
             }
+
+
 
             .gt-nav a:hover,
+
             .gt-nav a.active {
+
                 background: #f6efe4;
+
             }
+
+
 
             .gt-intro-grid,
+
             .gt-story {
+
                 grid-template-columns:
+
                     1fr;
+
             }
+
+
 
             .gt-values,
+
             .gt-sites {
+
                 grid-template-columns:
+
                     1fr 1fr;
+
             }
+
+
 
             .gt-story-image {
+
                 min-height: 330px;
+
             }
 
+
+
         }
+
+
+
 
 
         /* =========================================
+
            MOBILE
+
         ========================================= */
+
+
 
         @media(max-width:600px) {
 
+
+
             .gt-header-inner {
+
                 min-height: 64px;
+
             }
+
+
 
             .gt-logo {
+
                 font-size: 16px;
+
             }
+
+
 
             .gt-logo-icon {
+
                 font-size: 22px;
+
             }
+
+
 
             .gt-nav {
+
                 top: 64px;
+
             }
+
+
 
             .gt-hero {
+
                 min-height: 360px;
+
             }
+
+
 
             .gt-hero-content {
+
                 padding:
+
                     45px 0;
+
             }
+
+
 
             .gt-hero-description {
+
                 font-size: 15px;
+
             }
+
+
 
             .gt-section {
+
                 padding:
+
                     50px 15px;
+
             }
+
+
 
             .gt-heading {
+
                 margin-bottom: 30px;
+
             }
+
+
 
             .gt-heading p {
+
                 font-size: 16px;
+
             }
+
+
 
             .gt-intro-grid {
+
                 gap: 25px;
+
             }
+
+
 
             .gt-values,
+
             .gt-sites {
+
                 grid-template-columns:
+
                     1fr;
+
             }
+
+
 
             .gt-story-text {
+
                 padding:
+
                     23px 19px;
+
             }
+
+
 
             .gt-story-image {
+
                 min-height: 250px;
+
             }
 
+
+
             .gt-main-image {
+
                 border-radius: 14px;
+
             }
+
+
 
         }
 
-    </style>
-</head>
 
 
-<body>
+    
+        .gt-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
 
+        @media(max-width:850px) {
+            .gt-header-inner {
+                gap: 12px;
+            }
 
+            .gt-header-actions {
+                margin-left: auto;
+            }
+        }
+</style>
+<link href="../css/i18n.css" rel="stylesheet"/></head>
+<body data-i18n-description="gt_meta_description" data-i18n-title="gt_page_title">
 <!-- =========================================
+
      HEADER
-========================================= -->
 
+========================================= -->
 <header class="gt-header">
+<div class="gt-header-inner">
+<a class="gt-logo" href="../index.html">
+<span class="gt-logo-icon">
 
-    <div class="gt-header-inner">
-
-        <a
-            href="../index.html"
-            class="gt-logo"
-        >
-            <span class="gt-logo-icon">
                 🏛️
-            </span>
 
-            <span>
+            </span>
+<span data-i18n="brand">
+
                 DI SẢN MỘ TRẠCH
+
             </span>
-        </a>
+</a>
 
+<nav class="gt-nav" id="gtNav">
+<a data-i18n="nav_home" href="../index.html">
 
-        <button
-            id="gtMenuButton"
-            class="gt-menu-button"
-            type="button"
-            aria-label="Mở menu"
-        >
-            ☰
-        </button>
-
-
-        <nav
-            id="gtNav"
-            class="gt-nav"
-        >
-
-            <a href="../index.html">
                 🏠 Trang chủ
-            </a>
 
-            <a href="heritage.html">
+            </a>
+<a data-i18n="nav_heritage" href="heritage.html">
+
                 🏛️ Di tích
-            </a>
 
-            <a href="map.html">
+            </a>
+<a data-i18n="nav_map" href="map.html">
+
                 🗺️ Bản đồ
-            </a>
 
-            <a href="map-tour.html">
+            </a>
+<a data-i18n="nav_tour" href="map-tour.html">
+
                 🧭 Tuyến tham quan
-            </a>
 
-            <a href="bai-viet.html">
+            </a>
+<a data-i18n="nav_news" href="bai-viet.html">
+
                 📰 Tin tức
-            </a>
 
-            <a
-                href="gioi-thieu.html"
-                class="active"
-            >
+            </a>
+<a class="active" data-i18n="nav_about" href="gioi-thieu.html">
+
                 ℹ️ Giới thiệu
+
             </a>
+</nav><div class="gt-header-actions"><button aria-label="Mở menu" class="gt-menu-button" data-i18n-aria-label="menu_open" id="gtMenuButton" type="button">
 
-        </nav>
+            ☰
 
-    </div>
-
+        </button><div aria-label="Language selector" class="language-switcher"><button aria-pressed="true" data-lang="vi" type="button">VI</button><button aria-pressed="false" data-lang="en" type="button">EN</button></div></div>
+</div>
 </header>
-
-
 <!-- =========================================
+
      HERO
-========================================= -->
 
+========================================= -->
 <section class="gt-hero">
+<div class="gt-hero-content">
+<span class="gt-badge" data-i18n="gt_hero_badge">
 
-    <div class="gt-hero-content">
-
-        <span class="gt-badge">
             KHÔNG GIAN DI SẢN SỐ
+
         </span>
+<h1 data-i18n="gt_hero_title">
 
-        <h1>
             Mộ Trạch
+
         </h1>
+<p class="gt-hero-subtitle" data-i18n="gt_hero_subtitle">
 
-        <p class="gt-hero-subtitle">
             Làng Tiến sĩ – Đất học – Đất văn hiến
-        </p>
 
-        <p class="gt-hero-description">
+        </p>
+<p class="gt-hero-description" data-i18n="gt_hero_description">
+
             Nơi lưu giữ những giá trị lịch sử,
+
             văn hóa và truyền thống hiếu học
+
             được vun đắp qua nhiều thế hệ.
+
         </p>
-
-    </div>
-
+</div>
 </section>
-
-
 <!-- =========================================
+
      VỀ MỘ TRẠCH
+
 ========================================= -->
-
 <section class="gt-section">
+<div class="gt-container">
+<div class="gt-heading">
+<h2 data-i18n="gt_about_title">
 
-    <div class="gt-container">
-
-        <div class="gt-heading">
-
-            <h2>
                 Về Mộ Trạch
+
             </h2>
+<div class="gt-title-line"></div>
+<p data-i18n="gt_about_intro">
 
-            <div class="gt-title-line"></div>
-
-            <p>
                 Một vùng quê giàu truyền thống,
+
                 nơi lịch sử và văn hóa vẫn hiện diện
+
                 trong đời sống cộng đồng hôm nay.
+
             </p>
+</div>
+<div class="gt-intro-grid">
+<div>
+<img alt="Văn Miếu Mộ Trạch" class="gt-main-image" height="600" src="../images/van-mieu.jpg" width="800"/>
+</div>
+<div class="gt-intro-content">
+<span class="gt-small-title" data-i18n="gt_intro_label">
 
-        </div>
-
-
-        <div class="gt-intro-grid">
-
-            <div>
-
-                <img
-                    class="gt-main-image"
-                    src="../images/van-mieu.jpg"
-                    alt="Văn Miếu Mộ Trạch"
-                    width="800"
-                    height="600"
-                >
-
-            </div>
-
-
-            <div class="gt-intro-content">
-
-                <span class="gt-small-title">
                     MỘ TRẠCH – ĐẤT HỌC
-                </span>
 
-                <h2>
+                </span>
+<h2 data-i18n="gt_intro_heading">
+
                     Một miền quê của truyền thống khoa bảng
-                </h2>
 
-                <p>
+                </h2>
+<p data-i18n="gt_intro_p1">
+
                     Mộ Trạch được biết đến với truyền thống
+
                     hiếu học và khoa bảng, một nét văn hóa
+
                     đã trở thành niềm tự hào của nhiều thế hệ
+
                     người dân địa phương.
-                </p>
 
-                <p>
+                </p>
+<p data-i18n="gt_intro_p2">
+
                     Cùng với truyền thống học hành,
+
                     hệ thống đình, văn miếu, lăng mộ
+
                     và các công trình tín ngưỡng
+
                     tạo nên một không gian văn hóa
+
                     giàu bản sắc.
-                </p>
 
-                <p>
+                </p>
+<p data-i18n="gt_intro_p3">
+
                     Di sản Mộ Trạch được xây dựng
+
                     nhằm góp phần giới thiệu,
+
                     lưu giữ và lan tỏa những giá trị ấy
+
                     bằng phương thức số.
+
                 </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- =========================================
+
      GIÁ TRỊ DI SẢN
-========================================= -->
 
+========================================= -->
 <section class="gt-section gt-values-section">
+<div class="gt-container">
+<div class="gt-heading">
+<h2 data-i18n="gt_values_title">
 
-    <div class="gt-container">
-
-        <div class="gt-heading">
-
-            <h2>
                 Giá trị được lưu giữ
+
             </h2>
+<div class="gt-title-line"></div>
+<p data-i18n="gt_values_intro">
 
-            <div class="gt-title-line"></div>
-
-            <p>
                 Di sản Mộ Trạch không chỉ nằm ở
+
                 những công trình kiến trúc,
+
                 mà còn trong ký ức,
+
                 tri thức và đời sống cộng đồng.
+
             </p>
+</div>
+<div class="gt-values">
+<article class="gt-value-card">
+<div class="gt-value-icon">
 
-        </div>
-
-
-        <div class="gt-values">
-
-
-            <article class="gt-value-card">
-
-                <div class="gt-value-icon">
                     📜
-                </div>
 
-                <h3>
+                </div>
+<h3 data-i18n="gt_value_history_title">
+
                     Lịch sử
-                </h3>
 
-                <p>
+                </h3>
+<p data-i18n="gt_value_history_desc">
+
                     Những câu chuyện về nguồn cội,
+
                     các nhân vật và dấu ấn lịch sử
+
                     được truyền lại qua nhiều thế hệ.
+
                 </p>
+</article>
+<article class="gt-value-card">
+<div class="gt-value-icon">
 
-            </article>
-
-
-            <article class="gt-value-card">
-
-                <div class="gt-value-icon">
                     🎓
-                </div>
 
-                <h3>
+                </div>
+<h3 data-i18n="gt_value_learning_title">
+
                     Truyền thống hiếu học
-                </h3>
 
-                <p>
+                </h3>
+<p data-i18n="gt_value_learning_desc">
+
                     Tinh thần học tập và khoa bảng
+
                     là một trong những giá trị
+
                     nổi bật của quê hương Mộ Trạch.
+
                 </p>
+</article>
+<article class="gt-value-card">
+<div class="gt-value-icon">
 
-            </article>
-
-
-            <article class="gt-value-card">
-
-                <div class="gt-value-icon">
                     🏛️
-                </div>
 
-                <h3>
+                </div>
+<h3 data-i18n="gt_value_culture_title">
+
                     Di sản văn hóa
+
                 </h3>
+<p data-i18n="gt_value_culture_desc">
 
-                <p>
                     Đình, văn miếu, lăng mộ
+
                     và các không gian tín ngưỡng
+
                     góp phần tạo nên bản sắc địa phương.
+
                 </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
+</article>
+</div>
+</div>
 </section>
-
-
 <!-- =========================================
+
      MỤC TIÊU WEBSITE
-========================================= -->
 
+========================================= -->
 <section class="gt-section">
+<div class="gt-container">
+<div class="gt-story">
+<div class="gt-story-text">
+<span class="gt-small-title" data-i18n="gt_story_label">
 
-    <div class="gt-container">
-
-        <div class="gt-story">
-
-            <div class="gt-story-text">
-
-                <span class="gt-small-title">
                     DI SẢN MỘ TRẠCH
+
                 </span>
+<h2 data-i18n="gt_story_title">
 
-                <h2>
                     Kết nối di sản bằng công nghệ
+
                 </h2>
+<p data-i18n="gt_story_p1">
 
-                <p>
                     Website Di sản Mộ Trạch
+
                     hướng đến việc xây dựng
+
                     một không gian di sản số
+
                     dễ tiếp cận cho người dân,
+
                     du khách và thế hệ trẻ.
-                </p>
 
-                <p>
+                </p>
+<p data-i18n="gt_story_p2">
+
                     Thông qua bản đồ,
+
                     hình ảnh, thuyết minh,
+
                     video và các bài viết,
+
                     người xem có thể tìm hiểu
+
                     về di sản ngay cả khi
+
                     chưa có điều kiện
+
                     trực tiếp đến tham quan.
-                </p>
 
-                <p>
+                </p>
+<p data-i18n="gt_story_p3">
+
                     Nội dung trên website
+
                     sẽ tiếp tục được bổ sung
+
                     và hoàn thiện trong quá trình phát triển.
+
                 </p>
-
-            </div>
-
-
-            <img
-                class="gt-story-image"
-                src="../images/dinh-lang.jpg"
-                alt="Đình làng Mộ Trạch"
-                width="800"
-                height="600"
-                loading="lazy"
-            >
-
-        </div>
-
-    </div>
-
+</div>
+<img alt="Đình làng Mộ Trạch" class="gt-story-image" height="600" loading="lazy" src="../images/dinh-lang.jpg" width="800"/>
+</div>
+</div>
 </section>
-
-
 <!-- =========================================
+
      DI TÍCH TIÊU BIỂU
-========================================= -->
 
+========================================= -->
 <section class="gt-section gt-sites-section">
+<div class="gt-container">
+<div class="gt-heading">
+<h2 data-i18n="gt_sites_title">
 
-    <div class="gt-container">
-
-        <div class="gt-heading">
-
-            <h2>
                 Một số di tích tiêu biểu
+
             </h2>
+<div class="gt-title-line"></div>
+<p data-i18n="gt_sites_intro">
 
-            <div class="gt-title-line"></div>
-
-            <p>
                 Khám phá những địa điểm
+
                 đang được giới thiệu
+
                 trong không gian số Di sản Mộ Trạch.
+
             </p>
+</div>
+<div class="gt-sites">
+<article class="gt-site-card">
+<img alt="Lăng Thần Mộ Trạch" height="375" loading="lazy" src="../images/lang-than-vu-hon.jpg" width="600"/>
+<div class="gt-site-content">
+<h3 data-i18n="gt_site1_title">
 
-        </div>
-
-
-        <div class="gt-sites">
-
-
-            <article class="gt-site-card">
-
-                <img
-                    src="../images/lang-than-vu-hon.jpg"
-                    alt="Lăng Thần Mộ Trạch"
-                    width="600"
-                    height="375"
-                    loading="lazy"
-                >
-
-                <div class="gt-site-content">
-
-                    <h3>
                         Lăng Thần
-                    </h3>
 
-                    <span class="gt-site-type">
+                    </h3>
+<span class="gt-site-type" data-i18n="gt_site1_type">
+
                         MỘ CỤ VŨ HỒN
-                    </span>
 
-                    <p>
+                    </span>
+<p data-i18n="gt_site1_desc">
+
                         Di tích gắn với nguồn cội
+
                         và lịch sử của Mộ Trạch.
+
                     </p>
+<a class="gt-button" data-i18n="gt_view_detail" href="detail.html?id=1">
 
-                    <a
-                        class="gt-button"
-                        href="detail.html?id=1"
-                    >
                         Xem chi tiết →
+
                     </a>
+</div>
+</article>
+<article class="gt-site-card">
+<img alt="Văn Miếu Mộ Trạch" height="375" loading="lazy" src="../images/van-mieu.jpg" width="600"/>
+<div class="gt-site-content">
+<h3 data-i18n="gt_site2_title">
 
-                </div>
-
-            </article>
-
-
-            <article class="gt-site-card">
-
-                <img
-                    src="../images/van-mieu.jpg"
-                    alt="Văn Miếu Mộ Trạch"
-                    width="600"
-                    height="375"
-                    loading="lazy"
-                >
-
-                <div class="gt-site-content">
-
-                    <h3>
                         Văn Miếu Mộ Trạch
-                    </h3>
 
-                    <span class="gt-site-type">
+                    </h3>
+<span class="gt-site-type" data-i18n="gt_site2_type">
+
                         VĂN HÓA – KHOA BẢNG
-                    </span>
 
-                    <p>
+                    </span>
+<p data-i18n="gt_site2_desc">
+
                         Không gian gắn với
+
                         truyền thống hiếu học
+
                         của quê hương.
+
                     </p>
+<a class="gt-button" data-i18n="gt_view_detail" href="detail.html?id=van-mieu-mo-trach">
 
-                    <a
-                        class="gt-button"
-                        href="detail.html?id=van-mieu-mo-trach"
-                    >
                         Xem chi tiết →
+
                     </a>
+</div>
+</article>
+<article class="gt-site-card">
+<img alt="Đình làng Mộ Trạch" height="375" loading="lazy" src="../images/dinh-lang.jpg" width="600"/>
+<div class="gt-site-content">
+<h3 data-i18n="gt_site3_title">
 
-                </div>
-
-            </article>
-
-
-            <article class="gt-site-card">
-
-                <img
-                    src="../images/dinh-lang.jpg"
-                    alt="Đình làng Mộ Trạch"
-                    width="600"
-                    height="375"
-                    loading="lazy"
-                >
-
-                <div class="gt-site-content">
-
-                    <h3>
                         Đình làng Mộ Trạch
+
                     </h3>
+<span class="gt-site-type" data-i18n="gt_site3_type">
 
-                    <span class="gt-site-type">
                         SINH HOẠT CỘNG ĐỒNG
+
                     </span>
+<p data-i18n="gt_site3_desc">
 
-                    <p>
                         Không gian văn hóa
+
                         gắn với cộng đồng
+
                         và nghi lễ truyền thống.
+
                     </p>
+<a class="gt-button" data-i18n="gt_view_detail" href="detail.html?id=dinh-lang-mo-trach">
 
-                    <a
-                        class="gt-button"
-                        href="detail.html?id=dinh-lang-mo-trach"
-                    >
                         Xem chi tiết →
+
                     </a>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
+</div>
+</article>
+</div>
+</div>
 </section>
-
-
 <!-- =========================================
+
      CTA
-========================================= -->
 
+========================================= -->
 <section class="gt-section gt-cta">
+<div class="gt-cta-inner">
+<h2 data-i18n="gt_cta_title">
 
-    <div class="gt-cta-inner">
-
-        <h2>
             Khám phá di sản Mộ Trạch
+
         </h2>
+<p data-i18n="gt_cta_desc">
 
-        <p>
             Xem bản đồ,
+
             nghe thuyết minh
+
             và tìm hiểu chi tiết
+
             các địa điểm tiêu biểu.
+
         </p>
+<a class="gt-button-light" data-i18n="gt_cta_button" href="heritage.html">
 
-        <a
-            href="heritage.html"
-            class="gt-button-light"
-        >
             🏛️ Khám phá các di tích
+
         </a>
-
-    </div>
-
+</div>
 </section>
-
-
 <!-- =========================================
+
      FOOTER
-========================================= -->
 
+========================================= -->
 <footer class="gt-footer">
+<strong data-i18n="footer_brand">
 
-    <strong>
         🏛️ DI SẢN MỘ TRẠCH
+
     </strong>
+<p data-i18n="footer_space">
 
-    <p>
         Không gian di sản số
-    </p>
 
-    <p>
+    </p>
+<p data-i18n="footer_slogan">
+
         Làng Tiến sĩ – Đất học – Đất văn hiến
-    </p>
 
-    <p>
+    </p>
+<p data-i18n="footer_copyright">
+
         © 2026 Di sản Mộ Trạch
+
     </p>
-
 </footer>
-
-
 <!-- =========================================
-     MOBILE MENU
-========================================= -->
 
+     MOBILE MENU
+
+========================================= -->
 <script>
 
+
+
 const menuButton =
+
     document.getElementById(
+
         "gtMenuButton"
+
     );
 
+
+
 const navigation =
+
     document.getElementById(
+
         "gtNav"
+
     );
+
+
+
 
 
 menuButton.addEventListener(
+
     "click",
+
     function () {
 
+
+
         navigation.classList
+
             .toggle(
+
                 "show"
+
             );
+
     }
+
 );
 
 
+
+
+
 navigation
+
     .querySelectorAll("a")
+
     .forEach(
+
         function (link) {
 
+
+
             link.addEventListener(
+
                 "click",
+
                 function () {
 
+
+
                     navigation.classList
+
                         .remove(
+
                             "show"
+
                         );
+
                 }
+
             );
+
         }
+
     );
 
+
+
 </script>
-
-
-</body>
-
+<script src="../js/i18n.js?v=2"></script>
 </html>
