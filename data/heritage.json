@@ -15,7 +15,7 @@
 
     "audio": "audio/lang-than.mp3",
 
-    "video": "videos/lang-than.mp4",
+    "video": "videos/gioi-thieu.mp4",
 
     "image": "images/lang-than.jpg"
   },
@@ -36,7 +36,7 @@
 
     "audio": "audio/van-mieu.mp3",
 
-    "video": "videos/van-mieu.mp4",
+    "video": "videos/gioi-thieu.mp4",
 
     "image": "images/van-mieu.jpg"
   },
@@ -57,7 +57,7 @@
 
     "audio": "audio/dinh-lang.mp3",
 
-    "video": "videos/dinh-lang.mp4",
+    "video": "videos/gioi-thieu.mp4",
 
     "image": "images/dinh-lang.jpg"
   },
