@@ -243,6 +243,15 @@ function renderHeritage(item, container) {
     const audio = getAssetPath(item.audio);
     const video = getAssetPath(item.video);
 
+    const heritageSlug = getHeritageSlug(item);
+
+    const qrImage = getAssetPath({
+        "lang-than": "images/qr/qr-lang-than.png",
+        "van-mieu-mo-trach": "images/qr/qr-van-mieu.png",
+        "dinh-lang-mo-trach": "images/qr/qr-dinh-lang.png",
+        "chua-dien-phuc": "images/qr/qr-chua-dien-phuc.png"
+    }[heritageSlug] || "");
+
     const gallery = Array.isArray(item.gallery)
         ? item.gallery
         : [];
@@ -255,7 +264,7 @@ function renderHeritage(item, container) {
         "lang-than": "tram-lang-than.html",
         "van-mieu-mo-trach": "tram-van-mieu.html",
         "dinh-lang-mo-trach": "tram-dinh-lang.html"
-    }[getHeritageSlug(item)] || "";
+    }[heritageSlug] || "";
 
     document.title =
         name +
@@ -605,6 +614,53 @@ function renderHeritage(item, container) {
                     : ""
                 }
 
+                ${
+                    qrImage
+                    ? `
+                    <section class="qr-section qr-code-section">
+
+                        <h2 class="qr-section-title">
+                            ${escapeHtml(
+                                getCurrentLanguage() === "en"
+                                    ? "Heritage site QR code"
+                                    : "Mã QR di tích"
+                            )}
+                        </h2>
+
+                        <div class="qr-code-box">
+
+                            <img
+                                src="${safe(qrImage)}"
+                                alt="${safe(
+                                    (getCurrentLanguage() === "en"
+                                        ? "QR code - "
+                                        : "Mã QR - ") + name
+                                )}"
+                                class="heritage-qr-image"
+                                loading="lazy"
+                            >
+
+                            <div class="qr-code-copy">
+                                <strong>
+                                    ${escapeHtml(name)}
+                                </strong>
+
+                                <p>
+                                    ${escapeHtml(
+                                        getCurrentLanguage() === "en"
+                                            ? "Scan this code to quickly open the heritage information page."
+                                            : "Quét mã để mở nhanh trang thông tin của di tích."
+                                    )}
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </section>
+                    `
+                    : ""
+                }
+
                 <div class="qr-navigation">
 
                     <a
@@ -886,6 +942,47 @@ function addUpgradeStyles() {
             border-radius:20px;
         }
 
+        .qr-code-box {
+            display:flex;
+            align-items:center;
+            gap:24px;
+            background:#faf5ed;
+            border:1px solid #ead8b8;
+            border-radius:18px;
+            padding:22px;
+            margin-top:15px;
+        }
+
+        .heritage-qr-image {
+            width:190px;
+            height:190px;
+            object-fit:contain;
+            display:block;
+            background:#fff;
+            border-radius:12px;
+            padding:8px;
+            box-shadow:0 4px 16px rgba(0,0,0,.10);
+        }
+
+        .qr-code-copy {
+            flex:1;
+            min-width:0;
+            font-size:17px;
+            line-height:1.6;
+        }
+
+        .qr-code-copy strong {
+            display:block;
+            color:#8b0000;
+            font-size:21px;
+            margin-bottom:7px;
+        }
+
+        .qr-code-copy p {
+            margin:0;
+            color:#555;
+        }
+
         .heritage-gallery {
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -914,6 +1011,17 @@ function addUpgradeStyles() {
         }
 
         @media(max-width:700px) {
+            .qr-code-box {
+                flex-direction:column;
+                text-align:center;
+                padding:18px;
+            }
+
+            .heritage-qr-image {
+                width:180px;
+                height:180px;
+            }
+
             .heritage-gallery {
                 grid-template-columns:1fr;
             }
