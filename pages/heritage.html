@@ -13,6 +13,55 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/i18n.css">
+
+    <style>
+        .heritage-qr-inline {
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin:18px 0;
+            padding:14px;
+            background:#faf5ed;
+            border:1px solid #ead8b8;
+            border-radius:14px;
+        }
+
+        .heritage-qr-inline img {
+            width:105px;
+            height:105px;
+            object-fit:contain;
+            background:#fff;
+            padding:6px;
+            border-radius:10px;
+            box-shadow:0 3px 12px rgba(0,0,0,.08);
+        }
+
+        .heritage-qr-inline strong {
+            display:block;
+            color:#8b0000;
+            margin-bottom:5px;
+            font-size:16px;
+        }
+
+        .heritage-qr-inline p {
+            margin:0;
+            color:#555;
+            line-height:1.5;
+            font-size:14px;
+        }
+
+        @media (max-width:700px) {
+            .heritage-qr-inline {
+                justify-content:center;
+                text-align:left;
+            }
+
+            .heritage-qr-inline img {
+                width:95px;
+                height:95px;
+            }
+        }
+    </style>
 </head>
 
 <body
@@ -118,6 +167,16 @@
                     📍 Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng
                 </div>
 
+                <div class="heritage-qr-inline">
+                    <img src="../images/qr/qr-lang-than.png"
+                         alt="Mã QR Lăng Thần"
+                         loading="lazy">
+                    <div>
+                        <strong>📱 Mã QR / QR Code</strong>
+                        <p>Quét mã để mở nhanh thông tin Lăng Thần.</p>
+                    </div>
+                </div>
+
                 <a href="detail.html?id=1"
                    class="heritage-detail-btn"
                    data-i18n="heritage_view_detail">
@@ -164,6 +223,16 @@
                 <div class="heritage-location"
                      data-i18n="heritage_location">
                     📍 Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng
+                </div>
+
+                <div class="heritage-qr-inline">
+                    <img src="../images/qr/qr-van-mieu.png"
+                         alt="Mã QR Văn Miếu Mộ Trạch"
+                         loading="lazy">
+                    <div>
+                        <strong>📱 Mã QR / QR Code</strong>
+                        <p>Quét mã để mở nhanh thông tin Văn Miếu Mộ Trạch.</p>
+                    </div>
                 </div>
 
                 <a href="detail.html?id=2"
@@ -214,7 +283,72 @@
                     📍 Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng
                 </div>
 
+                <div class="heritage-qr-inline">
+                    <img src="../images/qr/qr-dinh-lang.png"
+                         alt="Mã QR Đình làng Mộ Trạch"
+                         loading="lazy">
+                    <div>
+                        <strong>📱 Mã QR / QR Code</strong>
+                        <p>Quét mã để mở nhanh thông tin Đình làng Mộ Trạch.</p>
+                    </div>
+                </div>
+
                 <a href="detail.html?id=3"
+                   class="heritage-detail-btn"
+                   data-i18n="heritage_view_detail">
+                    Xem chi tiết →
+                </a>
+
+            </div>
+        </article>
+
+
+        <!-- 4. CHÙA DIÊN PHÚC -->
+        <article class="heritage-item">
+
+            <div class="heritage-image">
+
+                <img
+                    src="../images/chua-dien-phuc.jpg"
+                    alt="Chùa Diên Phúc"
+                >
+
+                <div class="heritage-number">04</div>
+            </div>
+
+            <div class="heritage-info">
+
+                <div class="heritage-type">
+                    🏛️ DI TÍCH TÔN GIÁO
+                </div>
+
+                <h2>
+                    Chùa Diên Phúc
+                </h2>
+
+                <h3>
+                    Không gian Phật giáo - văn hóa làng Mộ Trạch
+                </h3>
+
+                <p>
+                    Chùa Diên Phúc là một công trình văn hóa, tín ngưỡng của làng Mộ Trạch, gắn với đời sống tinh thần của cộng đồng và không gian di sản truyền thống của địa phương.
+                </p>
+
+                <div class="heritage-location">
+                    📍 Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng
+                </div>
+
+                <div class="heritage-qr-inline">
+                    <img src="../images/qr/qr-chua-dien-phuc.png"
+                         alt="Mã QR Chùa Diên Phúc"
+                         loading="lazy">
+                    <div>
+                        <strong>📱 Mã QR / QR Code</strong>
+                        <p>Quét mã để mở nhanh thông tin Chùa Diên Phúc.</p>
+                    </div>
+                </div>
+
+                <a href="detail.html?id=4"
                    class="heritage-detail-btn"
                    data-i18n="heritage_view_detail">
                     Xem chi tiết →
