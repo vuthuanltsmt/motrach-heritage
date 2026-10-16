@@ -246,10 +246,10 @@ function renderHeritage(item, container) {
     const heritageSlug = getHeritageSlug(item);
 
     const qrImage = getAssetPath({
-        "lang-than": "images/qr/qr-lang-than.png",
-        "van-mieu-mo-trach": "images/qr/qr-van-mieu.png",
-        "dinh-lang-mo-trach": "images/qr/qr-dinh-lang.png",
-        "chua-dien-phuc": "images/qr/qr-chua-dien-phuc.png"
+        "lang-than": "images/qr/v2/qr-lang-than.png",
+        "van-mieu-mo-trach": "images/qr/v2/qr-van-mieu.png",
+        "dinh-lang-mo-trach": "images/qr/v2/qr-dinh-lang.png",
+        "chua-dien-phuc": "images/qr/v2/qr-chua-dien-phuc.png"
     }[heritageSlug] || "");
 
     const gallery = Array.isArray(item.gallery)
