@@ -1,0 +1,154 @@
+/* Mo Trach Heritage – Cinematic banner v1.0
+   Pham vi: chi hero trang chu khi JS them class cinema-hero.
+   CSS style.css goc va cac thanh phan khac khong bi thay doi. */
+
+.hero.cinema-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #490404;
+}
+
+.hero.cinema-hero .cinema-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero.cinema-hero .cinema-frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.035);
+  transition: opacity 1.5s ease-in-out;
+  will-change: opacity, transform;
+}
+
+.hero.cinema-hero .cinema-frame.is-active {
+  opacity: 1;
+  animation: cinema-ken-burns 6.5s ease-out both;
+}
+
+@keyframes cinema-ken-burns {
+  from { transform: scale(1.035) translate3d(0, 0, 0); }
+  to   { transform: scale(1.125) translate3d(0.6%, -0.5%, 0); }
+}
+
+.hero.cinema-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(34, 0, 0, 0.78), rgba(54, 1, 1, 0.56) 55%, rgba(30, 0, 0, 0.67));
+  pointer-events: none;
+}
+
+.hero.cinema-hero .hero-overlay {
+  position: relative;
+  z-index: 2;
+}
+
+.hero.cinema-hero .hero-content {
+  padding-bottom: 90px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+}
+
+.hero.cinema-hero .cinema-controls {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: calc(100% - 24px);
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,0.30);
+  border-radius: 999px;
+  background: rgba(30, 0, 0, 0.44);
+  backdrop-filter: blur(8px);
+}
+
+.hero.cinema-hero .cinema-arrow,
+.hero.cinema-hero .cinema-play-toggle {
+  border: 1px solid rgba(255,255,255,0.30);
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.13);
+  color: #fff;
+  font: 700 22px/1 Arial, sans-serif;
+  cursor: pointer;
+  display: inline-grid;
+  place-items: center;
+}
+
+.hero.cinema-hero .cinema-play-toggle {
+  font-size: 14px;
+}
+
+.hero.cinema-hero .cinema-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.hero.cinema-hero .cinema-dot {
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+  flex: 0 0 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.50);
+  cursor: pointer;
+}
+
+.hero.cinema-hero .cinema-dot.is-current {
+  background: #fff;
+  outline: 1px solid rgba(255,255,255,0.75);
+  outline-offset: 3px;
+}
+
+.hero.cinema-hero .cinema-arrow:hover,
+.hero.cinema-hero .cinema-play-toggle:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.hero.cinema-hero .cinema-controls button:focus-visible {
+  outline: 3px solid #ffdb89;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .hero.cinema-hero .hero-content {
+    padding-bottom: 102px;
+  }
+  .hero.cinema-hero .cinema-controls {
+    bottom: 13px;
+    gap: 8px;
+    padding: 5px 9px;
+  }
+  .hero.cinema-hero .cinema-frame {
+    background-position: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero.cinema-hero .cinema-frame,
+  .hero.cinema-hero .cinema-frame.is-active {
+    animation: none !important;
+    transition: none !important;
+    transform: none;
+  }
+}
