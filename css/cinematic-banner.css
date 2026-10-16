@@ -152,3 +152,32 @@
     transform: none;
   }
 }
+
+
+/* Phan mo rong nho cho cinematic-banner.css v1, giu nguyen hieu ung cu. */
+.hero.cinema-hero .cinema-caption {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 79px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: min(90%, 680px);
+  color: #fff;
+  text-align: center;
+  padding: 7px 17px;
+  border-radius: 14px;
+  background: rgba(24, 0, 0, .48);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  line-height: 1.35;
+  text-shadow: 0 1px 6px rgba(0,0,0,.45);
+}
+.hero.cinema-hero .cinema-caption[hidden] { display: none; }
+.hero.cinema-hero .cinema-caption strong { display:block; font-size: 15px; }
+.hero.cinema-hero .cinema-caption span { display:block; font-size: 12px; opacity: .95; margin-top: 2px; }
+@media (max-width: 700px) {
+  .hero.cinema-hero .cinema-caption { bottom: 70px; max-width: 93%; padding: 5px 10px; }
+  .hero.cinema-hero .cinema-caption strong { font-size: 12px; }
+  .hero.cinema-hero .cinema-caption span { display:none; }
+}

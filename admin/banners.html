@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quản lý Banner – Di sản Mộ Trạch</title>
+  <link rel="stylesheet" href="../css/banner-admin.css?v=2">
+  <script type="module" src="../js/admin-banners.js?v=2"></script>
+</head>
+<body>
+  <header class="banner-header">
+    <div><a href="index.html">← Bảng điều khiển</a><h1>🏛️ Quản lý Banner điện ảnh</h1><p>Di sản Mộ Trạch • Chỉ dành cho quản trị viên</p></div>
+    <a class="website-link" href="../index.html" target="_blank" rel="noopener">Xem website ↗</a>
+  </header>
+  <main class="layout" hidden id="bannerWorkspace">
+    <div class="notice">Ảnh đang bật sẽ hiển thị trên trang chủ theo thứ tự bên dưới. Khi bạn lưu thay đổi, website trực tuyến sẽ cập nhật mà không cần Push GitHub. Các ảnh gốc trong thư mục <code>images/</code> không bị sửa hay xóa.</div>
+    <div class="columns">
+      <section class="panel" aria-labelledby="formHeading">
+        <h2 id="formHeading">Thêm Banner</h2>
+        <form id="bannerForm">
+          <input type="hidden" id="editingId">
+          <label>Ảnh Banner <span class="optional">(JPG, PNG, WebP; tối đa 5 MB)</span>
+            <input type="file" id="imageFile" accept="image/jpeg,image/png,image/webp">
+          </label>
+          <div class="image-preview"><img id="imagePreview" alt="Xem trước ảnh Banner" hidden><span id="previewPlaceholder">Chọn ảnh để xem trước. Khi chỉnh sửa, có thể giữ nguyên ảnh cũ.</span></div>
+          <label>Tiêu đề tiếng Việt * <input id="titleVi" type="text" maxlength="120" required placeholder="Ví dụ: Văn Miếu Mộ Trạch"></label>
+          <label>Mô tả tiếng Việt <textarea id="descriptionVi" maxlength="220" rows="2"></textarea></label>
+          <details><summary>🌐 Nội dung tiếng Anh (không bắt buộc)</summary>
+            <label>English title <input id="titleEn" type="text" maxlength="120"></label>
+            <label>English description <textarea id="descriptionEn" maxlength="220" rows="2"></textarea></label>
+          </details>
+          <div class="inline">
+            <label>Thời gian mỗi ảnh
+              <select id="durationMs"><option value="4000">4 giây</option><option value="5000">5 giây</option><option value="6500" selected>6,5 giây</option><option value="8000">8 giây</option><option value="10000">10 giây</option><option value="15000">15 giây</option></select>
+            </label>
+            <label class="checkbox"><input id="isActive" type="checkbox" checked> Hiển thị trên website</label>
+          </div>
+          <div class="actions"><button type="submit" class="primary" id="saveButton">Lưu Banner</button><button type="button" id="cancelButton">Làm mới biểu mẫu</button></div>
+        </form>
+      </section>
+      <section class="panel" aria-labelledby="listHeading">
+        <div class="list-header"><div><h2 id="listHeading">Danh sách Banner</h2><p>Nhấn ↑ hoặc ↓ để đổi thứ tự. Tắt/bật để ẩn/hiện ảnh.</p></div><button type="button" id="refreshButton">↻ Tải lại</button></div>
+        <p class="quiet" id="bannerCount">Đang tải...</p>
+        <div id="bannerList" class="banner-list"></div>
+      </section>
+    </div>
+  </main>
+  <p id="pageStatus" role="status" aria-live="polite" class="page-status">Đang kiểm tra quyền quản trị...</p>
+</body>
+</html>
