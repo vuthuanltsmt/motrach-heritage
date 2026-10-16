@@ -161,6 +161,29 @@
                 font-size: 18px;
             }
         }
+
+        /* Thong ke truy cap - chi trong trang quan tri */
+        .analytics-section { margin: 8px 0 32px; }
+        .analytics-section h2 { color: #800000; margin: 0 0 7px; }
+        .analytics-hint { color: #777; font-size: 13px; margin: 0 0 18px; }
+        .analytics-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+        .analytics-metric { background: #fff; border: 1px solid #eee3dc; padding: 18px 16px; border-radius: 13px; }
+        .analytics-metric .metric-name { display: block; font-size: 13px; line-height: 1.5; color: #695c58; }
+        .analytics-metric .metric-value { display: block; color: #800000; font-size: 28px; font-weight: 800; margin-top: 5px; font-variant-numeric: tabular-nums; }
+        .analytics-panels { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px; margin-top: 17px; }
+        .analytics-panel { background: #fff; border-radius: 14px; padding: 22px; min-width: 0; }
+        .analytics-panel h3 { margin: 0 0 16px; color: #800000; font-size: 17px; }
+        .analytics-chart { min-height: 190px; display: flex; align-items: end; justify-content: space-between; gap: 8px; }
+        .analytics-chart .day { display: flex; flex-direction: column; align-items: center; justify-content: end; flex: 1; min-width: 0; }
+        .analytics-chart .count { font-size: 12px; font-weight: bold; margin-bottom: 7px; }
+        .analytics-chart .bar { display: block; width: 100%; max-width: 46px; border-radius: 6px 6px 0 0; background: #a44a4a; min-height: 4px; }
+        .analytics-chart .date { font-size: 12px; color: #6f6464; margin-top: 8px; }
+        .analytics-top-pages { margin: 0; padding: 0; list-style: none; }
+        .analytics-top-pages li { padding: 10px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; gap: 12px; }
+        .analytics-top-pages li:last-child { border: 0; }
+        .analytics-top-pages strong { white-space: nowrap; color: #800000; font-variant-numeric: tabular-nums; }
+        .analytics-error { margin: 12px 0; padding: 10px; border-radius: 8px; color: #8b2424; background: #fff1f1; }
+        @media (max-width: 900px) { .analytics-panels { grid-template-columns: 1fr; } }
     </style>
 </head>
 
@@ -240,6 +263,34 @@
 
         </div>
 
+
+        <!-- THONG KE LUOT TRUY CAP -->
+        <section class="analytics-section" aria-labelledby="analyticsHeading">
+            <h2 id="analyticsHeading">📊 Thống kê lượt truy cập</h2>
+            <p class="analytics-hint">Giờ Việt Nam (UTC+7) • 1 phiên = 30 phút không hoạt động • Không thu thập IP</p>
+            <p id="analyticsStatus" role="status">Đang tải số liệu...</p>
+
+            <div class="analytics-metrics">
+                <div class="analytics-metric"><span class="metric-name">Lượt truy cập hôm nay</span><strong class="metric-value" id="visitsToday">—</strong></div>
+                <div class="analytics-metric"><span class="metric-name">Tổng lượt truy cập</span><strong class="metric-value" id="visitsTotal">—</strong></div>
+                <div class="analytics-metric"><span class="metric-name">Lượt truy cập 7 ngày</span><strong class="metric-value" id="visits7Days">—</strong></div>
+                <div class="analytics-metric"><span class="metric-name">Thiết bị truy cập hôm nay (ước tính)</span><strong class="metric-value" id="visitorsToday">—</strong></div>
+                <div class="analytics-metric"><span class="metric-name">Tổng thiết bị truy cập (ước tính)</span><strong class="metric-value" id="visitorsTotal">—</strong></div>
+                <div class="analytics-metric"><span class="metric-name">Tổng lượt xem trang</span><strong class="metric-value" id="pageviewsTotal">—</strong></div>
+            </div>
+
+            <div class="analytics-panels">
+                <div class="analytics-panel">
+                    <h3>Biểu đồ lượt truy cập 7 ngày gần nhất</h3>
+                    <div class="analytics-chart" id="visitsDailyChart" aria-label="Biểu đồ lượt truy cập theo ngày"></div>
+                </div>
+                <div class="analytics-panel">
+                    <h3>5 trang được xem nhiều nhất</h3>
+                    <ul class="analytics-top-pages" id="visitsTopPages"></ul>
+                </div>
+            </div>
+            <p class="analytics-hint" style="margin-top: 12px;">Số liệu bắt đầu từ khi kích hoạt hệ thống; số thiết bị là ước tính theo trình duyệt, không phải số người thực tế.</p>
+        </section>
 
         <section class="cards">
 

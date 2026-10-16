@@ -1943,3 +1943,19 @@ textarea {
         margin: 8px 0;
     }
 }
+/* Bo dem luot truy cap o chan trang */
+.footer .visit-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin: 12px auto 8px;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 999px;
+    font-size: 14px;
+}
+.footer .visit-counter strong {
+    font-variant-numeric: tabular-nums;
+    font-size: 17px;
+}
