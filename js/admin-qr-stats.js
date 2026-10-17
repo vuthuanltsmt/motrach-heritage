@@ -182,7 +182,7 @@ async function fetchReport() {
     status('Vui lòng chọn khoảng thời gian hợp lệ, tối đa 366 ngày.','error');return;
   }
   if(to>vnToday()) { status('Ngày kết thúc không được lớn hơn ngày hiện tại.','error');return; }
-  loading=true;$('loadReport').disabled=true;$('downloadCsv').disabled=true;
+  loading=true;$('loadReport').disabled=true;$('downloadCsv').disabled=true;$('downloadXlsx').disabled=true;
   status('Đang tải thống kê QR…');
   try{
     const {data,error}=await supabase.rpc('get_qr_daily_report',{p_from:from,p_to:to});
@@ -196,7 +196,7 @@ async function fetchReport() {
   }catch(error){
     console.error('QR Analytics V3:',error);
     status('Không tải được thống kê. Kiểm tra SQL 004, quyền quản trị và kết nối Supabase. '+error.message,'error');
-  }finally{loading=false;$('loadReport').disabled=false;$('downloadCsv').disabled=false;}
+  }finally{loading=false;$('loadReport').disabled=false;$('downloadCsv').disabled=false;$('downloadXlsx').disabled=false;}
 }
 function csvField(value) {
   let val=String(value??'');
@@ -230,6 +230,22 @@ function exportCSV() {
   setTimeout(()=>URL.revokeObjectURL(url),1000);
   status('Đã xuất tệp CSV UTF-8. Bạn có thể mở trực tiếp bằng Microsoft Excel.', 'ok');
 }
+async function exportXLSX() {
+  if(loading || !lastRange || !knownSites.length){status('Chưa có báo cáo để xuất Excel.','error');return;}
+  const btn=$('downloadXlsx');btn.disabled=true;
+  try {
+    status('Đang tạo báo cáo Excel .xlsx trên máy của bạn…');
+    const {downloadQRWorkbook}=await import('./qr-xlsx-export.js?v=31');
+    downloadQRWorkbook({
+      from:lastRange.from,to:lastRange.to,reportRows,knownSites,
+      selectedSite:$('siteFilter').value
+    });
+    status('Đã tạo báo cáo .xlsx với ba trang: Tổng quan, Theo ngày, Ghi chú.','ok');
+  } catch(error) {
+    console.error('Xuất QR XLSX V3.1:',error);
+    status('Không xuất được .xlsx: '+error.message+'; bạn vẫn có thể dùng CSV.','error');
+  } finally {btn.disabled=false;}
+}
 async function init() {
   setPeriod('30');
   document.querySelectorAll('[data-period]').forEach(btn=>btn.addEventListener('click',()=>{setPeriod(btn.dataset.period);fetchReport();}));
@@ -238,6 +254,7 @@ async function init() {
   });
   $('siteFilter').addEventListener('change',render);
   $('downloadCsv').addEventListener('click',exportCSV);
+  $('downloadXlsx').addEventListener('click',exportXLSX);
   try{
     const {data:{user},error}=await supabase.auth.getUser();
     if(error||!user){location.replace('login.html');return;}
