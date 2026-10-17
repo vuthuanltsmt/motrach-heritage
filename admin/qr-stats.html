@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Thống kê QR nâng cao – Di sản Mộ Trạch</title>
+  <link rel="stylesheet" href="../css/qr-stats.css?v=3">
+  <script type="module" src="../js/admin-qr-stats.js?v=3"></script>
+</head>
+<body>
+  <header class="report-header">
+    <div class="report-header-inner">
+      <div>
+        <div class="overline">DI SẢN MỘ TRẠCH • KHÔNG GIAN DI SẢN SỐ</div>
+        <h1>📊 Thống kê QR di tích</h1>
+        <p>Báo cáo lượt mở đường dẫn QR theo di tích và thời gian</p>
+      </div>
+      <nav class="header-links" aria-label="Điều hướng">
+        <a href="qr.html">← Quản lý QR</a>
+        <a href="index.html">Bảng điều khiển</a>
+      </nav>
+    </div>
+  </header>
+  <main id="reportWorkspace" class="report-main" hidden>
+    <section class="report-panel filters-panel" aria-labelledby="filterTitle">
+      <div class="section-head">
+        <h2 id="filterTitle">Bộ lọc báo cáo</h2>
+        <span class="timezone">Giờ Việt Nam (UTC+7)</span>
+      </div>
+      <div class="quick-ranges" role="group" aria-label="Khoảng thời gian nhanh">
+        <button type="button" data-period="7">7 ngày</button>
+        <button type="button" data-period="30" class="active">30 ngày</button>
+        <button type="button" data-period="90">90 ngày</button>
+        <button type="button" data-period="month">Tháng này</button>
+      </div>
+      <form id="reportFilter" class="filter-grid">
+        <label>Từ ngày<input id="dateFrom" type="date" required></label>
+        <label>Đến ngày<input id="dateTo" type="date" required></label>
+        <label>Di tích
+          <select id="siteFilter" aria-label="Chọn di tích">
+            <option value="all">Tất cả di tích</option>
+          </select>
+        </label>
+        <button class="primary" type="submit" id="loadReport">Xem thống kê</button>
+        <button type="button" id="downloadCsv">↓ Xuất Excel (CSV)</button>
+      </form>
+      <p class="description">Lượt mở được ghi nhận theo quy tắc của QR V2 (trùng phiên trong 30 phút không tính lại). Đây không phải số khách duy nhất hay số lượt quét camera được xác minh.</p>
+    </section>
+    <section class="kpi-grid" id="kpiGrid" aria-label="Chỉ số tổng quan"></section>
+    <div class="analysis-grid">
+      <section class="report-panel chart-panel" aria-labelledby="chartTitle">
+        <div class="section-head"><h2 id="chartTitle">Biểu đồ lượt mở theo ngày</h2><span id="rangeLabel" class="muted"></span></div>
+        <div class="chart-wrap" id="chartRegion" role="img" aria-label="Biểu đồ lượt mở theo ngày"></div>
+      </section>
+      <section class="report-panel ranks-panel" aria-labelledby="rankTitle">
+        <h2 id="rankTitle">Lượt mở theo di tích</h2>
+        <div id="ranking"></div>
+      </section>
+    </div>
+    <section class="report-panel" aria-labelledby="dailyTitle">
+      <div class="section-head"><h2 id="dailyTitle">Bảng số liệu từng ngày</h2><span id="rowCount" class="muted"></span></div>
+      <div class="table-scroll"><table><thead id="dailyHead"></thead><tbody id="dailyBody"></tbody><tfoot id="dailyFoot"></tfoot></table></div>
+    </section>
+  </main>
+  <p id="reportStatus" class="status" role="status" aria-live="polite">Đang xác thực quyền quản trị…</p>
+</body>
+</html>
