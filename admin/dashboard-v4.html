@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Dashboard V4 | Di sản Mộ Trạch</title>
+  <link rel="stylesheet" href="../css/dashboard-v4.css?v=4.0">
+</head>
+<body>
+  <header class="v4-header">
+    <div class="v4-container header-inner">
+      <div>
+        <small>DI SẢN MỘ TRẠCH · KHÔNG GIAN DI SẢN SỐ</small>
+        <h1>📊 Dashboard tổng hợp V4</h1>
+        <p>Truy cập website và lượt mở đường dẫn QR trong cùng một bảng điều khiển</p>
+      </div>
+      <nav aria-label="Điều hướng quản trị">
+        <a href="index.html">🏠 Bảng điều khiển</a>
+        <a href="qr-stats.html">Thống kê QR V3.1</a>
+      </nav>
+    </div>
+  </header>
+  <main class="v4-container">
+    <p id="v4Status" class="v4-status" role="status" aria-live="polite">Đang xác thực quyền quản trị...</p>
+    <div id="v4Workspace" hidden>
+      <div class="v4-actions">
+        <span id="v4Updated" class="v4-muted">Dữ liệu theo ngày Việt Nam (UTC+7)</span>
+        <div class="v4-actions-right">
+          <button id="v4Reload" type="button">↻ Làm mới</button>
+          <button id="v4Export" type="button" class="primary" disabled>↓ Xuất Excel tổng hợp (.xlsx)</button>
+        </div>
+      </div>
+      <section aria-labelledby="siteHeading">
+        <div class="v4-section-heading"><h2 id="siteHeading">🌐 Thống kê truy cập website</h2><span>Số phiên và lượt xem trang, không phải số người thực tế</span></div>
+        <div class="v4-kpis">
+          <article class="v4-kpi"><span>Phiên hôm nay</span><strong id="v4WebToday">—</strong></article>
+          <article class="v4-kpi"><span>Phiên 7 ngày gần nhất</span><strong id="v4Web7">—</strong></article>
+          <article class="v4-kpi"><span>Tổng số phiên từ khi ghi nhận</span><strong id="v4WebAll">—</strong></article>
+          <article class="v4-kpi"><span>Tổng lượt xem trang</span><strong id="v4PageViews">—</strong></article>
+        </div>
+      </section>
+      <section aria-labelledby="qrHeading">
+        <div class="v4-section-heading"><h2 id="qrHeading">▦ Thống kê mở QR di tích</h2><span>Quy tắc chống trùng theo phiên của QR V2</span></div>
+        <div class="v4-kpis">
+          <article class="v4-kpi"><span>Lượt mở QR hôm nay</span><strong id="v4QrToday">—</strong></article>
+          <article class="v4-kpi"><span>Lượt mở QR 7 ngày</span><strong id="v4Qr7">—</strong></article>
+          <article class="v4-kpi"><span>Lượt mở QR 30 ngày</span><strong id="v4Qr30">—</strong></article>
+          <article class="v4-kpi"><span>Di tích có lượt mở trong 30 ngày</span><strong id="v4SitesActive">—</strong></article>
+        </div>
+      </section>
+      <div class="v4-panels">
+        <section class="v4-panel v4-wide" aria-labelledby="chartHeading">
+          <h2 id="chartHeading">Xu hướng 7 ngày gần nhất</h2>
+          <p class="v4-muted">Hai loại số liệu được trình bày cạnh nhau để so sánh xu hướng; không cộng thành số khách.</p>
+          <div class="v4-legend"><span><i class="site-key"></i>Phiên website</span><span><i class="qr-key"></i>Lượt mở QR</span></div>
+          <div id="v4Chart" class="v4-chart" aria-label="Biểu đồ xu hướng 7 ngày"></div>
+        </section>
+        <section class="v4-panel" aria-labelledby="rankHeading">
+          <h2 id="rankHeading">4 di tích – lượt mở QR 30 ngày</h2>
+          <div id="v4SiteRanking" class="v4-ranking"></div>
+          <a class="v4-link" href="qr-stats.html">Xem phân tích QR chi tiết →</a>
+        </section>
+        <section class="v4-panel" aria-labelledby="pagesHeading">
+          <h2 id="pagesHeading">5 trang được xem nhiều nhất</h2>
+          <ol id="v4TopPages" class="v4-pages"></ol>
+          <p class="v4-muted">Lượt xem trang toàn thời gian, khác với số phiên website.</p>
+        </section>
+      </div>
+      <p class="v4-footnote">Báo cáo chỉ hiển thị số liệu tổng hợp cho quản trị viên. Lượt mở URL QR không phải số lần camera quét được xác minh; phiên website không phải khách duy nhất. Dữ liệu bắt đầu từ khi từng bộ đo được kích hoạt.</p>
+    </div>
+  </main>
+  <script type="module" src="../js/admin-dashboard-v4.js?v=4.0"></script>
+</body>
+</html>
