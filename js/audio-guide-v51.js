@@ -73,7 +73,12 @@
     "tram-chua-dien-phuc.html": "chua-dien-phuc"
   };
   const queryId = new URLSearchParams(location.search).get("id") || "";
-  const normalizedId = queryId === "1" ? "lang-than" : queryId;
+  const normalizedId = {
+    "1": "lang-than",
+    "2": "van-mieu-mo-trach",
+    "3": "dinh-lang-mo-trach",
+    "4": "chua-dien-phuc"
+}[queryId] || queryId;
   const id = stationIds[file] || (file === "detail.html" ? normalizedId : "");
   const guide = GUIDES[id];
   if (!guide) return;
