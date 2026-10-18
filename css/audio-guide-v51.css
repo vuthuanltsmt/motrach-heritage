@@ -1,0 +1,46 @@
+/* MỘ TRẠCH HERITAGE | AUDIO GUIDE V5.1 — scoped styles, no global overrides */
+.motrach-v51 {
+  --v51-wine: #781616;
+  --v51-gold: #d2b16b;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  background: #fffdfa;
+  color: #33261d;
+  border: 1px solid #d9c395;
+  border-left: 5px solid var(--v51-wine);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  text-align: left;
+  box-shadow: 0 2px 12px rgba(55, 35, 20, .07);
+  line-height: 1.5;
+}
+.motrach-v51 *, .motrach-v51 *::before, .motrach-v51 *::after { box-sizing: border-box; }
+.motrach-v51__heading { margin: 0 0 6px; color: var(--v51-wine); font-size: 18px; font-weight: 700; }
+.motrach-v51__info { margin: 4px 0 12px; font-size: 13px; color: #645a4b; }
+.motrach-v51__controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.motrach-v51 button, .motrach-v51 select {
+  font: inherit; font-size: 14px; border: 1px solid #bfa97f; border-radius: 8px;
+  min-height: 42px; padding: 9px 11px; color: #45271c; background: #fff;
+}
+.motrach-v51 button { cursor: pointer; font-weight: 600; }
+.motrach-v51 button[data-action="vi"], .motrach-v51 button[data-action="en"] {
+  background: var(--v51-wine); color: #fff; border-color: var(--v51-wine);
+}
+.motrach-v51 button[disabled] { opacity: .45; cursor: not-allowed; }
+.motrach-v51 button:focus-visible, .motrach-v51 select:focus-visible, .motrach-v51 summary:focus-visible {
+  outline: 3px solid #d2a43f; outline-offset: 2px;
+}
+.motrach-v51__rate { display: flex; align-items: center; gap: 7px; font-size: 13px; }
+.motrach-v51__status { margin: 12px 0 8px; padding: 9px 11px; font-size: 13px; border-radius: 7px; background: #f6efe2; color: #503d2b; }
+.motrach-v51 details { font-size: 13px; margin-top: 9px; border-top: 1px solid #e6ddcb; padding-top: 9px; }
+.motrach-v51 summary { cursor: pointer; font-weight: 600; color: #763322; }
+.motrach-v51__transcript { white-space: pre-line; line-height: 1.75; margin-top: 8px; }
+@media (max-width: 560px) {
+  .motrach-v51 { padding: 12px; }
+  .motrach-v51__controls { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .motrach-v51__controls button { width: 100%; }
+  .motrach-v51__rate { grid-column: 1 / -1; }
+  .motrach-v51__rate select { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .motrach-v51 * { transition: none !important; animation: none !important; } }
