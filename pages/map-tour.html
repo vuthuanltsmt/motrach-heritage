@@ -570,11 +570,40 @@ document.addEventListener(
                     ==========================
                     */
 
-                    const marker =
-                        L.marker([
-                            item.lat,
-                            item.lng
-                        ]).addTo(map);
+                    
+/* V5.2A-1: Marker đánh số trạm tham quan */
+const stationNumber = index + 1;
+
+const numberedIcon = L.divIcon({
+    className: "heritage-numbered-marker",
+    html: `
+        <div style="
+            width:36px;
+            height:36px;
+            background:#800000;
+            color:#ffffff;
+            border:3px solid #d4af37;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:17px;
+            font-weight:bold;
+            box-shadow:0 3px 8px rgba(0,0,0,0.3);
+        ">
+            ${stationNumber}
+        </div>
+    `,
+    iconSize: [42, 42],
+    iconAnchor: [21, 21],
+    popupAnchor: [0, -22]
+});
+
+const marker = L.marker(
+    [item.lat, item.lng],
+    { icon: numberedIcon }
+).addTo(map);
+
 
 
                     markers.push(marker);
@@ -830,6 +859,24 @@ ${
                 TỰ ĐỘNG ĐẶT KHUNG BẢN ĐỒ
                 ======================================
                 */
+
+/* =================================
+   V5.2A-2 - TUYẾN THAM QUAN DI SẢN
+================================= */
+
+if (markers.length >= 2) {
+    const routePoints = markers.map(function(marker) {
+        return marker.getLatLng();
+    });
+
+    L.polyline(routePoints, {
+        color: "#C69C2D",
+        weight: 5,
+        opacity: 0.9,
+        dashArray: "10, 8",
+        lineJoin: "round"
+    }).addTo(map);
+}
 
                 if (markers.length > 0) {
 

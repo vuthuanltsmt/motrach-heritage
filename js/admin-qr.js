@@ -1,4 +1,5 @@
 import { supabase } from './supabase-client.js';
+import { initQRAnalyticsV3 } from './qr-analytics-v3.js';
 const $=id=>document.getElementById(id);
 const root=new URL('../',import.meta.url);
 const filenames={
@@ -49,7 +50,19 @@ async function load(){
    const {data,error}=await supabase.from('heritage_qr_sites').update({title_vi:vi.input.value.trim(),title_en:en.input.value.trim(),target_path:path,updated_at:new Date().toISOString()}).eq('slug',site.slug).select('slug');
    busy=false;saveBtn.disabled=false;
    if(error||!data?.length){status('Không lưu được: '+(error?.message||'Không có quyền'),'error');return;}
-   await load();status('Đã lưu. Mã QR vẫn giữ nguyên URL; trang đích đã đổi.','ok');
+await load();
+
+status(
+  'Đã kết nối Supabase. Bạn có thể kiểm tra và cập nhật QR.',
+  'ok'
+);
+
+// V5.2A-5D: Khoi dong Analytics V3
+// sau khi da xac thuc quyen admin.
+initQRAnalyticsV3().catch(error => {
+  console.error('QR Analytics V3:', error);
+});
+
   },true);
   const toggle=makeBtn(site.is_active?'Ẩn QR':'Bật QR',async()=>{
    if(busy)return;busy=true;toggle.disabled=true;
@@ -71,7 +84,17 @@ async function init(){
   const {data:admin,error:err}=await supabase.from('admins').select('user_id').eq('user_id',user.id).maybeSingle();
   if(err||!admin){location.replace('index.html');return;}
   $('qrWorkspace').hidden=false;$('refresh').onclick=()=>load().then(()=>status('Đã tải dữ liệu mới.','ok')).catch(e=>status(e.message,'error'));
-  await load();status('Đã kết nối Supabase. Bạn có thể kiểm tra và cập nhật QR.','ok');
+await load();
+status(
+  'Đã kết nối Supabase. Bạn có thể kiểm tra và cập nhật QR.',
+  'ok'
+);
+
+// V5.2A-5D - Khoi dong QR Analytics V3
+initQRAnalyticsV3().catch(error => {
+  console.error('QR Analytics V3:', error);
+});
+
  }catch(e){console.error(e);status('Chưa tải được dữ liệu QR. Hãy chạy SQL 003 và kiểm tra quyền quản trị: '+e.message,'error');}
 }
 init();
