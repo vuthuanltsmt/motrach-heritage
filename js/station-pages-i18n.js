@@ -33,11 +33,11 @@
       vi: {
         title: "Lăng Thần - Di sản Mộ Trạch",
         h1: "🏛️ LĂNG THẦN",
-        subtitle: "Mộ cụ Đức Thủy tổ Vũ Hồn",
+        subtitle: "Mộ cụ Đức Thần tổ Vũ Hồn",
         alt: "Lăng Thần - Mộ cụ Vũ Hồn",
         intro: [
-          "Lăng Thần là nơi an táng Đức Thủy tổ Vũ Hồn, người khai sáng làng Mộ Trạch.",
-          "Lăng Thần là một trong những di tích linh thiêng của Mộ Trạch. Hàng năm con cháu họ Vũ và du khách thập phương đến dâng hương tưởng niệm Đức Thủy tổ Vũ Hồn."
+          "Lăng Thần là nơi an táng Đức Thần tổ Vũ Hồn, người khai sáng làng Mộ Trạch.",
+          "Lăng Thần là một trong những di tích linh thiêng của Mộ Trạch. Hàng năm con cháu họ Vũ và du khách thập phương đến dâng hương tưởng niệm Đức Thần tổ Vũ Hồn."
         ],
         audioPrompt: "Bấm nút bên dưới để nghe thuyết minh về Lăng Thần.",
         qrText: "Quét mã QR để mở nhanh Trạm tham quan Lăng Thần.",
