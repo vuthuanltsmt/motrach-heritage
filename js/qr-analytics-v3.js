@@ -46,6 +46,60 @@ function dateRange(days) {
   };
 }
 
+function selectedDateRange() {
+  const selected = el('qrReportRange')?.value;
+
+  if (selected !== 'custom') {
+    const days = Number(selected);
+
+    if (![7, 30, 90].includes(days)) {
+      throw new Error('Khoảng thời gian không hợp lệ');
+    }
+
+    return dateRange(days);
+  }
+
+  const from = el('qrCustomFrom')?.value;
+  const to = el('qrCustomTo')?.value;
+
+  if (!from || !to) {
+    throw new Error('Vui lòng chọn đầy đủ hai ngày');
+  }
+
+  const validDate = value => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+    const parsed = new Date(value + 'T00:00:00Z');
+    return !Number.isNaN(parsed.getTime()) &&
+      parsed.toISOString().slice(0, 10) === value;
+  };
+
+  if (!validDate(from) || !validDate(to)) {
+    throw new Error('Ngày không hợp lệ');
+  }
+
+  const startMs = Date.parse(from + 'T00:00:00Z');
+  const endMs = Date.parse(to + 'T00:00:00Z');
+  const totalDays = (endMs - startMs) / 86400000 + 1;
+
+ if (startMs > endMs) {
+  throw new Error(
+    'Ngày bắt đầu không được lớn hơn ngày kết thúc'
+  );
+}
+
+if (totalDays > 366) {
+  throw new Error(
+    'Khoảng thời gian không được vượt quá 366 ngày'
+  );
+}
+
+  if (to > vietnamToday()) {
+    throw new Error('Không được chọn ngày trong tương lai');
+  }
+
+  return { from, to };
+}
+
 function setStatus(message, error = false) {
   const target = el('qrReportStatus');
   if (!target) return;
@@ -65,14 +119,7 @@ async function loadReport() {
   setStatus('Đang tải dữ liệu từ Supabase...');
 
   try {
-    const days = Number(el('qrReportRange').value);
-
-    if (![7, 30, 90].includes(days)) {
-      throw new Error('Khoảng thời gian không hợp lệ');
-    }
-
-    const { from, to } = dateRange(days);
-
+    const { from, to } = selectedDateRange();
     const { data, error } = await supabase.rpc(
       'get_qr_daily_report',
       {
@@ -321,8 +368,45 @@ export async function initQRAnalyticsV3() {
   el('qrReportRefresh')
     ?.addEventListener('click', loadReport);
 
-  el('qrReportRange')
-    ?.addEventListener('change', loadReport);
+  
+const rangeSelect = el('qrReportRange');
+const customDates = el('qrCustomDates');
+const customFrom = el('qrCustomFrom');
+const customTo = el('qrCustomTo');
+
+function syncCustomDates() {
+  const isCustom = rangeSelect?.value === 'custom';
+
+  if (customDates) {
+    customDates.hidden = !isCustom;
+  }
+
+  if (isCustom) {
+    const defaults = dateRange(7);
+
+    if (customFrom && !customFrom.value) {
+      customFrom.value = defaults.from;
+    }
+
+    if (customTo && !customTo.value) {
+      customTo.value = defaults.to;
+    }
+
+    if (customFrom) customFrom.max = vietnamToday();
+    if (customTo) customTo.max = vietnamToday();
+  }
+}
+
+rangeSelect?.addEventListener('change', () => {
+  syncCustomDates();
+
+  if (rangeSelect.value !== 'custom') {
+    loadReport();
+  }
+});
+
+syncCustomDates();
+
 
   el('qrReportExport')
     ?.addEventListener('click', exportCSV);
