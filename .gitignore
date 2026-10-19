@@ -1,2 +1,8 @@
 disanmotrach-*/
 disanmotrach-*.zip
+
+# Windows system files
+desktop.ini
+
+# Accidental terminal output file
+/-files --others --exclude-standard
