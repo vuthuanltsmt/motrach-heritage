@@ -6,6 +6,8 @@
 
 import { supabase } from './supabase-client.js';
 
+import { renderQRAnalyticsV4 } from './qr-analytics-v4.js';
+
 const el = id => document.getElementById(id);
 
 let reportRows = [];
@@ -87,8 +89,28 @@ async function loadReport() {
 
     reportRows = data;
 
+console.log(
+  '[QR V3] RPC trả về:',
+  reportRows.length,
+  'dòng'
+);
+
+console.table(
+  reportRows.slice(0, 8).map(row => ({
+    site_slug: row.site_slug,
+    opens: row.opens,
+    opens_type: typeof row.opens
+  }))
+);
+
     renderTable(reportRows);
     renderChart(reportRows);
+
+try {
+  renderQRAnalyticsV4(reportRows);
+} catch (v4Error) {
+  console.error('QR Analytics V4:', v4Error);
+}
 
     setStatus(
       `Đã tải ${reportRows.length} dòng dữ liệu ` +
@@ -99,7 +121,16 @@ async function loadReport() {
 
   } catch (error) {
     console.error('QR Analytics V3:', error);
-
+    console.error(
+  '[QR V3] Chi tiết lỗi:',
+  error?.name,
+  error?.message,
+  error?.stack
+);
+console.log(
+  '[QR V3] Đã vào khối xử lý lỗi:',
+  error?.message
+);
     reportRows = [];
     renderTable([]);
     renderChart([]);
