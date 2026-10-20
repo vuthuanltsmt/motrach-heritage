@@ -1,0 +1,115 @@
+
+$ErrorActionPreference = "Stop"
+
+$file = "css/qr-analytics-mobile.css"
+
+if (Test-Path $file) {
+    throw "Tep CSS da ton tai. Dung lai de tranh ghi de."
+}
+
+$css = @'
+/* MO TRACH HERITAGE V5.3D - MOBILE RESPONSIVE */
+
+#qrAnalyticsV3,
+#qrAnalyticsV4 {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#qrAnalyticsV3 *,
+#qrAnalyticsV4 * {
+  box-sizing: border-box;
+}
+
+#qrCustomDates[hidden] {
+  display: none !important;
+}
+
+#qrCustomDates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+#qrCustomDates input[type="date"] {
+  max-width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c9b9ad;
+  border-radius: 8px;
+}
+
+#qrAnalyticsV3 .qr-report-table-wrap,
+#qrAnalyticsV4 table {
+  max-width: 100%;
+}
+
+#qrAnalyticsV3 .qr-report-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#qrAnalyticsV4 {
+  overflow-x: auto;
+}
+
+@media (max-width: 600px) {
+  #qrAnalyticsV3,
+  #qrAnalyticsV4 {
+    padding: 16px 12px;
+  }
+
+  #qrAnalyticsV3 h2,
+  #qrAnalyticsV4 h2 {
+    font-size: 22px;
+    line-height: 1.35;
+  }
+
+  #qrCustomDates {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #qrCustomDates input[type="date"] {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  #qrReportRange {
+    max-width: 100%;
+    min-height: 44px;
+  }
+
+  #qrReportRefresh,
+  #qrReportExport {
+    min-height: 44px;
+    padding: 10px 14px;
+  }
+
+  #qrReportChart {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  #qrAnalyticsV4 table {
+    min-width: 420px;
+    font-size: 13px;
+  }
+
+  #qrAnalyticsV4 th,
+  #qrAnalyticsV4 td {
+    white-space: nowrap;
+  }
+}
+'@
+
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText(
+    (Join-Path (Get-Location) $file),
+    $css,
+    $utf8
+)
+
+Write-Host "DA TAO CSS RESPONSIVE V5.3D"
