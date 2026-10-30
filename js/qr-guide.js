@@ -2,7 +2,7 @@
 const root = new URL('../', import.meta.url);
 const defaults = {
   'lang-than': {title:'Lăng Thần – Mộ cụ Vũ Hồn',path:'pages/tram-lang-than.html'},
-  'van-mieu-mo-trach': {title:'Văn Miếu Mộ Trạch',path:'pages/tram-van-mieu.html'},
+  'van-mieu-mo-trach': {title:'Miếu Mộ Trạch',path:'pages/tram-van-mieu.html'},
   'dinh-lang-mo-trach': {title:'Đình làng Mộ Trạch',path:'pages/tram-dinh-lang.html'},
   'chua-dien-phuc': {title:'Chùa Diên Phúc',path:'pages/tram-chua-dien-phuc.html'}
 };
