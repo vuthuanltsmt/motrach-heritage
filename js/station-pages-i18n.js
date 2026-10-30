@@ -70,19 +70,19 @@
 
     "tram-van-mieu.html": {
       vi: {
-        title: "Văn Miếu Mộ Trạch - Di sản Mộ Trạch",
-        h1: "🏛️ VĂN MIẾU MỘ TRẠCH",
+        title: "Miếu Mộ Trạch - Di sản Mộ Trạch",
+        h1: "🏛️ MIẾU MỘ TRẠCH",
         subtitle: "Không gian văn hóa – khoa bảng",
-        alt: "Văn Miếu Mộ Trạch",
+        alt: "Miếu Mộ Trạch",
         intro: [
-          "Văn Miếu Mộ Trạch là không gian văn hóa gắn với truyền thống khoa bảng, hiếu học và những giá trị đặc sắc của làng Mộ Trạch.",
+          "Miếu Mộ Trạch là không gian văn hóa gắn với truyền thống khoa bảng, hiếu học và những giá trị đặc sắc của làng Mộ Trạch.",
           "Mộ Trạch từ lâu được biết đến là vùng đất khoa bảng nổi tiếng, gắn với truyền thống hiếu học và nhiều thế hệ người đỗ đạt."
         ],
-        audioPrompt: "Bấm nút bên dưới để nghe thuyết minh về Văn Miếu Mộ Trạch.",
-        qrText: "Quét mã QR để mở nhanh Trạm tham quan Văn Miếu Mộ Trạch.",
-        qrAlt: "Mã QR Trạm tham quan Văn Miếu Mộ Trạch",
+        audioPrompt: "Bấm nút bên dưới để nghe thuyết minh về Miếu Mộ Trạch.",
+        qrText: "Quét mã QR để mở nhanh Trạm tham quan Miếu Mộ Trạch.",
+        qrAlt: "Mã QR Trạm tham quan Miếu Mộ Trạch",
         buttons: [
-          "🗺️ XEM VỊ TRÍ VĂN MIẾU MỘ TRẠCH",
+          "🗺️ XEM VỊ TRÍ MIẾU MỘ TRẠCH",
           "📖 XEM ĐẦY ĐỦ THÔNG TIN DI TÍCH",
           "🏠 VỀ TRANG CHỦ"
         ]
