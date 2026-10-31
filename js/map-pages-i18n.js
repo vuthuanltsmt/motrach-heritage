@@ -20,7 +20,7 @@
     },
     "van-mieu-mo-trach": {
       vi: {
-        name: "Văn Miếu Mộ Trạch",
+        name: "Miếu Mộ Trạch",
         type: "Di tích văn hóa",
         description: "Không gian gắn với truyền thống khoa bảng, hiếu học và những giá trị văn hóa đặc sắc của làng Mộ Trạch."
       },
@@ -154,7 +154,7 @@
     "heritage.json không có dữ liệu": "heritage.json contains no data",
 
     "Lăng Thần": "Vu Hon Ancestral Tomb",
-    "Văn Miếu Mộ Trạch": "Mo Trach Temple of Literature",
+    "Miếu Mộ Trạch": "Mo Trach Temple of Literature",
     "Đình làng Mộ Trạch": "Mo Trach Communal House",
     "Chùa Diên Phúc": "Dien Phuc Pagoda",
     "Di tích lịch sử": "Historical heritage site",

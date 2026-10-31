@@ -7,7 +7,7 @@
   'use strict';
   const LOCAL_SLIDES = [
     { image_url: 'images/gallery/lang-than%202.jpg', title_vi: 'Lăng Thần – Mộ cụ Vũ Hồn', title_en: 'Ancestral Shrine – Vu Hon', description_vi: 'Khám phá dấu ấn nguồn cội của làng Mộ Trạch.', description_en: 'Explore the origins of Mo Trach village.', duration_ms: 6500 },
-    { image_url: 'images/van-mieu.jpg', title_vi: 'Văn Miếu Mộ Trạch', title_en: 'Mo Trach Temple of Literature', description_vi: 'Truyền thống hiếu học và khoa bảng.', description_en: 'A legacy of learning and scholarship.', duration_ms: 6500 },
+    { image_url: 'images/van-mieu.jpg', title_vi: 'Miếu Mộ Trạch', title_en: 'Mo Trach Temple of Literature', description_vi: 'Truyền thống hiếu học và khoa bảng.', description_en: 'A legacy of learning and scholarship.', duration_ms: 6500 },
     { image_url: 'images/dinh-lang.jpg', title_vi: 'Đình làng Mộ Trạch', title_en: 'Mo Trach Communal House', description_vi: 'Không gian lưu giữ văn hóa cộng đồng.', description_en: 'A place preserving community heritage.', duration_ms: 6500 },
     { image_url: 'images/chua-dien-phuc.jpg', title_vi: 'Chùa Diên Phúc', title_en: 'Dien Phuc Pagoda', description_vi: 'Một điểm đến trong hành trình khám phá di sản.', description_en: 'A stop along the heritage journey.', duration_ms: 6500 }
   ];

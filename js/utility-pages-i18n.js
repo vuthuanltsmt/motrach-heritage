@@ -56,7 +56,7 @@
     ["🧭 Tuyến tham quan sử dụng như thế nào?", "🧭 How do I use the Heritage Tour?"],
     ["Vào mục", "Open"],
     ["để xem các điểm di sản theo thứ tự gợi ý.", "to view the heritage sites in the suggested order."],
-    ["Tuyến hiện gồm: Lăng Thần → Văn Miếu Mộ Trạch → Đình làng Mộ Trạch → Chùa Diên Phúc.", "The current route is: Vu Hon Ancestral Tomb → Mo Trach Temple of Literature → Mo Trach Communal House → Dien Phuc Pagoda."],
+    ["Tuyến hiện gồm: Lăng Thần → Miếu Mộ Trạch → Đình làng Mộ Trạch → Chùa Diên Phúc.", "The current route is: Vu Hon Ancestral Tomb → Mo Trach Temple of Literature → Mo Trach Communal House → Dien Phuc Pagoda."],
 
     ["🎧 Làm thế nào để nghe thuyết minh?", "🎧 How can I listen to the audio guide?"],
     ["Mở một Trạm tham quan, tìm mục", "Open a Visitor Station and find"],
@@ -176,7 +176,7 @@
     ["© 2026 Di sản Mộ Trạch", "© 2026 Mo Trach Heritage"],
 
     ["Lăng Thần", "Vu Hon Ancestral Tomb"],
-    ["Văn Miếu Mộ Trạch", "Mo Trach Temple of Literature"],
+    ["Miếu Mộ Trạch", "Mo Trach Temple of Literature"],
     ["Đình làng Mộ Trạch", "Mo Trach Communal House"],
     ["Chùa Diên Phúc", "Dien Phuc Pagoda"],
     ["Di tích lịch sử", "Historical heritage site"],

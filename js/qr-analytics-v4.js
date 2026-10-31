@@ -8,7 +8,7 @@
 
 const sites = [
   { slug: 'lang-than', name: 'Lăng Thần' },
-  { slug: 'van-mieu-mo-trach', name: 'Văn Miếu Mộ Trạch' },
+  { slug: 'van-mieu-mo-trach', name: 'Miếu Mộ Trạch' },
   { slug: 'dinh-lang-mo-trach', name: 'Đình làng Mộ Trạch' },
   { slug: 'chua-dien-phuc', name: 'Chùa Diên Phúc' }
 ];
