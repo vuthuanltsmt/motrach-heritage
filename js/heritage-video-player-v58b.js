@@ -120,6 +120,50 @@ async function initializeHeritageVideo() {
   const originalSrc = video.getAttribute("src");
   let fallbackActive = false;
 
+  // V5.8B-23Z8H: Visible failure state.
+  const notice = document.createElement("div");
+  notice.hidden = true;
+  notice.setAttribute("role", "alert");
+  notice.style.cssText =
+    "padding:16px;margin-top:12px;background:#fff4e5;" +
+    "border:1px solid #b8862b;border-radius:10px;" +
+    "color:#493100;line-height:1.6";
+
+  const message = document.createElement("p");
+  message.textContent =
+    "Video hiện chưa thể phát. Vui lòng thử tải lại sau.";
+
+  const retry = document.createElement("button");
+  retry.type = "button";
+  retry.textContent = "Thử tải lại video";
+  retry.style.cssText =
+    "padding:10px 16px;cursor:pointer;" +
+    "border:1px solid #8b0000;border-radius:8px;" +
+    "background:white;color:#8b0000";
+
+  retry.addEventListener("click", () => {
+    window.location.reload();
+  });
+
+  notice.append(message, retry);
+  video.insertAdjacentElement("afterend", notice);
+
+  function showFailure() {
+    notice.hidden = false;
+  }
+
+  video.addEventListener("loadedmetadata", () => {
+    notice.hidden = true;
+  });
+
+  video.addEventListener("error", () => {
+    if (fallbackActive) {
+      showFailure();
+    } else {
+      fallback("Playback error");
+    }
+  });
+
   function fallback(reason) {
     if (fallbackActive) return;
     fallbackActive = true;
@@ -202,11 +246,6 @@ async function initializeHeritageVideo() {
 
     fallbackActive = false;
 
-    video.addEventListener("error", () => {
-      if (!fallbackActive) {
-        fallback("Playback error");
-      }
-    });
 
     video.src = newUrl;
     video.load();
