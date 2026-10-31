@@ -166,7 +166,7 @@
     "detail_lang_than_location": "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng",
     "detail_lang_than_description": "Quần thể lăng mộ gắn với Đức Thần Tổ Vũ Hồn, nhân vật được cộng đồng Mộ Trạch tôn kính và gắn với nguồn cội lịch sử của làng.",
     "detail_lang_than_history": "Khu lăng mộ Thần tổ Vũ Hồn là một điểm nhấn trong không gian di sản Mộ Trạch. Quần thể hiện nay được xây dựng và tôn tạo theo hướng bảo tồn các giá trị văn hóa, tưởng niệm và truyền thống của cộng đồng.",
-    "detail_van_mieu_name": "Văn Miếu Mộ Trạch",
+    "detail_van_mieu_name": "Miếu Mộ Trạch",
     "detail_van_mieu_subtitle": "Không gian văn hóa – khoa bảng",
     "detail_van_mieu_type": "Di tích văn hóa",
     "detail_van_mieu_location": "Thôn Mộ Trạch, xã Đường An, thành phố Hải Phòng",
