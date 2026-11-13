@@ -156,20 +156,64 @@
     ["Hỏi đáp", "Q&A"],
     ["Ủng hộ dự án", "Support the Project"],
 
-    ["Ủng hộ phát triển website", "Support Website Development"],
-    ["Nếu bạn thấy Di sản Mộ Trạch hữu ích, bạn có thể ủng hộ một khoản tùy tâm để góp phần duy trì và phát triển không gian di sản số này.", "If you find Mo Trach Heritage useful, you may make a voluntary contribution to help maintain and develop this digital heritage space."],
-    ["Mỗi sự ủng hộ là một nguồn động viên để website tiếp tục bổ sung tư liệu, hình ảnh, thuyết minh và các nội dung về lịch sử – văn hóa Mộ Trạch.", "Every contribution encourages continued additions of documents, images, audio guides and content about Mo Trach history and culture."],
-    ["📱 Quét mã QR để ủng hộ", "📱 Scan the QR Code to Support"],
-    ["Mở ứng dụng ngân hàng, chọn quét QR và nhập số tiền bạn muốn ủng hộ.", "Open your banking app, scan the QR code and enter the amount you wish to contribute."],
+    [
+    // ==========================================
+    // HUY ĐỘNG ĐÓNG GÓP TU SỬA ĐÌNH LÀNG MỘ TRẠCH
+    // ==========================================
+
+    [
+      "Huy động đóng góp tu sửa đình làng Mộ Trạch",
+      "Contribute to the Restoration of Mo Trach Communal House"
+    ],
+
+    [
+      "Kính mong bà con, con em quê hương và những người yêu mến di sản cùng chung tay đóng góp để tu sửa, gìn giữ và phát huy giá trị đình làng Mộ Trạch.",
+      "We warmly invite residents, descendants of Mo Trach and heritage supporters to join hands in restoring, preserving and promoting the cultural values of Mo Trach Communal House."
+    ],
+
+    [
+      "Mỗi sự đóng góp là một tấm lòng quý báu, góp phần tu sửa và bảo tồn đình làng Mộ Trạch cho hôm nay và các thế hệ mai sau.",
+      "Every contribution is deeply appreciated and helps restore and preserve Mo Trach Communal House for present and future generations."
+    ],
+
+    [
+      "📱 Quét mã QR để đóng góp",
+      "📱 Scan the QR Code to Contribute"
+    ],
+
+    [
+      "Mở ứng dụng ngân hàng, chọn quét QR và nhập số tiền bạn muốn đóng góp.",
+      "Open your banking app, scan the QR code and enter your contribution amount."
+    ],
+
     ["Ngân hàng", "Bank"],
+
     ["Chủ tài khoản", "Account Holder"],
+
     ["Số tài khoản", "Account Number"],
+
     ["Nội dung gợi ý", "Suggested Transfer Note"],
-    ["📋 Sao chép số tài khoản", "📋 Copy Account Number"],
-    ["❤️ Xin chân thành cảm ơn!", "❤️ Thank You Very Much!"],
-    ["Sự đồng hành của bạn là nguồn động lực để Di sản Mộ Trạch tiếp tục hoàn thiện, lưu giữ và lan tỏa các giá trị lịch sử – văn hóa của quê hương.", "Your support helps Mo Trach Heritage continue to improve, preserve and share the historical and cultural values of the community."],
-    ["Việc ủng hộ hoàn toàn tự nguyện. Bạn có thể sử dụng website bình thường mà không cần đóng góp.", "Support is completely voluntary. You can use the website normally without making a contribution."],
-    ["© 2026 Di sản Mộ Trạch · Không gian di sản số", "© 2026 Mo Trach Heritage · Digital Heritage Space"],
+
+    [
+      "📋 Sao chép số tài khoản",
+      "📋 Copy Account Number"
+    ],
+
+    [
+      "❤️ Xin chân thành cảm ơn!",
+      "❤️ Thank You Very Much!"
+    ],
+
+    [
+      "Sự đóng góp của quý vị là nguồn động viên quý báu, góp phần tu sửa, bảo tồn đình làng Mộ Trạch và gìn giữ những giá trị văn hóa truyền thống của quê hương cho các thế hệ mai sau.",
+      "Your generous contributions help restore and preserve Mo Trach Communal House and safeguard the cultural heritage of our homeland for future generations."
+    ],
+
+    [
+      "Việc đóng góp tu sửa đình làng Mộ Trạch hoàn toàn trên tinh thần tự nguyện. Mọi tấm lòng đóng góp đều được trân trọng và ghi nhận.",
+      "Contributions to the restoration of Mo Trach Communal House are entirely voluntary. Every contribution is sincerely appreciated."
+    ],
+
 
     ["Không gian di sản số", "Digital Heritage Space"],
     ["Làng Tiến sĩ – Đất học – Đất văn hiến", "Village of Scholars – A Land of Learning and Culture"],
