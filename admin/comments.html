@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quản lý bình luận | Di sản Mộ Trạch</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; background: #faf5eb; color: #36261e; font: 1rem/1.55 Arial, sans-serif; }
+        main { width: min(100% - 2rem, 52rem); margin: 2rem auto; }
+        h1, a { color: #691d17; }
+        h2 { font-size: 1.05rem; margin: 0; }
+        ul { list-style: none; padding: 0; }
+        li { background: #fff; border: 1px solid #dfc8ad; border-radius: .65rem; padding: 1rem; margin-top: .8rem; }
+        p { overflow-wrap: anywhere; }
+        .comment-body { white-space: pre-wrap; }
+        button { border: 1px solid #691d17; border-radius: .4rem; padding: .5rem .8rem; background: #691d17; color: white; font: inherit; }
+        button + button { margin-left: .5rem; background: #fff; color: #691d17; }
+        button:disabled { opacity: .55; }
+        small { display: block; color: #625548; }
+    </style>
+</head>
+<body>
+    <main>
+        <a href="index.html">← Trang quản trị</a>
+        <h1>Quản lý bình luận</h1>
+        <button id="refresh" type="button" disabled>Tải lại danh sách</button>
+        <p id="notice" role="status" aria-live="polite">Đang kiểm tra quyền truy cập…</p>
+        <ul id="queue" aria-label="Bình luận chờ duyệt"></ul>
+    </main>
+    <script type="module" src="../js/admin-comments.js"></script>
+</body>
+</html>
