@@ -1,0 +1,65 @@
+.post-comments {
+    margin-top: 2rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid #dfc8ad;
+}
+
+.post-comments [hidden],
+.post-comment-dialog [hidden] { display: none !important; }
+
+.post-comments h2,
+.post-comment-dialog h2 { color: #691d17; margin-bottom: .7rem; }
+
+.post-comments label,
+.post-comment-dialog label { display: grid; gap: .25rem; margin: .8rem 0; }
+
+.post-comments input,
+.post-comments textarea,
+.post-comment-dialog input {
+    width: 100%;
+    padding: .65rem;
+    border: 1px solid #a98c79;
+    border-radius: 6px;
+    background: white;
+    color: #35271e;
+    font: inherit;
+}
+
+.post-comments textarea { resize: vertical; }
+
+.post-comments button,
+.post-comment-dialog button {
+    padding: .55rem .85rem;
+    border: 1px solid #691d17;
+    border-radius: 6px;
+    background: #691d17;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+.post-comments button:disabled,
+.post-comment-dialog button:disabled { opacity: .65; cursor: wait; }
+
+.post-comment-dialog button[aria-pressed="false"],
+.post-comment-dialog button[data-action="forgot"] { background: white; color: #691d17; }
+
+.post-comment-dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: min(31rem, calc(100% - 2rem));
+    max-height: calc(100dvh - 2rem);
+    overflow: auto;
+    padding: 1.2rem;
+    border: 1px solid #dfc8ad;
+    border-radius: 10px;
+    color: #35271e;
+    background: #fffaf2;
+}
+
+.post-comment-dialog::backdrop { background: #1c110d99; }
+.post-comment-dialog [data-action="close"] { float: right; }
+.post-comment-status { margin: .6rem 0; overflow-wrap: anywhere; }
+.post-comments li { list-style: none; padding: .8rem 0; border-bottom: 1px solid #dfc8ad; }
+.post-comments li p { white-space: pre-wrap; overflow-wrap: anywhere; }

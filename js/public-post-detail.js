@@ -1,4 +1,5 @@
-import { supabase } from "./supabase-client.js";
+import { supabase, createReaderClient } from "./supabase-client.js";
+import { mountPostComments } from "./post-comments.js";
 
 const STORAGE_KEY = "motrach-language";
 
@@ -435,6 +436,11 @@ async function loadPost() {
         renderPost(
             loadedPost
         );
+        try {
+            mountPostComments(loadedPost.id, createReaderClient);
+        } catch (commentError) {
+            console.error("Không thể mở mục bình luận:", commentError);
+        }
 
 
     } catch (error) {

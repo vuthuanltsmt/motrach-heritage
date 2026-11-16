@@ -405,6 +405,7 @@
 
         }
     </style>
+    <link rel="stylesheet" href="../css/post-comments.css">
 </head>
 
 
@@ -571,6 +572,45 @@
 
             </section>
 
+
+            <section id="postComments" class="post-comments" aria-labelledby="postCommentsTitle" hidden>
+                <h2 id="postCommentsTitle">Bình luận <span data-count></span></h2>
+                <button type="button" data-action="login" aria-haspopup="dialog">Viết bình luận của bạn</button>
+                <button type="button" data-action="logout" hidden>Đăng xuất</button>
+
+                <form data-form="comment" hidden>
+                    <label>Tên hiển thị
+                        <input name="display_name" type="text" minlength="2" maxlength="60" required>
+                    </label>
+                    <label>Bình luận của bạn
+                        <textarea name="body" rows="4" maxlength="1500" required></textarea>
+                    </label>
+                    <button type="submit">Gửi bình luận</button>
+                </form>
+                <p class="post-comment-status" data-status="comment" role="status"></p>
+                <p class="post-comment-status" data-status="list" role="status"></p>
+                <ul aria-label="Bình luận đã duyệt"></ul>
+
+                <dialog class="post-comment-dialog" aria-labelledby="postCommentAuthTitle">
+                    <button type="button" data-action="close" aria-label="Đóng">×</button>
+                    <h2 id="postCommentAuthTitle">Tài khoản độc giả</h2>
+                    <div aria-label="Chọn cách truy cập tài khoản">
+                        <button type="button" data-mode="login" aria-pressed="true">Đăng nhập</button>
+                        <button type="button" data-mode="signup" aria-pressed="false">Đăng ký</button>
+                    </div>
+                    <form data-form="auth">
+                        <label>Email
+                            <input name="email" type="email" autocomplete="email" required>
+                        </label>
+                        <label>Mật khẩu
+                            <input name="password" type="password" autocomplete="current-password" required>
+                        </label>
+                        <button type="submit">Đăng nhập</button>
+                        <button type="button" data-action="forgot">Quên mật khẩu?</button>
+                    </form>
+                    <p class="post-comment-status" data-status="auth" role="status"></p>
+                </dialog>
+            </section>
 
         </div>
 
