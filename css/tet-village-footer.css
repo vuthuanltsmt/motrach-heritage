@@ -1,0 +1,106 @@
+/* Trang trí Tết ở hai góc chân trang. */
+.footer.tet-village-footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 360px;
+    padding: 58px 20px 38px;
+}
+
+.footer.tet-village-footer::before,
+.footer.tet-village-footer::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    bottom: 0;
+    width: 29%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    transform-origin: bottom center;
+    animation: tet-village-sway 7s ease-in-out infinite alternate;
+}
+
+.footer.tet-village-footer::before {
+    left: 0;
+    background-image: url("../images/tet-family-left.png");
+}
+
+.footer.tet-village-footer::after {
+    right: 0;
+    background-image: url("../images/tet-peach-right.png");
+    animation-delay: -3s;
+}
+
+.footer.tet-village-footer > :not(.tet-footer-petals) {
+    position: relative;
+    max-width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-wrap: anywhere;
+}
+
+/* Cánh hoa chỉ xuất hiện ở hai vùng trang trí. */
+.tet-village-footer .tet-footer-petals {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.tet-footer-petals span {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    border-radius: 75% 15% 70% 25%;
+    background: #f7a6ba;
+    opacity: 0;
+    animation: tet-village-petal 9s linear infinite;
+}
+
+.tet-footer-petals span:nth-child(1) { left: 5%; animation-delay: -1s; }
+.tet-footer-petals span:nth-child(2) { left: 17%; animation-delay: -6s; }
+.tet-footer-petals span:nth-child(3) { left: 24%; animation-delay: -3s; }
+.tet-footer-petals span:nth-child(4) { right: 7%; animation-delay: -5s; }
+.tet-footer-petals span:nth-child(5) { right: 19%; animation-delay: -8s; }
+
+@keyframes tet-village-sway {
+    from { transform: translateY(0) rotate(-.3deg); }
+    to { transform: translateY(-4px) rotate(.3deg); }
+}
+
+@keyframes tet-village-petal {
+    0% { transform: translate(0, -15px) rotate(0); opacity: 0; }
+    10% { opacity: .7; }
+    90% { opacity: .6; }
+    100% { transform: translate(22px, 440px) rotate(280deg); opacity: 0; }
+}
+
+@media (max-width: 1000px) {
+    .footer.tet-village-footer {
+        padding-bottom: clamp(155px, 26vw, 250px);
+    }
+    .footer.tet-village-footer::before,
+    .footer.tet-village-footer::after {
+        width: 46%;
+        height: clamp(140px, 25vw, 240px);
+    }
+    .footer.tet-village-footer > :not(.tet-footer-petals) {
+        max-width: 100%;
+    }
+    .tet-village-footer .tet-footer-petals {
+        top: auto;
+        height: clamp(140px, 25vw, 240px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .footer.tet-village-footer::before,
+    .footer.tet-village-footer::after,
+    .tet-footer-petals span {
+        animation: none;
+    }
+}
